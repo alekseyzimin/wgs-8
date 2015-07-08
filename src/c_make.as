@@ -282,6 +282,8 @@ endif
 
 # Broken by the .c -> .C rename: AS_ARD (just didn't update it)
 
+# Removed PBR as MaSuRCA has its own PacBio module
+#          AS_PBR
 SUBDIRS = AS_RUN \
           AS_UTL \
           AS_UID \
@@ -297,7 +299,6 @@ SUBDIRS = AS_RUN \
           AS_CGB \
           AS_BOG \
           AS_BAT \
-          AS_PBR \
           AS_REZ \
           AS_CNS \
           AS_LIN \
