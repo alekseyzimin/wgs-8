@@ -170,6 +170,13 @@ public:
   ~BestEdgeOverlap() {
   };
 
+  void    reset() {
+    _id    = 0;
+    _e3p   = 0;
+    _ahang = 0;
+    _bhang = 0;
+  };
+
   void    set(OVSoverlap const &olap) {
     _id    = olap.b_iid;
     _e3p   = AS_OVS_overlapBEndIs3prime(olap);
