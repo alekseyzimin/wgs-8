@@ -42,7 +42,7 @@ static const char *rcsid_AS_CGW_DATATYPES_H = "$Id: AS_CGW_dataTypes.H 4371 2013
 #define ComputeFudgeVariance(L)    (fabs(L) * CGW_FUDGE_FACTOR)
 
 #define CGW_DP_THRESH 1e-6
-#define CGW_DP_MINLEN 20
+#define CGW_DP_MINLEN 12
 #define CGW_DP_DESPERATION_MINLEN 10
 
 #define NO_END 0
