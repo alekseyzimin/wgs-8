@@ -314,9 +314,9 @@ void BestOverlapGraph::scoreEdge(const OVSoverlap& olap) {
   }else if(newScr == score){
     best->reset();
     if (a3p)
-      _best3score[olap.a_iid] = 1000000000;
+      _best3score[olap.a_iid] = newScr+1;
     else
-      _best5score[olap.a_iid] = 1000000000;
+      _best5score[olap.a_iid] = newScr+1;
 }
 }
 

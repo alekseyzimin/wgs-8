@@ -190,12 +190,12 @@ MateLocation::buildHappinessGraphs(Unitig *utg) {
     assert(loc.mleFrgID1 != 0);
 
     uint32 lib =  FI->libraryIID(loc.mleFrgID1);
-
+    continue;//AZ no mate based splitting
     if (lib == 0)
       //  Shouldn't occur, but just in case, ignore fragments in the legacy library.
       continue;
-
-    if (IS->valid(lib) == false)
+//AZ do not ise short libs
+    if (IS->valid(lib) == false || static_cast<int32>(IS->mean(lib))<800 || static_cast<int32>(IS->stddev(lib))<150)
       // Don't check libs that we didn't generate good stats for
       continue;
 
@@ -330,7 +330,7 @@ MateLocation::buildHappinessGraphs(Unitig *utg) {
                 loc.mleUtgID2, 0, loc.mleFrgID2, matBgn, matEnd, matLen);
       goto markBad;
     }
-
+    
     //  So, now not NORMAL or ANTI or OUTTIE.  We must be left with innies.
 
     if (isReverse(loc.mlePos1) == false)

@@ -32,11 +32,17 @@ const char *mainid = "$Id: splitUnitigs.C 4411 2013-09-10 18:11:26Z brianwalenz 
 
 using namespace std;
 
-#define READ_TRIM_BASES          (AS_OVERLAP_MIN_LEN / 2 - 1)
-#define MAX_SEQUENCE_COVERAGE     1
-#define MIN_BAD_CLONE_COVERAGE    3
-#define MAX_GOOD_CLONE_COVERAGE   1
-#define LN_2                      0.693147
+#define READ_TRIM_BASES          (AS_OVERLAP_MIN_LEN / 2 - 1)   //  was 30
+#define MAX_SEQUENCE_COVERAGE    0
+#define MIN_BAD_CLONE_COVERAGE   4
+#define MAX_GOOD_CLONE_COVERAGE  0
+#define LN_2                     0.693147
+//AZ was
+//#define READ_TRIM_BASES          (AS_OVERLAP_MIN_LEN / 2 - 1)
+//#define MAX_SEQUENCE_COVERAGE     1
+//#define MIN_BAD_CLONE_COVERAGE    3
+//#define MAX_GOOD_CLONE_COVERAGE   1
+//#define LN_2                      0.693147
 
 #define CGW_CUTOFF 5
 
