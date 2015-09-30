@@ -1,5 +1,5 @@
-noinst_LIBRARIES += %D%/libAS_CGW.a
-%C%_libAS_CGW_a_SOURCES = %D%/Globals_CGW.C %D%/CIEdgeT_CGW.C			\
+noinst_LIBRARIES += lib/libAS_CGW.a
+lib_libAS_CGW_a_SOURCES = %D%/Globals_CGW.C %D%/CIEdgeT_CGW.C			\
                           %D%/CIScaffoldT_Analysis.C			\
                           %D%/CIScaffoldT_Biconnected_CGW.C			\
                           %D%/CIScaffoldT_CGW.C %D%/CIScaffoldT_Cleanup_CGW.C	\
@@ -19,7 +19,7 @@ noinst_LIBRARIES += %D%/libAS_CGW.a
                           %D%/Stats_CGW.C %D%/TransitiveReduction_CGW.C		\
                           %D%/ShatterScaffolds_CGW.C
 
-libCA_a_SOURCES += $(%C%_libAS_CGW_a_SOURCES)
+libCA_a_SOURCES += $(lib_libAS_CGW_a_SOURCES)
 
 bin_PROGRAMS += bin/cgw bin/cgwDump bin/analyzeScaffolds		\
                 bin/extendClearRanges bin/extendClearRangesPartition	\

@@ -1,5 +1,5 @@
-noinst_LIBRARIES += %D%/libAS_LIN.a
-%C%_libAS_LIN_a_SOURCES = %D%/dgbtrf.c %D%/dgbtf2.c %D%/dgbtrs.c	\
+noinst_LIBRARIES += lib/libAS_LIN.a
+lib_libAS_LIN_a_SOURCES = %D%/dgbtrf.c %D%/dgbtf2.c %D%/dgbtrs.c	\
                           %D%/iparmq.c %D%/ieeeck.c %D%/dlaswp.c	\
                           %D%/disnan.c %D%/dlaisnan.c %D%/dcopy.c	\
                           %D%/dswap.c %D%/dger.c %D%/dpbtrf.c		\
@@ -11,4 +11,4 @@ noinst_LIBRARIES += %D%/libAS_LIN.a
                           %D%/lsame.c %D%/xerbla.c %D%/s_copy.c	\
                           %D%/s_cmp.c %D%/ddot.c %D%/dscal.c
 
-libCA_a_SOURCES += $(%C%_libAS_LIN_a_SOURCES)
+libCA_a_SOURCES += $(lib_libAS_LIN_a_SOURCES)

@@ -1,5 +1,5 @@
-noinst_LIBRARIES += %D%/libAS_PER.a
-%C%_libAS_PER_a_SOURCES = %D%/AS_PER_genericStore.C			\
+noinst_LIBRARIES += lib/libAS_PER.a
+lib_libAS_PER_a_SOURCES = %D%/AS_PER_genericStore.C			\
                           %D%/AS_PER_gkLibrary.C %D%/AS_PER_gkStore.C	\
                           %D%/AS_PER_gkStore_IID.C			\
                           %D%/AS_PER_gkStore_PLC.C			\
@@ -12,4 +12,4 @@ noinst_LIBRARIES += %D%/libAS_PER.a
                           %D%/AS_PER_gkStream.C				\
                           %D%/AS_PER_encodeSequenceQuality.C
 
-libCA_a_SOURCES += $(%C%_libAS_PER_a_SOURCES)
+libCA_a_SOURCES += $(lib_libAS_PER_a_SOURCES)

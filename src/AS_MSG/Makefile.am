@@ -1,7 +1,7 @@
-noinst_LIBRARIES += %D%/libAS_MSG.a
-%C%_libAS_MSG_a_SOURCES = %D%/AS_MSG_pmesg.C %D%/AS_MSG_pmesg1.C %D%/AS_MSG_pmesg2.C
+noinst_LIBRARIES += lib/libAS_MSG.a
+lib_libAS_MSG_a_SOURCES = %D%/AS_MSG_pmesg.C %D%/AS_MSG_pmesg1.C %D%/AS_MSG_pmesg2.C
 
-libCA_a_SOURCES += $(%C%_libAS_MSG_a_SOURCES)
+libCA_a_SOURCES += $(lib_libAS_MSG_a_SOURCES)
 
 # fastaToCA and tracearchiveToCA are just aliases to other files
 %D%/fastaToCA: %D%/convert-fasta-to-v2.pl
