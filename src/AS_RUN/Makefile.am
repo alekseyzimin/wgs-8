@@ -11,6 +11,6 @@ dist_bin_SCRIPTS += %D%/runCA %D%/runCA-dedupe				\
                     %D%/replaceUIDwithName-fastq				\
                     %D%/replaceUIDwithName-posmap
 
-# bin_PROGRAMS += %D%/fragmentDepth %D%/markUniqueUnique
-# %C%_fragmentDepth_SOURCES = %D%/fragmentDepth.C
-# %C%_markUniqueUnique_SOURCES = %D%/markUniqueUnique.C
+bin_PROGRAMS += bin/fragmentDepth bin/markUniqueUnique
+bin_fragmentDepth_SOURCES = %D%/fragmentDepth.C
+bin_markUniqueUnique_SOURCES = %D%/markUniqueUnique.C

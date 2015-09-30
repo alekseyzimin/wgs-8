@@ -20,3 +20,18 @@ noinst_LIBRARIES += %D%/libAS_CGW.a
                           %D%/ShatterScaffolds_CGW.C
 
 libCA_a_SOURCES += $(%C%_libAS_CGW_a_SOURCES)
+
+bin_PROGRAMS += bin/cgw bin/cgwDump bin/analyzeScaffolds		\
+                bin/extendClearRanges bin/extendClearRangesPartition	\
+                bin/resolveSurrogates bin/dumpCloneMiddles		\
+                bin/dumpSingletons bin/frgs2clones
+
+bin_cgw_SOURCES = %D%/AS_CGW_main.C
+bin_analyzeScaffolds_SOURCES = %D%/analyzeScaffolds.C
+bin_extendClearRanges_SOURCES = %D%/eCR.C %D%/eCR-examineGap.C %D%/eCR-diagnostic.C
+bin_extendClearRangesPartition_SOURCES = %D%/eCR-partition.C
+bin_resolveSurrogates_SOURCES = %D%/resolveSurrogates.C
+bin_dumpCloneMiddles_SOURCES = %D%/dumpCloneMiddles.C
+bin_dumpSingletons_SOURCES = %D%/dumpSingletons.C
+bin_frgs2clones_SOURCES = %D%/frgs2clones.C
+bin_cgwDump_SOURCES = %D%/cgwDump.C

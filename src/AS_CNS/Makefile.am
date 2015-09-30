@@ -12,3 +12,12 @@ noinst_LIBRARIES += %D%/libAS_CNS.a
                           %D%/ReplaceEndUnitigInContig.C
 
 libCA_a_SOURCES += $(%C%_libAS_CNS_a_SOURCES)
+
+# TODO: do we need to support SEQ_AN
+bin_PROGRAMS += bin/utgcns bin/utgcnsfix bin/ctgcns bin/tigStore bin/addReadsToUnitigs
+
+bin_utgcns_SOURCES = %D%/utgcns.C
+bin_utgcnsfix_SOURCES = %D%/utgcnsfix.C
+bin_ctgcns_SOURCES = %D%/ctgcns.C
+bin_tigStore_SOURCES = %D%/tigStore.C
+bin_addReadsToUnitigs_SOURCES = %D%/addReadsToUnitigs.C
