@@ -8,8 +8,8 @@ libCA_a_SOURCES += $(lib_libAS_PBR_a_SOURCES)
 bin_PROGRAMS += bin/outputLayout bin/trimFastqByQVWindow bin/correctPacBio bin/dumpPBRLayoutStore
 # Todo: Need to add support for SAMTOOLS
 
-bin_outputLayout_SOURCES = OutputLayout.o
-bin_trimFastqByQVWindow_SOURCES = TrimFastqByQVWindow.o
-# convertSamToCA:		ConvertSamToCA.o $(SAM_LIBS)
-bin_correctPacBio_SOURCES = CorrectPacBio.o
-bin_dumpPBRLayoutStore_SOURCES = AS_PBR_dumpStore.o
+bin_outputLayout_SOURCES = %D%/OutputLayout.cc
+bin_trimFastqByQVWindow_SOURCES = %D%/TrimFastqByQVWindow.cc
+# convertSamToCA:		%D%/ConvertSamToCA.cc $(SAM_LIBS)
+bin_correctPacBio_SOURCES = %D%/CorrectPacBio.cc
+bin_dumpPBRLayoutStore_SOURCES = %D%/AS_PBR_dumpStore.cc
