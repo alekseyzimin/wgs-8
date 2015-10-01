@@ -21,3 +21,7 @@ bin_utgcnsfix_SOURCES = %D%/utgcnsfix.C
 bin_ctgcns_SOURCES = %D%/ctgcns.C
 bin_tigStore_SOURCES = %D%/tigStore.C
 bin_addReadsToUnitigs_SOURCES = %D%/addReadsToUnitigs.C
+
+noinst_HEADERS += %D%/MultiAlignStore.H %D%/MultiAlign.H		\
+%D%/MultiAlignMatePairAnalysis.H %D%/MultiAlignment_CNS_private.H	\
+%D%/MultiAlignSizeAnalysis.H %D%/MultiAlignment_CNS.H

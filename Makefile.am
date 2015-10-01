@@ -1,5 +1,6 @@
 dist_bin_SCRIPTS =
 bin_PROGRAMS =
+noinst_HEADERS =
 AM_CPPFLAGS = -I$(srcdir)/src -I$(srcdir)/src/AS_UTL -I$(srcdir)/src/AS_MSG -I$(srcdir)/src/AS_OVS
 AM_CPPFLAGS += -I$(srcdir)/src/AS_PER -I$(srcdir)/src/AS_REZ -I$(srcdir)/src/AS_CNS -I$(srcdir)/src/AS_ALN
 AM_CPPFLAGS += -I$(srcdir)/src/AS_CGW -I$(srcdir)/src/AS_CGB -I$(srcdir)/src/AS_UID -I$(srcdir)/src/AS_GKP

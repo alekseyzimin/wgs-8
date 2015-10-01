@@ -13,3 +13,6 @@ dist_bin_SCRIPTS += %D%/convert-fasta-to-v2.pl %D%/tracedb-to-frg.pl %D%/fastaTo
 bin_PROGRAMS += bin/remove_fragment bin/extractmessages
 bin_remove_fragment_SOURCES = %D%/remove_fragment.C
 bin_extractmessages_SOURCES = %D%/ExtractMessages.C
+
+noinst_HEADERS += %D%/AS_MSG_types.H %D%/AS_MSG_pmesg.H	\
+%D%/AS_MSG_pmesg_internal.H

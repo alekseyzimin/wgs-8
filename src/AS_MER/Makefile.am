@@ -19,3 +19,6 @@ bin_merTrimApply_LDADD = $(LDADD) $(KMERLIBS)
 
 bin_estimate_mer_threshold_SOURCES = %D%/estimate-mer-threshold.C %D%/AS_MER_gkpStore_to_FastABase.C 
 bin_estimate_mer_threshold_LDADD = $(LDADD) $(KMERLIBS)
+
+noinst_HEADERS += %D%/merTrimResult.H %D%/AS_MER_gkpStoreChain.H	\
+%D%/AS_MER_gkpStore_to_FastABase.H

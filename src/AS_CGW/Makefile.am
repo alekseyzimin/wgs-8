@@ -35,3 +35,13 @@ bin_dumpCloneMiddles_SOURCES = %D%/dumpCloneMiddles.C
 bin_dumpSingletons_SOURCES = %D%/dumpSingletons.C
 bin_frgs2clones_SOURCES = %D%/frgs2clones.C
 bin_cgwDump_SOURCES = %D%/cgwDump.C
+
+noinst_HEADERS += %D%/Output_CGW.H %D%/fixZLFContigs.H			\
+%D%/fragmentPlacement.H %D%/GraphCGW_T.H %D%/Instrument_CGW.H		\
+%D%/CIScaffoldT_Merge_AlignScaffold.H %D%/ChunkOverlap_CGW.H		\
+%D%/GraphEdgeIterator.H %D%/InputDataTypes_CGW.H			\
+%D%/ScaffoldGraphIterator_CGW.H %D%/CIScaffoldT_Analysis.H		\
+%D%/ScaffoldGraph_CGW.H %D%/Stats_CGW.H %D%/AS_CGW_dataTypes.H		\
+%D%/InterleavedMerging.H %D%/ChiSquareTest_CGW.H %D%/AS_CGW_histo.H	\
+%D%/Globals_CGW.H %D%/CIScaffoldT_Merge_CGW.H %D%/Input_CGW.H		\
+%D%/CIScaffoldT_MergeScaffolds.H %D%/eCR.H

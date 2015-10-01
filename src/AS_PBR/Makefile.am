@@ -13,3 +13,7 @@ bin_trimFastqByQVWindow_SOURCES = %D%/TrimFastqByQVWindow.cc
 # convertSamToCA:		%D%/ConvertSamToCA.cc $(SAM_LIBS)
 bin_correctPacBio_SOURCES = %D%/CorrectPacBio.cc
 bin_dumpPBRLayoutStore_SOURCES = %D%/AS_PBR_dumpStore.cc
+
+noinst_HEADERS += %D%/AS_PBR_output.hh %D%/AS_PBR_mates.hh	\
+%D%/AS_PBR_util.hh %D%/AS_PBR_store.hh %D%/AS_PBR_correct.hh	\
+%D%/AS_PBR_filter.hh

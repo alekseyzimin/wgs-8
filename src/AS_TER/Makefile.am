@@ -11,3 +11,5 @@ bin_analyzePosMap_SOURCES = %D%/analyzePosMap.C			\
 %D%/analyzePosMap-libraryFate.C %D%/analyzePosMap-load.C	\
 %D%/analyzePosMap-gapFillProbability.C
 bin_demotePosMap_SOURCES = %D%/demotePosMap.C
+
+noinst_HEADERS += %D%/analyzePosMap.H

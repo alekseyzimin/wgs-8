@@ -13,3 +13,8 @@ lib_libAS_PER_a_SOURCES = %D%/AS_PER_genericStore.C			\
                           %D%/AS_PER_encodeSequenceQuality.C
 
 libCA_a_SOURCES += $(lib_libAS_PER_a_SOURCES)
+
+noinst_HEADERS += %D%/AS_PER_encodeSequenceQuality.H		\
+%D%/AS_PER_gkpStore.H %D%/gkStore.H %D%/gkClearRange.H		\
+%D%/AS_PER_genericStore.H %D%/gkStream.H %D%/gkPlacement.H	\
+%D%/gkFragment.H %D%/gkLibrary.H

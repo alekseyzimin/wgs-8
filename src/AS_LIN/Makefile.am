@@ -12,3 +12,5 @@ lib_libAS_LIN_a_SOURCES = %D%/dgbtrf.c %D%/dgbtf2.c %D%/dgbtrs.c	\
                           %D%/s_cmp.c %D%/ddot.c %D%/dscal.c
 
 libCA_a_SOURCES += $(lib_libAS_LIN_a_SOURCES)
+
+noinst_HEADERS += %D%/f2c.h

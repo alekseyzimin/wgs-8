@@ -9,4 +9,5 @@ lib_libutil_a_SOURCES = %D%/bigQueue.C %D%/bigQueue.H			\
 %D%/readBuffer.H %D%/recordFile.C %D%/recordFile.H %D%/speedCounter.C	\
 %D%/speedCounter.H %D%/splitToWords.H %D%/sweatShop.C %D%/sweatShop.H	\
 %D%/uint32List.H %D%/unaryEncoding.h %D%/util++.H %D%/util.c		\
-%D%/util.h
+%D%/util.h %D%/kazlib/dict.h %D%/kazlib/except.h %D%/kazlib/hash.h	\
+%D%/kazlib/list.h %D%/kazlib/sfx.h

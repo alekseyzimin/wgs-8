@@ -11,3 +11,7 @@ bin_deduplicate_SOURCES = %D%/deduplicate.C
 bin_finalTrim_SOURCES = %D%/finalTrim.C %D%/trim.C %D%/finalTrim-largestCovered.C %D%/finalTrim-evidenceBased.C %D%/finalTrim-bestEdge.C
 bin_chimera_SOURCES = %D%/chimera.C
 bin_removeMateOverlap_SOURCES = %D%/removeMateOverlap.C
+
+noinst_HEADERS += %D%/trim.H %D%/finalTrim.H		\
+%D%/AS_OBT_acceptableOverlap.H %D%/AS_OBT_overlaps.H	\
+%D%/finalTrim-consolidate.H

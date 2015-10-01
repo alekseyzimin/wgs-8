@@ -13,3 +13,6 @@ bin_correct_frags_SOURCES = %D%/FragCorrectOVL.C  %D%/AS_OVL_delcher.C
 bin_correct_olaps_SOURCES = %D%/CorrectOlapsOVL.C %D%/AS_OVL_delcher.C
 bin_overlap_partition_SOURCES = %D%/overlap_partition.C
 bin_olap_from_seeds_SOURCES = %D%/OlapFromSeedsOVL.C %D%/AS_OVL_delcher.C %D%/SharedOVL.C
+
+noinst_HEADERS += %D%/OlapFromSeedsOVL.H %D%/AS_OVL_delcher.H	\
+%D%/FragCorrectOVL.H %D%/SharedOVL.H %D%/AS_OVL_olapstats.H

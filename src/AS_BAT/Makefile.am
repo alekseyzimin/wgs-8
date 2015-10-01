@@ -32,3 +32,19 @@ bin_computeCoverageStat_SOURCES = %D%/computeCoverageStat.C
 bin_markRepeatUnique_SOURCES = %D%/markRepeatUnique.C                     
 bin_rewriteCache_SOURCES = %D%/rewriteCache.C %D%/AS_BAT_FragmentInfo.C %D%/AS_BAT_Logging.C 
 bin_erate_estimate_SOURCES = %D%/erate-estimate.C
+
+noinst_HEADERS += %D%/AS_BAT_SplitDiscontinuous.H			\
+%D%/AS_BAT_EvaluateMates.H %D%/AS_BAT_Instrumentation.H			\
+%D%/AS_BAT_PlaceZombies.H %D%/AS_BAT_MergeSplitJoin.H			\
+%D%/AS_BAT_InsertSizes.H %D%/AS_BAT_PlaceContains.H			\
+%D%/classifyMates-saveDistance.H %D%/AS_BAT_PlaceFragUsingOverlaps.H	\
+%D%/AS_BAT_Datatypes.H %D%/classifyMates-runningTime.H			\
+%D%/AS_BAT_MoveContains.H %D%/AS_BAT_SetParentAndHang.H			\
+%D%/AS_BAT_OverlapCache.H %D%/classifyMates.H %D%/AS_BAT_ChunkGraph.H	\
+%D%/AS_BAT_IntersectSplit.H %D%/AS_BAT_Unitig.H				\
+%D%/AS_BAT_bogusUtil.H %D%/AS_BAT_PopulateUnitig.H			\
+%D%/AS_BAT_BestOverlapGraph.H %D%/AS_BAT_Outputs.H			\
+%D%/AS_BAT_MateChecker.H %D%/AS_BAT_Logging.H %D%/AS_BAT_Breaking.H	\
+%D%/classifyMates-globalData.H %D%/memoryMappedFile.H			\
+%D%/AS_BAT_MateLocation.H %D%/AS_BAT_RepeatJunctionEvidence.H		\
+%D%/AS_BAT_Joining.H %D%/AS_BAT_IntersectBubble.H

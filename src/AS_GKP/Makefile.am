@@ -20,3 +20,5 @@ bin_gkpStoreDumpFASTQ_SOURCES = %D%/gkpStoreDumpFASTQ.C
 bin_gkpStoreCreate_SOURCES = %D%/gkpStoreCreate.C
 bin_upgrade_v8_to_v9_SOURCES = %D%/upgrade-v8-to-v9.C
 bin_upgrade_v9_to_v10_SOURCES = %D%/upgrade-v9-to-v10.C
+
+noinst_HEADERS += %D%/AS_GKP_include.H

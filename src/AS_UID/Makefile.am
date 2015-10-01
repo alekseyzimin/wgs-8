@@ -19,3 +19,4 @@ if SITE_BRI
 endif
 
 libCA_a_SOURCES += $(lib_libAS_UID_a_SOURCES)
+noinst_HEADERS += %D%/SYS_UIDclient.H %D%/uidserver_common.H

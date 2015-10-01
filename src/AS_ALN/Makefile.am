@@ -6,3 +6,6 @@ lib_libAS_ALN_a_SOURCES = %D%/AS_ALN_dpaligner.C		\
               %D%/AS_ALN_bruteforcedp.C
 
 libCA_a_SOURCES += $(lib_libAS_ALN_a_SOURCES)
+
+noinst_HEADERS += %D%/AS_ALN_aligners.H %D%/AS_ALN_bruteforcedp.H	\
+%D%/CA_ALN_local.H

@@ -16,3 +16,8 @@ bin_buildUnitigs_SOURCES = %D%/BuildUnitigs.C				\
 %D%/AS_BOG_Unitig.C %D%/AS_BOG_UnitigGraph.C
 bin_fixUnitigs_SOURCES = %D%/fixUnitigs.C
 bin_analyzeBest_SOURCES = %D%/analyzeBest.C
+
+noinst_HEADERS += %D%/AS_BOG_Unitig.H %D%/AS_BOG_MateLocation.H	\
+%D%/AS_BOG_UnitigGraph.H %D%/AS_BOG_Datatypes.H			\
+%D%/AS_BOG_ChunkGraph.H %D%/AS_BOG_BestOverlapGraph.H		\
+%D%/AS_BOG_InsertSizes.H
