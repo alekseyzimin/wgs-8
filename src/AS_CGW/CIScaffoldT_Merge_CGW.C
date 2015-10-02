@@ -279,7 +279,12 @@ isQualityScaffoldMergingEdgeNEW(SEdgeT                     *curEdge,
   bool matesFail = false;
 
  if (GlobalData->mergeFilterLevel == 1) {
-   bool failsMinimum       = (fractMatesHappyAfter < minSatisfied);
+  double  minSatisfied_local=minSatisfied;
+//AZ relax the minSatisfied for merges with mean -100<m<2000 where it is plausible that there is a positive gap 
+  if(curEdge->distance.mean>-100 && curEdge->distance.mean<2000 && sqrt(curEdge->distance.variance)<100 && curEdge->distance.mean+3*sqrt(curEdge->distance.variance)>0)
+            minSatisfied_local=minSatisfied-0.05;
+            
+   bool failsMinimum       = (fractMatesHappyAfter < minSatisfied_local);
    bool failsToGetHappier1 = (fractMatesHappyAfter < fractMatesHappyBefore);
    bool failsToGetHappier2 = (mAfterGood <= mBeforeGood) || (badGoodRatio > MAX_FRAC_BAD_TO_GOOD);
 
@@ -901,7 +906,7 @@ MergeScaffoldsAggressive(ScaffoldGraphT *graph, char *logicalcheckpointnumber, i
   iSpec.contigNow              = TRUE;
   iSpec.checkForTinyScaffolds  = FALSE;
   iSpec.checkAbutting          = TRUE;
-  iSpec.minSatisfied           = 0.985;  //  0.985 default
+  iSpec.minSatisfied           = 0.975;  //  0.985 default
   iSpec.maxDelta               = -1;     //  0.005
   iSpec.MIs                    = CreateVA_MateInstrumenterP(GetNumGraphNodes(ScaffoldGraph->ScaffoldGraph));
   iSpec.badSEdges              = CreateChunkOverlapper();
