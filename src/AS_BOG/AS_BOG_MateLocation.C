@@ -195,7 +195,7 @@ MateLocation::buildHappinessGraphs(Unitig *utg) {
       //  Shouldn't occur, but just in case, ignore fragments in the legacy library.
       continue;
 //AZ do not ise short libs
-    if (IS->valid(lib) == false || IS->mean(lib)<800 || IS->stddev(lib)<150)
+    if (IS->valid(lib) == false || IS->mean(lib)<800 || IS->stddev(lib)<200)
       // Don't check libs that we didn't generate good stats for
       continue;
 
@@ -315,20 +315,20 @@ MateLocation::buildHappinessGraphs(Unitig *utg) {
     //  (pos2.bgn)  -------> (pos2.end)
     //
     if ((isReverse(loc.mlePos1) == true)  && (loc.mlePos1.end < loc.mlePos2.bgn)) {
-      incrRange(badOuttie, -1, MIN(frgBgn, frgEnd), MAX(matBgn, matEnd));
+//AZ ignore outties    //  incrRange(badOuttie, -1, MIN(frgBgn, frgEnd), MAX(matBgn, matEnd));
       if (logFileFlagSet(LOG_HAPPINESS))
         fprintf(logFile, "buildHappinessGraph()--  unitig %d (len %d) frag %d pos %d,%d (len %d) and unitig %d (len %d) frag %d pos %d,%d (len %d) -- bad outtie (case 1)\n",
                 loc.mleUtgID1, 0, loc.mleFrgID1, frgBgn, frgEnd, frgLen,
                 loc.mleUtgID2, 0, loc.mleFrgID2, matBgn, matEnd, matLen);
-      goto markBad;
+     // goto markBad;
     }
     if ((isReverse(loc.mlePos1) == false) && (loc.mlePos2.end < loc.mlePos1.bgn)) {
-      incrRange(badOuttie, -1, MIN(frgBgn, frgEnd), MAX(matBgn, matEnd));
+//AZ ignore outties     // incrRange(badOuttie, -1, MIN(frgBgn, frgEnd), MAX(matBgn, matEnd));
       if (logFileFlagSet(LOG_HAPPINESS))
         fprintf(logFile, "buildHappinessGraph()--  unitig %d (len %d) frag %d pos %d,%d (len %d) and unitig %d (len %d) frag %d pos %d,%d (len %d) -- bad outtie (case 2)\n",
                 loc.mleUtgID1, 0, loc.mleFrgID1, frgBgn, frgEnd, frgLen,
                 loc.mleUtgID2, 0, loc.mleFrgID2, matBgn, matEnd, matLen);
-      goto markBad;
+     // goto markBad;
     }
     
     //  So, now not NORMAL or ANTI or OUTTIE.  We must be left with innies.
