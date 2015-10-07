@@ -15,6 +15,12 @@ noinst_LIBRARIES = libCA.a
 libCA_a_SOURCES =
 LDADD = libCA.a
 
+# Rule to "build" perl script. It really only remove the extension
+# while copying. TODO: should the scripts be renamed in git withouth
+# an extension?
+%: %.pl
+	$(AM_V_GEN)mkdir -p $(dir $@) && cp $< $@
+
 # Load kmer Makefiles
 include $(srcdir)/kmer/libmeryl/Makefile.am
 include $(srcdir)/kmer/libkmer/Makefile.am

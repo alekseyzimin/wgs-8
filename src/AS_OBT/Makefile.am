@@ -15,3 +15,5 @@ bin_removeMateOverlap_SOURCES = %D%/removeMateOverlap.C
 noinst_HEADERS += %D%/trim.H %D%/finalTrim.H		\
 %D%/AS_OBT_acceptableOverlap.H %D%/AS_OBT_overlaps.H	\
 %D%/finalTrim-consolidate.H
+
+# TODO: is Figaro still supported?

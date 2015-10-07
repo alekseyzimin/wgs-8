@@ -1,5 +1,3 @@
-# TODO: do we need to support the UMD overlapper?
-
 bin_PROGRAMS += bin/overlap_partition bin/olap-from-seeds		\
                 bin/correct-frags bin/show-corrects bin/correct-olaps	\
                 bin/cat-corrects bin/cat-erates
@@ -16,3 +14,5 @@ bin_olap_from_seeds_SOURCES = %D%/OlapFromSeedsOVL.C %D%/AS_OVL_delcher.C %D%/Sh
 
 noinst_HEADERS += %D%/OlapFromSeedsOVL.H %D%/AS_OVL_delcher.H	\
 %D%/FragCorrectOVL.H %D%/SharedOVL.H %D%/AS_OVL_olapstats.H
+
+# TODO: do we need to support the UMD overlapper?
