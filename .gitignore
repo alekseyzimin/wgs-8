@@ -32,3 +32,4 @@ samtools-0.1.19/misc/md5fa
 samtools-0.1.19/misc/md5sum-lite
 samtools-0.1.19/misc/wgsim
 samtools-0.1.19/samtools
+Makefile.in
