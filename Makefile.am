@@ -46,7 +46,7 @@ include $(srcdir)/src/AS_ALN/Makefile.am
 include $(srcdir)/src/AS_CGB/Makefile.am
 include $(srcdir)/src/AS_BOG/Makefile.am
 include $(srcdir)/src/AS_BAT/Makefile.am
-include $(srcdir)/src/AS_PBR/Makefile.am
+# include $(srcdir)/src/AS_PBR/Makefile.am
 include $(srcdir)/src/AS_REZ/Makefile.am
 include $(srcdir)/src/AS_CNS/Makefile.am
 include $(srcdir)/src/AS_LIN/Makefile.am
