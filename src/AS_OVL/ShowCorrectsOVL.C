@@ -96,7 +96,7 @@ int  main
                   msg . frag . keep_right ? "KR" : "  ");
         else
           {
-           printf (" %4"F_U64P" ", msg . corr . pos);
+           printf (" %4" F_U64P" ", msg . corr . pos);
            switch  ((Vote_Value_t) msg . corr . type)
              {
               case  EXTENSION :

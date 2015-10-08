@@ -210,7 +210,7 @@ int Update_Scaffold_Graph(ScaffoldGraphT *sgraph,
       numChunks += fill_chunks[scaff_id].gap[j].num_chunks;
   }
 
-  fprintf(stderr, "Update_Scaffold_Graph()-- place "F_U64" chunks into "F_U64" gaps in "F_U64" scaffolds.\n",
+  fprintf(stderr, "Update_Scaffold_Graph()-- place " F_U64 " chunks into " F_U64 " gaps in " F_U64 " scaffolds.\n",
           numChunks, numGaps, numScaffolds);
 
   //
@@ -598,7 +598,7 @@ int Update_Scaffold_Graph(ScaffoldGraphT *sgraph,
         (curInserted > 100000)) {
       curInserted = 0;
 
-      fprintf(stderr, "Update_Scaffold_Graph()-- placed "F_U64"/"F_U64" chunks into "F_U64"/"F_U64" gaps in "F_U64"/"F_U64" scaffolds.\n",
+      fprintf(stderr, "Update_Scaffold_Graph()-- placed " F_U64 "/" F_U64 " chunks into " F_U64 "/" F_U64 " gaps in " F_U64 "/" F_U64 " scaffolds.\n",
               curChunks,    numChunks,
               curGaps,      numGaps,
               curScaffolds, numScaffolds);

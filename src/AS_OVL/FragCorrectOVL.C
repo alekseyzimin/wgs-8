@@ -369,7 +369,7 @@ int  main
    fprintf (stderr, "Starting Read_Olaps ()\n");
    Read_Olaps ();
 
-   fprintf (stderr, "Before sort "F_S64" overlaps\n", Num_Olaps);
+   fprintf (stderr, "Before sort " F_S64 " overlaps\n", Num_Olaps);
    qsort (Olap, Num_Olaps, sizeof (Olap_Info_t), By_B_IID);
 
    if  (Verbose_Level > 2)
@@ -383,7 +383,7 @@ int  main
 
    if  (Num_Olaps > 0)
        {
-        fprintf (stderr, "Before Stream_Old_Frags  Num_Olaps = "F_S64"\n", Num_Olaps);
+        fprintf (stderr, "Before Stream_Old_Frags  Num_Olaps = " F_S64 "\n", Num_Olaps);
         if  (Num_PThreads > 0)
             Threaded_Stream_Old_Frags ();
           else

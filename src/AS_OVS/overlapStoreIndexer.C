@@ -89,24 +89,24 @@ testIndex(char *ovlName, bool doFixes) {
       maxIID = O.a_iid;
 
     if (errorDecreased)
-      fprintf(stderr, "ERROR: index decreased from "F_U32" to "F_U32"\n", curIID, O.a_iid), nErrs++;
+      fprintf(stderr, "ERROR: index decreased from " F_U32 " to " F_U32 "\n", curIID, O.a_iid), nErrs++;
     else if (errorGap)
-      fprintf(stderr, "ERROR: gap between "F_U32" and "F_U32"\n", curIID, O.a_iid), nErrs++;
+      fprintf(stderr, "ERROR: gap between " F_U32 " and " F_U32 "\n", curIID, O.a_iid), nErrs++;
 
     if ((maxIncreases == true) && (errorGap == false)) {
       if (doFixes)
         AS_UTL_safeWrite(F, &O, "offset", sizeof(OverlapStoreOffsetRecord), 1);
 
     } else if (O.numOlaps > 0) {
-      fprintf(stderr, "ERROR: lost overlaps a_iid "F_U32" fileno "F_U32" offset "F_U32" numOlaps "F_U32"\n",
+      fprintf(stderr, "ERROR: lost overlaps a_iid " F_U32 " fileno " F_U32 " offset " F_U32 " numOlaps " F_U32 "\n",
               O.a_iid, O.fileno, O.offset, O.numOlaps);
     }
 
     curIID = O.a_iid;
   }
 
-  fprintf(stderr, "minIID "F_U32"\n", minIID);
-  fprintf(stderr, "maxIID "F_U32"\n", maxIID);
+  fprintf(stderr, "minIID " F_U32 "\n", minIID);
+  fprintf(stderr, "maxIID " F_U32 "\n", maxIID);
 
   fclose(I);
 
@@ -189,26 +189,26 @@ main(int argc, char **argv) {
     if (AS_UTL_fileExists(name, FALSE, FALSE) == true)
       complete++;
     else
-      fprintf(stderr, "ERROR: Segment "F_U32" data not present  (%s)\n", i, name);
+      fprintf(stderr, "ERROR: Segment " F_U32 " data not present  (%s)\n", i, name);
 
     sprintf(name, "%s/%04d.ovs", ovlName, i);
     if (AS_UTL_fileExists(name, FALSE, FALSE) == true)
       complete++;
     else
-      fprintf(stderr, "ERROR: Segment "F_U32" store not present (%s)\n", i, name);
+      fprintf(stderr, "ERROR: Segment " F_U32 " store not present (%s)\n", i, name);
 
     sprintf(name, "%s/%04d.idx", ovlName, i);
     if (AS_UTL_fileExists(name, FALSE, FALSE) == true)
       complete++;
     else
-      fprintf(stderr, "ERROR: Segment "F_U32" index not present (%s)\n", i, name);
+      fprintf(stderr, "ERROR: Segment " F_U32 " index not present (%s)\n", i, name);
 
     if (complete == 3)
       cntJob++;
   }
 
   if (cntJob != maxJob) {
-    fprintf(stderr, "ERROR: Expected "F_U32" segments, only found "F_U32".\n", maxJob, cntJob);
+    fprintf(stderr, "ERROR: Expected " F_U32 " segments, only found " F_U32 ".\n", maxJob, cntJob);
     exit(1);
   }
 
@@ -278,7 +278,7 @@ main(int argc, char **argv) {
     assert(ovspiece.smallestIID <= ovspiece.largestIID);
 
     if (ovs.largestIID + 1 < ovspiece.smallestIID)
-      fprintf(stderr, "  Adding empty records for fragments "F_U64" to "F_U64"\n",
+      fprintf(stderr, "  Adding empty records for fragments " F_U64 " to " F_U64 "\n",
               ovs.largestIID + 1, ovspiece.smallestIID - 1);
 
     while (ovs.largestIID + 1 < ovspiece.smallestIID) {
@@ -312,7 +312,7 @@ main(int argc, char **argv) {
 
       if (recsLen > 0) {
         if (ovs.largestIID + 1 != recs[0].a_iid)
-          fprintf(stderr, "ERROR: '%s' starts with iid "F_U32", but store only up to "F_U64"\n",
+          fprintf(stderr, "ERROR: '%s' starts with iid " F_U32 ", but store only up to " F_U64 "\n",
                   name, recs[0].a_iid, ovs.largestIID);
         assert(ovs.largestIID + 1 == recs[0].a_iid);
       }
@@ -337,7 +337,7 @@ main(int argc, char **argv) {
 
     ovs.numOverlapsTotal += ovspiece.numOverlapsTotal;
 
-    fprintf(stderr, "  Now finished with fragments "F_U64" to "F_U64" -- "F_U64" overlaps.\n",
+    fprintf(stderr, "  Now finished with fragments " F_U64 " to " F_U64 " -- " F_U64 " overlaps.\n",
             ovs.smallestIID, ovs.largestIID, ovs.numOverlapsTotal);
   }
 
@@ -361,7 +361,7 @@ main(int argc, char **argv) {
 
   //  Diagnostics.
 
-  fprintf(stderr, "new store from "F_U64" to "F_U64" with "F_U64" overlaps.\n",
+  fprintf(stderr, "new store from " F_U64 " to " F_U64 " with " F_U64 " overlaps.\n",
           ovs.smallestIID,
           ovs.largestIID,
           ovs.numOverlapsTotal);

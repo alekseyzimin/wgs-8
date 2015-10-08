@@ -95,8 +95,8 @@ main(int argc, char **argv) {
     delete M;
   }
 
-  fprintf(stderr, "Guessing "uint64FMT" mers in input '%s'\n", numMers, inName);
-  fprintf(stderr, "Allocating "uint64FMT"MB for mer storage.\n", numMers * 8 >> 20);
+  fprintf(stderr, "Guessing " uint64FMT" mers in input '%s'\n", numMers, inName);
+  fprintf(stderr, "Allocating " uint64FMT"MB for mer storage.\n", numMers * 8 >> 20);
   
   theMers    = new uint64 [numMers];
   theMersLen = 0;
@@ -126,7 +126,7 @@ main(int argc, char **argv) {
   delete C;
   delete M;
 
-  fprintf(stderr, "Found "uint64FMT" mers in input '%s'\n", theMersLen, inName);
+  fprintf(stderr, "Found " uint64FMT" mers in input '%s'\n", theMersLen, inName);
 
   if (theMersLen > theMersMax)
     fprintf(stderr, "ERROR:  too many mers in input!\n"), exit(1);

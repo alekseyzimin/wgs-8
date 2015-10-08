@@ -126,7 +126,7 @@ seqStore::getSequence(uint32 iid,
     loadIndex();
 
   if (iid >= _header._numberOfSequences) {
-    fprintf(stderr, "seqStore::getSequence(full)--  iid "uint32FMT" more than number of sequences "uint32FMT"\n",
+    fprintf(stderr, "seqStore::getSequence(full)--  iid " uint32FMT" more than number of sequences " uint32FMT"\n",
             iid, _header._numberOfSequences);
     return(false);
   }
@@ -194,13 +194,13 @@ seqStore::getSequence(uint32 iid,
     loadIndex();
 
   if (iid >= _header._numberOfSequences) {
-    fprintf(stderr, "seqStore::getSequence(part)--  iid "uint32FMT" more than number of sequences "uint32FMT"\n",
+    fprintf(stderr, "seqStore::getSequence(part)--  iid " uint32FMT" more than number of sequences " uint32FMT"\n",
             iid, _header._numberOfSequences);
     return(false);
   }
 
   if (bgn >= end) {
-    fprintf(stderr, "seqStore::getSequence(part)--  for iid "uint32FMT"; invalid bgn="uint32FMT" end="uint32FMT"; seqLen="uint32FMT"\n",
+    fprintf(stderr, "seqStore::getSequence(part)--  for iid " uint32FMT"; invalid bgn=" uint32FMT" end=" uint32FMT"; seqLen=" uint32FMT"\n",
             iid, bgn, end, _index[iid]._seqLength);
     return(false);
   }
@@ -317,9 +317,9 @@ seqStore::loadIndex(void) {
 
   fread(&_header,   sizeof(seqStoreHeader), 1, F);
 
-  //fprintf(stderr, "seqStore::seqStore()--  Allocating space for "uint32FMT" sequences ("uint64FMT"MB)\n", _header._numberOfSequences, _header._numberOfSequences * sizeof(seqStoreIndex) / 1024 / 1024);
-  //fprintf(stderr, "seqStore::seqStore()--  Allocating space for "uint32FMT" blocks    ("uint64FMT"MB)\n", _header._numberOfBlocks,    _header._numberOfBlocks    * sizeof(seqStoreBlock) / 1024 / 1024);
-  //fprintf(stderr, "seqStore::seqStore()--  Allocating space for "uint32FMT" labels    ("uint64FMT"MB)\n", _header._namesLength,       _header._namesLength       * sizeof(char)          / 1024 / 1024);
+  //fprintf(stderr, "seqStore::seqStore()--  Allocating space for " uint32FMT" sequences (" uint64FMT"MB)\n", _header._numberOfSequences, _header._numberOfSequences * sizeof(seqStoreIndex) / 1024 / 1024);
+  //fprintf(stderr, "seqStore::seqStore()--  Allocating space for " uint32FMT" blocks    (" uint64FMT"MB)\n", _header._numberOfBlocks,    _header._numberOfBlocks    * sizeof(seqStoreBlock) / 1024 / 1024);
+  //fprintf(stderr, "seqStore::seqStore()--  Allocating space for " uint32FMT" labels    (" uint64FMT"MB)\n", _header._namesLength,       _header._namesLength       * sizeof(char)          / 1024 / 1024);
 
   _index = new seqStoreIndex [_header._numberOfSequences];
   _block = new seqStoreBlock [_header._numberOfBlocks];
@@ -460,11 +460,11 @@ constructSeqStore(char *filename, seqCache *inputseq) {
 #endif
 
       if (sic->sequenceLength() > SEQSTOREBLOCK_MAXPOS)
-        fprintf(stderr, "constructSeqStore()-- sequence %s too long, must be shorter than "uint64FMT" Gbp.\n",
+        fprintf(stderr, "constructSeqStore()-- sequence %s too long, must be shorter than " uint64FMT" Gbp.\n",
                 sic->header(), SEQSTOREBLOCK_MAXPOS / 1024 / 1024 / 1024), exit(1);
 
       if (sic->getIID() > SEQSTOREBLOCK_MAXPOS)
-        fprintf(stderr, "constructSeqStore()-- too many sequences, must be fewer than "uint64FMT".\n",
+        fprintf(stderr, "constructSeqStore()-- too many sequences, must be fewer than " uint64FMT".\n",
                 SEQSTOREBLOCK_MAXIID), exit(1);
 
       if (NAMElen + sic->headerLength() + 1 > NAMEmax) {
@@ -617,6 +617,6 @@ constructSeqStore(char *filename, seqCache *inputseq) {
 
   //  ESTmapper depends on this output.
 
-  fprintf(stderr, "constructSeqStore()-- seqStore '%s' constructed ("uint32FMT" sequences, "uint64FMT" ACGT letters, "uint32FMT" ACGT blocks, "uint32FMT" GAP blocks).\n",
+  fprintf(stderr, "constructSeqStore()-- seqStore '%s' constructed (" uint32FMT" sequences, " uint64FMT" ACGT letters, " uint32FMT" ACGT blocks, " uint32FMT" GAP blocks).\n",
           filename, HEAD._numberOfSequences, HEAD._numberOfACGT, HEAD._numberOfBlocksACGT, HEAD._numberOfBlocksGAP);
 }

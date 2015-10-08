@@ -125,8 +125,8 @@ public:
 
   ~ovmGlobalData() {
 
-    //fprintf(stderr, "Found "F_U64" mer hits.\n", merfound);
-    //fprintf(stderr, "Found "F_U64" overlaps.\n", ovlfound);
+    //fprintf(stderr, "Found " F_U64 " mer hits.\n", merfound);
+    //fprintf(stderr, "Found " F_U64 " overlaps.\n", ovlfound);
 
     AS_OVS_closeBinaryOverlapFile(outputFile);
 
@@ -168,19 +168,19 @@ public:
     if (tEnd > mIID)  tEnd = mIID;
 
     if (qBeg < tBeg) {
-      fprintf(stderr, "WARNING: reset -qb to -tb="F_U32"\n",
+      fprintf(stderr, "WARNING: reset -qb to -tb=" F_U32 "\n",
               tBeg);
       qBeg = tBeg;
     }
 
     if (qBeg >= qEnd) {
-      fprintf(stderr, "ERROR: -qb="F_U32" and -qe="F_U32" are invalid ("F_U32" frags in the store)\n",
+      fprintf(stderr, "ERROR: -qb=" F_U32 " and -qe=" F_U32 " are invalid (" F_U32 " frags in the store)\n",
               qBeg, qEnd, mIID);
       exit(1);
     }
 
     if (tBeg >= tEnd) {
-      fprintf(stderr, "ERROR: -tb="F_U32" and -te="F_U32" are invalid ("F_U32" frags in the store)\n",
+      fprintf(stderr, "ERROR: -tb=" F_U32 " and -te=" F_U32 " are invalid (" F_U32 " frags in the store)\n",
               tBeg, tEnd, mIID);
       exit(1);
     }
@@ -603,7 +603,7 @@ ovmWorker(void *G, void *T, void *S) {
           char tmpstrf[65];
           char tmpstrr[65];
 
-          fprintf(stderr, "WARNING:  mer '%s' ('%s') has count "F_U64","F_U64" but posnLen "F_U64","F_U64"\n",
+          fprintf(stderr, "WARNING:  mer '%s' ('%s') has count " F_U64 "," F_U64 " but posnLen " F_U64 "," F_U64 "\n",
                   sMSTR->theFMer().merToString(tmpstrf),
                   sMSTR->theRMer().merToString(tmpstrr),
                   fcount, rcount,
@@ -665,7 +665,7 @@ ovmWorker(void *G, void *T, void *S) {
   //
   for (uint32 i=0; i<t->hitsLen; i++) {
     if (i != t->hitsLen) {
-      fprintf(stderr, F_U32"\t"F_U64"\t"F_U32"\t"F_U64"\t%c\t"F_U32"\n",
+      fprintf(stderr, F_U32"\t" F_U64 "\t" F_U32 "\t" F_U64 "\t%c\t" F_U32 "\n",
               t->hits[i].dat.val.tseq, t->hits[i].dat.val.tpos,
               s->iid,  t->hits[i].dat.val.qpos,
               t->hits[i].dat.val.pal ? 'p' : (t->hits[i].dat.val.fwd ? 'f' : 'r'),
@@ -680,7 +680,7 @@ ovmWorker(void *G, void *T, void *S) {
 
 
   for (uint32 i=0; i<t->hitsLen; ) {
-    //fprintf(stderr, "FILTER STARTS i="F_U32" tseq="F_U64" tpos="F_U64" qpos="F_U64"\n",
+    //fprintf(stderr, "FILTER STARTS i=" F_U32 " tseq=" F_U64 " tpos=" F_U64 " qpos=" F_U64 "\n",
     //          i, t->hits[i].dat.val.tseq, t->hits[i].dat.val.tpos, t->hits[i].dat.val.qpos);
 
     //  By the definition of our sort, the least common mer is the
@@ -748,7 +748,7 @@ ovmWorker(void *G, void *T, void *S) {
     //
     uint64  lastiid = t->hits[i].dat.val.tseq;
     while ((i < t->hitsLen) && (t->hits[i].dat.val.tseq == lastiid)) {
-      //fprintf(stderr, "FILTER OUT i="F_U32" tseq="F_U64" tpos="F_U64" qpos="F_U64"\n",
+      //fprintf(stderr, "FILTER OUT i=" F_U32 " tseq=" F_U64 " tpos=" F_U64 " qpos=" F_U64 "\n",
       //        i, t->hits[i].dat.val.tseq, t->hits[i].dat.val.tpos, t->hits[i].dat.val.qpos);
       i++;
     }

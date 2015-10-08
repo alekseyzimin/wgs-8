@@ -78,7 +78,7 @@ UnitigGraph::popIntersectionBubbles(OverlapStore *ovlStoreUniq, OverlapStore *ov
     int32          maxNewPos    = INT32_MIN;
 
     if (logFileFlagSet(LOG_INTERSECTION_BUBBLES_DEBUG))
-      fprintf(logFile, "popBubbles()-- try unitig %d of length %d with "F_SIZE_T" fragments\n",
+      fprintf(logFile, "popBubbles()-- try unitig %d of length %d with " F_SIZE_T " fragments\n",
               shortTig->id(),
               shortTig->getLength(),
               shortTig->ufpath.size());

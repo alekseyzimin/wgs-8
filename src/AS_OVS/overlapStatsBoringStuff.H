@@ -292,12 +292,12 @@ computeRepeatModels(OverlapStore *ovs, gkStore *gkp) {
       exit(1);
     }
 
-    fprintf(file, "repeatThreshold = "F_U64"\n", rm[i].repeatThreshold);
+    fprintf(file, "repeatThreshold = " F_U64 "\n", rm[i].repeatThreshold);
 
-    sprintf(label, "Lib "F_IID" 5'", i);
+    sprintf(label, "Lib " F_IID " 5'", i);
     AS_UTL_histogramShow(&rm[i].hist5, file, label);
 
-    sprintf(label, "Lib "F_IID" 3'", i);
+    sprintf(label, "Lib " F_IID " 3'", i);
     AS_UTL_histogramShow(&rm[i].hist3, file, label);
 
     fclose(file);
@@ -316,7 +316,7 @@ computeRepeatModels(OverlapStore *ovs, gkStore *gkp) {
   fprintf(stderr, "== Repeat Model ==\n");
   fprintf(stderr, "\n");
   for (i=0; i <= gkp->gkStore_getNumLibraries(); i++)
-    fprintf(stderr, "repeatThreshold[%2d] = "F_U64"\n", i, rm[i].repeatThreshold);
+    fprintf(stderr, "repeatThreshold[%2d] = " F_U64 "\n", i, rm[i].repeatThreshold);
   AS_UTL_histogramShow(&rm[0].hist5, stderr, "Global 5'");
   AS_UTL_histogramShow(&rm[0].hist3, stderr, "Global 3'");
 #endif

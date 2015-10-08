@@ -12,30 +12,30 @@ testSeqVsCorrect(seqInCore *S, uint32 testID) {
   uint32 err = 0;
 
   if (S == 0L) {
-    fprintf(stderr, "testID:"uint32FMT" - empty sequence\n", testID);
+    fprintf(stderr, "testID:" uint32FMT" - empty sequence\n", testID);
     return(1);
   }
 
   uint32 sid = S->getIID();
 
   if (strcmp(S->header(),   correctSequence[sid].header) != 0) {
-    fprintf(stderr, "testID:"uint32FMT" - header differs '%s' vs '%s'\n", testID, S->header(), correctSequence[sid].header);
+    fprintf(stderr, "testID:" uint32FMT" - header differs '%s' vs '%s'\n", testID, S->header(), correctSequence[sid].header);
     err++;
   }
   if (S->headerLength() != correctSequence[sid].headerLength) {
-    fprintf(stderr, "testID:"uint32FMT" - header length differs "uint32FMT" vs "uint32FMT"\n", testID, S->headerLength(), correctSequence[sid].headerLength);
+    fprintf(stderr, "testID:" uint32FMT" - header length differs " uint32FMT" vs " uint32FMT"\n", testID, S->headerLength(), correctSequence[sid].headerLength);
     err++;
   }
   if (strcmp(S->sequence(), correctSequence[sid].sequence) != 0) {
-    fprintf(stderr, "testID:"uint32FMT" - sequence differs\n", testID);
+    fprintf(stderr, "testID:" uint32FMT" - sequence differs\n", testID);
     err++;
   }
   if (strlen(S->sequence()) != correctSequence[sid].sequenceLength) {
-    fprintf(stderr, "testID:"uint32FMT" - sequence length differs strlen "uint32FMT" vs "uint32FMT"\n", testID, (uint32)strlen(S->sequence()), correctSequence[sid].sequenceLength);
+    fprintf(stderr, "testID:" uint32FMT" - sequence length differs strlen " uint32FMT" vs " uint32FMT"\n", testID, (uint32)strlen(S->sequence()), correctSequence[sid].sequenceLength);
     err++;
   }
   if (S->sequenceLength() != correctSequence[sid].sequenceLength) {
-    fprintf(stderr, "testID:"uint32FMT" - sequence length differs "uint32FMT" vs "uint32FMT"\n", testID, S->sequenceLength(), correctSequence[sid].sequenceLength);
+    fprintf(stderr, "testID:" uint32FMT" - sequence length differs " uint32FMT" vs " uint32FMT"\n", testID, S->sequenceLength(), correctSequence[sid].sequenceLength);
     err++;
   }
 

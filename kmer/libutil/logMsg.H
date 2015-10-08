@@ -72,7 +72,7 @@ public:
 
     if (_logLen > _logMax)
       fprintf(stderr,
-              "logMsg::add()-- HEY!  I wrote "uint32FMT" bytes beyond the end of the buffer!\n"
+              "logMsg::add()-- HEY!  I wrote " uint32FMT" bytes beyond the end of the buffer!\n"
               "logMsg::add()-- This program will probably crash soon....\n\n%s\n\n",
               _logLen - _logMax, _log);
   };

@@ -64,7 +64,7 @@ showBias(uint32 base=5) {
       cp = (double)C[i] / (double)A[i];
     }
 
-    fprintf(stdout, "%c%c%c "uint32FMTW(3)" A "uint32FMTW(6)" B "uint32FMTW(6)" %.5f C "uint32FMTW(6)" %.5f\n",
+    fprintf(stdout, "%c%c%c " uint32FMTW(3)" A " uint32FMTW(6)" B " uint32FMTW(6)" %.5f C " uint32FMTW(6)" %.5f\n",
             bitsToLetter[(i >> 4) & 0x00000003],
             bitsToLetter[(i >> 2) & 0x00000003],
             bitsToLetter[(i >> 0) & 0x00000003],
@@ -113,5 +113,5 @@ main(int argc, char **argv) {
   showBias(5);
 
   //for (uint32 i=0; i<23; i++)
-  //  fprintf(stdout, "rmsd "uint32FMTW(2)" %f\n", i, computeRMSD(i));
+  //  fprintf(stdout, "rmsd " uint32FMTW(2)" %f\n", i, computeRMSD(i));
 }

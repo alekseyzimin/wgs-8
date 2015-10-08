@@ -156,7 +156,7 @@ main(int argc, char **argv) {
         external++;
     }
 
-    fprintf(stderr, "scaffold "F_U32" %s %c internal "F_U32" external "F_U32"\n",
+    fprintf(stderr, "scaffold " F_U32 " %s %c internal " F_U32 " external " F_U32 "\n",
             si,
             scfNam[si].c_str(),
             scfDat[si].typ,

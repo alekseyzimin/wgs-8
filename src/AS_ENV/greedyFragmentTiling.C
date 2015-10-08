@@ -91,7 +91,7 @@ void setup_stores(char *OVL_Store_Path, char *Gkp_Store_Path){
 
 //WAS: void print_olap(Long_Olap_Data_t olap){
 void print_olap(OVSoverlap olap){
-  printf ("    %8d %8d %c %5"F_S64P" %5"F_S64P" %4.1f %4.1f\n",
+  printf ("    %8d %8d %c %5" F_S64P " %5" F_S64P " %4.1f %4.1f\n",
 	  olap . a_iid,
 	  olap . b_iid,
 	  olap . dat . ovl . flipped ? 'I' : 'N',
@@ -916,7 +916,7 @@ int main (int argc , char * argv[] ) {
     }
     sampleFile = fopen(sampleFileName,"r");
     assert(sampleFile!=NULL);
-    while(fscanf(sampleFile, "%s "F_IID, &uidstr, &smp)==2){
+    while(fscanf(sampleFile, "%s " F_IID, &uidstr, &smp)==2){
       uid = AS_UID_load(uidstr);
       AS_IID iid=uid2iid(uid);
       if(iid>0) iid2sample[iid]=smp;

@@ -240,11 +240,11 @@ cmGlobalData::load(set<AS_IID>  &searchLibs,
     if (isBB[i] != ((backboneLibs.size() == 0) || (backboneLibs.count(i) > 0))) {
       if (isBB[i] == false) {
         //  Not in data file, but requested on command line, uh oh!
-        fprintf(stderr, "ERROR: Library "F_U32" is not in the backbone data.\n", i);
+        fprintf(stderr, "ERROR: Library " F_U32 " is not in the backbone data.\n", i);
         errs++;
       } else {
         //  In the data file, but not requested in the compute.  Fix it!
-        fprintf(stderr, "Library "F_U32" will be excluded from the backbone.\n", i);
+        fprintf(stderr, "Library " F_U32 " will be excluded from the backbone.\n", i);
         fixs++;
         isBB[i] = false;
       }
@@ -252,10 +252,10 @@ cmGlobalData::load(set<AS_IID>  &searchLibs,
 
     if (isSS[i] != ((searchLibs.size() == 0) || (searchLibs.count(i)   > 0))) {
       if (isSS[i] == false) {
-        fprintf(stderr, "ERROR: Library "F_U32" is not in the search data.\n", i);
+        fprintf(stderr, "ERROR: Library " F_U32 " is not in the search data.\n", i);
         errs++;
       } else {
-        fprintf(stderr, "Library "F_U32" will be excluded from the search.\n", i);
+        fprintf(stderr, "Library " F_U32 " will be excluded from the search.\n", i);
         fixs++;
         isSS[i] = false;
       }
@@ -350,10 +350,10 @@ cmGlobalData::load(set<AS_IID>  &searchLibs,
     }
 
     if ((ii % 100000000) == 0)
-      fprintf(stderr, ".."F_U32"\n", ii);
+      fprintf(stderr, ".." F_U32 "\n", ii);
   }
 
-  fprintf(stderr, "LOADING OVERLAPS...found "F_U64" BB overlaps and "F_U64" TG overlaps and "F_U64" GT overlaps.\n",
+  fprintf(stderr, "LOADING OVERLAPS...found " F_U64 " BB overlaps and " F_U64 " TG overlaps and " F_U64 " GT overlaps.\n",
           numBB, numTG, numGT);
 
   if (checkGT() == false) {
@@ -393,14 +393,14 @@ cmGlobalData::load(set<AS_IID>  &searchLibs,
     uint32   lib = fi[fid].libIID;
 
     if ((fid > 0) && (fi[fid-1].isBackbone == 0) && (fi[fid].isBackbone == 1))
-      fprintf(stderr, "  frag "F_U32" start of lib %s is now backbone.\n", fid, gkpStore->gkStore_getLibrary(lib)->libraryName);
+      fprintf(stderr, "  frag " F_U32 " start of lib %s is now backbone.\n", fid, gkpStore->gkStore_getLibrary(lib)->libraryName);
     if ((fid > 0) && (fi[fid-1].isBackbone == 1) && (fi[fid].isBackbone == 0))
-      fprintf(stderr, "  frag "F_U32" end of lib %s is last backbone.\n", fid-1, gkpStore->gkStore_getLibrary(lib)->libraryName);
+      fprintf(stderr, "  frag " F_U32 " end of lib %s is last backbone.\n", fid-1, gkpStore->gkStore_getLibrary(lib)->libraryName);
 
     if ((fid > 0) && (fi[fid-1].doSearch == 0) && (fi[fid].doSearch == 1))
-      fprintf(stderr, "  frag "F_U32" start of lib %s is searchable.\n", fid, gkpStore->gkStore_getLibrary(lib)->libraryName);
+      fprintf(stderr, "  frag " F_U32 " start of lib %s is searchable.\n", fid, gkpStore->gkStore_getLibrary(lib)->libraryName);
     if ((fid > 0) && (fi[fid-1].doSearch == 1) && (fi[fid].doSearch == 0))
-      fprintf(stderr, "  frag "F_U32" end of lib %s is last searchable.\n", fid-1, gkpStore->gkStore_getLibrary(lib)->libraryName);
+      fprintf(stderr, "  frag " F_U32 " end of lib %s is last searchable.\n", fid-1, gkpStore->gkStore_getLibrary(lib)->libraryName);
   }
 #endif
 
@@ -516,7 +516,7 @@ cmGlobalData::loadFragments(char        *gkpStoreName,
     assert(fi[fid].mateIID     == frg.gkFragment_getMateIID());
 
     if ((fid % 10000000) == 0)
-      fprintf(stderr, "LOADING FRAGMENTS...at IID "F_U32".\r",
+      fprintf(stderr, "LOADING FRAGMENTS...at IID " F_U32 ".\r",
               fid);
   }
 
@@ -729,7 +729,7 @@ cmGlobalData::loadOverlaps(char  *ovlStoreName,
       nSpur++;
 
     if ((ovl[0].a_iid % 10000000) == 0)
-      fprintf(stderr, "COVERED: contained "F_U32" end5 "F_U32" end3 "F_U32" spur "F_U32"\n",
+      fprintf(stderr, "COVERED: contained " F_U32 " end5 " F_U32 " end3 " F_U32 " spur " F_U32 "\n",
               nCont, nEnd5, nEnd3, nSpur);
 
 
@@ -819,7 +819,7 @@ cmGlobalData::loadOverlaps(char  *ovlStoreName,
 
     if (oiStoragePos + bbLen[curFragIID] + tgLen[curFragIID] > oiStorageBS) {
       if ((oiFile) && (oiStoragePos > 0)) {
-        fprintf(stderr, "  WRITING "F_U32" overlaps ("F_U32" wasted in this block).\n",
+        fprintf(stderr, "  WRITING " F_U32 " overlaps (" F_U32 " wasted in this block).\n",
                 oiStoragePos, oiStorageBS - oiStoragePos);
         AS_UTL_safeWrite(oiFile, oiStorage, "oiStorage", sizeof(overlapInfo), oiStoragePos);
       }
@@ -864,7 +864,7 @@ cmGlobalData::loadOverlaps(char  *ovlStoreName,
     numTG += tgl;
 
     if ((++numFG % 3000000) == 0)
-      fprintf(stderr, "LOADING OVERLAPS...at IID "F_U32" (%06.2f%%): BB "F_U64" (%06.2f%%) TG "F_U64" (%06.2f%%) DD "F_U64" (%06.2f%%).\n",
+      fprintf(stderr, "LOADING OVERLAPS...at IID " F_U32 " (%06.2f%%): BB " F_U64 " (%06.2f%%) TG " F_U64 " (%06.2f%%) DD " F_U64 " (%06.2f%%).\n",
               curFragIID, 100.0 * curFragIID / numFrags,
               numBB,      100.0 * numBB      / numTT,
               numTG,      100.0 * numTG      / numTT,
@@ -893,12 +893,12 @@ cmGlobalData::loadOverlaps(char  *ovlStoreName,
   delete bbDist;
   delete tgDist;
 
-  fprintf(stderr, "LOADING OVERLAPS...at IID "F_U32" (%06.2f%%): BB "F_U64" (%06.2f%%) TG "F_U64" (%06.2f%%) DD "F_U64" (%06.2f%%).\n",
+  fprintf(stderr, "LOADING OVERLAPS...at IID " F_U32 " (%06.2f%%): BB " F_U64 " (%06.2f%%) TG " F_U64 " (%06.2f%%) DD " F_U64 " (%06.2f%%).\n",
           numFrags, 100.0,
           numBB, 100.0 * numBB / numTT,
           numTG, 100.0 * numTG / numTT,
           numDD, 100.0 * numDD / numTT);
-  fprintf(stderr, "LOADING OVERLAPS..."F_U64" overlaps loaded.\n", numBB + numTG);
+  fprintf(stderr, "LOADING OVERLAPS..." F_U64 " overlaps loaded.\n", numBB + numTG);
 
   loadOverlaps_invert();
 }
@@ -921,7 +921,7 @@ cmGlobalData::loadOverlaps_invert(void) {
 
   for (uint32 ii=0; ii<numFrags+1; ii++) {
     if ((ii % 100000000) == 0)
-      fprintf(stderr, "INVERTING OVERLAPS...COUNTING "F_U32"\n", ii);
+      fprintf(stderr, "INVERTING OVERLAPS...COUNTING " F_U32 "\n", ii);
 
     if (tgPos[ii] == NULL)
       continue;
@@ -956,7 +956,7 @@ cmGlobalData::loadOverlaps_invert(void) {
   //  Finally, copy the overlaps
   for (uint32 ii=0; ii<numFrags+1; ii++) {
     if ((ii % 100000000) == 0)
-      fprintf(stderr, "INVERTING OVERLAPS...BUILDING "F_U32"\n", ii);
+      fprintf(stderr, "INVERTING OVERLAPS...BUILDING " F_U32 "\n", ii);
 
     if (tgPos[ii] == NULL)
       continue;
@@ -991,9 +991,9 @@ cmGlobalData::loadOverlaps_invert(void) {
     fclose(F);
   }
 
-  fprintf(stderr, "INVERTING OVERLAPS...."F_U64" frags found.\n", numGTfrg);
+  fprintf(stderr, "INVERTING OVERLAPS...." F_U64 " frags found.\n", numGTfrg);
 
-  fprintf(stderr, "LOADING OVERLAPS..."F_U64" GB used.\n", memoryUsed >> 30);
+  fprintf(stderr, "LOADING OVERLAPS..." F_U64 " GB used.\n", memoryUsed >> 30);
 }
 
 
@@ -1206,7 +1206,7 @@ cmGlobalData::testChimer(uint32 iid, cmThreadData *t) {
 
 #if 0
   for (uint32 i=0; i<t->edge5Len || i<t->edge3Len; i++)
-    fprintf(stderr, F_U32"\t"F_U32"\n",
+    fprintf(stderr, F_U32"\t" F_U32 "\n",
             (i < t->edge5Len) ? t->edge5[i] : 0,
             (i < t->edge3Len) ? t->edge3[i] : 0);
 #endif
@@ -1233,7 +1233,7 @@ cmGlobalData::testChimer(uint32 iid, cmThreadData *t) {
   }
 
 #if 0
-  fprintf(stdout, "IID "F_U32" has "F_U32" overlaps, containCount "F_U32" and overlapCount "F_U32"\n",
+  fprintf(stdout, "IID " F_U32 " has " F_U32 " overlaps, containCount " F_U32 " and overlapCount " F_U32 "\n",
           iid, bbLen[iid], containCount, overlapCount);
 #endif
 

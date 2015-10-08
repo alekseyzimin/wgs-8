@@ -229,7 +229,7 @@ Mark_Skip_Kmers(void) {
     Hash_Mark_Empty (key, line);
   }
 
-  fprintf (stderr, "String_Ct = "F_U64"  Extra_String_Ct = "F_U64"  Extra_String_Subcount = "F_U64"\n",
+  fprintf (stderr, "String_Ct = " F_U64 "  Extra_String_Ct = " F_U64 "  Extra_String_Subcount = " F_U64 "\n",
            String_Ct, Extra_String_Ct, Extra_String_Subcount);
   fprintf (stderr, "Read %d kmers to mark to skip\n", ct / 2);
 }
@@ -399,10 +399,10 @@ Build_Hash_Index(gkStream *stream, int32 first_frag_id, gkFragment *myRead) {
   hash_entry_limit = Max_Hash_Load * HASH_TABLE_SIZE * ENTRIES_PER_BUCKET;
 
 #if 0
-  fprintf(stderr, "HASH LOADING STARTED: fragID   %12"F_U64P"\n", first_frag_id);
-  fprintf(stderr, "HASH LOADING STARTED: strings  %12"F_U64P" out of %12"F_U64P" max.\n", String_Ct, Max_Hash_Strings);
-  fprintf(stderr, "HASH LOADING STARTED: length   %12"F_U64P" out of %12"F_U64P" max.\n", total_len, Max_Hash_Data_Len);
-  fprintf(stderr, "HASH LOADING STARTED: entries  %12"F_U64P" out of %12"F_U64P" max (load %.2f).\n", Hash_Entries, hash_entry_limit,
+  fprintf(stderr, "HASH LOADING STARTED: fragID   %12" F_U64P"\n", first_frag_id);
+  fprintf(stderr, "HASH LOADING STARTED: strings  %12" F_U64P" out of %12" F_U64P" max.\n", String_Ct, Max_Hash_Strings);
+  fprintf(stderr, "HASH LOADING STARTED: length   %12" F_U64P" out of %12" F_U64P" max.\n", total_len, Max_Hash_Data_Len);
+  fprintf(stderr, "HASH LOADING STARTED: entries  %12" F_U64P" out of %12" F_U64P" max (load %.2f).\n", Hash_Entries, hash_entry_limit,
           (100.0 * Hash_Entries) / (HASH_TABLE_SIZE * ENTRIES_PER_BUCKET));
 #endif
 
@@ -456,7 +456,7 @@ Build_Hash_Index(gkStream *stream, int32 first_frag_id, gkFragment *myRead) {
     String_Ct ++;
 
     if ((String_Ct % 100000) == 0)
-      fprintf (stderr, "String_Ct:%12"F_U64P"/%12"F_U32P"  totalLen:%12"F_U64P"/%12"F_U64P"  Hash_Entries:%12"F_U64P"/%12"F_U64P"  Load: %.2f%%\n",
+      fprintf (stderr, "String_Ct:%12" F_U64P"/%12" F_U32P"  totalLen:%12" F_U64P"/%12" F_U64P"  Hash_Entries:%12" F_U64P"/%12" F_U64P"  Load: %.2f%%\n",
                String_Ct,    Max_Hash_Strings,
                total_len,    Max_Hash_Data_Len,
                Hash_Entries,
@@ -467,9 +467,9 @@ Build_Hash_Index(gkStream *stream, int32 first_frag_id, gkFragment *myRead) {
   if  (String_Ct == 0)
     return  0;
 
-  fprintf(stderr, "HASH LOADING STOPPED: strings  %12"F_U64P" out of %12"F_U32P" max.\n", String_Ct, Max_Hash_Strings);
-  fprintf(stderr, "HASH LOADING STOPPED: length   %12"F_U64P" out of %12"F_U64P" max.\n", total_len, Max_Hash_Data_Len);
-  fprintf(stderr, "HASH LOADING STOPPED: entries  %12"F_U64P" out of %12"F_U64P" max (load %.2f).\n", Hash_Entries, hash_entry_limit,
+  fprintf(stderr, "HASH LOADING STOPPED: strings  %12" F_U64P" out of %12" F_U32P" max.\n", String_Ct, Max_Hash_Strings);
+  fprintf(stderr, "HASH LOADING STOPPED: length   %12" F_U64P" out of %12" F_U64P" max.\n", total_len, Max_Hash_Data_Len);
+  fprintf(stderr, "HASH LOADING STOPPED: entries  %12" F_U64P" out of %12" F_U64P" max (load %.2f).\n", Hash_Entries, hash_entry_limit,
           100.0 * Hash_Entries / (HASH_TABLE_SIZE * ENTRIES_PER_BUCKET));
 
   Used_Data_Len = total_len;

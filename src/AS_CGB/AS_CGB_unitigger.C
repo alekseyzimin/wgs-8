@@ -92,7 +92,7 @@ output_the_chunks(Tfragment     *frags,
     assert(ch->iaccession < nchunks);
     partmap[ch->iaccession] = prt_count;
 
-    fprintf(iidm, "Unitig "F_U32" == IUM "F_U32" (in partition "F_U32" with "F_U32" frags)\n",
+    fprintf(iidm, "Unitig " F_U32 " == IUM " F_U32 " (in partition " F_U32 " with " F_U32 " frags)\n",
             ch->iaccession, ch->iaccession, partmap[ch->iaccession], nf);
 
     for (int32 ivc=0; ivc<ch->num_frags; ivc++) {
@@ -510,7 +510,7 @@ main(int argc, char **argv) {
       AS_CGB_Bubble_List_t bubbles_tmp = bubbles;
 
       while (bubbles_tmp != NULL) {
-        fprintf(bfp, F_IID" %d "F_IID" %d\n",
+        fprintf(bfp, F_IID" %d " F_IID " %d\n",
                 get_iid_fragment(heapva->frags, bubbles_tmp->start),
                 bubbles_tmp->start_sx,
                 get_iid_fragment(heapva->frags, bubbles_tmp->end),

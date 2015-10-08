@@ -355,7 +355,7 @@ finalize_LibraryRandomness(gkStore *gkp, RepeatModel *rm, LibraryOverlapData *ov
             double actual = (overlaps/(double)uncontained);
             double diffRatio = (overlaps - expectedCount) / expectedCount;
 
-            fprintf(F, "%d\t%d\t%.2f\t"F_U64"\t%.2f\n", i, j, expectedCount, overlaps, diffRatio*100);
+            fprintf(F, "%d\t%d\t%.2f\t" F_U64 "\t%.2f\n", i, j, expectedCount, overlaps, diffRatio*100);
          }
       }
    }

@@ -44,7 +44,7 @@ safe_calloc(size_t num, size_t len) {
   void  *p = calloc(num, len);
 
   if (p == NULL)
-    fprintf(stderr, "Could not calloc memory ("F_SIZE_T" * "F_SIZE_T" bytes = "F_SIZE_T")\n",
+    fprintf(stderr, "Could not calloc memory (" F_SIZE_T " * " F_SIZE_T " bytes = " F_SIZE_T ")\n",
             num, len, num*len);
   assert(p != NULL);
 
@@ -61,7 +61,7 @@ safe_malloc(size_t len) {
   void  *p = malloc(len);
 
   if (p == NULL)
-    fprintf(stderr, "Could not malloc memory ("F_SIZE_T" bytes)\n", len);
+    fprintf(stderr, "Could not malloc memory (" F_SIZE_T " bytes)\n", len);
   assert(p != NULL);
 
   return(p);
@@ -77,7 +77,7 @@ safe_realloc(void *q, size_t len) {
   void  *p = realloc(q, len);
 
   if (p == NULL)
-    fprintf(stderr, "Could not realloc memory ("F_SIZE_T" bytes)\n", len);
+    fprintf(stderr, "Could not realloc memory (" F_SIZE_T " bytes)\n", len);
   assert(p != NULL);
 
   return(p);

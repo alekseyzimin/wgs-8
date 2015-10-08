@@ -100,7 +100,7 @@ BestOverlapGraph::BestOverlapGraph(OverlapStore        *ovlStoreUniq,
     for (uint32 i=0; i<FI->numFragments(); i++)
       numContainsToSave += _bestC[i].olapsLen;
 
-    fprintf(logFile, "Need to save "F_U64" near-containment overlaps\n", numContainsToSave);
+    fprintf(logFile, "Need to save " F_U64 " near-containment overlaps\n", numContainsToSave);
   }
 
 
@@ -336,7 +336,7 @@ BestOverlapGraph::save(const char *prefix, double AS_UTG_ERROR_RATE, double AS_U
   FILE *file = fopen(name, "w");
   if (errno) {
     fprintf(logFile, "BestOverlapGraph-- Failed to open '%s' for writing: %s\n", name, strerror(errno));
-    fprintf(logFile, "BestOverlapGraph-- Will not save best overlap graph to cache: "F_STR"\n", strerror(errno));
+    fprintf(logFile, "BestOverlapGraph-- Will not save best overlap graph to cache: " F_STR"\n", strerror(errno));
     return;
   }
 
@@ -387,7 +387,7 @@ BestOverlapGraph::load(const char *prefix, double AS_UTG_ERROR_RATE, double AS_U
     return(false);
   }
   if (versionNumber != ogVersionNumber) {
-    fprintf(logFile, "BestOverlapGraph()-- File '%s' is version "F_U64", I can only read version "F_U64"; cannot load graph.\n",
+    fprintf(logFile, "BestOverlapGraph()-- File '%s' is version " F_U64 ", I can only read version " F_U64 "; cannot load graph.\n",
             name, versionNumber, ogVersionNumber);
     fclose(file);
     return(false);

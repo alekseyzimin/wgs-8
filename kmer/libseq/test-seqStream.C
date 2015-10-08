@@ -14,7 +14,7 @@ testIndexing(uint32 numSeq, char sep, uint32 sepLen) {
   uint32     err = 0;
   seqStream *ST  = 0L;
 
-  fprintf(stderr, "testIndexing()-- numSeq="uint32FMT" sep=%c sepLen="uint32FMT"\n", numSeq, sep, sepLen);
+  fprintf(stderr, "testIndexing()-- numSeq=" uint32FMT" sep=%c sepLen=" uint32FMT"\n", numSeq, sep, sepLen);
 
   generateChainedAnswer(numSeq, sep, sepLen);
 
@@ -52,17 +52,17 @@ testIndexing(uint32 numSeq, char sep, uint32 sepLen) {
 
   for (uint32 sid=0; sid<numSeq; sid++) {
     if (ST->lengthOf(sid) != correctSequence[sid].sequenceLength) {
-      fprintf(stderr, "lengthOf "uint32FMT" returned "uint32FMT", not correct "uint32FMT"\n",
+      fprintf(stderr, "lengthOf " uint32FMT" returned " uint32FMT", not correct " uint32FMT"\n",
               sid, ST->lengthOf(sid), correctSequence[sid].sequenceLength);
       FAIL();
     }
     if (ST->startOf(sid)  != sta) {
-      fprintf(stderr, "startOf "uint32FMT" returned "uint64FMT", not correct "uint64FMT"\n",
+      fprintf(stderr, "startOf " uint32FMT" returned " uint64FMT", not correct " uint64FMT"\n",
               sid, ST->startOf(sid), sta);
       FAIL();
     }
     if (ST->IIDOf(sid)    != sid) {
-      fprintf(stderr, "IIDOf "uint32FMT" returned "uint32FMT", not correct "uint32FMT"\n",
+      fprintf(stderr, "IIDOf " uint32FMT" returned " uint32FMT", not correct " uint32FMT"\n",
               sid, ST->IIDOf(sid), sid);
       FAIL();
     }
@@ -71,7 +71,7 @@ testIndexing(uint32 numSeq, char sep, uint32 sepLen) {
 
     for (uint32 ppp=0; ppp<correctSequence[sid].sequenceLength; ppp++, pos++) {
       if (ST->sequenceNumberOfPosition(pos) != sid) {
-        fprintf(stderr, "sequenceNumberOfPosition "uint64FMT" returned "uint32FMT", not correct "uint32FMT".\n",
+        fprintf(stderr, "sequenceNumberOfPosition " uint64FMT" returned " uint32FMT", not correct " uint32FMT".\n",
                 pos, ST->sequenceNumberOfPosition(pos), sid);
         FAIL();
       }
@@ -92,7 +92,7 @@ testIndexing(uint32 numSeq, char sep, uint32 sepLen) {
     for (uint32 x=0; x<sepLen; x++) {
       char s = ST->get();
       if (s != sep) {
-        fprintf(stderr, "wrong separator at sep "uint32FMT" got %d expected %d\n", x, s, sep);
+        fprintf(stderr, "wrong separator at sep " uint32FMT" got %d expected %d\n", x, s, sep);
         FAIL();
       }
     }
@@ -121,19 +121,19 @@ testSeqStream(seqStream *ST, uint32 sib, uint32 sie, char sep) {
 
     if (ch != 0) {
       if (ch != chainSeq[sib]) {
-        fprintf(stderr, "sp="uint32FMT" si="uint32FMT" st="uint64FMT" ch=%c -- letter wrong got'%c'\n", sp, si, st, ch, chainSeq[sib]);
+        fprintf(stderr, "sp=" uint32FMT" si=" uint32FMT" st=" uint64FMT" ch=%c -- letter wrong got'%c'\n", sp, si, st, ch, chainSeq[sib]);
         FAIL();
       }
       if ((ch != sep) && (sp != chainSeqPos[sib])) {
-        fprintf(stderr, "sp="uint32FMT" si="uint32FMT" st="uint64FMT" ch=%c -- seqPos wrong got "uint32FMT"\n", sp, si, st, ch, chainSeqPos[sib]);
+        fprintf(stderr, "sp=" uint32FMT" si=" uint32FMT" st=" uint64FMT" ch=%c -- seqPos wrong got " uint32FMT"\n", sp, si, st, ch, chainSeqPos[sib]);
         FAIL();
       }
       if ((ch != sep) && (si != chainSeqIID[sib])) {
-        fprintf(stderr, "sp="uint32FMT" si="uint32FMT" st="uint64FMT" ch=%c -- seqIID wrong got"uint32FMT"\n", sp, si, st, ch, chainSeqIID[sib]);
+        fprintf(stderr, "sp=" uint32FMT" si=" uint32FMT" st=" uint64FMT" ch=%c -- seqIID wrong got" uint32FMT"\n", sp, si, st, ch, chainSeqIID[sib]);
         FAIL();
       }
       if ((ch != sep) && (st != chainStrPos[sib])) {
-        fprintf(stderr, "sp="uint32FMT" si="uint32FMT" st="uint64FMT" ch=%c -- strPos wrong got "uint64FMT"\n", sp, si, st, ch, chainStrPos[sib]);
+        fprintf(stderr, "sp=" uint32FMT" si=" uint32FMT" st=" uint64FMT" ch=%c -- strPos wrong got " uint64FMT"\n", sp, si, st, ch, chainStrPos[sib]);
         FAIL();
       }
 
@@ -142,7 +142,7 @@ testSeqStream(seqStream *ST, uint32 sib, uint32 sie, char sep) {
   }
 
   if (sib != sie) {
-    fprintf(stderr, "iterated length wrong; sib="uint32FMT" sie="uint32FMT"\n", sib, sie);
+    fprintf(stderr, "iterated length wrong; sib=" uint32FMT" sie=" uint32FMT"\n", sib, sie);
     FAIL();
   }
 
@@ -156,7 +156,7 @@ testChaining(uint32 numSeq, char sep, uint32 sepLen) {
   uint32     err = 0;
   seqStream *ST  = 0L;
 
-  fprintf(stderr, "testChaining()-- numSeq="uint32FMT" sep=%c sepLen="uint32FMT"\n", numSeq, sep, sepLen);
+  fprintf(stderr, "testChaining()-- numSeq=" uint32FMT" sep=%c sepLen=" uint32FMT"\n", numSeq, sep, sepLen);
 
   generateChainedAnswer(numSeq, sep, sepLen);
 
@@ -235,12 +235,12 @@ testChaining(uint32 numSeq, char sep, uint32 sepLen) {
     //  Optionally do a rewind in the middle
 
     if (iter % 2) {
-      //fprintf(stderr, "Random iter "uint32FMT" (with rewind)\n", iter);
+      //fprintf(stderr, "Random iter " uint32FMT" (with rewind)\n", iter);
       while (ST->eof() == false)
         ST->get();
       ST->rewind();
     } else {
-      //fprintf(stderr, "Random iter "uint32FMT"\n", iter);
+      //fprintf(stderr, "Random iter " uint32FMT"\n", iter);
     }
 
 

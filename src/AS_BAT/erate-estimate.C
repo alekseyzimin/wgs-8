@@ -167,7 +167,7 @@ computeInitialErrorProfile(gkStore           *gkpStore,
   AS_OVS_resetRangeOverlapStore(ovlPrimary);
   AS_OVS_resetRangeOverlapStore(ovlSecondary);
 
-  fprintf(stderr, "Processing from IID "F_U32" to "F_U32" out of "F_U32" reads.\n",
+  fprintf(stderr, "Processing from IID " F_U32 " to " F_U32 " out of " F_U32 " reads.\n",
           iidMin,
           iidMax,
           gkpStore->gkStore_getNumFragments());
@@ -328,7 +328,7 @@ recomputeErrorProfile(gkStore           *gkpStore,
   AS_OVS_resetRangeOverlapStore(ovlPrimary);
   AS_OVS_resetRangeOverlapStore(ovlSecondary);
 
-  fprintf(stderr, "Processing from IID "F_U32" to "F_U32" out of "F_U32" reads, iteration %u.\n",
+  fprintf(stderr, "Processing from IID " F_U32 " to " F_U32 " out of " F_U32 " reads, iteration %u.\n",
           iidMin,
           iidMax,
           gkpStore->gkStore_getNumFragments(),
@@ -497,7 +497,7 @@ outputOverlaps(gkStore           *gkpStore,
 
   OverlapStore *storeFile = AS_OVS_createOverlapStore(outputName, TRUE);
 
-  fprintf(stderr, "Processing from IID "F_U32" to "F_U32" out of "F_U32" reads.\n",
+  fprintf(stderr, "Processing from IID " F_U32 " to " F_U32 " out of " F_U32 " reads.\n",
           iidMin,
           iidMax,
           gkpStore->gkStore_getNumFragments());

@@ -363,9 +363,9 @@ main (int argc, char * argv []) {
   fprintf(stderr, "\n");
   fprintf(stderr, "Minimum overlap length = %u bases\n", AS_OVERLAP_MIN_LEN);
   fprintf(stderr, "\n");
-  fprintf(stderr, "SPURIOUS_COVERAGE_THRESHOLD  "F_U32"\n", SPURIOUS_COVERAGE_THRESHOLD);
-  fprintf(stderr, "ISECT_NEEDED_TO_BREAK        "F_U32"\n", ISECT_NEEDED_TO_BREAK);
-  fprintf(stderr, "REGION_END_WEIGHT            "F_U32"\n", REGION_END_WEIGHT);
+  fprintf(stderr, "SPURIOUS_COVERAGE_THRESHOLD  " F_U32 "\n", SPURIOUS_COVERAGE_THRESHOLD);
+  fprintf(stderr, "ISECT_NEEDED_TO_BREAK        " F_U32 "\n", ISECT_NEEDED_TO_BREAK);
+  fprintf(stderr, "REGION_END_WEIGHT            " F_U32 "\n", REGION_END_WEIGHT);
   fprintf(stderr, "\n");
 
   if (numThreads > 0) {

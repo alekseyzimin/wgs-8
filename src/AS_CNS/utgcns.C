@@ -125,7 +125,7 @@ stashContains(MultiAlignT *ma,
   double percDove = 100.0 * nBaseDove / nBase;
   double totlCov  = (double)nBase / hiEnd;
 
-  fprintf(stderr, "  unitig %d detected "F_S32" contains (%.2fx, %.2f%%) "F_S32" dovetail (%.2fx, %.2f%%)\n",
+  fprintf(stderr, "  unitig %d detected " F_S32 " contains (%.2fx, %.2f%%) " F_S32 " dovetail (%.2fx, %.2f%%)\n",
           ma->maID,
           nCont, (double)nBaseCont / hiEnd, percCont,
           nDove, (double)nBaseDove / hiEnd, percDove);
@@ -146,7 +146,7 @@ stashContains(MultiAlignT *ma,
       nBaseSave += posLen[ii].len;
     }
 
-    fprintf(stderr, "    unitig %d removing "F_S32" (%.2fx) contained reads; processing only "F_S32" contained (%.2fx) and "F_S32" dovetail (%.2fx) reads\n",
+    fprintf(stderr, "    unitig %d removing " F_S32 " (%.2fx) contained reads; processing only " F_S32 " contained (%.2fx) and " F_S32 " dovetail (%.2fx) reads\n",
             ma->maID,
             nOrig - nDove - nSave,
             (double)(nBaseCont - nBaseSave) / hiEnd,
@@ -244,7 +244,7 @@ unstashContains(MultiAlignT          *ma,
   }
 
   if (cmp.empty() == false)
-    fprintf(stderr, "Failed to unstash the contained reads.  Still have "F_SIZE_T" reads unplaced.\n",
+    fprintf(stderr, "Failed to unstash the contained reads.  Still have " F_SIZE_T " reads unplaced.\n",
             cmp.size());
   assert(cmp.empty() == true);
 
@@ -446,7 +446,7 @@ main (int argc, char **argv) {
     tigStore = new MultiAlignStore(tigName, tigVers, tigPart, 0, doUpdate, inplace, !inplace);
   }
 
-  fprintf(stderr, "Computing unitig consensus for b="F_U32" to e="F_U32"\n", b, e);
+  fprintf(stderr, "Computing unitig consensus for b=" F_U32 " to e=" F_U32 "\n", b, e);
 
   //  Now the usual case.  Iterate over all unitigs, compute and update.
 

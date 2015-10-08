@@ -52,13 +52,13 @@ Unitig::addFrag(ufNode node, int offset, bool report) {
     int32 pos = (node.position.end > node.position.bgn) ? (node.position.end - node.position.bgn) : (node.position.bgn - node.position.end);
 
     if (node.contained)
-      fprintf(logFile, "Added frag %d (len %d) to unitig %d at %d,%d (idx "F_SIZE_T") (lendiff %d) (contained in %d)\n",
+      fprintf(logFile, "Added frag %d (len %d) to unitig %d at %d,%d (idx " F_SIZE_T ") (lendiff %d) (contained in %d)\n",
               node.ident, len, _id, node.position.bgn, node.position.end,
               ufpath.size() - 1,
               pos - len,
               node.contained);
     else
-      fprintf(logFile, "Added frag %d (len %d) to unitig %d at %d,%d (idx "F_SIZE_T") (lendiff %d)\n",
+      fprintf(logFile, "Added frag %d (len %d) to unitig %d at %d,%d (idx " F_SIZE_T ") (lendiff %d)\n",
               node.ident, len, _id, node.position.bgn, node.position.end,
               ufpath.size() - 1,
               pos - len);

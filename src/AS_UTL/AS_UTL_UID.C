@@ -67,7 +67,7 @@ AS_UID_toString(AS_UID uid) {
     if (uidstr)
       sprintf(retbuffer, F_STR, uidstr);
     else
-      sprintf(retbuffer, "CAx"F_U64, uid.UID);
+      sprintf(retbuffer, "CAx" F_U64, uid.UID);
   } else {
     sprintf(retbuffer, F_U64, uid.UID);
   }
@@ -119,13 +119,13 @@ AS_UID_lookup(char *uidstr, char **nxtstr) {
   }
 
   if (len > MAX_UID_LENGTH) {
-    fprintf(stderr, "ERROR:  UID '"F_STR"' larger than maximum allowed ("F_S32" letters).  FAIL.\n",
+    fprintf(stderr, "ERROR:  UID '" F_STR"' larger than maximum allowed (" F_S32 " letters).  FAIL.\n",
             uidstr, MAX_UID_LENGTH);
     exit(1);
   }
 
   if (com > 0) {
-    fprintf(stderr, "ERROR:  UID '"F_STR"' contains "F_S32" commas.  FAIL.",
+    fprintf(stderr, "ERROR:  UID '" F_STR"' contains " F_S32 " commas.  FAIL.",
             uidstr, com);
     exit(1);
   }

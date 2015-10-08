@@ -37,7 +37,7 @@ FragmentInfo::FragmentInfo(gkStore    *gkpStore,
   writeLog("FragmentInfo()-- Loading fragment information\n");
 
   if (minReadLen > 0)
-    writeLog("FragmentInfo()-- Reads shorter than "F_U32" bases are forced to be singleton.\n",
+    writeLog("FragmentInfo()-- Reads shorter than " F_U32 " bases are forced to be singleton.\n",
              minReadLen);
 
   gkStream         *fs = new gkStream(gkpStore, 0, 0, GKFRAGMENT_INF);
@@ -131,7 +131,7 @@ FragmentInfo::FragmentInfo(gkStore    *gkpStore,
   }
 
   if (numBroken > 0)
-    writeLog("FragmentInfo()-- WARNING!  Removed "F_U32" mate relationships.\n", numBroken);
+    writeLog("FragmentInfo()-- WARNING!  Removed " F_U32 " mate relationships.\n", numBroken);
     
   writeLog("FragmentInfo()-- Loaded %d alive fragments, skipped %d short and %d dead fragments.\n",
            numLoaded, numSkipped, numDeleted);
@@ -216,13 +216,13 @@ FragmentInfo::load(const char *prefix) {
     return(false);
   }
   if (versionNumber != fiVersionNumber) {
-    writeLog("FragmentInfo()-- File '%s' is version "F_U64", I can only read version "F_U64"; cannot load.\n",
+    writeLog("FragmentInfo()-- File '%s' is version " F_U64 ", I can only read version " F_U64 "; cannot load.\n",
             name, versionNumber, fiVersionNumber);
     fclose(file);
     return(false);
   }
 
-  writeLog("FragmentInfo()-- Loading fragment information for "F_U32" fragments and "F_U32" libraries from cache '%s'\n",
+  writeLog("FragmentInfo()-- Loading fragment information for " F_U32 " fragments and " F_U32 " libraries from cache '%s'\n",
           _numFragments, _numLibraries, name);
 
   _fragLength    = new uint32 [_numFragments + 1];

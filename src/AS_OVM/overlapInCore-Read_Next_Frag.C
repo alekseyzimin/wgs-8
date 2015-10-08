@@ -82,7 +82,7 @@ Read_Next_Frag(char frag [AS_READ_MAX_NORMAL_LEN + 1],
   }
 
   if  (OFFSET_MASK < frag_len) {
-    fprintf (stderr, "ERROR:  Read "F_IID" is too long (%lu) for hash table\n",
+    fprintf (stderr, "ERROR:  Read " F_IID " is too long (%lu) for hash table\n",
              myRead->gkFragment_getReadIID(), frag_len);
     exit (-1);
   }

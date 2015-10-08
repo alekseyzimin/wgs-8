@@ -91,12 +91,12 @@ main(int argc, char **argv) {
     if ((windowsize == 0) && (skipsize == 0)) {
       for (uint32 i=0; i < ID.numberOfIntervals(); i++) {
         for (; x < ID.lo(i); x++)
-          fprintf(stdout, uint32FMTW(7)"\t"uint32FMTW(6)"\n", x, 0);
+          fprintf(stdout, uint32FMTW(7)"\t" uint32FMTW(6)"\n", x, 0);
         for (; x < ID.hi(i); x++)
-          fprintf(stdout, uint32FMTW(7)"\t"uint32FMTW(6)"\n", x, ID.value(i));
+          fprintf(stdout, uint32FMTW(7)"\t" uint32FMTW(6)"\n", x, ID.value(i));
       }
       for (; x < len; x++)
-        fprintf(stdout, uint32FMTW(7)"\t"uint32FMTW(6)"\n", x, 0);
+        fprintf(stdout, uint32FMTW(7)"\t" uint32FMTW(6)"\n", x, 0);
 
     } else {
       uint32  *depth = new uint32 [len];

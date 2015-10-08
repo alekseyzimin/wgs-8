@@ -221,10 +221,10 @@ getIndexStore(StoreStruct *s, int64 index, void *buffer) {
     index = s->lastElem;
 
   if (s->firstElem > index)
-    fprintf(stderr, "getIndexStore()--  ERROR: store '%s' firstElem="F_S64" > index="F_S64"\n",
+    fprintf(stderr, "getIndexStore()--  ERROR: store '%s' firstElem=" F_S64 " > index=" F_S64 "\n",
             s->storeLabel, s->firstElem, index);
   if (s->lastElem < index)
-    fprintf(stderr, "getIndexStore()--  ERROR: store '%s' lastElem="F_S64" < index="F_S64"\n",
+    fprintf(stderr, "getIndexStore()--  ERROR: store '%s' lastElem=" F_S64 " < index=" F_S64 "\n",
             s->storeLabel, s->lastElem, index);
 
   assert(s->firstElem <= index);
@@ -268,14 +268,14 @@ getStringStore(StoreStruct *s, int64 offset, char *buffer, uint32 maxLength, uin
   buffer[0] = 0;
 
   if (offset <= 0)
-    fprintf(stderr, "getStringStore()-- ERROR offset="F_S64"\n", offset);
+    fprintf(stderr, "getStringStore()-- ERROR offset=" F_S64 "\n", offset);
   assert(s->storeType == STRING_STORE);
   assert(offset > 0);
 
   actualOffset = offset - s->firstElem;
 
   if (actualOffset > s->lastElem)
-    fprintf(stderr, "getStringStore()-- ERROR actualOffset="F_S64" > lastElem="F_S64"\n",
+    fprintf(stderr, "getStringStore()-- ERROR actualOffset=" F_S64 " > lastElem=" F_S64 "\n",
             actualOffset, s->lastElem);
   assert(actualOffset <= s->lastElem);
 
@@ -283,10 +283,10 @@ getStringStore(StoreStruct *s, int64 offset, char *buffer, uint32 maxLength, uin
     memcpy(&length, s->memoryBuffer + actualOffset + sizeof(StoreStruct), sizeof(uint32));
 
     if (length > maxLength)
-      fprintf(stderr, "getStringStore()-- ERROR: store '%s' length="F_U32" > maxLength="F_U32"\n",
+      fprintf(stderr, "getStringStore()-- ERROR: store '%s' length=" F_U32 " > maxLength=" F_U32 "\n",
               s->storeLabel, length, maxLength);
     if (length + actualOffset + sizeof(uint32) > s->lastElem)
-      fprintf(stderr, "getStringStore()-- ERROR: store '%s' length="F_U32" actualOffset="F_S64" > lastElem="F_SIZE_T"\n",
+      fprintf(stderr, "getStringStore()-- ERROR: store '%s' length=" F_U32 " actualOffset=" F_S64 " > lastElem=" F_SIZE_T "\n",
               s->storeLabel, length, actualOffset, s->lastElem);
 
     assert(length <= maxLength);
@@ -306,10 +306,10 @@ getStringStore(StoreStruct *s, int64 offset, char *buffer, uint32 maxLength, uin
     }
 
     if (length > maxLength)
-      fprintf(stderr, "getStringStore()-- ERROR: store '%s' length="F_U32" > maxLength="F_U32"\n",
+      fprintf(stderr, "getStringStore()-- ERROR: store '%s' length=" F_U32 " > maxLength=" F_U32 "\n",
               s->storeLabel, length, maxLength);
     if (length + actualOffset + sizeof(uint32) > s->lastElem)
-      fprintf(stderr, "getStringStore()-- ERROR: store '%s' length="F_U32" actualOffset="F_S64" > lastElem="F_SIZE_T"\n",
+      fprintf(stderr, "getStringStore()-- ERROR: store '%s' length=" F_U32 " actualOffset=" F_S64 " > lastElem=" F_SIZE_T "\n",
               s->storeLabel, length, actualOffset, s->lastElem);
 
     assert(length <= maxLength);
@@ -317,7 +317,7 @@ getStringStore(StoreStruct *s, int64 offset, char *buffer, uint32 maxLength, uin
 
     if (length > 0) {
       if (length + 1 != AS_UTL_safeRead(s->fp,buffer,"getStringStore",sizeof(char), length + 1)) {
-        fprintf(stderr, "getStringStore()-- Failed to read all "F_U32" bytes.  Incomplete store?\n", length);
+        fprintf(stderr, "getStringStore()-- Failed to read all " F_U32 " bytes.  Incomplete store?\n", length);
         assert(0);
         exit(1);
       }
@@ -351,10 +351,10 @@ getStringStorePtr(StoreStruct *s, int64 offset, uint32 *actualLength, int64 *nex
   //  length.
 
   if (*actualLength > 1048576)
-    fprintf(stderr, "getStringStorePtr()-- ERROR: store '%s' actualLength="F_U32"\n",
+    fprintf(stderr, "getStringStorePtr()-- ERROR: store '%s' actualLength=" F_U32 "\n",
             s->storeLabel, *actualLength);
   if (offset - s->firstElem + *actualLength + sizeof(uint32) > s->lastElem)
-    fprintf(stderr, "getStringStorePtr()-- ERROR: store '%s' offset="F_S64" firstElem="F_S64" actualLength="F_U32" > lastElem="F_S64"\n",
+    fprintf(stderr, "getStringStorePtr()-- ERROR: store '%s' offset=" F_S64 " firstElem=" F_S64 " actualLength=" F_U32 " > lastElem=" F_S64 "\n",
             s->storeLabel, offset, s->firstElem, *actualLength, s->lastElem);
 
   assert(*actualLength <= 1048576);
@@ -373,13 +373,13 @@ void
 setIndexStore(StoreStruct *s, int64 index, void *element) {
 
   if (s->firstElem > index)
-    fprintf(stderr, "setIndexStore()-- ERROR: store '%s' firstElem="F_S64" index="F_S64"\n",
+    fprintf(stderr, "setIndexStore()-- ERROR: store '%s' firstElem=" F_S64 " index=" F_S64 "\n",
             s->storeLabel, s->firstElem, index);
   if (s->lastElem < index)
-    fprintf(stderr, "setIndexStore()-- ERROR: store '%s' lastElem="F_S64" index="F_S64"\n",
+    fprintf(stderr, "setIndexStore()-- ERROR: store '%s' lastElem=" F_S64 " index=" F_S64 "\n",
             s->storeLabel, s->lastElem, index);
   if (index <= 0)
-    fprintf(stderr, "setIndexStore()-- ERROR: store '%s' index="F_S64"\n",
+    fprintf(stderr, "setIndexStore()-- ERROR: store '%s' index=" F_S64 "\n",
             s->storeLabel, index);
 
   assert(s->readOnly == FALSE);
@@ -631,8 +631,8 @@ convertStoreToPartialMemoryStore(StoreStruct *source,
                                 sizeof(char),
                                 sourceMaxOffset - sourceOffset);
     if (bytesRead != sourceMaxOffset - sourceOffset) {
-      fprintf(stderr, "convertStoreToPartialMemoryStore()-- failed to convert store (label '"F_STR"') to memory store.\n", source->storeLabel);
-      fprintf(stderr, "convertStoreToPartialMemoryStore()-- wanted to read "F_S64" bytes, actually read "F_S64".\n", sourceMaxOffset - sourceOffset, bytesRead);
+      fprintf(stderr, "convertStoreToPartialMemoryStore()-- failed to convert store (label '" F_STR"') to memory store.\n", source->storeLabel);
+      fprintf(stderr, "convertStoreToPartialMemoryStore()-- wanted to read " F_S64 " bytes, actually read " F_S64 ".\n", sourceMaxOffset - sourceOffset, bytesRead);
       assert(0);
       exit(1);
     }

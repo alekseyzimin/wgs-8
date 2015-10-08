@@ -52,17 +52,17 @@ typedef int8_t          int8;
 #define  uint64MAX       uint64NUMBER(0xffffffffffffffff)
 #define  uint64MASK(X)   ((~uint64ZERO) >> (64 - (X)))
 #define  uint64FMTW(X)   "%" #X PRIu64
-#define  uint64FMT       "%"PRIu64
-#define  uint64HEX       "0x%016"PRIx64
+#define  uint64FMT       "%" PRIu64
+#define  uint64HEX       "0x%016" PRIx64
 #define  int64FMTW(X)    "%" #X PRId64
-#define  int64FMT        "%"PRId64
+#define  int64FMT        "%" PRId64
 
 #define  uint32ZERO      uint32NUMBER(0x00000000)
 #define  uint32ONE       uint32NUMBER(0x00000001)
 #define  uint32MAX       uint32NUMBER(0xffffffff)
 #define  uint32MASK(X)   ((~uint32ZERO) >> (32 - (X)))
 #define  uint32FMTW(X)   "%" #X PRIu32
-#define  uint32FMT       "%"PRIu32
+#define  uint32FMT       "%" PRIu32
 #define  uint32HEX       "0x%08"PRIx32
 #define  int32FMTW(X)    "%" #X PRId32
 #define  int32FMT        "%"PRId32

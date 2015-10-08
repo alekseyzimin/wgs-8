@@ -224,13 +224,13 @@ recordFile::seek(uint64 rec, bool forced) {
   errno = 0;
   lseek(_file, 32 + _headerSize + _pos * _recordSize, SEEK_SET);
   if (errno)
-    fprintf(stderr, "recordFile::seek() '%s' seek to record="uint64FMT" at fileposition="uint64FMT" failed: %s\n",
+    fprintf(stderr, "recordFile::seek() '%s' seek to record=" uint64FMT" at fileposition=" uint64FMT" failed: %s\n",
             _name, _pos, _headerSize + _pos * _recordSize, strerror(errno)), exit(1);
 
   errno = 0;
   read(_file, _bfr, _recordSize * _bfrmax);
   if (errno)
-    fprintf(stderr, "recordFile::seek() '%s' read of "uint64FMT" bytes failed at record "uint64FMT", fileposition "uint64FMT"': %s\n",
+    fprintf(stderr, "recordFile::seek() '%s' read of " uint64FMT" bytes failed at record " uint64FMT", fileposition " uint64FMT"': %s\n",
             _name, _recordSize * _bfrmax, _pos, _headerSize + _pos * _recordSize, strerror(errno)), exit(1);
 }
 

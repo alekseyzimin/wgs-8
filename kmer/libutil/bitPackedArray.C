@@ -32,7 +32,7 @@ bitPackedArray::get(uint64 idx) {
   uint64 p = _valueWidth * (idx % _valuesPerSegment);
 
   if (idx >= _nextElement) {
-    fprintf(stderr, "bitPackedArray::get()-- element index "uint64FMT" is out of range, only "uint64FMT" elements.\n",
+    fprintf(stderr, "bitPackedArray::get()-- element index " uint64FMT" is out of range, only " uint64FMT" elements.\n",
             idx, _nextElement-1);
     return(0xdeadbeefdeadbeefULL);
   }
@@ -46,7 +46,7 @@ bitPackedArray::set(uint64 idx, uint64 val) {
   uint64 s = idx / _valuesPerSegment;
   uint64 p = _valueWidth * (idx % _valuesPerSegment);
 
-  //fprintf(stderr, "s="uint64FMT" p="uint64FMT" segments="uint64FMT"/"uint64FMT"\n", s, p, _numSegments, _maxSegments);
+  //fprintf(stderr, "s=" uint64FMT" p=" uint64FMT" segments=" uint64FMT"/" uint64FMT"\n", s, p, _numSegments, _maxSegments);
 
   if (idx >= _nextElement)
     _nextElement = idx+1;

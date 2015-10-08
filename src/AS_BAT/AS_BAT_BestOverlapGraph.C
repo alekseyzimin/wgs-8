@@ -83,7 +83,7 @@ BestOverlapGraph::removeSuspicious(void) {
 
     if (verified == false) {
       if (no > 0)
-        writeLog("BestOverlapGraph()-- frag "F_U32" is suspicious ("F_U32" overlaps).\n", fi, no);
+        writeLog("BestOverlapGraph()-- frag " F_U32 " is suspicious (" F_U32 " overlaps).\n", fi, no);
 
 #pragma omp critical (suspInsert)
       _suspicious.insert(fi);
@@ -154,7 +154,7 @@ BestOverlapGraph::removeSpurs(void) {
 
     if ((spur5 == true) || (spur3 == true)) {
       if ((spur5 == false) || (spur3 == false))
-        writeLog("BestOverlapGraph()-- frag "F_U32" is a %s spur.\n", fi, (spur5) ? "5'" : "3'");
+        writeLog("BestOverlapGraph()-- frag " F_U32 " is a %s spur.\n", fi, (spur5) ? "5'" : "3'");
       isSpur[fi] = true;
     }
   }
@@ -524,7 +524,7 @@ BestOverlapGraph::BestOverlapGraph(double               utgErrorRate,
 
   setLogFile(prefix, "bestOverlapGraph");
 
-  writeLog("BestOverlapGraph-- allocating best edges ("F_SIZE_T"MB) and containments ("F_SIZE_T"MB)\n",
+  writeLog("BestOverlapGraph-- allocating best edges (" F_SIZE_T "MB) and containments (" F_SIZE_T "MB)\n",
            ((2 * sizeof(BestEdgeOverlap) * (FI->numFragments() + 1)) >> 20),
            ((1 * sizeof(BestContainment) * (FI->numFragments() + 1)) >> 20));
 
@@ -934,7 +934,7 @@ BestOverlapGraph::scoreContainment(const BAToverlap& olap) {
     BestContainment   *c = getBestContainer(olap.a_iid);
 
 #if 0
-    writeLog("set best for %d from "F_U32" score="F_U64" to "F_U32" score="F_U64"\n",
+    writeLog("set best for %d from " F_U32 " score=" F_U64 " to " F_U32 " score=" F_U64 "\n",
              olap.a_iid,
              c->container, bestCscore(olap.a_iid),
              olap.b_iid,   newScr);
@@ -949,7 +949,7 @@ BestOverlapGraph::scoreContainment(const BAToverlap& olap) {
     bestCscore(olap.a_iid) = newScr;
 #if 0
   } else {
-    writeLog("NOT best for %d WITH "F_U32" score="F_U64"\n",
+    writeLog("NOT best for %d WITH " F_U32 " score=" F_U64 "\n",
              olap.a_iid,
              olap.b_iid,   newScr);
 #endif
@@ -968,7 +968,7 @@ BestOverlapGraph::scoreEdge(const BAToverlap& olap) {
   if (isOverlapBadQuality(olap)) {
     //  Yuck.  Don't want to use this crud.
     if ((enableLog == true) && ((enableLog == true) && (logFileFlags & LOG_OVERLAP_QUALITY)))
-      writeLog("scoreEdge()-- OVERLAP BADQ:     %d %d %c  hangs "F_S32" "F_S32" err %.3f -- bad quality\n",
+      writeLog("scoreEdge()-- OVERLAP BADQ:     %d %d %c  hangs " F_S32 " " F_S32 " err %.3f -- bad quality\n",
                olap.a_iid, olap.b_iid, olap.flipped ? 'A' : 'N', olap.a_hang, olap.b_hang, olap.error);
     return;
   }
@@ -976,7 +976,7 @@ BestOverlapGraph::scoreEdge(const BAToverlap& olap) {
   if (isOverlapRestricted(olap)) {
     //  Whoops, don't want this overlap for this BOG
     if ((enableLog == true) && (logFileFlags & LOG_OVERLAP_QUALITY))
-      writeLog("scoreEdge()-- OVERLAP REST:     %d %d %c  hangs "F_S32" "F_S32" err %.3f -- restricted\n",
+      writeLog("scoreEdge()-- OVERLAP REST:     %d %d %c  hangs " F_S32 " " F_S32 " err %.3f -- restricted\n",
                olap.a_iid, olap.b_iid, olap.flipped ? 'A' : 'N', olap.a_hang, olap.b_hang, olap.error);
     return;
   }
@@ -984,7 +984,7 @@ BestOverlapGraph::scoreEdge(const BAToverlap& olap) {
   if (isSuspicious(olap.b_iid)) {
     //  Whoops, don't want this overlap for this BOG
     if ((enableLog == true) && (logFileFlags & LOG_OVERLAP_QUALITY))
-      writeLog("scoreEdge()-- OVERLAP SUSP:     %d %d %c  hangs "F_S32" "F_S32" err %.3f -- suspicious\n",
+      writeLog("scoreEdge()-- OVERLAP SUSP:     %d %d %c  hangs " F_S32 " " F_S32 " err %.3f -- suspicious\n",
                olap.a_iid, olap.b_iid, olap.flipped ? 'A' : 'N', olap.a_hang, olap.b_hang, olap.error);
     return;
   }
@@ -993,7 +993,7 @@ BestOverlapGraph::scoreEdge(const BAToverlap& olap) {
       ((olap.a_hang <= 0) && (olap.b_hang >= 0))) {
     //  Skip containment overlaps.
     if ((enableLog == true) && (logFileFlags & LOG_OVERLAP_QUALITY))
-      writeLog("scoreEdge()-- OVERLAP CONT:     %d %d %c  hangs "F_S32" "F_S32" err %.3f -- container read\n",
+      writeLog("scoreEdge()-- OVERLAP CONT:     %d %d %c  hangs " F_S32 " " F_S32 " err %.3f -- container read\n",
                olap.a_iid, olap.b_iid, olap.flipped ? 'A' : 'N', olap.a_hang, olap.b_hang, olap.error);
     return;
   }
@@ -1002,7 +1002,7 @@ BestOverlapGraph::scoreEdge(const BAToverlap& olap) {
       (isContained(olap.b_iid) == true)) {
     //  Skip contained fragments.
     if ((enableLog == true) && (logFileFlags & LOG_OVERLAP_QUALITY))
-      writeLog("scoreEdge()-- OVERLAP CONT:     %d %d %c  hangs "F_S32" "F_S32" err %.3f -- contained read\n",
+      writeLog("scoreEdge()-- OVERLAP CONT:     %d %d %c  hangs " F_S32 " " F_S32 " err %.3f -- contained read\n",
                olap.a_iid, olap.b_iid, olap.flipped ? 'A' : 'N', olap.a_hang, olap.b_hang, olap.error);
     return;
   }
@@ -1022,7 +1022,7 @@ BestOverlapGraph::scoreEdge(const BAToverlap& olap) {
   score = newScr;
 
   if ((enableLog == true) && (logFileFlags & LOG_OVERLAP_QUALITY))
-    writeLog("OVERLAP GOOD:     %d %d %c  hangs "F_S32" "F_S32" err %.3f -- NOW BEST\n",
+    writeLog("OVERLAP GOOD:     %d %d %c  hangs " F_S32 " " F_S32 " err %.3f -- NOW BEST\n",
              olap.a_iid, olap.b_iid, olap.flipped ? 'A' : 'N', olap.a_hang, olap.b_hang, olap.error);
 }
 
@@ -1047,7 +1047,7 @@ BestOverlapGraph::isOverlapBadQuality(const BAToverlap& olap) {
   //
   if (olap.error <= mismatchCutoff) {
     if ((enableLog == true) && (logFileFlags & LOG_OVERLAP_QUALITY))
-      writeLog("isOverlapBadQuality()-- OVERLAP GOOD:     %d %d %c  hangs "F_S32" "F_S32" err %.3f\n",
+      writeLog("isOverlapBadQuality()-- OVERLAP GOOD:     %d %d %c  hangs " F_S32 " " F_S32 " err %.3f\n",
                olap.a_iid, olap.b_iid,
                olap.flipped ? 'A' : 'N',
                olap.a_hang,
@@ -1073,7 +1073,7 @@ BestOverlapGraph::isOverlapBadQuality(const BAToverlap& olap) {
 
   if (nerr <= mismatchLimit) {
     if ((enableLog == true) && (logFileFlags & LOG_OVERLAP_QUALITY))
-      writeLog("isOverlapBadQuality()-- OVERLAP SAVED:    %d %d %c  hangs "F_S32" "F_S32" err %.3f olen %f nerr %f\n",
+      writeLog("isOverlapBadQuality()-- OVERLAP SAVED:    %d %d %c  hangs " F_S32 " " F_S32 " err %.3f olen %f nerr %f\n",
                olap.a_iid, olap.b_iid,
                olap.flipped ? 'A' : 'N',
                olap.a_hang,
@@ -1084,7 +1084,7 @@ BestOverlapGraph::isOverlapBadQuality(const BAToverlap& olap) {
   }
 
   if ((enableLog == true) && (logFileFlags & LOG_OVERLAP_QUALITY))
-    writeLog("isOverlapBadQuality()-- OVERLAP REJECTED: %d %d %c  hangs "F_S32" "F_S32" err %.3f olen %f nerr %f\n",
+    writeLog("isOverlapBadQuality()-- OVERLAP REJECTED: %d %d %c  hangs " F_S32 " " F_S32 " err %.3f olen %f nerr %f\n",
              olap.a_iid, olap.b_iid,
              olap.flipped ? 'A' : 'N',
              olap.a_hang,

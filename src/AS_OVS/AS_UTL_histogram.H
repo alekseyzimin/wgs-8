@@ -194,10 +194,10 @@ AS_UTL_histogramShow(AS_UTL_histogram *h, FILE *F, char *label) {
 
   fprintf(F, "\n");
   fprintf(F, "%s\n", label);
-  fprintf(F, "nSamples      "F_U64"\n", h->nSamples);
-  fprintf(F, "median        "F_U64"\n", h->median);
+  fprintf(F, "nSamples      " F_U64 "\n", h->nSamples);
+  fprintf(F, "median        " F_U64 "\n", h->median);
   fprintf(F, "mean/stddev   %.4f +- %.4f\n", h->mean, h->stddev);
-  fprintf(F, "mode/mad      "F_U64" +- %.4f\n", h->mode, h->mad);
+  fprintf(F, "mode/mad      " F_U64 " +- %.4f\n", h->mode, h->mad);
 
   //  A generic N-bucket histogram
 
@@ -254,14 +254,14 @@ AS_UTL_histogramShow(AS_UTL_histogram *h, FILE *F, char *label) {
 
   for (i=0; i<valFullMax || i<valZoomMax; i++) {
     if (i < valFullMax) {
-      fprintf(F, "%6"F_U64P" - %6"F_U64P" : %6"F_U64P"    ",
+      fprintf(F, "%6" F_U64P" - %6" F_U64P" : %6" F_U64P"    ",
               valFull[i][0], valFull[i][1], valFull[i][2]);
     } else {
       fprintf(F, "                            ");
     }
 
     if (i < valZoomMax) {
-      fprintf(F, "%6"F_U64P" - %6"F_U64P" : %6"F_U64P"\n",
+      fprintf(F, "%6" F_U64P" - %6" F_U64P" : %6" F_U64P"\n",
               valZoom[i][0], valZoom[i][1], valZoom[i][2]);
     } else {
       fprintf(F, "\n");
@@ -286,7 +286,7 @@ AS_UTL_histogramDump(AS_UTL_histogram *h, char *filename, char *label) {
   //AS_UTL_histogramShow(h, F, label);
 
   for (i=h->smallest; i<=h->largest; i++)
-    fprintf(F, F_U64"\t"F_U64"\n", i, h->histogram[i]);
+    fprintf(F, F_U64"\t" F_U64 "\n", i, h->histogram[i]);
 
   fclose(F);
 }
@@ -339,7 +339,7 @@ AS_UTL_histogram3dAdd(AS_UTL_histogram3d *h, uint64 x, uint64 y) {
       h->histogram[i] = h->histogramData + i * h->allocated[1];
   }
   if (y >= h->allocated[1]) {
-    fprintf(stderr, "histogram3d: ("F_U64","F_U64") too big; only ("F_U64","F_U64") spots.\n",
+    fprintf(stderr, "histogram3d: (" F_U64 "," F_U64 ") too big; only (" F_U64 "," F_U64 ") spots.\n",
             x, y, h->allocated[0], h->allocated[1]);
     return;
   }
@@ -378,7 +378,7 @@ AS_UTL_histogram3dDump(AS_UTL_histogram3d *h, char *filename, char *label) {
   for (x=0; x<h->allocated[0]; x++) {
     for (y=0; y<h->allocated[1]; y++) {
       if (h->histogram[x][y] > 0)
-        fprintf(F, F_U64" "F_U64" "F_U64"\n", x, y, h->histogram[x][y]);
+        fprintf(F, F_U64" " F_U64 " " F_U64 "\n", x, y, h->histogram[x][y]);
     }
   }
 #endif

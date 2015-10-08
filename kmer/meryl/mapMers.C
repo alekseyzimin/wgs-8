@@ -130,9 +130,9 @@ main(int argc, char **argv) {
 
       fprintf(stdout,
               "%s\t"
-              uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"
-              uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"
-              uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\n",
+              uint64FMT"\t" uint64FMT"\t" uint64FMT"\t"
+              uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\t"
+              uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\n",
               S->header(),
               mean, min, max,
               hist[ 0], hist[ 1], hist[ 2], hist[ 3], hist[ 4], hist[ 5], hist[ 6], hist[ 7],
@@ -160,21 +160,21 @@ main(int argc, char **argv) {
           if (pos <= end + merSize) {
             end = pos;
           } else {
-            fprintf(stdout, "%s\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\n", S->header(), beg, end+merSize, end+merSize - beg);
+            fprintf(stdout, "%s\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\n", S->header(), beg, end+merSize, end+merSize - beg);
             numCovReg++;
             lenCovReg += end+merSize - beg;
             beg = end = pos;
           }
         } else {
-          fprintf(stdout, "%s\t"uint64FMT"\tuncovered\n", S->header(), MS->thePositionInSequence());
+          fprintf(stdout, "%s\t" uint64FMT"\tuncovered\n", S->header(), MS->thePositionInSequence());
         }
       }
 
       if (beg != ~uint64ZERO)
-        fprintf(stdout, "%s\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\n", S->header(), beg, end+merSize, end+merSize - beg);
+        fprintf(stdout, "%s\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\n", S->header(), beg, end+merSize, end+merSize - beg);
 
-      fprintf(stderr, "numCovReg: "uint64FMT"\n", numCovReg);
-      fprintf(stderr, "lenCovReg: "uint64FMT"\n", lenCovReg);
+      fprintf(stderr, "numCovReg: " uint64FMT"\n", numCovReg);
+      fprintf(stderr, "lenCovReg: " uint64FMT"\n", lenCovReg);
     }
 
 
@@ -188,7 +188,7 @@ main(int argc, char **argv) {
         uint64 fnt = E->count(MS->theFMer());
         uint64 rnt = E->count(MS->theRMer());
 
-        fprintf(stdout, "%s\t%s\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\t"uint64FMT"\n",
+        fprintf(stdout, "%s\t%s\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\t" uint64FMT"\n",
                 S->header(),
                 MS->theFMer().merToString(merString),
                 beg,

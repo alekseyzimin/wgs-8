@@ -581,11 +581,11 @@ void FillChunkOverlapWithOVL(GraphCGW_T   *graph,
           orient);
 
   if (olap.overlap > 0)
-    fprintf(stderr, "FillChunkOverlapWithOVL()-- frg "F_IID" in utg "F_IID" <-> frg "F_IID" in utg "F_IID" ovl %d min %d,%d hang %d,%d\n",
+    fprintf(stderr, "FillChunkOverlapWithOVL()-- frg " F_IID " in utg " F_IID " <-> frg " F_IID " in utg " F_IID " ovl %d min %d,%d hang %d,%d\n",
             ovl->aifrag, cia, ovl->bifrag, cib,
             olap.overlap, olapmin, olapmax, olap.ahg, olap.bhg);
   else
-    fprintf(stderr, "FillChunkOverlapWithOVL()-- frg "F_IID" in utg "F_IID" <-> frg "F_IID" in utg "F_IID" ovl %d min %d,%d FAILED\n",
+    fprintf(stderr, "FillChunkOverlapWithOVL()-- frg " F_IID " in utg " F_IID " <-> frg " F_IID " in utg " F_IID " ovl %d min %d,%d FAILED\n",
             ovl->aifrag, cia, ovl->bifrag, cib,
             olapsize, olapmin, olapmax);
 #endif
@@ -1029,7 +1029,7 @@ ComputeCanonicalOverlap_new(GraphCGW_T *graph, ChunkOverlapCheckT *canOlap) {
     }
 
     //  Not a terribly useful message.
-    //fprintf(stderr,">>> Fixing up suspicious overlap ("F_CID","F_CID",%c) (ahg:"F_S32" bhg:"F_S32") to ("F_CID","F_CID",%c) (ahg:"F_S32" bhg:"F_S32") len: "F_S32"\n",
+    //fprintf(stderr,">>> Fixing up suspicious overlap (" F_CID"," F_CID",%c) (ahg:" F_S32 " bhg:" F_S32 ") to (" F_CID"," F_CID",%c) (ahg:" F_S32 " bhg:" F_S32 ") len: " F_S32 "\n",
     //        inOlap.spec.cidA, inOlap.spec.cidB, inOlap.spec.orientation.toLetter(), tempOlap1->begpos, tempOlap1->endpos,
     //        nnOlap.spec.cidA, nnOlap.spec.cidB, nnOlap.spec.orientation.toLetter(), nnOlap.ahg,        nnOlap.bhg,
     //        nnOlap.overlap);
@@ -1344,7 +1344,7 @@ ComputeOverlaps(GraphCGW_T          *graph,
   InitializeHashTable_Iterator_AS(ScaffoldGraph->ChunkOverlaps->hashTable, &iterator);
   while(NextHashTable_Iterator_AS(&iterator, &key, &value, &valuetype)) {
     if ((++ni % nm) == 0)
-      fprintf(stderr, "ComputeOverlaps()--  Processed "F_U32" out of "F_U32" potential overlaps, discovered "F_SIZE_T" overlaps (%.2f%%).\n",
+      fprintf(stderr, "ComputeOverlaps()--  Processed " F_U32 " out of " F_U32 " potential overlaps, discovered " F_SIZE_T " overlaps (%.2f%%).\n",
               ni, nt, rawEdges.size() - rawEdgesBefore, 100.0 * (rawEdges.size() - rawEdgesBefore) / ni);
 
     //  VERY IMPORTANT.  Do NOT directly use the overlap stored in the hash table.  If we recompute
@@ -1381,7 +1381,7 @@ ComputeOverlaps(GraphCGW_T          *graph,
     //
 #ifdef SCREEN_DUPLICATES
     //if (olap.suspicious)
-    //  fprintf(stderr,"* CO: SUSPICIOUS Overlap found! Looked for ("F_CID","F_CID",%c)["F_S32","F_S32"] found ("F_CID","F_CID",%c) "F_S32"; contig lengths as found (%d,%d)\n",
+    //  fprintf(stderr,"* CO: SUSPICIOUS Overlap found! Looked for (" F_CID"," F_CID",%c)[" F_S32 "," F_S32 "] found (" F_CID"," F_CID",%c) " F_S32 "; contig lengths as found (%d,%d)\n",
     //          inSpec.cidA,    inSpec.cidB,    inSpec.orientation.toLetter(),    olap.minOverlap, olap.maxOverlap,
     //          olap.spec.cidA, olap.spec.cidB, olap.spec.orientation.toLetter(), olap.overlap,
     //          GetConsensus(graph, olap.spec.cidA, consensusA, qualityA),
@@ -1411,12 +1411,12 @@ ComputeOverlaps(GraphCGW_T          *graph,
   }
 
 #ifdef SCREEN_DUPLICATES
-  fprintf(stderr, "ComputeOverlaps()-- removed "F_U32" duplicate edges.\n", dupsDetected);
+  fprintf(stderr, "ComputeOverlaps()-- removed " F_U32 " duplicate edges.\n", dupsDetected);
 #else
   fprintf(stderr, "ComputeOverlaps()-- duplicate edges not screened.\n");
 #endif
 
-  fprintf(stderr, "ComputeOverlaps()-- took "F_S64" seconds, found "F_SIZE_T" edges (%.2f%%).\n",
+  fprintf(stderr, "ComputeOverlaps()-- took " F_S64 " seconds, found " F_SIZE_T " edges (%.2f%%).\n",
           time(0) - startTime, rawEdges.size() - rawEdgesBefore, 100.0 * (rawEdges.size() - rawEdgesBefore) / nt);
 }
 

@@ -47,7 +47,7 @@ findMode(char *name) {
     if (H[i] > H[mi])
       mi = i;
 
-  fprintf(stderr, "Mode of '%s' is "uint32FMT"\n", name, mi);
+  fprintf(stderr, "Mode of '%s' is " uint32FMT"\n", name, mi);
 
   return(mi);
 }
@@ -110,9 +110,9 @@ compare(merylStreamReader *F,
       if (dumpFlag)
         if (Ftype == 0)
           if (Ctype == 1)
-            fprintf(dumpSCZF, ">"uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
+            fprintf(dumpSCZF, ">" uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
           else
-            fprintf(dumpMCZF, ">"uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
+            fprintf(dumpMCZF, ">" uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
     }
     return;
   }
@@ -129,9 +129,9 @@ compare(merylStreamReader *F,
       //  Again, save the mer since it's in contigs, but not fragments.
       if (dumpFlag)
         if (Ctype == 1)
-          fprintf(dumpSCZF, ">"uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
+          fprintf(dumpSCZF, ">" uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
         else
-          fprintf(dumpMCZF, ">"uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
+          fprintf(dumpMCZF, ">" uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
     }
 
     return;
@@ -148,12 +148,12 @@ compare(merylStreamReader *F,
   if (dumpFlag) {
     if (Ftype < Ctype)
       if (Ctype == 2)
-        fprintf(dumpMCSF, ">"uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
+        fprintf(dumpMCSF, ">" uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
       else
-        fprintf(dumpMCMF, ">"uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
+        fprintf(dumpMCMF, ">" uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
 
     if ((Ftype == 0) && (Ctype == 1))
-      fprintf(dumpSCZF, ">"uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
+      fprintf(dumpSCZF, ">" uint32FMT"\n%s\n", Ccnt, Cmer.merToString(merstring));
   }
 }
 
@@ -282,11 +282,11 @@ main(int argc, char **argv) {
   
   if (differ) {
     fprintf(stderr, "error:  mer size differ.\n");
-    fprintf(stderr, "        AF - "uint32FMT"\n", ms[0]);
-    fprintf(stderr, "        TF - "uint32FMT"\n", ms[1]);
-    fprintf(stderr, "        AC - "uint32FMT"\n", ms[2]);
-    fprintf(stderr, "        DC - "uint32FMT"\n", ms[3]);
-    fprintf(stderr, "        CO - "uint32FMT"\n", ms[4]);
+    fprintf(stderr, "        AF - " uint32FMT"\n", ms[0]);
+    fprintf(stderr, "        TF - " uint32FMT"\n", ms[1]);
+    fprintf(stderr, "        AC - " uint32FMT"\n", ms[2]);
+    fprintf(stderr, "        DC - " uint32FMT"\n", ms[3]);
+    fprintf(stderr, "        CO - " uint32FMT"\n", ms[4]);
     exit(1);
   }
 

@@ -208,7 +208,7 @@ allFrags(gkStore *gkpStore,
   int64  lastElem  = gkpStore->gkStore_getNumFragments();
 
   if (verbose) {
-    fprintf(stderr, "update all frags in lib "F_IID" ("F_S64","F_S64")\n",
+    fprintf(stderr, "update all frags in lib " F_IID " (" F_S64 "," F_S64 ")\n",
             IID, firstElem, lastElem);    
   }
 
@@ -260,7 +260,7 @@ edit_mateiid(AS_IID     IID,
   fr.gkFragment_setMateIID(n);
 
   if (verbose)
-    fprintf(stdout, "frg uid %s mateiid "F_IID" -> mateiid "F_IID"\n",
+    fprintf(stdout, "frg uid %s mateiid " F_IID " -> mateiid " F_IID "\n",
             AS_UID_toString(fr.gkFragment_getReadUID()), o, fr.gkFragment_getMateIID());
 
   if (update)
@@ -272,7 +272,7 @@ edit_mateiid(AS_IID     IID,
     fr.gkFragment_setMateIID(0);
 
     if (verbose)
-      fprintf(stdout, "frg uid %s mateiid "F_IID" -> mateiid "F_IID"\n",
+      fprintf(stdout, "frg uid %s mateiid " F_IID " -> mateiid " F_IID "\n",
               AS_UID_toString(fr.gkFragment_getReadUID()), IID, fr.gkFragment_getMateIID());
 
     if (update)
@@ -299,7 +299,7 @@ edit_mateuid(AS_IID     IID,
   AS_UID    n = AS_UID_lookup(VAL, &VAL);
   fr.gkFragment_setMateIID(gkpStore->gkStore_getUIDtoIID(n, NULL));
   if (verbose)
-    fprintf(stdout, "frg uid %s mateiid "F_IID" -> mateiid "F_IID" mateuid %s\n",
+    fprintf(stdout, "frg uid %s mateiid " F_IID " -> mateiid " F_IID " mateuid %s\n",
             AS_UID_toString(fr.gkFragment_getReadUID()), o, fr.gkFragment_getMateIID(), AS_UID_toString(n));
 
   if (update)
@@ -324,7 +324,7 @@ edit_readuid(AS_IID     IID,
   AS_UID    o = fr.gkFragment_getReadUID();
   fr.gkFragment_setReadUID(AS_UID_lookup(VAL, &VAL));  //  I _really_ hope you know what you're doing
   if (verbose)
-    fprintf(stdout, "frg iid "F_IID" readuid %s -> %s\n",
+    fprintf(stdout, "frg iid " F_IID " readuid %s -> %s\n",
             fr.gkFragment_getReadIID(), AS_UID_toString(o), AS_UID_toString(fr.gkFragment_getReadUID()));
 
   if (update)
@@ -349,7 +349,7 @@ edit_libiid(AS_IID     IID,
   AS_IID    o = fr.gkFragment_getLibraryIID();
   fr.gkFragment_setLibraryIID(AS_IID_fromString(VAL, &VAL));
   if (verbose)
-    fprintf(stdout, "frg uid %s libiid "F_IID" -> libiid "F_IID"\n",
+    fprintf(stdout, "frg uid %s libiid " F_IID " -> libiid " F_IID "\n",
             AS_UID_toString(fr.gkFragment_getReadUID()), o, fr.gkFragment_getLibraryIID());
 
   if (update)
@@ -375,7 +375,7 @@ edit_libuid(AS_IID     IID,
   AS_UID    n = AS_UID_lookup(VAL, &VAL);
   fr.gkFragment_setLibraryIID(gkpStore->gkStore_getUIDtoIID(n, NULL));
   if (verbose)
-    fprintf(stdout, "frg uid %s libiid "F_IID" -> libiid "F_IID" libuid %s\n",
+    fprintf(stdout, "frg uid %s libiid " F_IID " -> libiid " F_IID " libuid %s\n",
             AS_UID_toString(fr.gkFragment_getReadUID()), o, fr.gkFragment_getLibraryIID(), AS_UID_toString(n));
 
   if (update)
@@ -407,7 +407,7 @@ edit_isnonrandom(AS_IID     IID,
     return(false);
   }
   if (verbose)
-    fprintf(stdout, "frg uid %s isnonrandom "F_U32" -> "F_U32"\n",
+    fprintf(stdout, "frg uid %s isnonrandom " F_U32 " -> " F_U32 "\n",
             AS_UID_toString(fr.gkFragment_getReadUID()), o, fr.gkFragment_getIsNonRandom());
 
   if (update)
@@ -439,7 +439,7 @@ edit_isdeleted(AS_IID     IID,
     return(false);
   }
   if (verbose)
-    fprintf(stdout, "frg uid %s isdeleted "F_U32" -> "F_U32"\n",
+    fprintf(stdout, "frg uid %s isdeleted " F_U32 " -> " F_U32 "\n",
             AS_UID_toString(fr.gkFragment_getReadUID()), o, fr.gkFragment_getIsDeleted());
 
   if (update)
@@ -567,7 +567,7 @@ editStore(char *editsFileName, char *gkpStoreName, int update) {
     }
 
     if (IID == 0) {
-      fprintf(stderr, "invalid id (UID=%s, IID="F_IID") in edit line: '%s'\n", AS_UID_toString(UID), IID, L);
+      fprintf(stderr, "invalid id (UID=%s, IID=" F_IID ") in edit line: '%s'\n", AS_UID_toString(UID), IID, L);
       errors++;
       goto nextline;
     }
@@ -594,7 +594,7 @@ editStore(char *editsFileName, char *gkpStoreName, int update) {
     if (isFRG) {
 
       if (IID > gkpStore->gkStore_getNumFragments()) {
-        fprintf(stderr, "invalid frg iid "F_IID" in edit line: '%s'\n", IID, L);
+        fprintf(stderr, "invalid frg iid " F_IID " in edit line: '%s'\n", IID, L);
         errors++;
         goto nextline;
       }
@@ -646,7 +646,7 @@ editStore(char *editsFileName, char *gkpStoreName, int update) {
       gkLibrary  gklr;
 
       if (IID > gkpStore->gkStore_getNumLibraries()) {
-        fprintf(stderr, "invalid lib iid "F_IID" in edit line: '%s'\n", IID, L);
+        fprintf(stderr, "invalid lib iid " F_IID " in edit line: '%s'\n", IID, L);
         errors++;
         goto nextline;
       }

@@ -477,7 +477,7 @@ CheckAllTrustedEdges(ScaffoldGraphT * sgraph) {
       ChunkInstanceT *thatC = GetGraphNode(ScaffoldGraph->ContigGraph, next);
 
       if (thatC->scaffoldID != thisC->scaffoldID)
-        fprintf(stderr,"-=> BAD edge id:"F_SIZE_T" "F_CID"("F_CID")->"F_CID"("F_CID") (weight %d, status %d)\n",
+        fprintf(stderr,"-=> BAD edge id:" F_SIZE_T " " F_CID"(" F_CID")->" F_CID"(" F_CID") (weight %d, status %d)\n",
                 GetVAIndex_CIEdgeT(sgraph->ContigGraph->edges, edge),
                 contig->id, thisC->scaffoldID,
                 thatC->id, thatC->scaffoldID,

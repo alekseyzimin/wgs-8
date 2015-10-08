@@ -142,7 +142,7 @@ void ResizeEdgeList(GraphCGW_T *graph) {
   if (newSize == 0)
     return;
 
-  fprintf(stderr, "ResizeEdgeList()-- sizing list for '%c' to "F_U32" (currently "F_SIZE_T")\n",
+  fprintf(stderr, "ResizeEdgeList()-- sizing list for '%c' to " F_U32 " (currently " F_SIZE_T ")\n",
           graph->type, newSize, graph->edgeLists.size());
 
   if (graph->type == CI_GRAPH) {
@@ -254,7 +254,7 @@ RebuildGraphEdges(GraphCGW_T *graph) {
   //  We never restart in the middle of using scaffold edges; they're always rebuilt.
   //
   if (graph->type == SCAFFOLD_GRAPH) {
-    fprintf(stderr, "RebuildGraphEdges()-- NOT rebuilding "F_SIZE_T" edges in "F_SIZE_T" %s.\n",
+    fprintf(stderr, "RebuildGraphEdges()-- NOT rebuilding " F_SIZE_T " edges in " F_SIZE_T " %s.\n",
             GetNumEdgeCGW_Ts(graph->edges),
             GetNumEdgeCGW_Ts(graph->nodes),
             (graph->type == 'c') ? "unitigs" : ((graph->type == 'C') ? "contigs" : "scaffolds"));
@@ -265,7 +265,7 @@ RebuildGraphEdges(GraphCGW_T *graph) {
   }
 #endif
 
-  fprintf(stderr, "RebuildGraphEdges()-- Rebuilding "F_SIZE_T" edges in "F_SIZE_T" %s.\n",
+  fprintf(stderr, "RebuildGraphEdges()-- Rebuilding " F_SIZE_T " edges in " F_SIZE_T " %s.\n",
           GetNumEdgeCGW_Ts(graph->edges),
           GetNumEdgeCGW_Ts(graph->nodes),
           (graph->type == 'c') ? "unitigs" : ((graph->type == 'C') ? "contigs" : "scaffolds"));
@@ -369,7 +369,7 @@ DumpGraphEdges(GraphCGW_T *graph, char *outname) {
   for (uint32 i=0; i<GetNumGraphEdges(graph); i++) {
     EdgeCGW_T  *edge = GetGraphEdge(graph, i);
 
-    fprintf(outfile, "eid "F_U32" deleted %d triplet "F_U32" "F_U32" %c contributing %d %.0f +- %.8f frag "F_U32":"F_U32" nextRaw "F_U32" topLevel "F_U32"\n",
+    fprintf(outfile, "eid " F_U32 " deleted %d triplet " F_U32 " " F_U32 " %c contributing %d %.0f +- %.8f frag " F_U32 ":" F_U32 " nextRaw " F_U32 " topLevel " F_U32 "\n",
             i,
             edge->flags.bits.isDeleted,
             edge->idA, edge->idB, edge->orient.toLetter(),
@@ -409,7 +409,7 @@ DumpGraphEdges(GraphCGW_T *graph, char *outname) {
     EdgeCGW_T         *edge;
 
     while ((edge = edges.nextMerged()) != NULL) {
-      fprintf(outfile, "mergedEdge node "F_U32" eid "F_SIZE_T" triplet "F_U32" "F_U32" %c\n",
+      fprintf(outfile, "mergedEdge node " F_U32 " eid " F_SIZE_T " triplet " F_U32 " " F_U32 " %c\n",
               i,
               GetVAIndex_EdgeCGW_T(graph->edges, edge),
               edge->idA, edge->idB, edge->orient.toLetter());
@@ -423,7 +423,7 @@ DumpGraphEdges(GraphCGW_T *graph, char *outname) {
     EdgeCGW_T         *edge;
 
     while ((edge = edges.nextRaw()) != NULL) {
-      fprintf(outfile, "rawEdge node "F_U32" eid "F_SIZE_T" triplet "F_U32" "F_U32" %c\n",
+      fprintf(outfile, "rawEdge node " F_U32 " eid " F_SIZE_T " triplet " F_U32 " " F_U32 " %c\n",
               i,
               GetVAIndex_EdgeCGW_T(graph->edges, edge),
               edge->idA, edge->idB, edge->orient.toLetter());
@@ -454,11 +454,11 @@ GraphEdgeSanity(GraphCGW_T *graph, CDS_CID_t eid) {
         break;
     }
     if (edgeFromA == NULL) {
-      fprintf(stderr,"GraphEdgeSanity()-- Couldn't find edge %16p "F_CID" ("F_CID","F_CID") looking from A "F_CID"\n",
+      fprintf(stderr,"GraphEdgeSanity()-- Couldn't find edge %16p " F_CID" (" F_CID"," F_CID") looking from A " F_CID"\n",
               edge, eid, edge->idA, edge->idB, edge->idA);
       edges.reset();
       while (NULL != (edgeFromA = edges.nextMerged())){
-        fprintf(stderr, "GraphEdgeSanity()--  Found edge %16p idx "F_SIZE_T" (%d,%d)\n",
+        fprintf(stderr, "GraphEdgeSanity()--  Found edge %16p idx " F_SIZE_T " (%d,%d)\n",
                 edgeFromA, GetVAIndex_EdgeCGW_T(graph->edges, edgeFromA), edgeFromA->idA, edgeFromA->idB);
       }
       fails = true;
@@ -474,11 +474,11 @@ GraphEdgeSanity(GraphCGW_T *graph, CDS_CID_t eid) {
         break;
     }
     if(edgeFromB == NULL) {
-      fprintf(stderr,"GraphEdgeSanity()-- Couldn't find edge %16p "F_CID" ("F_CID","F_CID") looking from B "F_CID"\n",
+      fprintf(stderr,"GraphEdgeSanity()-- Couldn't find edge %16p " F_CID" (" F_CID"," F_CID") looking from B " F_CID"\n",
               edge, eid, edge->idA, edge->idB, edge->idB);
       edges.reset();
       while (NULL != (edgeFromB = edges.nextMerged())){
-        fprintf(stderr, "GraphEdgeSanity()--  Found edge %16p idx "F_SIZE_T" (%d,%d)\n",
+        fprintf(stderr, "GraphEdgeSanity()--  Found edge %16p idx " F_SIZE_T " (%d,%d)\n",
                 edgeFromB, GetVAIndex_EdgeCGW_T(graph->edges, edgeFromB), edgeFromB->idA, edgeFromB->idB);
       }
       fails = true;
@@ -505,7 +505,7 @@ InsertGraphEdgeInList(GraphCGW_T *graph,
   ChunkInstanceT *ci = GetGraphNode(graph, ciID);
 
   if (ci->flags.bits.isDead) {
-    fprintf(stderr, "InsertGraphEdgeInList()--  CI="F_CID" isDead!\n", ciID);
+    fprintf(stderr, "InsertGraphEdgeInList()--  CI=" F_CID" isDead!\n", ciID);
     assert(!ci->flags.bits.isDead);
     return;
   }
@@ -526,7 +526,7 @@ InsertGraphEdgeInList(GraphCGW_T *graph,
             edgeID, newEdge->idA, graph->type, newEdge->idB, graph->type, newEdge->orient.toLetter(), ciID, graph->type);
     for (set<CDS_CID_t>::iterator  it = graph->edgeLists[ciID].begin(); it != graph->edgeLists[ciID].end(); it++) {
       EdgeCGW_T *e = GetGraphEdge(graph, *it);
-      fprintf(stderr, "eid "F_U32" %d-%d orient %c sloppy %d overlap %d distance %f\n",
+      fprintf(stderr, "eid " F_U32 " %d-%d orient %c sloppy %d overlap %d distance %f\n",
               *it, e->idA, e->idB, e->orient.toLetter(), isSloppyEdge(e), isOverlapEdge(e), e->distance.mean);
     }
   }
@@ -755,14 +755,14 @@ void UnlinkGraphEdge(GraphCGW_T *graph, EdgeCGW_T *edge){
     fprintf(stderr, "A Edges\n");
     for (set<CDS_CID_t>::iterator  it = graph->edgeLists[edge->idA].begin(); it != graph->edgeLists[edge->idA].end(); it++) {
       EdgeCGW_T *e = GetGraphEdge(graph, *it);
-      fprintf(stderr, "eid "F_U32" %d-%d orient %c sloppy %d overlap %d distance %f %p compare %d %d\n",
+      fprintf(stderr, "eid " F_U32 " %d-%d orient %c sloppy %d overlap %d distance %f %p compare %d %d\n",
               *it, e->idA, e->idB, e->orient.toLetter(), isSloppyEdge(e), isOverlapEdge(e), e->distance.mean, e,
               edgeCompareForStoring(edge, e), edgeCompareForStoring(e, edge));
     }
     fprintf(stderr, "B Edges\n");
     for (set<CDS_CID_t>::iterator  it = graph->edgeLists[edge->idB].begin(); it != graph->edgeLists[edge->idB].end(); it++) {
       EdgeCGW_T *e = GetGraphEdge(graph, *it);
-      fprintf(stderr, "eid "F_U32" %d-%d orient %c sloppy %d overlap %d distance %f %p compare %d %d\n",
+      fprintf(stderr, "eid " F_U32 " %d-%d orient %c sloppy %d overlap %d distance %f %p compare %d %d\n",
               *it, e->idA, e->idB, e->orient.toLetter(), isSloppyEdge(e), isOverlapEdge(e), e->distance.mean, e,
               edgeCompareForStoring(edge, e), edgeCompareForStoring(e, edge));
     }
@@ -848,7 +848,7 @@ void PrintGraphEdge(FILE *fp, GraphCGW_T *graph,
     flagTrans = "&B";
   }
 
-  fprintf(fp,"%s eid:"F_CID" A:"F_CID" B:"F_CID" wgt:%d %s %s %s %s%s ori:%c qua:%3.2g trstd:%d con:%d dst:%d std:%g %s ",
+  fprintf(fp,"%s eid:" F_CID" A:" F_CID" B:" F_CID" wgt:%d %s %s %s %s%s ori:%c qua:%3.2g trstd:%d con:%d dst:%d std:%g %s ",
           label,
           eid,
           edge->idA, edge->idB, edge->edgesContributing, flagbuf,
@@ -863,7 +863,7 @@ void PrintGraphEdge(FILE *fp, GraphCGW_T *graph,
           actualOverlap);
 
   if(edge->flags.bits.isRaw && !isOverlapEdge(edge))
-    fprintf(fp,"("F_CID","F_CID")", edge->fragA, edge->fragB);
+    fprintf(fp,"(" F_CID"," F_CID")", edge->fragA, edge->fragB);
   fprintf(fp,"\n");
 }
 
@@ -933,7 +933,7 @@ void PrintContigEdgeInScfContext(FILE *fp, GraphCGW_T *graph,
     flagTrans = "&B";
   }
 
-  fprintf(fp,"%s eid:"F_CID" A:"F_CID" B:"F_CID" wgt:%d %s %s %s %s%s ori:%c qua:%3.2g trstd:%d con:%d dst:%d std:%g %s sameScf: %c Apos [%d,%d] Bpos [%d,%d]",
+  fprintf(fp,"%s eid:" F_CID" A:" F_CID" B:" F_CID" wgt:%d %s %s %s %s%s ori:%c qua:%3.2g trstd:%d con:%d dst:%d std:%g %s sameScf: %c Apos [%d,%d] Bpos [%d,%d]",
           label,
           eid,
           edge->idA, edge->idB, edge->edgesContributing, flagbuf,
@@ -953,7 +953,7 @@ void PrintContigEdgeInScfContext(FILE *fp, GraphCGW_T *graph,
           (int) ChunkInstanceB->offsetBEnd.mean	);
 
   if(edge->flags.bits.isRaw && !isOverlapEdge(edge))
-    fprintf(fp,"("F_CID","F_CID")", edge->fragA, edge->fragB);
+    fprintf(fp,"(" F_CID"," F_CID")", edge->fragA, edge->fragB);
   fprintf(fp,"\n");
 }
 
@@ -1074,7 +1074,7 @@ AddGraphEdge(GraphCGW_T *graph,
       ChunkInstanceT *CIA   = GetGraphNode(graph, ciedge->idA);
       ChunkInstanceT *CIB   = GetGraphNode(graph, ciedge->idB);
 
-      fprintf(stderr,"* Edge ("F_CID","F_CID") %c distance:%f ["F_S32","F_S32"] marked probably bogus --> IS REAL?\nrawDistance "F_S32" ["F_S32","F_S32"] ["F_S32","F_S32"] simChunks ["F_S32","F_S32"] ["F_S32","F_S32"]!\n",
+      fprintf(stderr,"* Edge (" F_CID"," F_CID") %c distance:%f [" F_S32 "," F_S32 "] marked probably bogus --> IS REAL?\nrawDistance " F_S32 " [" F_S32 "," F_S32 "] [" F_S32 "," F_S32 "] simChunks [" F_S32 "," F_S32 "] [" F_S32 "," F_S32 "]!\n",
               ciedge->idA, ciedge->idB, ciedge->orient,
               ciedge->distance.mean, minDistance, maxDistance,
               distance,
@@ -1148,10 +1148,10 @@ void DumpGraph(GraphCGW_T *graph, FILE *stream){
     GraphEdgeIterator edges(graph, node->id, ALL_END, ALL_EDGES);
     EdgeCGW_T        *edge = NULL;
 
-    fprintf(stream,"Node "F_CID"\n", node->id);
+    fprintf(stream,"Node " F_CID"\n", node->id);
 
     while(NULL != (edge = edges.nextMerged())){
-      fprintf(stream,"\t("F_CID","F_CID") %c wt:%d %s\n",
+      fprintf(stream,"\t(" F_CID"," F_CID") %c wt:%d %s\n",
               edge->idA, edge->idB, edge->orient.toLetter(), edge->edgesContributing,
               (isOverlapEdge(edge)?"*O*":" "));
     }
@@ -1373,13 +1373,13 @@ MergeAllGraphEdges(GraphCGW_T         *graph,
     }
 
     if (chain.size() > minReportSize)
-      fprintf(stderr, "MergeAllGraphEdges()--  processing chain of size "F_SIZE_T" for triplet "F_U32" "F_U32" %c.\n",
+      fprintf(stderr, "MergeAllGraphEdges()--  processing chain of size " F_SIZE_T " for triplet " F_U32 " " F_U32 " %c.\n",
               chain.size(), A->idA, A->idB, A->orient.toLetter());
 
     if (chain.size() < maxTestSize)
       MergeGraphEdges(graph, chain);
     else
-      fprintf(stderr, "MergeAllGraphEdges()--  chain of size "F_SIZE_T" too large to merge.\n",
+      fprintf(stderr, "MergeAllGraphEdges()--  chain of size " F_SIZE_T " too large to merge.\n",
               chain.size());
 
     //newEdges.insert(newEdges.begin(), chain.begin(), chain.end());
@@ -1390,7 +1390,7 @@ MergeAllGraphEdges(GraphCGW_T         *graph,
   //  Now add the new edges to the graph.
 
   if (rawEdges.size() > minReportSize)
-    fprintf(stderr, "MergeAllGraphEdges()--  processed "F_SIZE_T" raw edges into "F_SIZE_T" merged edges.\n",
+    fprintf(stderr, "MergeAllGraphEdges()--  processed " F_SIZE_T " raw edges into " F_SIZE_T " merged edges.\n",
             rawEdges.size(), newEdges.size());
 
   for (uint32 ee=0; ee<newEdges.size(); ee++)
@@ -1403,7 +1403,7 @@ MergeAllGraphEdges(GraphCGW_T         *graph,
     for (uint32 ee=0; ee<newEdges.size(); ee++) {
       EdgeCGW_T *edge = GetGraphEdge(graph, newEdges[ee]);
 
-      fprintf(fp, "EDGE "F_CID" "F_CID" %c frag "F_CID" "F_CID" weight %d overlap %d dist %.0f +- %.0f lib "F_CID"\n",
+      fprintf(fp, "EDGE " F_CID" " F_CID" %c frag " F_CID" " F_CID" weight %d overlap %d dist %.0f +- %.0f lib " F_CID"\n",
               edge->idA,
               edge->idB,
               edge->orient.toLetter(),
@@ -1417,7 +1417,7 @@ MergeAllGraphEdges(GraphCGW_T         *graph,
       while (edge->nextRawEdge != NULLINDEX) {
         edge = GetGraphEdge(graph, edge->nextRawEdge);
 
-        fprintf(fp, "     "F_CID" "F_CID" %c frag "F_CID" "F_CID" weight %d overlap %d dist %.0f +- %.0f lib "F_CID" RAW\n",
+        fprintf(fp, "     " F_CID" " F_CID" %c frag " F_CID" " F_CID" weight %d overlap %d dist %.0f +- %.0f lib " F_CID" RAW\n",
                 edge->idA,
                 edge->idB,
                 edge->orient.toLetter(),
@@ -1881,7 +1881,7 @@ BuildGraphEdgesDirectly(GraphCGW_T         *graph,
     tf += GetNumIntMultiPoss(ma->f_list);
 
     if (nf > 10000000) {
-      fprintf(stderr, "BuildGraphEdgesDirectly()-- at unitig %d with "F_U32" total fragments.\n",
+      fprintf(stderr, "BuildGraphEdgesDirectly()-- at unitig %d with " F_U32 " total fragments.\n",
               node->id, tf);
       nf = 0;
     }
@@ -2086,7 +2086,7 @@ void PropagateRawEdgeStatusToFrag(EdgeCGW_T *edge){
   frag2->flags.bits.edgeStatus = status;
 
 #if 0
-  fprintf(stderr,"*PropagateRawEdgeStatus ("F_CID","F_CID",%c) to fragments "F_CID" and "F_CID" status:%d (from %d)\n",
+  fprintf(stderr,"*PropagateRawEdgeStatus (" F_CID"," F_CID",%c) to fragments " F_CID" and " F_CID" status:%d (from %d)\n",
           edge->idA, edge->idB, edge->orient,
           edge->fragA, edge->fragB, frag1->flags.bits.edgeStatus, status);
 #endif
@@ -2326,11 +2326,11 @@ CDS_CID_t SplitUnresolvedCI(GraphCGW_T *graph,
   if ((fragments) && (GetNumCDS_CID_ts(fragments) > 0))
     AssignFragsToResolvedCI(graph, oldNodeID, newNodeID, fragments);
 
-  //fprintf(stderr,"SplitUnresolvedCI()--  Cloned surrogate ma of CI "F_CID" (length %d) has length (%d) %g\n",
+  //fprintf(stderr,"SplitUnresolvedCI()--  Cloned surrogate ma of CI " F_CID" (length %d) has length (%d) %g\n",
   //        oldNodeID, (int) GetMultiAlignUngappedLength(oldMA),
   //        (int) GetMultiAlignLength(newMA), newNode->bpLength.mean);
 
-  //fprintf(stderr, "SplitUnresolvedCI()--  Split base CI="F_CID" (now with %d instances) into new CI="F_CID"\n",
+  //fprintf(stderr, "SplitUnresolvedCI()--  Split base CI=" F_CID" (now with %d instances) into new CI=" F_CID"\n",
   //        oldNodeID, oldNode->info.CI.numInstances, newNodeID);
 
   return newNodeID;
@@ -2486,7 +2486,7 @@ CDS_CID_t SplitUnresolvedContig(GraphCGW_T         *graph,
     }
   }
 
-  fprintf(stderr,"SplitUnresolvedContig()-- Split base CI="F_CID" (now with %d refs) contig="F_CID" into new CI="F_CID" contig="F_CID"\n",
+  fprintf(stderr,"SplitUnresolvedContig()-- Split base CI=" F_CID" (now with %d refs) contig=" F_CID" into new CI=" F_CID" contig=" F_CID"\n",
           baseCIid, baseCI->info.CI.numInstances, oldID, newCIid, newID);
 
   //DumpContig(stderr,ScaffoldGraph, newNode, FALSE);
@@ -3119,7 +3119,7 @@ void ComputeMatePairStatisticsRestricted(int operateOnNodes,
 
         assert(frag->contigID == mate->contigID);
         if(GetContigFragOrient(mate) == GetContigFragOrient(frag)) {
-          //  fprintf(stderr,"* ("F_CID","F_CID") is bad due to orientation problems\n",      frag->read_iid, mate->read_iid);
+          //  fprintf(stderr,"* (" F_CID"," F_CID") is bad due to orientation problems\n",      frag->read_iid, mate->read_iid);
           frag->flags.bits.edgeStatus = UNTRUSTED_EDGE_STATUS;
           mate->flags.bits.edgeStatus = UNTRUSTED_EDGE_STATUS;
           dfrg->numBad++;
@@ -3172,7 +3172,7 @@ void ComputeMatePairStatisticsRestricted(int operateOnNodes,
         GetFragmentPositionInScaffold( mate, &mateLeftEnd, &mateRightEnd, &mateScaffoldOrientation);
 
         if (fragScaffoldOrientation == mateScaffoldOrientation) {
-          // fprintf(stderr,"* ("F_CID","F_CID") is bad due to orientation problems\n",      frag->read_iid, mate->read_iid);
+          // fprintf(stderr,"* (" F_CID"," F_CID") is bad due to orientation problems\n",      frag->read_iid, mate->read_iid);
           frag->flags.bits.edgeStatus = UNTRUSTED_EDGE_STATUS;
           mate->flags.bits.edgeStatus = UNTRUSTED_EDGE_STATUS;
           dfrg->numBad++;
@@ -3224,7 +3224,7 @@ void ComputeMatePairStatisticsRestricted(int operateOnNodes,
         }
 
         //if (dist < 0)
-        //  fprintf( stderr, "frag, mate: "F_CID", "F_CID" have negative dist: "F_S32"\n",
+        //  fprintf( stderr, "frag, mate: " F_CID", " F_CID" have negative dist: " F_S32 "\n",
         //           frag->read_iid, mate->read_iid, dist);
       }  //  end of operateOnNodes if..elseif..elseif block
 
@@ -3248,7 +3248,7 @@ void ComputeMatePairStatisticsRestricted(int operateOnNodes,
         mate->flags.bits.edgeStatus = TRUSTED_EDGE_STATUS;
 
         //if (frag->dist == 12)
-        //  fprintf(stderr, "lib %d sample %d dist "F_S32"\n", frag->dist, dfrg->numSamples, dist);
+        //  fprintf(stderr, "lib %d sample %d dist " F_S32 "\n", frag->dist, dfrg->numSamples, dist);
 
         dfrg->numSamples++;
         dfrg->mu    += dist;
@@ -3352,7 +3352,7 @@ void ComputeMatePairStatisticsRestricted(int operateOnNodes,
       double       mu         = dfrg->mu / dfrg->numSamples;
       double       sigma      = sqrt((dfrg->sigma - dfrg->numSamples * mu * mu) / (dfrg->numSamples - 1));
 
-      fprintf( stderr, "lib "F_CID", numSamples: %d, orig mean, sig: ( %.2f, %.2f), calc mean, sig: (%.2f, %.2f) median: "F_S32"\n",
+      fprintf( stderr, "lib " F_CID", numSamples: %d, orig mean, sig: ( %.2f, %.2f), calc mean, sig: (%.2f, %.2f) median: " F_S32 "\n",
                i,
                dfrg->numSamples,
                dfrg->mu,
@@ -3360,10 +3360,10 @@ void ComputeMatePairStatisticsRestricted(int operateOnNodes,
                mu,
                sigma,
                median);
-      fprintf( stderr, "dfrg->lower: "F_S32"  dfrg->upper: "F_S32"\n", dfrg->lower, dfrg->upper);
-      fprintf( stderr, "dfrg->min  : "F_S32"  dfrg->max  : "F_S32"\n", dfrg->min, dfrg->max);
-      fprintf( stderr, "lowerSigma : "F_S32"  upperSigma : "F_S32"\n", lowerSigma, upperSigma);
-      fprintf( stderr, "newLower   : "F_S32"  newUpper   : "F_S32"\n", newLower, newUpper);
+      fprintf( stderr, "dfrg->lower: " F_S32 "  dfrg->upper: " F_S32 "\n", dfrg->lower, dfrg->upper);
+      fprintf( stderr, "dfrg->min  : " F_S32 "  dfrg->max  : " F_S32 "\n", dfrg->min, dfrg->max);
+      fprintf( stderr, "lowerSigma : " F_S32 "  upperSigma : " F_S32 "\n", lowerSigma, upperSigma);
+      fprintf( stderr, "newLower   : " F_S32 "  newUpper   : " F_S32 "\n", newLower, newUpper);
     }
 #endif
 
@@ -3378,7 +3378,7 @@ void ComputeMatePairStatisticsRestricted(int operateOnNodes,
           frag = GetCIFragT( ScaffoldGraph->CIFrags, matePairs[icnt].frags);
           mate = GetCIFragT( ScaffoldGraph->CIFrags, matePairs[icnt].mates);
 
-          //fprintf( stderr, "1 reclassifying samples[%d] ("F_CID", "F_CID") from UNTRUSTED to TRUSTED\n",
+          //fprintf( stderr, "1 reclassifying samples[%d] (" F_CID", " F_CID") from UNTRUSTED to TRUSTED\n",
           //         icnt, frag->read_iid, mate->read_iid);
 
           frag->flags.bits.edgeStatus = TRUSTED_EDGE_STATUS;
@@ -3400,7 +3400,7 @@ void ComputeMatePairStatisticsRestricted(int operateOnNodes,
           frag = GetCIFragT( ScaffoldGraph->CIFrags, matePairs[icnt].frags);
           mate = GetCIFragT( ScaffoldGraph->CIFrags, matePairs[icnt].mates);
 
-          //fprintf( stderr, "2 reclassifying samples[%d] ("F_CID", "F_CID") from UNTRUSTED to TRUSTED\n",
+          //fprintf( stderr, "2 reclassifying samples[%d] (" F_CID", " F_CID") from UNTRUSTED to TRUSTED\n",
           //         icnt, frag->read_iid, mate->read_iid);
 
           frag->flags.bits.edgeStatus = TRUSTED_EDGE_STATUS;
@@ -3424,7 +3424,7 @@ void ComputeMatePairStatisticsRestricted(int operateOnNodes,
           frag = GetCIFragT( ScaffoldGraph->CIFrags, matePairs[icnt].frags);
           mate = GetCIFragT( ScaffoldGraph->CIFrags, matePairs[icnt].mates);
 
-          //fprintf( stderr, "3 reclassifying samples[%d] ("F_CID", "F_CID") from TRUSTED to UNTRUSTED\n",
+          //fprintf( stderr, "3 reclassifying samples[%d] (" F_CID", " F_CID") from TRUSTED to UNTRUSTED\n",
           //         icnt, frag->read_iid, mate->read_iid);
 
           frag->flags.bits.edgeStatus = UNTRUSTED_EDGE_STATUS;
@@ -3445,7 +3445,7 @@ void ComputeMatePairStatisticsRestricted(int operateOnNodes,
           frag = GetCIFragT( ScaffoldGraph->CIFrags, matePairs[icnt].frags);
           mate = GetCIFragT( ScaffoldGraph->CIFrags, matePairs[icnt].mates);
 
-          //fprintf( stderr, "4 reclassifying samples[%d] ("F_CID", "F_CID") from TRUSTED to UNTRUSTED\n",
+          //fprintf( stderr, "4 reclassifying samples[%d] (" F_CID", " F_CID") from TRUSTED to UNTRUSTED\n",
           //         icnt, frag->read_iid, mate->read_iid);
 
           frag->flags.bits.edgeStatus = UNTRUSTED_EDGE_STATUS;
@@ -3704,7 +3704,7 @@ void  CheckUnitigs(CDS_CID_t startUnitigID) {
       CIFragT *frag = GetCIFragT(ScaffoldGraph->CIFrags, mp->ident);
 
       if (frag->cid != node->id) {
-        fprintf(stderr, "* CheckUnitigs: frag "F_CID" with iid "F_CID" of cid "F_CID" has ci = "F_CID"!!!\n",
+        fprintf(stderr, "* CheckUnitigs: frag " F_CID" with iid " F_CID" of cid " F_CID" has ci = " F_CID"!!!\n",
                 mp->ident, frag->read_iid, node->id, frag->cid);
         //assert(0);
       }
@@ -3727,7 +3727,7 @@ void  CheckSurrogateUnitigs() {
       continue;
 
     if (curChunk->info.CI.numInstances != GetNumCDS_CID_ts(curChunk->info.CI.instances.va))
-      fprintf(stderr, "CheckSurrogateUnitigs()--  CI.numInstances=%d != instances.va="F_SIZE_T"\n",
+      fprintf(stderr, "CheckSurrogateUnitigs()--  CI.numInstances=%d != instances.va=" F_SIZE_T "\n",
               curChunk->info.CI.numInstances,
               GetNumCDS_CID_ts(curChunk->info.CI.instances.va));
     assert(curChunk->info.CI.numInstances != GetNumCDS_CID_ts(curChunk->info.CI.instances.va));

@@ -116,7 +116,7 @@ gkStore::gkStore_getFragmentData(gkStream *gst, gkFragment *fr, uint32 flags) {
     if ((fr->seq[seqLen] != 0) ||
         (fr->qlt[seqLen] != 0)) {
       fprintf(stderr, "gkStore_getFragmentData()- Potential gkpStore corruption.\n");
-      fprintf(stderr, "gkStore_getFragmentData()- Fragment "F_IID" reports length %d, but seq/qlt report length "F_SIZE_T"/"F_SIZE_T".\n",
+      fprintf(stderr, "gkStore_getFragmentData()- Fragment " F_IID " reports length %d, but seq/qlt report length " F_SIZE_T "/" F_SIZE_T ".\n",
               fr->gkFragment_getReadIID(),
               seqLen,
               strlen(fr->seq),
@@ -150,7 +150,7 @@ gkStore::gkStore_getFragment(AS_IID iid, gkFragment *fr, int32 flags) {
     //  off of the global IID.
 
     if (ExistsInHashTable_AS(partmap, iid, 0) == FALSE)
-      fprintf(stderr, "getFrag()-- ERROR!  IID "F_IID" not in partition!\n", iid);
+      fprintf(stderr, "getFrag()-- ERROR!  IID " F_IID " not in partition!\n", iid);
     assert(ExistsInHashTable_AS(partmap, iid, 0) == TRUE);
 
     assert(fr->isGKP == 0);

@@ -186,7 +186,7 @@ dumpProperties(MultiAlignStore *tigStore,
                int32 tigIsUnitig,
                MultiAlignT *ma) {
 
-  fprintf(stdout, "maID                "F_S32"\n", ma->maID);
+  fprintf(stdout, "maID                " F_S32 "\n", ma->maID);
   fprintf(stdout, "unitigCoverageStat  %f\n",      ma->data.unitig_coverage_stat);
   fprintf(stdout, "unitigMicrohetProb  %f\n",      ma->data.unitig_microhet_prob);
   fprintf(stdout, "unitigStatus        %c/%d\n",   ma->data.unitig_status, ma->data.unitig_status);
@@ -227,8 +227,8 @@ dumpProperties(MultiAlignStore *tigStore,
   fprintf(stdout, "gLen                %d\n",      glen);
 #endif
 
-  fprintf(stdout, "numFrags            "F_U32" (vs "F_U64")\n", ma->data.num_frags, (uint64)GetNumIntMultiPoss(ma->f_list));
-  fprintf(stdout, "numUnitigs          "F_U32" (vs "F_U64")\n", ma->data.num_unitigs, (uint64)GetNumIntUnitigPoss(ma->u_list));
+  fprintf(stdout, "numFrags            " F_U32 " (vs " F_U64 ")\n", ma->data.num_frags, (uint64)GetNumIntMultiPoss(ma->f_list));
+  fprintf(stdout, "numUnitigs          " F_U32 " (vs " F_U64 ")\n", ma->data.num_unitigs, (uint64)GetNumIntUnitigPoss(ma->u_list));
 
   tigStore->dumpMultiAlignR(tigID, tigIsUnitig);
 }
@@ -326,14 +326,14 @@ dumpConsensus(MultiAlignStore *tigStore,
 
   if (minCoverage == 0) {
     if (tigIsUnitig)
-      fprintf(stdout, ">utg%d len="F_U64" reads="F_U32" status=%c microHet=%.2f covStat=%.2f\n%s\n",
+      fprintf(stdout, ">utg%d len=" F_U64 " reads=" F_U32 " status=%c microHet=%.2f covStat=%.2f\n%s\n",
               ma->maID, GetNumchars(ma->consensus) - 1, ma->data.num_frags,
               ma->data.unitig_status,
               ma->data.unitig_microhet_prob,
               ma->data.unitig_coverage_stat,
               cns);
     else
-      fprintf(stdout, ">ctg%d len="F_U64" reads="F_U32" unitigs="F_U32" status=%c\n%s\n",
+      fprintf(stdout, ">ctg%d len=" F_U64 " reads=" F_U32 " unitigs=" F_U32 " status=%c\n%s\n",
               ma->maID, GetNumchars(ma->consensus) - 1, ma->data.num_frags,
               ma->data.num_unitigs,
               ma->data.contig_status,
@@ -694,7 +694,7 @@ operationCompress(char *tigName, int tigVers) {
       continue;
 
     if (tigStore->getUnitigVersion(ti) > tigVers) {
-      fprintf(stderr, "WARNING:  Attempt to move future unitig "F_U32" from version "F_U32" to previous version %d.\n",
+      fprintf(stderr, "WARNING:  Attempt to move future unitig " F_U32 " from version " F_U32 " to previous version %d.\n",
               ti, tigStore->getUnitigVersion(ti), tigVers);
       nUtgErrors++;
     } else if (tigStore->getUnitigVersion(ti) < tigVers) {
@@ -709,7 +709,7 @@ operationCompress(char *tigName, int tigVers) {
       continue;
 
     if (tigStore->getContigVersion(ti) > tigVers) {
-      fprintf(stderr, "WARNING:  Attempt to move future contig "F_U32" from version "F_U32" to previous version %d.\n",
+      fprintf(stderr, "WARNING:  Attempt to move future contig " F_U32 " from version " F_U32 " to previous version %d.\n",
               ti, tigStore->getContigVersion(ti), tigVers);
       nCtgErrors++;
     } else if (tigStore->getContigVersion(ti) < tigVers) {
@@ -719,8 +719,8 @@ operationCompress(char *tigName, int tigVers) {
 
   if (nUtgErrors + nCtgErrors > 0) {
     fprintf(stderr, "Store can't be compressed; probably trying to compress to something that isn't the latest version.\n");
-    fprintf(stderr, "  "F_U32" unitigs failed; "F_U32" compressable\n", nUtgErrors, nUtgCompress);
-    fprintf(stderr, "  "F_U32" contigs failed; "F_U32" compressable\n", nCtgErrors, nCtgCompress);
+    fprintf(stderr, "  " F_U32 " unitigs failed; " F_U32 " compressable\n", nUtgErrors, nUtgCompress);
+    fprintf(stderr, "  " F_U32 " contigs failed; " F_U32 " compressable\n", nCtgErrors, nCtgCompress);
     delete tigStore;
     exit(1);
   }
@@ -735,7 +735,7 @@ operationCompress(char *tigName, int tigVers) {
   if (nUtgCompress > 0) {
     isUnitig = TRUE;
 
-    fprintf(stderr, "Compressing "F_U32" unitigs into version %d\n", nUtgCompress, tigVers);
+    fprintf(stderr, "Compressing " F_U32 " unitigs into version %d\n", nUtgCompress, tigVers);
 
     for (uint32 ti=0; ti<tigStore->numUnitigs(); ti++) {
       if ((ti % 1000000) == 0)
@@ -751,7 +751,7 @@ operationCompress(char *tigName, int tigVers) {
       MultiAlignT *ma = tigStore->loadMultiAlign(ti, isUnitig);
 
       if (ma == NULL) {
-        //fprintf(stderr, "WARNING: unitig "F_U32" is NULL.\n", ti);
+        //fprintf(stderr, "WARNING: unitig " F_U32 " is NULL.\n", ti);
         continue;
       }
 
@@ -763,7 +763,7 @@ operationCompress(char *tigName, int tigVers) {
   if (nCtgCompress > 0) {
     isUnitig = FALSE;
 
-    fprintf(stderr, "Compressing "F_U32" contigs into version %d\n", nCtgCompress, tigVers);
+    fprintf(stderr, "Compressing " F_U32 " contigs into version %d\n", nCtgCompress, tigVers);
 
     for (uint32 ti=0; ti<tigStore->numContigs(); ti++) {
       if ((ti % 1000000) == 0)
@@ -778,7 +778,7 @@ operationCompress(char *tigName, int tigVers) {
       MultiAlignT *ma = tigStore->loadMultiAlign(ti, isUnitig);
 
       if (ma == NULL) {
-        //fprintf(stderr, "WARNING: contig "F_U32" is NULL.\n", ti);
+        //fprintf(stderr, "WARNING: contig " F_U32 " is NULL.\n", ti);
         continue;
       }
 
@@ -791,7 +791,7 @@ operationCompress(char *tigName, int tigVers) {
 
   if (nUtgCompress + nCtgCompress > 0) {
     for (uint32 version=1; version<tigVers; version++) {
-      fprintf(stderr, "Purge version "F_U32".\n", version);
+      fprintf(stderr, "Purge version " F_U32 ".\n", version);
       tigStore->purgeVersion(version);
     }
   }
@@ -811,7 +811,7 @@ dumpFmap(FILE         *out,
   for (uint32 fi=0; fi<fiMax; fi++) {
     IntMultiPos  *imp = GetIntMultiPos(ma->f_list, fi);
 
-    fprintf(stdout, F_U32"\t"F_U32"\t"F_S32"\t"F_S32"\n",
+    fprintf(stdout, F_U32"\t" F_U32 "\t" F_S32 "\t" F_S32 "\n",
             imp->ident, ma->maID, imp->position.bgn, imp->position.end);
   }
 }
@@ -1201,7 +1201,7 @@ main (int argc, char **argv) {
     }
 
     if (nTigs <= tigIDbgn) {
-      fprintf(stderr, "ERROR: only "F_U32" %s in the store (IDs 0-"F_U32" inclusive); can't dump requested range "F_U32"-"F_U32"\n",
+      fprintf(stderr, "ERROR: only " F_U32 " %s in the store (IDs 0-" F_U32 " inclusive); can't dump requested range " F_U32 "-" F_U32 "\n",
               nTigs,
               (tigIsUnitig) ? "unitigs" : "contigs",
               nTigs-1,
@@ -1304,7 +1304,7 @@ main (int argc, char **argv) {
       hMax--;
 
     for (uint32 i=0; i<=hMax; i++)
-      fprintf(F, F_U32"\t"F_U64"\n", i, cov[i]);
+      fprintf(F, F_U32"\t" F_U64 "\n", i, cov[i]);
 
     fclose(F);
 

@@ -218,7 +218,7 @@ BP_findOverlap(BubblePopper_t bp, IntFragment_ID bid1, IntFragment_ID bid2)
   }
 
 #if AS_CGB_BUBBLE_VERBOSE
-  fprintf(stderr, "Overlapping "F_IID " ("F_IID " , "F_IID ") and "F_IID " ("F_IID " , "F_IID ") ... ",
+  fprintf(stderr, "Overlapping " F_IID " (" F_IID " , " F_IID ") and " F_IID " (" F_IID " , " F_IID ") ... ",
 	  bid1, bp->bubFrags[bid1], id1, bid2, bp->bubFrags[bid2], id2);
 #endif
 
@@ -377,7 +377,7 @@ AS_CGB_Bubble_pop_bubble(BubblePopper_t bp, IntFragment_ID start,
 #if AS_CGB_BUBBLE_VERBOSE
   fprintf(stderr, "Fragments:\n");
   for (r = 0; r < num_frags; r++) {
-    fprintf(stderr, "%d]\t\t"F_IID "\t("F_IID ")\t" F_S64 "\n", r, bp->bubFrags[r],
+    fprintf(stderr, "%d]\t\t" F_IID "\t(" F_IID ")\t" F_S64 "\n", r, bp->bubFrags[r],
 	    get_iid_fragment(BG_vertices(bp->bg), bp->bubFrags[r]),
 	    BG_V_getDistance(bp->bg, bp->bubFrags[r]));
   }

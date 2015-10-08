@@ -69,7 +69,7 @@ void PrintSEdgeT(FILE *fp, ScaffoldGraphT *graph, char *label, SEdgeT *edge, CDS
       flag = "$O";
   }
 
-  fprintf(fp,"\t  cidA:"F_CID" cidB:"F_CID" weight:%d %s ori:%c con:%d distance:%d stddev:%g %s ("F_CID","F_CID")\n",
+  fprintf(fp,"\t  cidA:" F_CID" cidB:" F_CID" weight:%d %s ori:%c con:%d distance:%d stddev:%g %s (" F_CID"," F_CID")\n",
           edge->idA, edge->idB,
           edge->edgesContributing,
           flag,
@@ -127,7 +127,7 @@ CIOffsetAndOrientation(ScaffoldGraphT *graph,
   CIInScaffoldOrient = GetNodeOrient(CI);
 
 #ifdef DEBUG_SEDGE
-  fprintf(stderr,"* CI "F_CID" is oriented %c in scaffold "F_CID" (FragOrient = %c)\n",
+  fprintf(stderr,"* CI " F_CID" is oriented %c in scaffold " F_CID" (FragOrient = %c)\n",
 	  cid, CIInScaffoldOrient.toLetter(), CI->scaffoldID, chunkOrient.toLetter());
 #endif
   /* Find the offset of the B end of the chunk within its chunkOfScaffolds.  The fragments
@@ -152,7 +152,7 @@ CIOffsetAndOrientation(ScaffoldGraphT *graph,
       ciFlipOffset->variance = CI->offsetAEnd.variance;
 
       if(ciOffset->variance < 0.0){
-        fprintf(stderr,"* A_B Negative offset variance %g for position of CI "F_CID" in scaffold "F_CID"==> set to 1\n",
+        fprintf(stderr,"* A_B Negative offset variance %g for position of CI " F_CID" in scaffold " F_CID"==> set to 1\n",
                 ciOffset->variance, CI->id, CIS->id);
         ciOffset->variance = 1.0;
       }
@@ -169,7 +169,7 @@ CIOffsetAndOrientation(ScaffoldGraphT *graph,
       ciFlipOffset->variance = (CIS->bpLength.variance - CI->offsetAEnd.variance);
 
       if(ciFlipOffset->variance < 0.0){
-        fprintf(stderr,"* A_B Negative Flip offset variance %g for position of CI "F_CID" in scaffold "F_CID"==> set to 1\n",
+        fprintf(stderr,"* A_B Negative Flip offset variance %g for position of CI " F_CID" in scaffold " F_CID"==> set to 1\n",
                 ciFlipOffset->variance, CI->id, CIS->id);
         ciFlipOffset->variance = 1.0;
       }
@@ -190,7 +190,7 @@ CIOffsetAndOrientation(ScaffoldGraphT *graph,
       ciFlipOffset->variance = (CIS->bpLength.variance - CI->offsetBEnd.variance);
 
       if(ciFlipOffset->variance < 0.0){
-        fprintf(stderr,"* B_A Negative Flip offset variance %g for position of CI "F_CID" in scaffold "F_CID"==> set to 1\n",
+        fprintf(stderr,"* B_A Negative Flip offset variance %g for position of CI " F_CID" in scaffold " F_CID"==> set to 1\n",
                 ciFlipOffset->variance, CI->id, CIS->id);
         ciFlipOffset->variance = 1.0;
       }
@@ -208,7 +208,7 @@ CIOffsetAndOrientation(ScaffoldGraphT *graph,
       ciFlipOffset->variance = CI->offsetBEnd.variance;
 
       if(ciOffset->variance < 0.0){
-        fprintf(stderr,"* B_A Negative offset variance %g for position of CI "F_CID" in scaffold "F_CID"==> set to 1\n",
+        fprintf(stderr,"* B_A Negative offset variance %g for position of CI " F_CID" in scaffold " F_CID"==> set to 1\n",
                 ciOffset->variance, CI->id, CIS->id);
         ciOffset->variance = 1.0;
       }

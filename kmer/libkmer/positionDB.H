@@ -124,12 +124,12 @@ public:
     uint64 c = CHECK(m);
     uint64 r = REBUILD(h, c);
     if (r != m) {
-      fprintf(stderr, "shift1 = "uint32FMT"\n", _shift1);
-      fprintf(stderr, "shift2 = "uint32FMT"\n", _shift2);
-      fprintf(stderr, "M = "uint64HEX"\n", m);
-      fprintf(stderr, "H = "uint64HEX"\n", h);
-      fprintf(stderr, "C = "uint64HEX"\n", c);
-      fprintf(stderr, "R = "uint64HEX"\n", r);
+      fprintf(stderr, "shift1 = " uint32FMT"\n", _shift1);
+      fprintf(stderr, "shift2 = " uint32FMT"\n", _shift2);
+      fprintf(stderr, "M = " uint64HEX"\n", m);
+      fprintf(stderr, "H = " uint64HEX"\n", h);
+      fprintf(stderr, "C = " uint64HEX"\n", c);
+      fprintf(stderr, "R = " uint64HEX"\n", r);
       return(false);
     }
     return(true);
@@ -168,11 +168,11 @@ private:
     //  (when the merSize and tblSize are about the same, the CHECK is
     //  small, and so we need to do lots of iterations).
 
-    //fprintf(stderr, "shf="uint64FMTW(2)" shg="uint64FMTW(2)" shh="uint64FMTW(2)" mer="uint64HEX"\n", shf, shg, shh, mer);
+    //fprintf(stderr, "shf=" uint64FMTW(2)" shg=" uint64FMTW(2)" shh=" uint64FMTW(2)" mer=" uint64HEX"\n", shf, shg, shh, mer);
 
     do {
       mer |= (((h >> shg) ^ (mer >> shg) ^ (mer >> shf)) & msk) << shh;
-      //fprintf(stderr, "shf="uint64FMTW(2)" shg="uint64FMTW(2)" shh="uint64FMTW(2)" mer="uint64HEX"\n", shf, shg, shh, mer);
+      //fprintf(stderr, "shf=" uint64FMTW(2)" shg=" uint64FMTW(2)" shh=" uint64FMTW(2)" mer=" uint64HEX"\n", shf, shg, shh, mer);
 
       shf += sha;
       shg += sha;

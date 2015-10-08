@@ -271,7 +271,7 @@ main(int argc, char **argv) {
   if (iidMax > gkpStore->gkStore_getNumFragments())
     iidMax = gkpStore->gkStore_getNumFragments();
 
-  fprintf(stderr, "Processing from IID "F_U32" to "F_U32" out of "F_U32" reads.\n",
+  fprintf(stderr, "Processing from IID " F_U32 " to " F_U32 " out of " F_U32 " reads.\n",
           iidMin,
           iidMax,
           gkpStore->gkStore_getNumFragments());
@@ -410,7 +410,7 @@ main(int argc, char **argv) {
         gkpStore->gkStore_delFragment(iid);
       }
 
-      fprintf(logFile, F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\tDEL%s\n",
+      fprintf(logFile, F_U32"\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U32 "\tDEL%s\n",
               iid,
               ibgn, iend,
               fbgn, fend,
@@ -425,7 +425,7 @@ main(int argc, char **argv) {
     if ((ibgn == fbgn) &&
         (iend == fend)) {
       //  Clear range did not change.
-      fprintf(logFile, F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\tNOC%s\n",
+      fprintf(logFile, F_U32"\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U32 "\tNOC%s\n",
               iid,
               ibgn, iend,
               fbgn, fend,
@@ -440,7 +440,7 @@ main(int argc, char **argv) {
       gkpStore->gkStore_setFragment(&fr);
     }
 
-    fprintf(logFile, F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\tMOD%s\n",
+    fprintf(logFile, F_U32"\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U32 "\tMOD%s\n",
             iid,
             ibgn, iend,
             fbgn, fend,

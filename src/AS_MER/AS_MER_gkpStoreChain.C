@@ -148,7 +148,7 @@ gkpStoreChain::getSequence(uint32 iid,
     h    = new char [hMax];
   }
 
-  sprintf(h, "iid:"F_U32"-"F_U32, _chainBgnFrg[iid], _chainBgnFrg[iid+1]-1);
+  sprintf(h, "iid:" F_U32 "-" F_U32, _chainBgnFrg[iid], _chainBgnFrg[iid+1]-1);
 
   hLen = strlen(h);
   sLen = 0;

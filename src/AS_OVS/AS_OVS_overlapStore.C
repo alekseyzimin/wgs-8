@@ -135,19 +135,19 @@ AS_OVS_openOverlapStorePrivate(const char *path, int useBackup, int saveSpace) {
 
   if ((ovs->ovs.ovsMagic != 1) &&
       (ovs->ovs.ovsMagic != AS_OVS_MAGIC_NUMBER)) {
-    fprintf(stderr, "ERROR:  directory '%s' is not an overlapStore; magic number 0x%016"F_X64P" incorrect.\n",
+    fprintf(stderr, "ERROR:  directory '%s' is not an overlapStore; magic number 0x%016" F_X64P " incorrect.\n",
             path, ovs->ovs.ovsMagic);
     exit(1);
   }
 
   if (ovs->ovs.ovsVersion != AS_OVS_CURRENT_VERSION) {
-    fprintf(stderr, "ERROR:  overlapStore '%s' is version "F_U64"; this code supports only version %d.\n",
+    fprintf(stderr, "ERROR:  overlapStore '%s' is version " F_U64 "; this code supports only version %d.\n",
             path, ovs->ovs.ovsVersion, AS_OVS_CURRENT_VERSION);
     exit(1);
   }
 
   if (ovs->ovs.maxReadLenInBits != AS_READ_MAX_NORMAL_LEN_BITS) {
-    fprintf(stderr, "ERROR:  overlapStore '%s' is for AS_READ_MAX_NORMAL_LEN_BITS="F_U64"; this code supports only %d bits.\n",
+    fprintf(stderr, "ERROR:  overlapStore '%s' is for AS_READ_MAX_NORMAL_LEN_BITS=" F_U64 "; this code supports only %d bits.\n",
             path, ovs->ovs.maxReadLenInBits, AS_READ_MAX_NORMAL_LEN_BITS);
     exit(1);
   }
@@ -555,14 +555,14 @@ AS_OVS_closeOverlapStore(OverlapStore *ovs) {
     fclose(ovsinfo);
 
     fprintf(stderr, "Closing the new store:\n");
-    fprintf(stderr, "ovs->ovs.ovsMagic           = 0x%016"F_X64P"\n", ovs->ovs.ovsMagic);
-    fprintf(stderr, "ovs->ovs.ovsVersion         = "F_U64"\n", ovs->ovs.ovsVersion);
-    fprintf(stderr, "ovs->ovs.numOverlapsPerFile = "F_U64"\n", ovs->ovs.numOverlapsPerFile);
-    fprintf(stderr, "ovs->ovs.smallestIID        = "F_U64"\n", ovs->ovs.smallestIID);
-    fprintf(stderr, "ovs->ovs.largestIID         = "F_U64"\n", ovs->ovs.largestIID);
-    fprintf(stderr, "ovs->ovs.numOverlapsTotal   = "F_U64"\n", ovs->ovs.numOverlapsTotal);
-    fprintf(stderr, "ovs->ovs.highestFileIndex   = "F_U64"\n", ovs->ovs.highestFileIndex);
-    fprintf(stderr, "ovs->ovs.maxReadLenInBits   = "F_U64"\n", ovs->ovs.maxReadLenInBits);
+    fprintf(stderr, "ovs->ovs.ovsMagic           = 0x%016" F_X64P "\n", ovs->ovs.ovsMagic);
+    fprintf(stderr, "ovs->ovs.ovsVersion         = " F_U64 "\n", ovs->ovs.ovsVersion);
+    fprintf(stderr, "ovs->ovs.numOverlapsPerFile = " F_U64 "\n", ovs->ovs.numOverlapsPerFile);
+    fprintf(stderr, "ovs->ovs.smallestIID        = " F_U64 "\n", ovs->ovs.smallestIID);
+    fprintf(stderr, "ovs->ovs.largestIID         = " F_U64 "\n", ovs->ovs.largestIID);
+    fprintf(stderr, "ovs->ovs.numOverlapsTotal   = " F_U64 "\n", ovs->ovs.numOverlapsTotal);
+    fprintf(stderr, "ovs->ovs.highestFileIndex   = " F_U64 "\n", ovs->ovs.highestFileIndex);
+    fprintf(stderr, "ovs->ovs.maxReadLenInBits   = " F_U64 "\n", ovs->ovs.maxReadLenInBits);
   }
 
 #if 0
@@ -698,8 +698,8 @@ AS_OVS_writeOverlapToStore(OverlapStore *ovs, OVSoverlap *overlap) {
 
   if (ovs->offset.a_iid > overlap->a_iid) {
     //  Woah!  The last overlap we saw is bigger than the one we have now?!
-    fprintf(stderr, "LAST:  a:"F_U32"\n", ovs->offset.a_iid);
-    fprintf(stderr, "THIS:  a:"F_U32" b:"F_U32"\n", overlap->a_iid, overlap->b_iid);
+    fprintf(stderr, "LAST:  a:" F_U32 "\n", ovs->offset.a_iid);
+    fprintf(stderr, "THIS:  a:" F_U32 " b:" F_U32 "\n", overlap->a_iid, overlap->b_iid);
   }
   assert(ovs->offset.a_iid <= overlap->a_iid);
 
@@ -787,8 +787,8 @@ AS_OVS_writeOverlapDumpToStore(OverlapStore *ovs, OVSoverlap *overlap, uint32 ma
 	for (uint64 i=0; i < maxOverlapsThisFile; i++ ) {
     		//  All overlaps will be sorted by a_iid
   		if (ovs->offset.a_iid > overlap[i].a_iid) {
-			fprintf(stderr, "LAST:  a:"F_U32"\n", ovs->offset.a_iid);
-			fprintf(stderr, "THIS:  a:"F_U32" b:"F_U32"\n", overlap[i].a_iid, overlap[i].b_iid);
+			fprintf(stderr, "LAST:  a:" F_U32 "\n", ovs->offset.a_iid);
+			fprintf(stderr, "THIS:  a:" F_U32 " b:" F_U32 "\n", overlap[i].a_iid, overlap[i].b_iid);
 		}
   		
 		assert(ovs->offset.a_iid <= overlap[i].a_iid);
@@ -912,7 +912,7 @@ AS_OVS_numOverlapsPerFrag(OverlapStore *ovs) {
   uint64 act = AS_UTL_safeRead(ovs->offsetFile, offsets, "AS_OVS_numOverlapsInRange", sizeof(OverlapStoreOffsetRecord), len);
 
   if (len != act) {
-    fprintf(stderr, "AS_OVS_numOverlapsPerFrag()-- short read on offsets!  Expected len="F_U64" read act="F_U64"\n", len, act);
+    fprintf(stderr, "AS_OVS_numOverlapsPerFrag()-- short read on offsets!  Expected len=" F_U64 " read act=" F_U64 "\n", len, act);
     exit(1);
   }
 

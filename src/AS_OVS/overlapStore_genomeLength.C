@@ -265,7 +265,7 @@ estimateGenomeLength(char    *ovlName,
     overlapLen = AS_OVS_readOverlapsFromStore(ovlStore, overlap, overlapMax, AS_OVS_TYPE_OVL);
   }
 
-  fprintf(stderr, "%0.2f%% of fragments marked repeat ("F_U32" out of "F_U32").\n\n",
+  fprintf(stderr, "%0.2f%% of fragments marked repeat (" F_U32 " out of " F_U32 ").\n\n",
           100.0 - 100.0 * (double)nonRepeatReads / (double)numFrag,
           numFrag - nonRepeatReads,
           numFrag);
@@ -273,7 +273,7 @@ estimateGenomeLength(char    *ovlName,
   double lambda = nonRepeatOverlaps / (double)(numFrag - readsWithOverlap + nonRepeatReads);
 
   fprintf(stderr, "Final Estimate\n");
-  fprintf(stderr, "  nFrags   "F_S32"\n", gkpStore->gkStore_getNumFragments());
+  fprintf(stderr, "  nFrags   " F_S32 "\n", gkpStore->gkStore_getNumFragments());
   fprintf(stderr, "  lambda   %f\n",      lambda * avgFragLength / windowSize);
   fprintf(stderr, "  length   %f\n",      windowSize * numFrag / lambda);
   fprintf(stderr, "\n");
@@ -286,7 +286,7 @@ estimateGenomeLength(char    *ovlName,
                                 windowSize);
 
   fprintf(stderr, "Final Estimate (adjusted)\n");
-  fprintf(stderr, "  nFrags   "F_S32"\n", gkpStore->gkStore_getNumFragments());
+  fprintf(stderr, "  nFrags   " F_S32 "\n", gkpStore->gkStore_getNumFragments());
   fprintf(stderr, "  lambda   %f\n",      lambda * avgFragLength / windowSize);
   fprintf(stderr, "  length   %f\n",      windowSize * numFrag / lambda);
 

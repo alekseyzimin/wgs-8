@@ -19,7 +19,7 @@ public:
     //  Allocate the mer table
     //
     uint32  tableSize = uint32ONE << (2*merSize);
-    fprintf(stderr, "allocate "uint32FMT" entries for a merTable.\n", tableSize);
+    fprintf(stderr, "allocate " uint32FMT" entries for a merTable.\n", tableSize);
 
     merToPositions = new uint32 [tableSize+1];
 
@@ -32,7 +32,7 @@ public:
 
     while (MS.nextMer(merSkip)) {
       uint64  m = (uint64)MS.theFMer();
-      //fprintf(stderr, "add mer "uint64FMT"\n", m);
+      //fprintf(stderr, "add mer " uint64FMT"\n", m);
       merToPositions[m]++;
     }
 
@@ -47,7 +47,7 @@ public:
 
     //  Allocate space
     //
-    fprintf(stderr, "allocate "uint32FMT" entries for positions\n", merToPositions[tableSize]);
+    fprintf(stderr, "allocate " uint32FMT" entries for positions\n", merToPositions[tableSize]);
     positions = new uint32 [merToPositions[tableSize]];
 
     //  Second pass, fill in positions

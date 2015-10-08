@@ -41,7 +41,7 @@ promoteToSingleton(UnitigVector &unitigs, bool enablePromoteToSingleton) {
       continue;
 
     if (enablePromoteToSingleton == false) {
-      writeLog("promoteToSingleton()--  Repeat fragment "F_U32" removed from assembly.\n", fi);
+      writeLog("promoteToSingleton()--  Repeat fragment " F_U32 " removed from assembly.\n", fi);
       FI->markAsIgnore(fi);
       continue;
     }

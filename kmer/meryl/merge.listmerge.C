@@ -54,7 +54,7 @@ public:
   kMer   *pop(uint32 &cnt, uint32* &pos) {
     kMer  *ret = 0L;
 
-    //fprintf(stderr, "POP tip="uint32FMT"\n", _tip);
+    //fprintf(stderr, "POP tip=" uint32FMT"\n", _tip);
 
     if (_tip < _mmmMax) {
       uint32 f = _tip;
@@ -72,7 +72,7 @@ public:
 
       _mmmLen--;
 
-      //fprintf(stderr, "POP f="uint32FMT" tip="uint32FMT" len="uint32FMT"\n", f, _tip, _mmmLen);
+      //fprintf(stderr, "POP f=" uint32FMT" tip=" uint32FMT" len=" uint32FMT"\n", f, _tip, _mmmLen);
     }
 
     return(ret);
@@ -112,7 +112,7 @@ public:
     uint32 pos  = _tip;
     bool   stop = false;
 
-    //fprintf(stderr, "read()- loading "uint32FMT"\n", num);
+    //fprintf(stderr, "read()- loading " uint32FMT"\n", num);
 
     assert(_mmmLen + num < _mmmMax);
 
@@ -191,11 +191,11 @@ public:
     //  Set the sentinal.  This forces us to load more mers.
     //
     if (loadAll == true) {
-      //fprintf(stderr, "read()-- stop on tip = "uint32FMT"\n", las);
+      //fprintf(stderr, "read()-- stop on tip = " uint32FMT"\n", las);
       _mmm[las]._stp = 1;
     }
 
-    //fprintf(stderr, "read()-- now up to "uint32FMT" mers ("uint32FMT" pos); loaded "uint32FMT" out of "uint32FMT" requested.\n", _mmmLen, _posLen, xxx, num);
+    //fprintf(stderr, "read()-- now up to " uint32FMT" mers (" uint32FMT" pos); loaded " uint32FMT" out of " uint32FMT" requested.\n", _mmmLen, _posLen, xxx, num);
   };
 
 private:
@@ -218,7 +218,7 @@ void
 multipleOperations(merylArgs *args) {
 
   if (args->mergeFilesLen < 2) {
-    fprintf(stderr, "ERROR - must have at least two databases (you gave "uint32FMT")!\n", args->mergeFilesLen);
+    fprintf(stderr, "ERROR - must have at least two databases (you gave " uint32FMT")!\n", args->mergeFilesLen);
     exit(1);
   }
   if (args->outputFile == 0L) {
@@ -281,7 +281,7 @@ multipleOperations(merylArgs *args) {
     loadAll = false;
   }
 
-  fprintf(stderr, "Initial load:  length="uint32FMT"\n", M->length());
+  fprintf(stderr, "Initial load:  length=" uint32FMT"\n", M->length());
 
   bool     moreStuff = true;
 

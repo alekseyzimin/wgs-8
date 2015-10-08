@@ -293,7 +293,7 @@ Initialize_Work_Area(Work_Area_t * WA, int id) {
 
   allocated += sizeof(OVSoverlap) * WA->overlapsMax;
 
-  fprintf(stderr, "Initialize_Work_Area:  MAX_ERRORS=%d  allocated "F_U64"MB\n", MAX_ERRORS, allocated >> 20);
+  fprintf(stderr, "Initialize_Work_Area:  MAX_ERRORS=%d  allocated " F_U64 "MB\n", MAX_ERRORS, allocated >> 20);
 }
 
 
@@ -371,7 +371,7 @@ OverlapDriver(void) {
             && First_Hash_Frag <= Last_Hash_Frag
             && Last_Hash_Frag  <= OldFragStore->gkStore_getNumFragments ());
 
-    fprintf(stderr, "Build_Hash_Index from "F_IID" to "F_IID"\n", First_Hash_Frag, Last_Hash_Frag);
+    fprintf(stderr, "Build_Hash_Index from " F_IID " to " F_IID "\n", First_Hash_Frag, Last_Hash_Frag);
 
     gkStream *hashStream = new gkStream (hash_frag_store, First_Hash_Frag, Last_Hash_Frag, GKFRAGMENT_QLT);
     Build_Hash_Index (hashStream, First_Hash_Frag, &myRead);
@@ -399,7 +399,7 @@ OverlapDriver(void) {
       if  (Frag_Segment_Hi > highest_old_frag)
         Frag_Segment_Hi = highest_old_frag;
 
-      fprintf(stderr, "Starting "F_U32" "F_U32"\n", Frag_Segment_Lo, Frag_Segment_Hi);
+      fprintf(stderr, "Starting " F_U32 " " F_U32 "\n", Frag_Segment_Lo, Frag_Segment_Hi);
 
       curr_frag_store = new gkStore(Frag_Store_Path, FALSE, FALSE);
       curr_frag_store->gkStore_load(Frag_Segment_Lo, Frag_Segment_Hi, GKFRAGMENT_QLT);
@@ -579,16 +579,16 @@ Initialize_Globals (void) {
   }
 
   fprintf(stderr, "\n");
-  fprintf(stderr, "HASH_TABLE_SIZE         "F_U32"\n",     HASH_TABLE_SIZE);
-  fprintf(stderr, "sizeof(Hash_Bucket_t)   "F_SIZE_T"\n",  sizeof(Hash_Bucket_t));
-  fprintf(stderr, "hash table size:        "F_SIZE_T" MB\n",  (HASH_TABLE_SIZE * sizeof(Hash_Bucket_t)) >> 20);
+  fprintf(stderr, "HASH_TABLE_SIZE         " F_U32 "\n",     HASH_TABLE_SIZE);
+  fprintf(stderr, "sizeof(Hash_Bucket_t)   " F_SIZE_T "\n",  sizeof(Hash_Bucket_t));
+  fprintf(stderr, "hash table size:        " F_SIZE_T " MB\n",  (HASH_TABLE_SIZE * sizeof(Hash_Bucket_t)) >> 20);
   fprintf(stderr, "\n");
 
   Hash_Table = (Hash_Bucket_t *) safe_malloc (HASH_TABLE_SIZE * sizeof (Hash_Bucket_t));
 
-  fprintf(stderr, "check  "F_SIZE_T" MB\n", (HASH_TABLE_SIZE * sizeof (Check_Vector_t) >> 20));
-  fprintf(stderr, "info   "F_SIZE_T" MB\n", (Max_Hash_Strings * sizeof (Hash_Frag_Info_t) >> 20));
-  fprintf(stderr, "start  "F_SIZE_T" MB\n", (Max_Hash_Strings * sizeof (int64) >> 20));
+  fprintf(stderr, "check  " F_SIZE_T " MB\n", (HASH_TABLE_SIZE * sizeof (Check_Vector_t) >> 20));
+  fprintf(stderr, "info   " F_SIZE_T " MB\n", (Max_Hash_Strings * sizeof (Hash_Frag_Info_t) >> 20));
+  fprintf(stderr, "start  " F_SIZE_T " MB\n", (Max_Hash_Strings * sizeof (int64) >> 20));
   fprintf(stderr, "\n");
 
   Hash_Check_Array = (Check_Vector_t *) safe_malloc (HASH_TABLE_SIZE * sizeof (Check_Vector_t));
@@ -729,7 +729,7 @@ main(int argc, char **argv) {
     fprintf(stderr, "* No kmer length supplied; -k needed!\n"), err++;
 
   if (Max_Hash_Strings > MAX_STRING_NUM)
-    fprintf(stderr, "Too many strings (--hashstrings), must be less than "F_U64"\n", MAX_STRING_NUM), err++;
+    fprintf(stderr, "Too many strings (--hashstrings), must be less than " F_U64 "\n", MAX_STRING_NUM), err++;
 
   if (Outfile_Name[0] == 0)
     fprintf (stderr, "ERROR:  No output file name specified\n"), err++;
@@ -821,24 +821,24 @@ main(int argc, char **argv) {
   Branch_Error_Value = Branch_Match_Value - 1.0;
 
   fprintf(stderr, "\n");
-  fprintf(stderr, "STRING_NUM_BITS       "F_U32"\n", STRING_NUM_BITS);
-  fprintf(stderr, "OFFSET_BITS           "F_U32"\n", OFFSET_BITS);
-  fprintf(stderr, "STRING_NUM_MASK       "F_U64"\n", STRING_NUM_MASK);
-  fprintf(stderr, "OFFSET_MASK           "F_U64"\n", OFFSET_MASK);
-  fprintf(stderr, "MAX_STRING_NUM        "F_U64"\n", MAX_STRING_NUM);
+  fprintf(stderr, "STRING_NUM_BITS       " F_U32 "\n", STRING_NUM_BITS);
+  fprintf(stderr, "OFFSET_BITS           " F_U32 "\n", OFFSET_BITS);
+  fprintf(stderr, "STRING_NUM_MASK       " F_U64 "\n", STRING_NUM_MASK);
+  fprintf(stderr, "OFFSET_MASK           " F_U64 "\n", OFFSET_MASK);
+  fprintf(stderr, "MAX_STRING_NUM        " F_U64 "\n", MAX_STRING_NUM);
   fprintf(stderr, "\n");
-  fprintf(stderr, "Hash_Mask_Bits        "F_U32"\n", Hash_Mask_Bits);
-  fprintf(stderr, "Max_Hash_Strings      "F_U32"\n", Max_Hash_Strings);
-  fprintf(stderr, "Max_Hash_Data_Len     "F_U64"\n", Max_Hash_Data_Len);
+  fprintf(stderr, "Hash_Mask_Bits        " F_U32 "\n", Hash_Mask_Bits);
+  fprintf(stderr, "Max_Hash_Strings      " F_U32 "\n", Max_Hash_Strings);
+  fprintf(stderr, "Max_Hash_Data_Len     " F_U64 "\n", Max_Hash_Data_Len);
   fprintf(stderr, "Max_Hash_Load         %f\n", Max_Hash_Load);
   fprintf(stderr, "Kmer Length           %d\n", (int)Kmer_Len);
   fprintf(stderr, "Min Overlap Length    %d\n", Min_Olap_Len);
   fprintf(stderr, "MAX_ERRORS            %d\n", MAX_ERRORS);
   fprintf(stderr, "ERRORS_FOR_FREE       %d\n", ERRORS_FOR_FREE);
   fprintf(stderr, "\n");
-  fprintf(stderr, "Num_PThreads          "F_U32"\n", Num_PThreads);
-  fprintf(stderr, "Max_Reads_Per_Batch   "F_U32"\n", Max_Reads_Per_Batch);
-  fprintf(stderr, "Max_Reads_Per_Thread  "F_U32"\n", Max_Reads_Per_Thread);
+  fprintf(stderr, "Num_PThreads          " F_U32 "\n", Num_PThreads);
+  fprintf(stderr, "Max_Reads_Per_Batch   " F_U32 "\n", Max_Reads_Per_Batch);
+  fprintf(stderr, "Max_Reads_Per_Thread  " F_U32 "\n", Max_Reads_Per_Thread);
 
   assert (8 * sizeof (uint64) > 2 * Kmer_Len);
 
@@ -850,14 +850,14 @@ main(int argc, char **argv) {
   OverlapDriver();
   /****************************************/
 
-  fprintf (stderr, " Kmer hits without olaps = "F_S64"\n", Kmer_Hits_Without_Olap_Ct);
-  fprintf (stderr, "    Kmer hits with olaps = "F_S64"\n", Kmer_Hits_With_Olap_Ct);
-  fprintf (stderr, "  Multiple overlaps/pair = "F_S64"\n", Multi_Overlap_Ct);
-  fprintf (stderr, " Total overlaps produced = "F_S64"\n", Total_Overlaps);
-  fprintf (stderr, "      Contained overlaps = "F_S64"\n", Contained_Overlap_Ct);
-  fprintf (stderr, "       Dovetail overlaps = "F_S64"\n", Dovetail_Overlap_Ct);
-  fprintf (stderr, "Rejected by short window = "F_S64"\n", Bad_Short_Window_Ct);
-  fprintf (stderr, " Rejected by long window = "F_S64"\n", Bad_Long_Window_Ct);
+  fprintf (stderr, " Kmer hits without olaps = " F_S64 "\n", Kmer_Hits_Without_Olap_Ct);
+  fprintf (stderr, "    Kmer hits with olaps = " F_S64 "\n", Kmer_Hits_With_Olap_Ct);
+  fprintf (stderr, "  Multiple overlaps/pair = " F_S64 "\n", Multi_Overlap_Ct);
+  fprintf (stderr, " Total overlaps produced = " F_S64 "\n", Total_Overlaps);
+  fprintf (stderr, "      Contained overlaps = " F_S64 "\n", Contained_Overlap_Ct);
+  fprintf (stderr, "       Dovetail overlaps = " F_S64 "\n", Dovetail_Overlap_Ct);
+  fprintf (stderr, "Rejected by short window = " F_S64 "\n", Bad_Short_Window_Ct);
+  fprintf (stderr, " Rejected by long window = " F_S64 "\n", Bad_Long_Window_Ct);
 
   delete OldFragStore;
 

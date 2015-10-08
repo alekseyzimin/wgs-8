@@ -418,11 +418,11 @@ instrumentSCF::analyze(vector<instrumentLIB> &libs) {
 
 void
 instrumentSCF::report(void) {
-  fprintf(stderr, "Instrumented scaffold "F_IID" with "F_SIZE_T" contigs and "F_SIZE_T" fragments.\n", iid, CTG.size(), FRG.size());
-  fprintf(stderr, "  mates:     "F_U32"\n",          numMateInternal + numMateExternal);
-  fprintf(stderr, "             "F_U32" internal\n", numMateInternal);
-  fprintf(stderr, "             "F_U32" external\n", numMateExternal);
-  fprintf(stderr, "             "F_U32" unmated\n",  numMateFree);
+  fprintf(stderr, "Instrumented scaffold " F_IID " with " F_SIZE_T " contigs and " F_SIZE_T " fragments.\n", iid, CTG.size(), FRG.size());
+  fprintf(stderr, "  mates:     " F_U32 "\n",          numMateInternal + numMateExternal);
+  fprintf(stderr, "             " F_U32 " internal\n", numMateInternal);
+  fprintf(stderr, "             " F_U32 " external\n", numMateExternal);
+  fprintf(stderr, "             " F_U32 " unmated\n",  numMateFree);
   fprintf(stderr, "\n");
   fprintf(stderr, "  ecstatic:  %.2f\n",       numEcstatic);
   fprintf(stderr, "             %.2f happy\n", numHappy);

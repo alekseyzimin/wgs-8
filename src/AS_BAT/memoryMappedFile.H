@@ -82,7 +82,7 @@ public:
       length_ = ln - offset_;
 
     if (offset_ + length_ > ln)
-      fprintf(stderr, "memoryMappedFile()-- Requested "F_SIZE_T" bytes at position "F_SIZE_T" in file '%s', but only "F_SIZE_T" bytes in file.\n",
+      fprintf(stderr, "memoryMappedFile()-- Requested " F_SIZE_T " bytes at position " F_SIZE_T " in file '%s', but only " F_SIZE_T " bytes in file.\n",
               length_, offset_, nm, ln), exit(1);
 
     co = offset_ + length_;

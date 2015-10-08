@@ -226,7 +226,7 @@ constructIIDdumpFromIDFile(char *gkpStoreName, char *iidToDump, char *uidFileNam
     while (!feof(F)) {
       AS_IID      iid = AS_IID_fromString(L, NULL);
       if (iid >= lastElem)
-        fprintf(stderr, "%s: IID "F_IID" too big, ignored.\n", progName, iid);
+        fprintf(stderr, "%s: IID " F_IID " too big, ignored.\n", progName, iid);
       else
         iidToDump[iid]++;
       fgets(L, 1024, F);
@@ -254,7 +254,7 @@ constructIIDdumpFromIDFile(char *gkpStoreName, char *iidToDump, char *uidFileNam
       if (iid == 0)
         fprintf(stderr, "%s: UID %s doesn't exist, ignored.\n", progName, L);
       else if (iid >= lastElem)
-        fprintf(stderr, "%s: UID %s is IID "F_IID", and that's too big, ignored.\n", progName, L, iid);
+        fprintf(stderr, "%s: UID %s is IID " F_IID ", and that's too big, ignored.\n", progName, L, iid);
       else
         iidToDump[iid]++;
 
@@ -347,7 +347,7 @@ constructIIDdump(char  *gkpStoreName,
   delete gkp;
 
   if (numNoLib)
-    fprintf(stderr, "WARNING: found "F_U32" reads with no library (usually caused by using frg format 1).\n", numNoLib);
+    fprintf(stderr, "WARNING: found " F_U32 " reads with no library (usually caused by using frg format 1).\n", numNoLib);
 
   //  Now pick N reads from our list of candidates, and let the dump
   //  routines fill in the missing mates
@@ -448,7 +448,7 @@ constructIIDdumpLongest(char  *gkpStoreName,
   delete gkp;
 
   if (numNoLib)
-    fprintf(stderr, "WARNING: found "F_U32" reads with no library (usually caused by using frg format 1).\n", numNoLib);
+    fprintf(stderr, "WARNING: found " F_U32 " reads with no library (usually caused by using frg format 1).\n", numNoLib);
 
   if (dumpLongestLength != 0) {
     for (multimap<uint32, AS_IID>::reverse_iterator iter = lenToIID.rbegin(); iter != lenToIID.rend(); iter++) {
@@ -456,7 +456,7 @@ constructIIDdumpLongest(char  *gkpStoreName,
        lenFrag += iter->first;
        
        if (lenFrag >= dumpLongestLength) {
-          fprintf(stderr, "Longest picked cutoff: "F_U32"\n", iter->first);
+          fprintf(stderr, "Longest picked cutoff: " F_U32 "\n", iter->first);
           break;
        } 
     }

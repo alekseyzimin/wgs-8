@@ -41,7 +41,7 @@ existDB::existDB(char const    *filename,
 
     if (_merSizeInBases != merSize) {
       fprintf(stderr, "existDB::existDB()-- Read state from '%s', but got different mer sizes\n", filename);
-      fprintf(stderr, "existDB::existDB()-- Got "uint32FMT", expected "uint32FMT"\n", _merSizeInBases, merSize);
+      fprintf(stderr, "existDB::existDB()-- Got " uint32FMT", expected " uint32FMT"\n", _merSizeInBases, merSize);
       fail = true;
     }
 

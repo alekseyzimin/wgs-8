@@ -22,19 +22,19 @@ testUnary(void) {
     setUnaryEncodedNumber(ptr, pos, &siz, rnd[i]);
     pos += siz;
     if (pos + 1000 >= spa) {
-      fprintf(stderr, "ERROR:  Ran out of space in testUnary at number "uint64FMT" out of "uint64FMT"\n", i, numNums);
+      fprintf(stderr, "ERROR:  Ran out of space in testUnary at number " uint64FMT" out of " uint64FMT"\n", i, numNums);
       exit(1);
     }
   }
 
-  //fprintf(stderr, "unaryEncodedNumbers used "uint64FMT"MB of storage out of "uint64FMT"MB.\n", pos >> 23, spa >> 23);
+  //fprintf(stderr, "unaryEncodedNumbers used " uint64FMT"MB of storage out of " uint64FMT"MB.\n", pos >> 23, spa >> 23);
 
   pos = uint64ZERO;
 
   for (i=0; i<numNums; i++) {
     val = getUnaryEncodedNumber(ptr, pos, &siz);
     if (val != rnd[i]) {
-      fprintf(stderr, "Number "uint64FMT" at bitpos "uint64FMT" failed.  Desired "uint64FMT" got "uint64FMT"\n", i, pos, rnd[i], val);
+      fprintf(stderr, "Number " uint64FMT" at bitpos " uint64FMT" failed.  Desired " uint64FMT" got " uint64FMT"\n", i, pos, rnd[i], val);
       exit(1);
     }
     pos += siz;
@@ -56,19 +56,19 @@ testGeneralizedUnary(void) {
     setGeneralizedUnaryEncodedNumber(ptr, pos, &siz, rnd[i]);
     pos += siz;
     if (pos + 1000 >= spa) {
-      fprintf(stderr, "ERROR:  Ran out of space in testGeneralizedUnary at number "uint64FMT" out of "uint64FMT"\n", i, numNums);
+      fprintf(stderr, "ERROR:  Ran out of space in testGeneralizedUnary at number " uint64FMT" out of " uint64FMT"\n", i, numNums);
       exit(1);
     }
   }
 
-  //fprintf(stderr, "generalizedUnaryEncodedNumbers used "uint64FMT"MB of storage out of "uint64FMT"MB.\n", pos >> 23, spa >> 23);
+  //fprintf(stderr, "generalizedUnaryEncodedNumbers used " uint64FMT"MB of storage out of " uint64FMT"MB.\n", pos >> 23, spa >> 23);
 
   pos = uint64ZERO;
 
   for (i=0; i<numNums; i++) {
     val = getGeneralizedUnaryEncodedNumber(ptr, pos, &siz);
     if (val != rnd[i]) {
-      fprintf(stderr, "Number "uint64FMT" at bitpos "uint64FMT" failed.  Desired "uint64FMT" got "uint64FMT"\n", i, pos, rnd[i], val);
+      fprintf(stderr, "Number " uint64FMT" at bitpos " uint64FMT" failed.  Desired " uint64FMT" got " uint64FMT"\n", i, pos, rnd[i], val);
       exit(1);
     }
     pos += siz;
@@ -91,19 +91,19 @@ testEliasGamma(void) {
     setEliasGammaEncodedNumber(ptr, pos, &siz, rnd[i]);
     pos += siz;
     if (pos + 1000 >= spa) {
-      fprintf(stderr, "ERROR:  Ran out of space in testGeneralizedUnary at number "uint64FMT" out of "uint64FMT"\n", i, numNums);
+      fprintf(stderr, "ERROR:  Ran out of space in testGeneralizedUnary at number " uint64FMT" out of " uint64FMT"\n", i, numNums);
       exit(1);
     }
   }
 
-  //fprintf(stderr, "eliasGammaEncodedNumbers used "uint64FMT"MB of storage out of "uint64FMT"MB.\n", pos >> 23, spa >> 23);
+  //fprintf(stderr, "eliasGammaEncodedNumbers used " uint64FMT"MB of storage out of " uint64FMT"MB.\n", pos >> 23, spa >> 23);
 
   pos = uint64ZERO;
 
   for (i=0; i<numNums; i++) {
     val = getEliasGammaEncodedNumber(ptr, pos, &siz);
     if (val != rnd[i]) {
-      fprintf(stderr, "Number "uint64FMT" at bitpos "uint64FMT" failed.  Desired "uint64FMT" got "uint64FMT"\n", i, pos, rnd[i], val);
+      fprintf(stderr, "Number " uint64FMT" at bitpos " uint64FMT" failed.  Desired " uint64FMT" got " uint64FMT"\n", i, pos, rnd[i], val);
       exit(1);
     }
     pos += siz;
@@ -125,19 +125,19 @@ testEliasDelta(void) {
     setEliasDeltaEncodedNumber(ptr, pos, &siz, rnd[i]);
     pos += siz;
     if (pos + 1000 >= spa) {
-      fprintf(stderr, "ERROR:  Ran out of space in testGeneralizedUnary at number "uint64FMT" out of "uint64FMT"\n", i, numNums);
+      fprintf(stderr, "ERROR:  Ran out of space in testGeneralizedUnary at number " uint64FMT" out of " uint64FMT"\n", i, numNums);
       exit(1);
     }
   }
 
-  //fprintf(stderr, "eliasDeltaEncodedNumbers used "uint64FMT"MB of storage out of "uint64FMT"MB.\n", pos >> 23, spa >> 23);
+  //fprintf(stderr, "eliasDeltaEncodedNumbers used " uint64FMT"MB of storage out of " uint64FMT"MB.\n", pos >> 23, spa >> 23);
 
   pos = uint64ZERO;
 
   for (i=0; i<numNums; i++) {
     val = getEliasDeltaEncodedNumber(ptr, pos, &siz);
     if (val != rnd[i]) {
-      fprintf(stderr, "Number "uint64FMT" at bitpos "uint64FMT" failed.  Desired "uint64FMT" got "uint64FMT"\n", i, pos, rnd[i], val);
+      fprintf(stderr, "Number " uint64FMT" at bitpos " uint64FMT" failed.  Desired " uint64FMT" got " uint64FMT"\n", i, pos, rnd[i], val);
       exit(1);
     }
     pos += siz;

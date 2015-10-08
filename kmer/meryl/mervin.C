@@ -234,7 +234,7 @@ public:
         mer >>= 2;
       }
 
-      fprintf(F, ">"uint32FMT"\n%s\n", sorterCnt[ii], km);
+      fprintf(F, ">" uint32FMT"\n%s\n", sorterCnt[ii], km);
 
       if (W)
         W->addMer(prefix,        pilePreBits,
@@ -399,7 +399,7 @@ public:
     if (pilesToSortLen == 0)
       return(NULL);
 
-    //fprintf(stderr, "return pile "uint32FMT"\n", pilesToSort[pilesToSortLen-1]->pilePrefix);
+    //fprintf(stderr, "return pile " uint32FMT"\n", pilesToSort[pilesToSortLen-1]->pilePrefix);
     return(pilesToSort[--pilesToSortLen]);
   };
 
@@ -409,7 +409,7 @@ public:
     for (uint32 pp=0; pp < (1 << pilePreBits); pp++) {
       if ((piles[pp] != NULL) &&
           (piles[pp]->pileLen > 0)) {
-        //fprintf(stderr, "Add pile "uint32FMT" to list.\n", pp);
+        //fprintf(stderr, "Add pile " uint32FMT" to list.\n", pp);
         pilesToSort[pilesToSortLen++] = piles[pp];
       } else {
         delete piles[pp];
@@ -418,7 +418,7 @@ public:
       piles[pp] = NULL;
     }
 
-    fprintf(stderr, "allDataLoaded()-- pilesToSortLen = "uint32FMT"\n", pilesToSortLen);
+    fprintf(stderr, "allDataLoaded()-- pilesToSortLen = " uint32FMT"\n", pilesToSortLen);
 
     return(getFullPile());
   };
@@ -602,7 +602,7 @@ sifterThread(void *global) {
  anotherBase:
   //bytesLoaded++;
   //if ((bytesLoaded % (16 * 1048576)) == 0)
-  //  fprintf(stderr, "sifterThread()-- loaded "uint64FMT" MB.\n", bytesLoaded >> 20);
+  //  fprintf(stderr, "sifterThread()-- loaded " uint64FMT" MB.\n", bytesLoaded >> 20);
 
 #if 0
   //  Uses the readBuffer in char-by-char mode
@@ -649,7 +649,7 @@ sifterThread(void *global) {
   if (len > 16 * 1048576)
     len = 16 * 1048576;
 
-  //fprintf(stderr, "Add "uint64FMT" bases.\n", len);
+  //fprintf(stderr, "Add " uint64FMT" bases.\n", len);
 
   glob->addBases(glob->inputBufferPos, len);
   bytes.tick(len);
@@ -700,12 +700,12 @@ sorterThread(void *global, void *thread, void *thing) {
     sortPre    = (pile->pilePrefix << pileMaskShift) | (pile->pileDat[pileBgn] >> pileDataShift);
     pileToSort = pile->pileDat[pileBgn] & pileToSortPreMask;
 
-    //fprintf(stderr, "0x"uint64HEX"\n", pileToSortPreMask);
-    //fprintf(stderr, "0x"uint64HEX"\n", pileToSortMask);
+    //fprintf(stderr, "0x" uint64HEX"\n", pileToSortPreMask);
+    //fprintf(stderr, "0x" uint64HEX"\n", pileToSortMask);
 
     while ((pileEnd < pile->pileLen) &&
            ((pile->pileDat[pileEnd] & pileToSortPreMask) == pileToSort)) {
-      //fprintf(stderr, "0x"uint64HEX" -> 0x"uint64HEX" "uint64FMT"\n",
+      //fprintf(stderr, "0x" uint64HEX" -> 0x" uint64HEX" " uint64FMT"\n",
       //        pile->pileDat[pileEnd],
       //        pile->pileDat[pileEnd] & pileToSortMask,
       //        pile->pileDat[pileEnd] & pileToSortMask);

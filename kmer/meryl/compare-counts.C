@@ -97,7 +97,7 @@ heatMap() {
 
   for (uint32 i=0; i<MAXA; i++)
     for (uint32 j=0; j<MAXB; j++)
-      fprintf(stdout, uint32FMT"\t"uint32FMT"\t%f\n", i, j, log(heatraw[i][j]));
+      fprintf(stdout, uint32FMT"\t" uint32FMT"\t%f\n", i, j, log(heatraw[i][j]));
 }
 #endif
 
@@ -222,7 +222,7 @@ main(int argc, char **argv) {
   fclose(outputGP);
 
   for (uint32 i=0; i<HMAX; i++)
-    fprintf(outputDAT, uint32FMT"\t"uint32FMT"\t"uint32FMT"\n", i, Htrue[i], Hnoise[i]);
+    fprintf(outputDAT, uint32FMT"\t" uint32FMT"\t" uint32FMT"\n", i, Htrue[i], Hnoise[i]);
 
   fclose(outputDAT);
 

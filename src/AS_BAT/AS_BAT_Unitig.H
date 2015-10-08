@@ -194,10 +194,10 @@ public:
     if (((i    >= _totalUnitigs)) ||
         ((idx  >= _numBlocks)) ||
         (((pos >= _blockNext) && (idx >= _numBlocks - 1)))) {
-      fprintf(stderr, "UnitigVector::operator[]()--  i="F_U32" with totalUnitigs="F_U64"\n", i, _totalUnitigs);
-      fprintf(stderr, "UnitigVector::operator[]()--  blockSize="F_U64"\n", _blockSize);
-      fprintf(stderr, "UnitigVector::operator[]()--  idx="F_U32" numBlocks="F_U64"\n", idx, _numBlocks);
-      fprintf(stderr, "UnitigVector::operator[]()--  pos="F_U32" blockNext="F_U64"\n", pos, _blockNext);
+      fprintf(stderr, "UnitigVector::operator[]()--  i=" F_U32 " with totalUnitigs=" F_U64 "\n", i, _totalUnitigs);
+      fprintf(stderr, "UnitigVector::operator[]()--  blockSize=" F_U64 "\n", _blockSize);
+      fprintf(stderr, "UnitigVector::operator[]()--  idx=" F_U32 " numBlocks=" F_U64 "\n", idx, _numBlocks);
+      fprintf(stderr, "UnitigVector::operator[]()--  pos=" F_U32 " blockNext=" F_U64 "\n", pos, _blockNext);
     }
     assert(i    < _totalUnitigs);
     assert((idx < _numBlocks));

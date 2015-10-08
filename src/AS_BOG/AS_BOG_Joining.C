@@ -211,7 +211,7 @@ UnitigGraph::joinUnitigs(bool enableJoining) {
       continue;
 
     if (logFileFlagSet(LOG_INTERSECTION_JOINING))
-      fprintf(logFile, "Join from unitig "F_U32" (length %d idx %d/"F_SIZE_T") to unitig "F_U32" (length %d idx %d/"F_SIZE_T") for a total length of "F_U32"\n",
+      fprintf(logFile, "Join from unitig " F_U32 " (length %d idx %d/" F_SIZE_T ") to unitig " F_U32 " (length %d idx %d/" F_SIZE_T ") for a total length of " F_U32 "\n",
               frUnitigID, join->frLen, frIdx, frUnitig->ufpath.size(),
               toUnitigID, join->toLen, toIdx, toUnitig->ufpath.size(),
               join->combinedLength);

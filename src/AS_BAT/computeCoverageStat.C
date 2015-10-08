@@ -115,7 +115,7 @@ computeRho(MultiAlignT *ma) {
     fprintf(stderr, "unitig %d doesn't begin at zero.  Layout:\n", ma->maID);
     for (uint32 i=0; i<GetNumIntMultiPoss(ma->f_list); i++) {
       IntMultiPos  *frg = GetIntMultiPos(ma->f_list, i);
-      fprintf(stderr, "  %10"F_IIDP" %5"F_U32P" %5"F_U32P"\n",
+      fprintf(stderr, "  %10" F_IIDP" %5" F_U32P" %5" F_U32P"\n",
               frg->ident, frg->position.bgn, frg->position.end);
     }
   }
@@ -204,8 +204,8 @@ getGlobalArrivalRate(MultiAlignStore *tigStore,
 
   fprintf(outSTA, "BASED ON ALL UNITIGS:\n");
   fprintf(outSTA, "sumRho:                           %.0f\n", sumRho);
-  fprintf(outSTA, "totalRandomFrags:                 "F_U64"\n", totalRandom);
-  fprintf(outSTA, "Supplied genome size              "F_U64"\n", genomeSize);
+  fprintf(outSTA, "totalRandomFrags:                 " F_U64 "\n", totalRandom);
+  fprintf(outSTA, "Supplied genome size              " F_U64 "\n", genomeSize);
   fprintf(outSTA, "Computed genome size:             %.2f\n", totalRandom / globalRate);
   fprintf(outSTA, "Calculated Global Arrival rate:   %f\n", globalRate);
 

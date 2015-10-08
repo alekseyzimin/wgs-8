@@ -102,7 +102,7 @@ InsertScaffoldContentsIntoScaffold(ScaffoldGraphT           *sgraph,
   CIScaffoldTIterator CIs;
   ChunkInstanceT     *CI;
 
-  fprintf(stderr,"InsertScaffoldContentsIntoScaffold()-- Insert scaffold "F_CID" (%.0fbp) into scaffold "F_CID" (%.0fbp) at offset %.3f +/- %.3f orient %c\n",
+  fprintf(stderr,"InsertScaffoldContentsIntoScaffold()-- Insert scaffold " F_CID" (%.0fbp) into scaffold " F_CID" (%.0fbp) at offset %.3f +/- %.3f orient %c\n",
           oldScaffoldID, oldScaffold->bpLength.mean,
           newScaffoldID, newScaffold->bpLength.mean,
           offset->mean, sqrt(offset->variance),
@@ -156,7 +156,7 @@ InsertScaffoldContentsIntoScaffold(ScaffoldGraphT           *sgraph,
 
 #if 1
     if (offsetAEnd.mean < offsetBEnd.mean)
-      fprintf(stderr,"InsertScaffoldContentsIntoScaffold()-- Insert CI %8"F_CIDP" %6.0fbp fwd %9.0f +- %-11.0f %9.0f +- %-11.0f was %9.0f +- %-11.0f %9.0f +- %-11.0f\n",
+      fprintf(stderr,"InsertScaffoldContentsIntoScaffold()-- Insert CI %8" F_CIDP" %6.0fbp fwd %9.0f +- %-11.0f %9.0f +- %-11.0f was %9.0f +- %-11.0f %9.0f +- %-11.0f\n",
               CI->id,
               CI->bpLength.mean,
               offsetAEnd.mean, offsetAEnd.variance,
@@ -164,7 +164,7 @@ InsertScaffoldContentsIntoScaffold(ScaffoldGraphT           *sgraph,
               CI->offsetAEnd.mean, CI->offsetAEnd.variance,
               CI->offsetBEnd.mean, CI->offsetBEnd.variance);
     else
-      fprintf(stderr,"InsertScaffoldContentsIntoScaffold()-- Insert CI %8"F_CIDP" %6.0fbp rev %9.0f +- %-11.0f %9.0f +- %-11.0f was %9.0f +- %-11.0f %9.0f +- %-11.0f\n",
+      fprintf(stderr,"InsertScaffoldContentsIntoScaffold()-- Insert CI %8" F_CIDP" %6.0fbp rev %9.0f +- %-11.0f %9.0f +- %-11.0f was %9.0f +- %-11.0f %9.0f +- %-11.0f\n",
               CI->id,
               CI->bpLength.mean,
               offsetBEnd.mean, offsetBEnd.variance,
@@ -296,7 +296,7 @@ MarkUnderlyingRawCIEdgeTrusted(ScaffoldGraphT * sgraph, EdgeCGW_T * raw) {
   SetGraphEdgeStatus(sgraph->ContigGraph, topCIEdge, TRUSTED_EDGE_STATUS);
 
   if (GlobalData->debugLevel > 0)
-    fprintf(stderr,"* Marked contig edge "F_CID" ("F_CID","F_CID")%c as trusted(inside scaf "F_CID")\n",
+    fprintf(stderr,"* Marked contig edge " F_CID" (" F_CID"," F_CID")%c as trusted(inside scaf " F_CID")\n",
             topCIEdge->topLevelEdge, topCIEdge->idA, topCIEdge->idB, topCIEdge->orient.toLetter(),
             contigA->scaffoldID);
 }

@@ -818,7 +818,7 @@ LateralExchangeBead(beadIdx lid, beadIdx rid) {
       while (ibead->next.isValid()) {
         ibead = GetBead(beadStore,ibead->next);
 
-        fprintf(stderr, "bead %c boffset="F_U64" prev="F_U64" next="F_U64" up="F_U64" down="F_U64" fragindex=%d colulmnindex=%d\n",
+        fprintf(stderr, "bead %c boffset=" F_U64 " prev=" F_U64 " next=" F_U64 " up=" F_U64 " down=" F_U64 " fragindex=%d colulmnindex=%d\n",
                 *Getchar(sequenceStore,ibead->soffset),
                 (uint64)ibead->boffset.get(),
                 (uint64)ibead->prev.get(),
@@ -835,7 +835,7 @@ LateralExchangeBead(beadIdx lid, beadIdx rid) {
           break;
       }
 
-      fprintf(stderr, "LateralExchangeBead can't exchange bead "F_U64" with "F_U64"; bases in between!\n",
+      fprintf(stderr, "LateralExchangeBead can't exchange bead " F_U64 " with " F_U64 "; bases in between!\n",
               (uint64)lid.get(),
               (uint64)rid.get());
       assert(failure == 0);
@@ -996,7 +996,7 @@ CreateColumn(beadIdx bid) {
   IncBaseCount(&column.base_count,*Getchar(sequenceStore,head->soffset));
   AppendVA_Column(columnStore, &column);
 #ifdef DEBUG_ABACUS_ALIGN
-  fprintf(stderr, "CreateColumn()-- Added consensus call bead="F_U32" to column="F_U32" for existing bead="F_U32"\n",
+  fprintf(stderr, "CreateColumn()-- Added consensus call bead=" F_U32 " to column=" F_U32 " for existing bead=" F_U32 "\n",
           call.boffset.get(), column.lid, head->boffset.get());
 #endif
   return GetColumn(columnStore, column.lid);
@@ -1034,7 +1034,7 @@ ColumnAppend(int32 cid, beadIdx bid) {
   assert(column != NULL);
 
 #ifdef DEBUG_ABACUS_ALIGN
-  fprintf(stderr, "ColumnAppend()-- adding column "F_U32" for bid="F_U32" after column cid=%d\n",
+  fprintf(stderr, "ColumnAppend()-- adding column " F_U32 " for bid=" F_U32 " after column cid=%d\n",
           column->lid, bid.get(), cid);
 #endif
 
@@ -1223,7 +1223,7 @@ SetUngappedFragmentPositions(FragType type,int32 n_frags, MultiAlignT *uma) {
     //  Adjust the ungapped position if we fall within a gap
     //
     if (epos.position.bgn == epos.position.end) {
-      fprintf(stderr,"SetUngappedFragmentPositions()-- Encountered bgn==end=="F_S32" in ungapped coords within SetUngappedFragmentPositions for "F_CID "(gapped coords "F_S32","F_S32")\n",
+      fprintf(stderr,"SetUngappedFragmentPositions()-- Encountered bgn==end==" F_S32 " in ungapped coords within SetUngappedFragmentPositions for " F_CID "(gapped coords " F_S32 "," F_S32 ")\n",
               epos.position.bgn,frag->ident,frag->position.bgn,frag->position.end);
       assert(frag->position.bgn != frag->position.end);
 
@@ -1238,7 +1238,7 @@ SetUngappedFragmentPositions(FragType type,int32 n_frags, MultiAlignT *uma) {
         else
           epos.position.bgn++;
       }
-      fprintf(stderr,"SetUngappedFragmentPositions()--   Reset to "F_S32","F_S32"\n",
+      fprintf(stderr,"SetUngappedFragmentPositions()--   Reset to " F_S32 "," F_S32 "\n",
               epos.position.bgn,
               epos.position.end);
     }

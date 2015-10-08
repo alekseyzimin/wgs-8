@@ -144,7 +144,7 @@ main(int argc, char **argv) {
       gkpstore->gkStore_getFragment(iid, &fr, GKFRAGMENT_SEQ);
       gkpstore->gkStore_getFragment(mid, &mr, GKFRAGMENT_SEQ);
 
-      fprintf(stdout, ">"F_U32","F_U32" "F_S64","F_S64"\n%s\n",
+      fprintf(stdout, ">" F_U32 "," F_U32 " " F_S64 "," F_S64 "\n%s\n",
               iid,
               mid,
               (int64)ovl.dat.ovl.a_hang,
@@ -182,8 +182,8 @@ main(int argc, char **argv) {
   delete [] frag;
   delete    gkpstore;
 
-  fprintf(stderr, "Total overlaps   "F_U64"\n", totalOverlaps);
-  fprintf(stderr, "Mates removed    "F_U64"\n", matesRemoved);
+  fprintf(stderr, "Total overlaps   " F_U64 "\n", totalOverlaps);
+  fprintf(stderr, "Mates removed    " F_U64 "\n", matesRemoved);
 
   exit(0);
 }

@@ -47,16 +47,16 @@ outputJob(FILE   *BAT,
           uint32 &batchName,
           uint32 &jobName) {
 
-  fprintf(BAT, "%03"F_U32P"\n", batchName);
-  fprintf(JOB, "%06"F_U32P"\n", jobName);
+  fprintf(BAT, "%03" F_U32P"\n", batchName);
+  fprintf(JOB, "%06" F_U32P"\n", jobName);
 
   if (maxNumFrags == 0) {
-    fprintf(OPT, "-h "F_U32"-"F_U32" -r "F_U32"-"F_U32"\n",
+    fprintf(OPT, "-h " F_U32 "-" F_U32 " -r " F_U32 "-" F_U32 "\n",
             hashBeg, hashEnd, refBeg, refEnd);
     fprintf(stderr, "HASH %10d-%10d  REFR %10d-%10d JOB %d\n",
             hashBeg, hashEnd, refBeg, refEnd, jobName);
   } else {
-    fprintf(OPT, "-h "F_U32"-"F_U32" -r "F_U32"-"F_U32" --hashstrings "F_U32" --hashdatalen "F_U32"\n",
+    fprintf(OPT, "-h " F_U32 "-" F_U32 " -r " F_U32 "-" F_U32 " --hashstrings " F_U32 " --hashdatalen " F_U32 "\n",
             hashBeg, hashEnd, refBeg, refEnd, maxNumFrags, maxLength);
     fprintf(stderr, "HASH %10d-%10d  REFR %10d-%10d  STRINGS %10d  BASES %10d JOB %d\n",
             hashBeg, hashEnd, refBeg, refEnd, maxNumFrags, maxLength, jobName);
@@ -106,7 +106,7 @@ loadFragmentLengths(gkStore *gkp,
     doRef[i]  = (libToRef.count(i)  == 0) ? false : true;
   }
 
-  fprintf(stderr, "Loading lengths of "F_U32" fragments ("F_SIZE_T"mb)\n",
+  fprintf(stderr, "Loading lengths of " F_U32 " fragments (" F_SIZE_T "mb)\n",
           numFrags, (numFrags * sizeof(uint32)) >> 20);
 
   memset(fragLen, 0, sizeof(uint32) * (numFrags + 1));
@@ -137,7 +137,7 @@ loadFragmentLengths(gkStore *gkp,
     }
 
     if ((ii % 1048576) == 0)
-      fprintf(stderr, "Loading lengths at "F_U32" out of "F_U32".  H: "F_IID","F_IID"  R: "F_IID","F_IID"\n",
+      fprintf(stderr, "Loading lengths at " F_U32 " out of " F_U32 ".  H: " F_IID "," F_IID "  R: " F_IID "," F_IID "\n",
               ii, numFrags, hashMin, hashMax, refMin, refMax);
   }
 
@@ -184,7 +184,7 @@ partitionFrags(gkStore      *gkp,
   if (refMax > numFrags)
     refMax = numFrags;
 
-  fprintf(stderr, "Partitioning for hash: "F_IID"-"F_IID" ref: "F_IID","F_IID"\n",
+  fprintf(stderr, "Partitioning for hash: " F_IID "-" F_IID " ref: " F_IID "," F_IID "\n",
           hashMin, hashMax, refMin, refMax);
 
   hashBeg = hashMin;
@@ -262,7 +262,7 @@ partitionLength(gkStore      *gkp,
   if (refMax > numFrags)
     refMax = numFrags;
 
-  fprintf(stderr, "Partitioning for hash: "F_IID"-"F_IID" ref: "F_IID","F_IID"\n",
+  fprintf(stderr, "Partitioning for hash: " F_IID "-" F_IID " ref: " F_IID "," F_IID "\n",
           hashMin, hashMax, refMin, refMax);
 
   gkFragment  fr;
@@ -389,8 +389,8 @@ main(int argc, char **argv) {
   if ((ovlRefBlockLength > 0) && (ovlRefBlockSize > 0))
     fprintf(stderr, "ERROR:  At most one of -rl and -rs can be non-zero.\n"), exit(1);
 
-  fprintf(stderr, "HASH: "F_U64" reads or "F_U64" length.\n", ovlHashBlockSize, ovlHashBlockLength);
-  fprintf(stderr, "REF:  "F_U64" reads or "F_U64" length.\n", ovlRefBlockSize,  ovlRefBlockLength);
+  fprintf(stderr, "HASH: " F_U64 " reads or " F_U64 " length.\n", ovlHashBlockSize, ovlHashBlockLength);
+  fprintf(stderr, "REF:  " F_U64 " reads or " F_U64 " length.\n", ovlRefBlockSize,  ovlRefBlockLength);
 
   gkStore   *gkp         = new gkStore(gkpStoreName, FALSE, FALSE, true);
   uint32     numLibs     = gkp->gkStore_getNumLibraries();
@@ -398,12 +398,12 @@ main(int argc, char **argv) {
 
   for (set<uint32>::iterator it=libToHash.begin(); it != libToHash.end(); it++)
     if (numLibs < *it)
-      fprintf(stderr, "ERROR: -H "F_U32" is invalid; only "F_U32" libraries in '%s'\n",
+      fprintf(stderr, "ERROR: -H " F_U32 " is invalid; only " F_U32 " libraries in '%s'\n",
               *it, numLibs, gkpStoreName), invalidLibs++;
 
   for (set<uint32>::iterator it=libToRef.begin(); it != libToRef.end(); it++)
     if (numLibs < *it)
-      fprintf(stderr, "ERROR: -R "F_U32" is invalid; only "F_U32" libraries in '%s'\n",
+      fprintf(stderr, "ERROR: -R " F_U32 " is invalid; only " F_U32 " libraries in '%s'\n",
               *it, numLibs, gkpStoreName), invalidLibs++;
 
   if ((libToHash.size() > 0) && (libToRef.size() > 0)) {
@@ -411,9 +411,9 @@ main(int argc, char **argv) {
       if ((libToHash.find(lib) == libToHash.end()) &&
           (libToRef.find(lib)  == libToRef.end())) {
         if (checkAllLibUsed == true)
-          fprintf(stderr, "ERROR: library "F_U32" is not mentioned in either -H or -R.\n", lib), invalidLibs++;
+          fprintf(stderr, "ERROR: library " F_U32 " is not mentioned in either -H or -R.\n", lib), invalidLibs++;
         else
-          fprintf(stderr, "Warning: library "F_U32" is not mentioned in either -H or -R.\n", lib);
+          fprintf(stderr, "Warning: library " F_U32 " is not mentioned in either -H or -R.\n", lib);
        }
     }
   }

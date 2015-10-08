@@ -139,7 +139,7 @@ loadFragmentData(char         *gkpStoreName,
     assert(finf[fid].mateIID     == frg.gkFragment_getMateIID());
 
     if ((fid % 10000000) == 0)
-      fprintf(stderr, "LOADING FRAGMENTS...at IID "F_U32".\n",
+      fprintf(stderr, "LOADING FRAGMENTS...at IID " F_U32 ".\n",
               fid);
   }
 
@@ -321,7 +321,7 @@ main(int argc, char **argv) {
   if (minFragIID > maxFragIID)
     fprintf(stderr, "ERROR: nothing to test.\n"), exit(1);
 
-  fprintf(stderr, "Testing reads from "F_U32" to "F_U32".\n",
+  fprintf(stderr, "Testing reads from " F_U32 " to " F_U32 ".\n",
           minFragIID, maxFragIID);
 
   AS_OVS_setRangeOverlapStore(ovlStore, minFragIID, maxFragIID);
@@ -380,7 +380,7 @@ main(int argc, char **argv) {
     nTested++;
 
     if ((nTested % 100000) == 0)
-      fprintf(stderr, "  nTested "F_U64" nPlausiblePE "F_U64" nShortMP "F_U64"\n",
+      fprintf(stderr, "  nTested " F_U64 " nPlausiblePE " F_U64 " nShortMP " F_U64 "\n",
               nTested, nPlausiblePE, nShortMP);
 
     //  Check if we're overlapping - if the other read in an overlap is the mate
@@ -473,13 +473,13 @@ main(int argc, char **argv) {
 
         if (plausiblyPE == false) {
           nShortMP++;
-          fprintf(logFile, "A %8u-%8u %c %4"F_S64P"-%4"F_S64P"  B %8u-%8u %c %4"F_S64P"-%4"F_S64P" -- size %4d %c -- SHORT_MP\n",
+          fprintf(logFile, "A %8u-%8u %c %4" F_S64P "-%4" F_S64P "  B %8u-%8u %c %4" F_S64P "-%4" F_S64P " -- size %4d %c -- SHORT_MP\n",
                   avl[ai].a_iid, avl[ai].b_iid, avl[ai].dat.ovl.flipped ? 'I' : 'N', (int64)avl[ai].dat.ovl.a_hang, (int64)avl[ai].dat.ovl.b_hang,
                   bvl[bi].a_iid, bvl[bi].b_iid, bvl[bi].dat.ovl.flipped ? 'I' : 'N', (int64)bvl[bi].dat.ovl.a_hang, (int64)bvl[bi].dat.ovl.b_hang,
                   fragSize + adiff + bdiff, overlappingPE ? 'O' : '-');
 
         } else {
-          fprintf(logFile, "A %8u-%8u %c %4"F_S64P"-%4"F_S64P"  B %8u-%8u %c %4"F_S64P"-%4"F_S64P" -- size %4d %c -- PLAUSIBLY_PE\n",
+          fprintf(logFile, "A %8u-%8u %c %4" F_S64P "-%4" F_S64P "  B %8u-%8u %c %4" F_S64P "-%4" F_S64P " -- size %4d %c -- PLAUSIBLY_PE\n",
                   avl[ai].a_iid, avl[ai].b_iid, avl[ai].dat.ovl.flipped ? 'I' : 'N', (int64)avl[ai].dat.ovl.a_hang, (int64)avl[ai].dat.ovl.b_hang,
                   bvl[bi].a_iid, bvl[bi].b_iid, bvl[bi].dat.ovl.flipped ? 'I' : 'N', (int64)bvl[bi].dat.ovl.a_hang, (int64)bvl[bi].dat.ovl.b_hang,
                   fragSize + adiff + bdiff, overlappingPE ? 'O' : '-');
@@ -505,7 +505,7 @@ main(int argc, char **argv) {
     bvlLen = 0;
   }
 
-  fprintf(stderr, "  nTested "F_U64" nPlausiblePE "F_U64" nShortMP "F_U64"\n",
+  fprintf(stderr, "  nTested " F_U64 " nPlausiblePE " F_U64 " nShortMP " F_U64 "\n",
           nTested, nPlausiblePE, nShortMP);
 
   fclose(edtFile);

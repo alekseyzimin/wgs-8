@@ -80,7 +80,7 @@ int  main
 
    if  (Num_Olaps > 0)
        {
-        fprintf (stderr, "Before Stream_Old_Frags  Num_Olaps = "F_U64"\n", Num_Olaps);
+        fprintf (stderr, "Before Stream_Old_Frags  Num_Olaps = " F_U64 "\n", Num_Olaps);
         if  (Num_PThreads > 0)
             Threaded_Stream_Old_Frags ();
           else
@@ -2663,7 +2663,7 @@ static void  Get_Seeds_From_Store
 
        if (Verbose_Level > 1)
          {
-           printf ("olap %7u %7u %2"F_U64P" %c %c %5"F_U64P" %5"F_U64P" %4"F_U64P" %4"F_U64P" %2"F_U64P"\n",
+           printf ("olap %7u %7u %2" F_U64P" %c %c %5" F_U64P" %5" F_U64P" %4" F_U64P" %4" F_U64P" %2" F_U64P"\n",
                    ovl . a_iid, ovl . b_iid,
                    (uint64)ovl . dat . mer . compression_length,
                    (ovl . dat . mer . fwd ? 'f' : 'r'),

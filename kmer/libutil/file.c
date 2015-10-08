@@ -310,7 +310,7 @@ safeWrite(int filedes, const void *buffer, const char *desc, size_t nbytes) {
 
     if ((errno) || (towrite != written)) {
       fprintf(stderr, "safeWrite()-- Write failure on %s: %s\n", desc, strerror(errno));
-      fprintf(stderr, "safeWrite()-- Wanted to write "int64FMT" bytes, wrote "int64FMT".\n", (int64)towrite, (int64)written);
+      fprintf(stderr, "safeWrite()-- Wanted to write " int64FMT" bytes, wrote " int64FMT".\n", (int64)towrite, (int64)written);
       exit(1);
     }
 
@@ -342,7 +342,7 @@ safeRead(int filedes, const void *buffer, const char *desc, size_t nbytes) {
 
     if ((failed) && (errno != EINTR)) {
       fprintf(stderr, "safeRead()-- Read failure on %s: %s.\n", desc, strerror(errno));
-      fprintf(stderr, "safeRead()-- Wanted to read "int64FMT" bytes, read "int64FMT".\n", (int64)toread, (int64)written);
+      fprintf(stderr, "safeRead()-- Wanted to read " int64FMT" bytes, read " int64FMT".\n", (int64)toread, (int64)written);
       exit(1);
     }
 

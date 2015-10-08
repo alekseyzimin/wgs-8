@@ -262,7 +262,7 @@ public:
         break;
 
       default:
-        fprintf(stderr, "UNCLASSIFIED OVERLAP TYPE "F_U64"\n", style);
+        fprintf(stderr, "UNCLASSIFIED OVERLAP TYPE " F_U64 "\n", style);
         exit(1);
         break;
     }
@@ -283,7 +283,7 @@ public:
         break;
     }
 
-    fprintf(out, F_U32W(6)" "F_U32W(6)" "F_U64W(2)" "F_U64W(4)" "F_U64W(4)"-"F_U64W(4)" "F_U64W(4)"  "F_U64W(4)" "F_U64W(4)"-"F_U64W(4)" "F_U64W(4)"%s\n",
+    fprintf(out, F_U32W(6)" " F_U32W(6)" " F_U64W(2)" " F_U64W(4)" " F_U64W(4)"-" F_U64W(4)" " F_U64W(4)"  " F_U64W(4)" " F_U64W(4)"-" F_U64W(4)" " F_U64W(4)"%s\n",
             Aiid, Biid, style,
             Alhang, Abeg, Aend, Arhang,
             Blhang, Bbeg, Bend, Brhang,
@@ -495,7 +495,7 @@ adjust(OVSoverlap         *ovl,
     //  fprintf(stderr, "ERROR: leftB=%d !< rightB=%d\n", leftB, righB);
 
     if ((leftA >= righA) || (leftB >= righB))
-      fprintf(stderr, "A="F_S32"\tB="F_S32"\tori=%c\tA="F_S32"-"F_S32" len "F_S32" B="F_S32"-"F_S32" len "F_S32"\t%5.3f%%\n",
+      fprintf(stderr, "A=" F_S32 "\tB=" F_S32 "\tori=%c\tA=" F_S32 "-" F_S32 " len " F_S32 " B=" F_S32 "-" F_S32 " len " F_S32 "\t%5.3f%%\n",
               idA, idB, ori, leftA, righA, lenA, leftB, righB, lenB, error);
 
     assert(leftA < righA);
@@ -503,7 +503,7 @@ adjust(OVSoverlap         *ovl,
 
 #ifdef REPORT_OVERLAPS
     if (reportFile)
-      fprintf(reportFile, F_S32"\t"F_S32"\t%c\t"F_S32"\t"F_S32"\t"F_S32"\t"F_S32"\t"F_S32"\t"F_S32"\t%5.3f -- ",
+      fprintf(reportFile, F_S32"\t" F_S32 "\t%c\t" F_S32 "\t" F_S32 "\t" F_S32 "\t" F_S32 "\t" F_S32 "\t" F_S32 "\t%5.3f -- ",
               idA, idB, ori, leftA, righA, lenA, leftB, righB, lenB, error);
 #endif
 
@@ -544,7 +544,7 @@ adjust(OVSoverlap         *ovl,
 
 #ifdef REPORT_OVERLAPS
     if (reportFile)
-      fprintf(reportFile, F_S32"\t"F_S32"\t%c\t"F_S32"\t"F_S32"\t"F_S32"\t"F_S32"\t"F_S32"\t"F_S32"\t%5.3f\n",
+      fprintf(reportFile, F_S32"\t" F_S32 "\t%c\t" F_S32 "\t" F_S32 "\t" F_S32 "\t" F_S32 "\t" F_S32 "\t" F_S32 "\t%5.3f\n",
               idA, idB, ori, leftA, righA, lenA, leftB, righB, lenB, error);
 #endif
 
@@ -607,7 +607,7 @@ adjust(OVSoverlap         *ovl,
 
 #ifdef DEBUG_FILTER
     if (reportFile)
-      fprintf(reportFile, "OVERLAP "F_IID" %3d %3d-%3d %3d vs "F_IID" %3d %3d-%3d %3d ori %c len/err %d/%f minLen/maxErr HQ:%d/%f MQ:%d/%f LQ:%d/%f%s\n",
+      fprintf(reportFile, "OVERLAP " F_IID " %3d %3d-%3d %3d vs " F_IID " %3d %3d-%3d %3d ori %c len/err %d/%f minLen/maxErr HQ:%d/%f MQ:%d/%f LQ:%d/%f%s\n",
               idA, lhangA, leftA, righA, rhangA,
               idB, lhangB, leftB, righB, rhangB, ori,
               righA - leftA, error,
@@ -659,7 +659,7 @@ checkSpanningMates(const AS_IID           iid,
 
   intervalList<int32>   CC;
 
-  //fprintf(reportFile, "checkSpanningMates()-- for read "F_IID"\n", iid);
+  //fprintf(reportFile, "checkSpanningMates()-- for read " F_IID "\n", iid);
 
   for (uint32 aa=0; aa<olist.size(); aa++) {
     chimeraOvl  *ovlaa   = &olist[aa];
@@ -670,7 +670,7 @@ checkSpanningMates(const AS_IID           iid,
       AS_IID       iidbb   =  ovlbb->Biid;
 
 #if 0
-      fprintf(reportFile, "A "F_IID" ("F_IID") -- B "F_IID" ("F_IID")\n",
+      fprintf(reportFile, "A " F_IID " (" F_IID ") -- B " F_IID " (" F_IID ")\n",
               iidaa, clear[iidaa].mateIID,
               iidbb, clear[iidbb].mateIID);
 #endif
@@ -726,7 +726,7 @@ checkSpanningMates(const AS_IID           iid,
       for (uint32 i=0; i<IL.numberOfIntervals(); i++)
         if ((IL.lo(i) < bgn) && (end < IL.hi(i))) {
 #ifdef DEBUG_MATES
-          fprintf(reportFile, "MATE: "F_U32","F_U32" -- "F_U32","F_U32" contained in "F_S64","F_S64"\n",
+          fprintf(reportFile, "MATE: " F_U32 "," F_U32 " -- " F_U32 "," F_U32 " contained in " F_S64 "," F_S64 "\n",
                   ovlaalo, ovlaahi,
                   ovlbblo, ovlbbhi,
                   IL.lo(i), IL.hi(i));
@@ -738,7 +738,7 @@ checkSpanningMates(const AS_IID           iid,
         continue;
 
 #ifdef DEBUG_MATES
-      fprintf(reportFile, "MATE: "F_U32","F_U32" -- "F_U32","F_U32"\n",
+      fprintf(reportFile, "MATE: " F_U32 "," F_U32 " -- " F_U32 "," F_U32 "\n",
               ovlaalo, ovlaahi,
               ovlbblo, ovlbbhi);
 #endif
@@ -757,7 +757,7 @@ checkSpanningMates(const AS_IID           iid,
       continue;
 
 #ifdef DEBUG_MATES
-    fprintf(reportFile, "ADD: "F_S64","F_S64"\n", CC.lo(i), CC.hi(i));
+    fprintf(reportFile, "ADD: " F_S64 "," F_S64 "\n", CC.lo(i), CC.hi(i));
 #endif
 
     IL.add(CC.lo(i), CC.hi(i) - CC.lo(i));
@@ -861,7 +861,7 @@ processChimera(const AS_IID           iid,
     //
     if (isLinker == true) {
 #ifdef DEBUG_ISLINKER
-      fprintf(reportFile, "frag "F_IID" region "F_U32"-"F_U32" isectbefore "F_U32" isect "F_U32" isectafter "F_U32"\n",
+      fprintf(reportFile, "frag " F_IID " region " F_U32 "-" F_U32 " isectbefore " F_U32 " isect " F_U32 " isectafter " F_U32 "\n",
               iid,
               loLinker, hiLinker, isectbefore, isect, isectafter);
 #endif
@@ -880,7 +880,7 @@ processChimera(const AS_IID           iid,
         if ((ovllo <= loLinker) && (hiLinker <= ovlhi)) {
           ovl->style = 0x0f;  //  Invalid style, will be ignored
 #ifdef DEBUG_ISLINKER
-          fprintf(reportFile, "  overlap "F_U32"-"F_U32" --> "F_U32"-"F_U32" delete\n", ovllo, ovlhi, 0, 0);
+          fprintf(reportFile, "  overlap " F_U32 "-" F_U32 " --> " F_U32 "-" F_U32 " delete\n", ovllo, ovlhi, 0, 0);
 #endif
           continue;
         }
@@ -896,9 +896,9 @@ processChimera(const AS_IID           iid,
           if ((loLinker > ovlhi) || (ovl->Abeg > ovl->Aend) || (ovl->Aend - ovl->Abeg < 40)) {
             ovl->style = 0x0f;
 #ifdef DEBUG_ISLINKER
-            fprintf(reportFile, "  overlap "F_U32"-"F_U32" --> "F_U64"-"F_U64" begin delete\n", ovllo, ovlhi, ovl->Abeg, ovl->Aend);
+            fprintf(reportFile, "  overlap " F_U32 "-" F_U32 " --> " F_U64 "-" F_U64 " begin delete\n", ovllo, ovlhi, ovl->Abeg, ovl->Aend);
           } else {
-            fprintf(reportFile, "  overlap "F_U32"-"F_U32" --> "F_U64"-"F_U64" begin\n", ovllo, ovlhi, ovl->Abeg, ovl->Aend);
+            fprintf(reportFile, "  overlap " F_U32 "-" F_U32 " --> " F_U64 "-" F_U64 " begin\n", ovllo, ovlhi, ovl->Abeg, ovl->Aend);
 #endif
           }
           continue;
@@ -915,9 +915,9 @@ processChimera(const AS_IID           iid,
           if ((ovllo > hiLinker) || (ovl->Abeg > ovl->Aend) || (ovl->Aend - ovl->Abeg < 40)) {
             ovl->style = 0x0f;
 #ifdef DEBUG_ISLINKER
-            fprintf(reportFile, "  overlap "F_U32"-"F_U32" --> "F_U64"-"F_U64" end delete\n", ovllo, ovlhi, ovl->Abeg, ovl->Aend);
+            fprintf(reportFile, "  overlap " F_U32 "-" F_U32 " --> " F_U64 "-" F_U64 " end delete\n", ovllo, ovlhi, ovl->Abeg, ovl->Aend);
           } else {
-            fprintf(reportFile, "  overlap "F_U32"-"F_U32" --> "F_U64"-"F_U64" end\n", ovllo, ovlhi, ovl->Abeg, ovl->Aend);
+            fprintf(reportFile, "  overlap " F_U32 "-" F_U32 " --> " F_U64 "-" F_U64 " end\n", ovllo, ovlhi, ovl->Abeg, ovl->Aend);
 #endif
           }
           continue;
@@ -1036,7 +1036,7 @@ processChimera(const AS_IID           iid,
       IL.add(bgn, end - bgn);
 
 #ifdef REPORT_OVERLAPS
-      fprintf(reportFile, "%6d "F_U32W(6)" "F_U64W(2)" "F_U64W(4)" "F_U64W(4)"-"F_U64W(4)" "F_U64W(4)"  "F_U64W(4)" "F_U64W(4)"-"F_U64W(4)" "F_U64W(4)" interval "F_U32W(4)"-"F_U32W(4)"%s\n",
+      fprintf(reportFile, "%6d " F_U32W(6)" " F_U64W(2)" " F_U64W(4)" " F_U64W(4)"-" F_U64W(4)" " F_U64W(4)"  " F_U64W(4)" " F_U64W(4)"-" F_U64W(4)" " F_U64W(4)" interval " F_U32W(4)"-" F_U32W(4)"%s\n",
               iid,
               ovl->Biid,
               ovl->style,
@@ -1053,7 +1053,7 @@ processChimera(const AS_IID           iid,
 
 #ifdef DEBUG_INTERVAL
   for (uint32 interval=0; interval<IL.numberOfIntervals(); interval++)
-    fprintf(reportFile, "interval[%d] = "F_U64"-"F_U64"\n", interval, IL.lo(interval), IL.hi(interval));
+    fprintf(reportFile, "interval[%d] = " F_U64 "-" F_U64 "\n", interval, IL.lo(interval), IL.hi(interval));
 #endif
 
 
@@ -1067,7 +1067,7 @@ processChimera(const AS_IID           iid,
 
 #if 0
   if (IL.numberOfIntervals() == 1)
-    fprintf(reportFile, "FULL "F_S64","F_S64" -- iid "F_IID" length "F_U64"\n",
+    fprintf(reportFile, "FULL " F_S64 "," F_S64 " -- iid " F_IID " length " F_U64 "\n",
             IL.lo(0), IL.hi(0), iid, clear[iid].length);
 #endif
 
@@ -1428,7 +1428,7 @@ processChimera(const AS_IID           iid,
   //
   for (uint32 interval=0; interval<IL.numberOfIntervals(); interval++) {
 #ifdef DEBUG_INTERVAL
-    fprintf(reportFile, "intervalHang[%d] %d,%d  interval "F_U64","F_U64" -- ",
+    fprintf(reportFile, "intervalHang[%d] %d,%d  interval " F_U64 "," F_U64 " -- ",
             interval,
             leftIntervalHang[interval], rightIntervalHang[interval],
             IL.lo(interval), IL.hi(interval));
@@ -1440,7 +1440,7 @@ processChimera(const AS_IID           iid,
       intervalEnd = IL.hi(interval);
       intervalMax = intervalEnd - intervalBeg;
 #ifdef DEBUG_INTERVAL
-      fprintf(reportFile, "overlapregion "F_U32","F_U32" -- ", intervalBeg, intervalEnd);
+      fprintf(reportFile, "overlapregion " F_U32 "," F_U32 " -- ", intervalBeg, intervalEnd);
 #endif
     }
 
@@ -1457,7 +1457,7 @@ processChimera(const AS_IID           iid,
       intervalEnd = IL.hi(interval);
       intervalMax = intervalEnd - intervalBeg;
 #ifdef DEBUG_INTERVAL
-      fprintf(reportFile, "+before "F_U32","F_U32" -- ", intervalBeg, intervalEnd);
+      fprintf(reportFile, "+before " F_U32 "," F_U32 " -- ", intervalBeg, intervalEnd);
 #endif
     }
 
@@ -1775,7 +1775,7 @@ processSubRead(const AS_IID           iid,
         numSpan += (clear[olist[ii].Aiid].doCheckSubRead) ? 1 : 2;
 
     if (subreadFile)
-      fprintf(subreadFile, "AcheckSub region %u ("F_S32"-"F_S32") with %u hits %u bighits - span %u largePalindrome %s\n",
+      fprintf(subreadFile, "AcheckSub region %u (" F_S32 "-" F_S32 ") with %u hits %u bighits - span %u largePalindrome %s\n",
               olist[0].Aiid, BAD.lo(bb), BAD.hi(bb), BAD.count(bb), allHits,
               numSpan, largePalindrome ? "true" : "false");
 
@@ -1950,7 +1950,7 @@ main(int argc, char **argv) {
   if (iidMax > gkp->gkStore_getNumFragments())
     iidMax = gkp->gkStore_getNumFragments();
 
-  fprintf(stderr, "Processing from IID "F_U32" to "F_U32" out of "F_U32" reads, using errorRate = %.2f, gkpStore will%s be updated.\n",
+  fprintf(stderr, "Processing from IID " F_U32 " to " F_U32 " out of " F_U32 " reads, using errorRate = %.2f, gkpStore will%s be updated.\n",
           iidMin,
           iidMax,
           gkp->gkStore_getNumFragments(),
@@ -2107,7 +2107,7 @@ main(int argc, char **argv) {
     //  Log any bad intervals.
 
     if (res.isBad) {
-      sprintf(msg, "same read overlaps mark "F_U32"-"F_U32" as junction in %s", res.badBeg, res.badEnd, typ);
+      sprintf(msg, "same read overlaps mark " F_U32 "-" F_U32 " as junction in %s", res.badBeg, res.badEnd, typ);
       sprintf(typ, "SUBREAD");
 
       badOvlDeleted++;
@@ -2124,7 +2124,7 @@ main(int argc, char **argv) {
     if ((res.isGood    == false) ||
         (res.isBadTrim == true)  ||
         (res.isBad     == true)) {
-      fprintf(reportFile, F_IID" %s Trimmed from "F_U32W(4)" "F_U32W(4)" to "F_U32W(4)" "F_U32W(4)".  %s.\n",
+      fprintf(reportFile, F_IID" %s Trimmed from " F_U32W(4)" " F_U32W(4)" to " F_U32W(4)" " F_U32W(4)".  %s.\n",
               res.iid, typ,
               res.origBeg, res.origEnd,
               res.intervalBeg, res.intervalEnd,
@@ -2167,35 +2167,35 @@ main(int argc, char **argv) {
   }
 
   fprintf(summaryFile, "READS (= ACEEPTED + TRIMMED + DELETED)\n");
-  fprintf(summaryFile, "  total processed       "F_U32"\n", readsProcessed);
+  fprintf(summaryFile, "  total processed       " F_U32 "\n", readsProcessed);
   fprintf(summaryFile, "\n");
   fprintf(summaryFile, "ACCEPTED\n");
-  fprintf(summaryFile, "  no coverage           "F_U32"\n", noCoverage);
-  fprintf(summaryFile, "  full coverage         "F_U32"\n", fullCoverage);
-  fprintf(summaryFile, "  no signal, no gaps    "F_U32"\n", noSignalNoGap);
-  fprintf(summaryFile, "  no signal, gaps       "F_U32"\n", noSignalButGap);
-  fprintf(summaryFile, "  gap spanned by mate   "F_U32"\n", gapConfirmedMate);
+  fprintf(summaryFile, "  no coverage           " F_U32 "\n", noCoverage);
+  fprintf(summaryFile, "  full coverage         " F_U32 "\n", fullCoverage);
+  fprintf(summaryFile, "  no signal, no gaps    " F_U32 "\n", noSignalNoGap);
+  fprintf(summaryFile, "  no signal, gaps       " F_U32 "\n", noSignalButGap);
+  fprintf(summaryFile, "  gap spanned by mate   " F_U32 "\n", gapConfirmedMate);
   fprintf(summaryFile, "\n");
   fprintf(summaryFile, "TRIMMED\n");
-  fprintf(summaryFile, "  both                  "F_U32"\n", bothFixed);
-  fprintf(summaryFile, "  chimera               "F_U32"\n", chimeraFixed);
-  fprintf(summaryFile, "  spur                  "F_U32"\n", spurFixed);
+  fprintf(summaryFile, "  both                  " F_U32 "\n", bothFixed);
+  fprintf(summaryFile, "  chimera               " F_U32 "\n", chimeraFixed);
+  fprintf(summaryFile, "  spur                  " F_U32 "\n", spurFixed);
   fprintf(summaryFile, "\n");
   fprintf(summaryFile, "DELETED\n");
-  fprintf(summaryFile, "  both                  "F_U32"\n", bothDeletedSmall);
-  fprintf(summaryFile, "  chimera               "F_U32"\n", chimeraDeletedSmall);
-  fprintf(summaryFile, "  spur                  "F_U32"\n", spurDeletedSmall);
+  fprintf(summaryFile, "  both                  " F_U32 "\n", bothDeletedSmall);
+  fprintf(summaryFile, "  chimera               " F_U32 "\n", chimeraDeletedSmall);
+  fprintf(summaryFile, "  spur                  " F_U32 "\n", spurDeletedSmall);
   fprintf(summaryFile, "\n");
   fprintf(summaryFile, "SPUR TYPES (= TRIMMED/DELETED spur + both)\n");
-  fprintf(summaryFile, "  normal                "F_U32"\n", spurDetectedNormal);
-  fprintf(summaryFile, "  linker                "F_U32"\n", spurDetectedLinker);
+  fprintf(summaryFile, "  normal                " F_U32 "\n", spurDetectedNormal);
+  fprintf(summaryFile, "  linker                " F_U32 "\n", spurDetectedLinker);
   fprintf(summaryFile, "\n");
   fprintf(summaryFile, "CHIMERA TYPES (= TRIMMED/DELETED chimera + both)\n");
-  fprintf(summaryFile, "  innie pair            "F_U32"\n", chimeraDetectedInnie);
-  fprintf(summaryFile, "  overhang              "F_U32"\n", chimeraDetectedOverhang);
-  fprintf(summaryFile, "  gap                   "F_U32"\n", chimeraDetectedGap);
-  fprintf(summaryFile, "  gap (no mate)         "F_U32"\n", chimeraDetectedGapNoMate);
-  fprintf(summaryFile, "  linker                "F_U32"\n", chimeraDetectedLinker);
+  fprintf(summaryFile, "  innie pair            " F_U32 "\n", chimeraDetectedInnie);
+  fprintf(summaryFile, "  overhang              " F_U32 "\n", chimeraDetectedOverhang);
+  fprintf(summaryFile, "  gap                   " F_U32 "\n", chimeraDetectedGap);
+  fprintf(summaryFile, "  gap (no mate)         " F_U32 "\n", chimeraDetectedGapNoMate);
+  fprintf(summaryFile, "  linker                " F_U32 "\n", chimeraDetectedLinker);
 
   if (summaryFile != stdout)
     fclose(summaryFile);

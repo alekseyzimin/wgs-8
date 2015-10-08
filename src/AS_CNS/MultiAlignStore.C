@@ -329,7 +329,7 @@ MultiAlignStore::writeToPartitioned(uint32 *unitigPartMap_, uint32 unitigPartMap
 void
 MultiAlignStore::writeTigToDisk(MultiAlignT *ma, MultiAlignR *maRecord) {
 
-  //fprintf(stderr, "MultiAlignStore::writeTigToDisk()-- write ma "F_S32" in store version "F_U64" partition "F_U64" at file position "F_U64"\n", ma->maID, maRecord->svID, maRecord->ptID, maRecord->fileOffset);
+  //fprintf(stderr, "MultiAlignStore::writeTigToDisk()-- write ma " F_S32 " in store version " F_U64 " partition " F_U64 " at file position " F_U64 "\n", ma->maID, maRecord->svID, maRecord->ptID, maRecord->fileOffset);
 
   FILE *FP = openDB(maRecord->svID, maRecord->ptID);
 
@@ -492,7 +492,7 @@ MultiAlignStore::insertMultiAlign(MultiAlignT *ma, bool isUnitig, bool keepInCac
             ma->maID, maRecord->svID, currentVersion);
 #endif
 
-  //fprintf(stderr, "MultiAlignStore::InsertMultiAlign()-- Change %s "F_S32" from pt "F_U64" sv "F_U64" to pt 0 sv "F_U32"\n",
+  //fprintf(stderr, "MultiAlignStore::InsertMultiAlign()-- Change %s " F_S32 " from pt " F_U64 " sv " F_U64 " to pt 0 sv " F_U32 "\n",
   //        (isUnitig) ? "utg" : "ctg", ma->maID, maRecord->ptID, maRecord->svID, currentVersion);
 
   maRecord->unusedFlags     = 0;
@@ -609,13 +609,13 @@ MultiAlignStore::loadMultiAlign(int32 maID, bool isUnitig) {
   bool                    cantLoad = true;
 
   if (maID < 0)
-    fprintf(stderr, "MultiAlignStore::loadMultiAlign()-- WARNING: invalid negative %s maID "F_S32".\n",
+    fprintf(stderr, "MultiAlignStore::loadMultiAlign()-- WARNING: invalid negative %s maID " F_S32 ".\n",
             (isUnitig) ? "unitig" : "contig",
             maID);
   assert(maID >= 0);
 
   if ((int32)maLen <= maID)
-    fprintf(stderr, "MultiAlignStore::loadMultiAlign()-- WARNING: invalid out-of-range %s maID "F_S32", only "F_S32" ma in store; return NULL.\n",
+    fprintf(stderr, "MultiAlignStore::loadMultiAlign()-- WARNING: invalid out-of-range %s maID " F_S32 ", only " F_S32 " ma in store; return NULL.\n",
             (isUnitig) ? "unitig" : "contig",
             maID, (int32)maLen);
   assert(maID < (int32)maLen);
@@ -669,7 +669,7 @@ MultiAlignStore::loadMultiAlign(int32 maID, bool isUnitig) {
     maCache[maID] = LoadMultiAlignTFromStream(FP);
 
     if (maCache[maID] == NULL)
-      fprintf(stderr,"loadMultiAlign()-- FAILED for %s "F_S32" in file "F_U64" at offset "F_U64"\n",
+      fprintf(stderr,"loadMultiAlign()-- FAILED for %s " F_S32 " in file " F_U64 " at offset " F_U64 "\n",
               (isUnitig ? "Unitig" : "Contig"), maID, maRecord[maID].svID, maRecord[maID].fileOffset);
     assert(maCache[maID] != NULL);
 
@@ -876,7 +876,7 @@ MultiAlignStore::loadMASRfile(char *name, MultiAlignR* R, uint32 L, uint32 M, ui
 
   //  Check we're consistent.
   if (L < MASRtotalInFile)
-    fprintf(stderr, "MultiAlignStore::loadMASRfile()-- '%s' has more tigs ("F_U32") than expected ("F_U32").\n",
+    fprintf(stderr, "MultiAlignStore::loadMASRfile()-- '%s' has more tigs (" F_U32 ") than expected (" F_U32 ").\n",
             name, MASRtotalInFile, L), exit(1);
 
   if (indxLen > 0) {
@@ -1138,11 +1138,11 @@ void
 MultiAlignStore::dumpMultiAlignR(int32 maID, bool isUnitig) {
   MultiAlignR  *maRecord = (isUnitig) ? utgRecord : ctgRecord;
 
-  fprintf(stdout, "maRecord.isPresent   = "F_U64"\n", maRecord[maID].isPresent);
-  fprintf(stdout, "maRecord.isDeleted   = "F_U64"\n", maRecord[maID].isDeleted);
-  fprintf(stdout, "maRecord.ptID        = "F_U64"\n", maRecord[maID].ptID);
-  fprintf(stdout, "maRecord.svID        = "F_U64"\n", maRecord[maID].svID);
-  if (isUnitig) { fprintf(stdout, "maRecord.fileOffset  = "F_U64"\n", maRecord[maID].fileOffset); }
+  fprintf(stdout, "maRecord.isPresent   = " F_U64 "\n", maRecord[maID].isPresent);
+  fprintf(stdout, "maRecord.isDeleted   = " F_U64 "\n", maRecord[maID].isDeleted);
+  fprintf(stdout, "maRecord.ptID        = " F_U64 "\n", maRecord[maID].ptID);
+  fprintf(stdout, "maRecord.svID        = " F_U64 "\n", maRecord[maID].svID);
+  if (isUnitig) { fprintf(stdout, "maRecord.fileOffset  = " F_U64 "\n", maRecord[maID].fileOffset); }
 }
 
 
@@ -1157,12 +1157,12 @@ MultiAlignStore::dumpMultiAlignRTable(bool isUnitig) {
   fprintf(stdout, "\n");
 
   for (uint32 i=0; i<len; i++) {
-    fprintf(stdout, ""F_U32"\t", i);
-    fprintf(stdout, ""F_U64"\t", maRecord[i].isPresent);
-    fprintf(stdout, ""F_U64"\t", maRecord[i].isDeleted);
-    fprintf(stdout, ""F_U64"\t", maRecord[i].ptID);
-    fprintf(stdout, ""F_U64"\t", maRecord[i].svID);
-    fprintf(stdout, ""F_U64, maRecord[i].fileOffset);
+    fprintf(stdout, "" F_U32 "\t", i);
+    fprintf(stdout, "" F_U64 "\t", maRecord[i].isPresent);
+    fprintf(stdout, "" F_U64 "\t", maRecord[i].isDeleted);
+    fprintf(stdout, "" F_U64 "\t", maRecord[i].ptID);
+    fprintf(stdout, "" F_U64 "\t", maRecord[i].svID);
+    fprintf(stdout, "" F_U64, maRecord[i].fileOffset);
     if (isUnitig) fprintf(stdout, "\t%d",  getUnitigCoverageStat(i));
     fprintf(stdout, "\n");
   }

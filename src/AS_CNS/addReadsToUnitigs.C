@@ -237,7 +237,7 @@ main(int argc, char **argv) {
       fgets(LL, 1024, LF);
     }
 
-    fprintf(stderr, "Loaded "F_SIZE_T" name to IIDs\n", lookupIID.size());
+    fprintf(stderr, "Loaded " F_SIZE_T " name to IIDs\n", lookupIID.size());
   }
 
 

@@ -194,18 +194,18 @@ positionDB::loadState(char const *filename, bool beNoisy, bool loadData) {
 
 void
 positionDB::printState(FILE *stream) {
-  fprintf(stream, "merSizeInBases:       "uint32FMT"\n", _merSizeInBases);
-  fprintf(stream, "merSkipInBases:       "uint32FMT"\n", _merSkipInBases);
-  fprintf(stream, "tableSizeInBits:      "uint32FMT"\n", _tableSizeInBits);
-  fprintf(stream, "tableSizeInEntries:   "uint64FMT"\n", _tableSizeInEntries);
-  fprintf(stream, "hashWidth:            "uint32FMT"\n", _hashWidth);
-  fprintf(stream, "chckWidth:            "uint32FMT"\n", _chckWidth);
-  fprintf(stream, "posnWidth:            "uint32FMT"\n", _posnWidth);
-  fprintf(stream, "numberOfMers:         "uint64FMT"\n", _numberOfMers);
-  fprintf(stream, "numberOfPositions:    "uint64FMT"\n", _numberOfPositions);
-  fprintf(stream, "numberOfDistinct:     "uint64FMT"\n", _numberOfDistinct);
-  fprintf(stream, "numberOfUnique:       "uint64FMT"\n", _numberOfUnique);
-  fprintf(stream, "numberOfEntries:      "uint64FMT"\n", _numberOfEntries);
-  fprintf(stream, "maximumEntries:       "uint64FMT"\n", _maximumEntries);
+  fprintf(stream, "merSizeInBases:       " uint32FMT"\n", _merSizeInBases);
+  fprintf(stream, "merSkipInBases:       " uint32FMT"\n", _merSkipInBases);
+  fprintf(stream, "tableSizeInBits:      " uint32FMT"\n", _tableSizeInBits);
+  fprintf(stream, "tableSizeInEntries:   " uint64FMT"\n", _tableSizeInEntries);
+  fprintf(stream, "hashWidth:            " uint32FMT"\n", _hashWidth);
+  fprintf(stream, "chckWidth:            " uint32FMT"\n", _chckWidth);
+  fprintf(stream, "posnWidth:            " uint32FMT"\n", _posnWidth);
+  fprintf(stream, "numberOfMers:         " uint64FMT"\n", _numberOfMers);
+  fprintf(stream, "numberOfPositions:    " uint64FMT"\n", _numberOfPositions);
+  fprintf(stream, "numberOfDistinct:     " uint64FMT"\n", _numberOfDistinct);
+  fprintf(stream, "numberOfUnique:       " uint64FMT"\n", _numberOfUnique);
+  fprintf(stream, "numberOfEntries:      " uint64FMT"\n", _numberOfEntries);
+  fprintf(stream, "maximumEntries:       " uint64FMT"\n", _maximumEntries);
 }
 

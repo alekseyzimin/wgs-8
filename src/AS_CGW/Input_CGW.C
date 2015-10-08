@@ -212,7 +212,7 @@ ReloadMatesFromGatekeeper(void) {
 
   delete fs;
 
-  fprintf(stderr, "Reading fragments - just for mate pairs - "F_U32" reads already mated; "F_U32" reads unmated; "F_U32" reads with new mate added.\n",
+  fprintf(stderr, "Reading fragments - just for mate pairs - " F_U32 " reads already mated; " F_U32 " reads unmated; " F_U32 " reads with new mate added.\n",
           nAlreadySet, nNotMated, nAdded);
 
   //  Decide if this unitig is a potential rock or stone (note, uses cid mark just set)
@@ -309,7 +309,7 @@ ProcessInput(int optind, int argc, char *argv[]){
     cifrag->flags.bits.mateDetail                 = UNASSIGNED_MATE;
 
     if ((++numFRG % 1000000) == 0) {
-      fprintf(stderr, "...processed "F_S32" fragments.\n", numFRG);
+      fprintf(stderr, "...processed " F_S32 " fragments.\n", numFRG);
     }
   }
 
@@ -391,7 +391,7 @@ ProcessInput(int optind, int argc, char *argv[]){
     ProcessInputUnitig(uma);
 
     if ((++numUTG % 100000) == 0) {
-      fprintf(stderr, "...processed "F_S32" unitigs.\n", numUTG);
+      fprintf(stderr, "...processed " F_S32 " unitigs.\n", numUTG);
       ScaffoldGraph->tigStore->flushCache();
     }
   }
@@ -449,7 +449,7 @@ ProcessInput(int optind, int argc, char *argv[]){
     dist.numBad         = 0;
     dist.allowUpdate    = (gkpl->constantInsertSize == false);
 
-    fprintf(stderr,"* Loaded dist %s,"F_CID" (%g +/- %g)\n",
+    fprintf(stderr,"* Loaded dist %s," F_CID" (%g +/- %g)\n",
             AS_UID_toString(gkpl->libraryUID), i, dist.mu, dist.sigma);
 
     SetDistT(ScaffoldGraph->Dists, i, &dist);

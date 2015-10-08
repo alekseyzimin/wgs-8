@@ -353,27 +353,27 @@ main(int argc, char **argv) {
     uint32  pe = results[i].getPE();
 
     if (results[i].getDelete()) {
-      fprintf(outputFile, "frg iid "F_U32" isdeleted 1\n", i);
-      fprintf(outputFile, "frg iid "F_U32" mateiid 0\n", i);
+      fprintf(outputFile, "frg iid " F_U32 " isdeleted 1\n", i);
+      fprintf(outputFile, "frg iid " F_U32 " mateiid 0\n", i);
       numDL++;
 
     } else if (results[i].getUnMate()) {
-      fprintf(outputFile, "frg iid "F_U32" mateiid 0\n", i);
+      fprintf(outputFile, "frg iid " F_U32 " mateiid 0\n", i);
       numUM++;
 
     } else if (results[i].getSS()) {
-      fprintf(outputFile, "frg iid "F_U32" mateiid 0\n", i);
+      fprintf(outputFile, "frg iid " F_U32 " mateiid 0\n", i);
       numSS++;
 
     } else if ((mp > 0) && (pe > 0)) {
-      fprintf(outputFile, "frg iid "F_U32" mateiid 0\n", i);
+      fprintf(outputFile, "frg iid " F_U32 " mateiid 0\n", i);
       numAB++;
 
     } else if (mp > 0) {
       numMP++;
 
     } else if (pe > 0) {
-      fprintf(outputFile, "frg iid "F_U32" mateiid 0\n", i);
+      fprintf(outputFile, "frg iid " F_U32 " mateiid 0\n", i);
       numPE++;
 
     } else if (no > 0) {
@@ -400,53 +400,53 @@ main(int argc, char **argv) {
 
   fprintf(stderr, "Read Fate (one read, one fate):\n");
   fprintf(stderr, "\n");
-  fprintf(stderr, "%10"F_U32P"   unclassified (remains mated)\n", numNO);
-  fprintf(stderr, "%10"F_U32P"   verified paired-end (break the mate)\n", numPE);
-  fprintf(stderr, "%10"F_U32P"   verified mate-pair (remains mated)\n", numMP);
-  fprintf(stderr, "%10"F_U32P"   verified paired-end AND verified mate-pair (break the mate)\n", numAB);
-  fprintf(stderr, "%10"F_U32P"   suspicious orientation/size (break the mate)\n", numSS);
+  fprintf(stderr, "%10" F_U32P"   unclassified (remains mated)\n", numNO);
+  fprintf(stderr, "%10" F_U32P"   verified paired-end (break the mate)\n", numPE);
+  fprintf(stderr, "%10" F_U32P"   verified mate-pair (remains mated)\n", numMP);
+  fprintf(stderr, "%10" F_U32P"   verified paired-end AND verified mate-pair (break the mate)\n", numAB);
+  fprintf(stderr, "%10" F_U32P"   suspicious orientation/size (break the mate)\n", numSS);
   fprintf(stderr, "\n");
-  fprintf(stderr, "%10"F_U32P"   delete (this read is spur/chimer/junction)\n", numDL);
-  fprintf(stderr, "%10"F_U32P"   unmate (mate read is spur/chimer/junction)\n", numUM);
-  fprintf(stderr, "%10"F_U32P"   ignored (not searched)\n", numIG);
+  fprintf(stderr, "%10" F_U32P"   delete (this read is spur/chimer/junction)\n", numDL);
+  fprintf(stderr, "%10" F_U32P"   unmate (mate read is spur/chimer/junction)\n", numUM);
+  fprintf(stderr, "%10" F_U32P"   ignored (not searched)\n", numIG);
   fprintf(stderr, "\n");
 
   fprintf(stderr, "Search Termination (one read, multiple terminations if multiple runs):\n");
   fprintf(stderr, "\n");
-  fprintf(stderr, "%10"F_U32P"   classified\n",                numClassified);
-  fprintf(stderr, "%10"F_U32P"   limited\n",                   numLimited);
-  fprintf(stderr, "%10"F_U32P"   exhausted\n",                 numExhausted);
-  fprintf(stderr, "%10"F_U32P"   suspicious AND classified\n", numClassifiedS);
-  fprintf(stderr, "%10"F_U32P"   suspicious AND limited\n",    numLimitedS);
-  fprintf(stderr, "%10"F_U32P"   suspicious AND exhausted\n",  numExhaustedS);
-  fprintf(stderr, "%10"F_U32P"   suspicious\n",                numSuspicious);
+  fprintf(stderr, "%10" F_U32P"   classified\n",                numClassified);
+  fprintf(stderr, "%10" F_U32P"   limited\n",                   numLimited);
+  fprintf(stderr, "%10" F_U32P"   exhausted\n",                 numExhausted);
+  fprintf(stderr, "%10" F_U32P"   suspicious AND classified\n", numClassifiedS);
+  fprintf(stderr, "%10" F_U32P"   suspicious AND limited\n",    numLimitedS);
+  fprintf(stderr, "%10" F_U32P"   suspicious AND exhausted\n",  numExhaustedS);
+  fprintf(stderr, "%10" F_U32P"   suspicious\n",                numSuspicious);
   fprintf(stderr, "\n");
 
   fprintf(stderr, "Read Classification:\n");
   fprintf(stderr, "\n");
-  fprintf(stderr, "%10"F_U32P"   A spur reads\n",     numAspur);
-  fprintf(stderr, "%10"F_U32P"   A chimer reads\n",   numAchimer);
-  fprintf(stderr, "%10"F_U32P"   A junction reads\n", numAjunction);
+  fprintf(stderr, "%10" F_U32P"   A spur reads\n",     numAspur);
+  fprintf(stderr, "%10" F_U32P"   A chimer reads\n",   numAchimer);
+  fprintf(stderr, "%10" F_U32P"   A junction reads\n", numAjunction);
   fprintf(stderr, "\n");
-  fprintf(stderr, "%10"F_U32P"   B spur reads\n",     numBspur);
-  fprintf(stderr, "%10"F_U32P"   B chimer reads\n",   numBchimer);
-  fprintf(stderr, "%10"F_U32P"   B junction reads\n", numBjunction);
+  fprintf(stderr, "%10" F_U32P"   B spur reads\n",     numBspur);
+  fprintf(stderr, "%10" F_U32P"   B chimer reads\n",   numBchimer);
+  fprintf(stderr, "%10" F_U32P"   B junction reads\n", numBjunction);
   fprintf(stderr, "\n");
-  fprintf(stderr, "%10"F_U32P"   spur reads\n",       numSpur);
-  fprintf(stderr, "%10"F_U32P"   chimer reads\n",     numChimer);
-  fprintf(stderr, "%10"F_U32P"   junction reads\n",   numJunction);
+  fprintf(stderr, "%10" F_U32P"   spur reads\n",       numSpur);
+  fprintf(stderr, "%10" F_U32P"   chimer reads\n",     numChimer);
+  fprintf(stderr, "%10" F_U32P"   junction reads\n",   numJunction);
   fprintf(stderr, "\n");
-  fprintf(stderr, "%10"F_U32P"   good/good\n",     numABspurChimer[0][0]);
-  fprintf(stderr, "%10"F_U32P"   good/spur\n",     numABspurChimer[0][1]);
-  fprintf(stderr, "%10"F_U32P"   good/chimer\n",   numABspurChimer[0][2]);
+  fprintf(stderr, "%10" F_U32P"   good/good\n",     numABspurChimer[0][0]);
+  fprintf(stderr, "%10" F_U32P"   good/spur\n",     numABspurChimer[0][1]);
+  fprintf(stderr, "%10" F_U32P"   good/chimer\n",   numABspurChimer[0][2]);
   fprintf(stderr, "\n");
-  fprintf(stderr, "%10"F_U32P"   spur/good\n",     numABspurChimer[1][0]);
-  fprintf(stderr, "%10"F_U32P"   spur/spur\n",     numABspurChimer[1][1]);
-  fprintf(stderr, "%10"F_U32P"   spur/chimer\n",   numABspurChimer[1][2]);
+  fprintf(stderr, "%10" F_U32P"   spur/good\n",     numABspurChimer[1][0]);
+  fprintf(stderr, "%10" F_U32P"   spur/spur\n",     numABspurChimer[1][1]);
+  fprintf(stderr, "%10" F_U32P"   spur/chimer\n",   numABspurChimer[1][2]);
   fprintf(stderr, "\n");
-  fprintf(stderr, "%10"F_U32P"   chimer/good\n",   numABspurChimer[2][0]);
-  fprintf(stderr, "%10"F_U32P"   chimer/spur\n",   numABspurChimer[2][1]);
-  fprintf(stderr, "%10"F_U32P"   chimer/chimer\n", numABspurChimer[2][2]);
+  fprintf(stderr, "%10" F_U32P"   chimer/good\n",   numABspurChimer[2][0]);
+  fprintf(stderr, "%10" F_U32P"   chimer/spur\n",   numABspurChimer[2][1]);
+  fprintf(stderr, "%10" F_U32P"   chimer/chimer\n", numABspurChimer[2][2]);
   fprintf(stderr, "\n");
   fprintf(stderr, "\n");
 

@@ -22,14 +22,14 @@ positionDB::dump(char *name) {
       ed = _hashTable_FW[h+1];
     }
 
-    fprintf(F, "B "uint64FMT" "uint64FMT"-"uint64FMT"\n", h, st, ed);
+    fprintf(F, "B " uint64FMT" " uint64FMT"-" uint64FMT"\n", h, st, ed);
 
     while (st < ed) {
       uint64     cb = st * _wFin;
 
       getDecodedValues(_buckets, cb, (_sizeWidth == 0) ? 3 : 4, sizs, vals);
 
-      fprintf(F, "%c chk="uint64HEX" pos="uint64FMT" siz="uint64FMT,
+      fprintf(F, "%c chk=" uint64HEX" pos=" uint64FMT" siz=" uint64FMT,
               (vals[2] == 0) ? 'D' : 'U', vals[0], vals[1], vals[3]);
 
       if (vals[2] == 0) {
@@ -37,7 +37,7 @@ positionDB::dump(char *name) {
         uint64 len = getDecodedValue(_positions, pos, _posnWidth);
 
         for (pos += _posnWidth; len > 0; pos += _posnWidth, len--)
-          fprintf(F, " "uint64FMT, getDecodedValue(_positions, pos, _posnWidth));
+          fprintf(F, " " uint64FMT, getDecodedValue(_positions, pos, _posnWidth));
       }
 
       fprintf(F, "\n");

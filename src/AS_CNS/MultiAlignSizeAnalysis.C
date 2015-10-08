@@ -132,18 +132,18 @@ sizeAnalysis::printSummary(FILE *out, char *description, vector<uint32> &data) {
     sum += data[i];
 
     while (siz * nnn / 100 < sum) {
-      fprintf(out, "%s n%2"F_U64P" siz %10"F_U32P" sum %10"F_U64P" idx %10"F_U64P"\n",
+      fprintf(out, "%s n%2" F_U64P" siz %10" F_U32P" sum %10" F_U64P" idx %10" F_U64P"\n",
               description, nnn, data[i], sum, i);
       
       nnn += 10;
     }
   }
 
-  fprintf(out, "%s sum %10"F_U64P" (genomeSize "F_U64")\n",
+  fprintf(out, "%s sum %10" F_U64P" (genomeSize " F_U64 ")\n",
           description, tot, genomeSize);
-  fprintf(out, "%s num %10"F_U64P"\n",
+  fprintf(out, "%s num %10" F_U64P"\n",
           description, cnt);
-  fprintf(out, "%s ave %10"F_U64P"\n",
+  fprintf(out, "%s ave %10" F_U64P"\n",
           description, tot / cnt);
 }
 

@@ -128,7 +128,7 @@ loadFragments(gkStore *gkp) {
   gkFragment      fr;
   fragT          *frag = new fragT [gkp->gkStore_getNumFragments() + 1];
 
-  fprintf(stderr, "loading fragment data for "F_U32" fragments ("F_SIZE_T" MB)\n",
+  fprintf(stderr, "loading fragment data for " F_U32 " fragments (" F_SIZE_T " MB)\n",
           gkp->gkStore_getNumFragments(),
           sizeof(fragT) * (gkp->gkStore_getNumFragments() + 1) >> 20);
 
@@ -150,7 +150,7 @@ loadFragments(gkStore *gkp) {
     frag[iid].libraryIID = fr.gkFragment_getLibraryIID();
 
     if (frag[iid].libraryIID != fr.gkFragment_getLibraryIID())
-      fprintf(stderr, "ERROR: libraryIID overflow; not enough bits to store library iid of "F_IID"\n",
+      fprintf(stderr, "ERROR: libraryIID overflow; not enough bits to store library iid of " F_IID "\n",
               fr.gkFragment_getLibraryIID());
     assert(frag[iid].libraryIID == fr.gkFragment_getLibraryIID());
 
@@ -199,7 +199,7 @@ loadOverlaps(OverlapStore *store,
     ovlLen += nr;
   }
 
-  //fprintf(stderr, "loadOverlaps()-- read %8"F_U32P" overlaps from store 0x%016p (now %8"F_U32P" overlaps)\n",
+  //fprintf(stderr, "loadOverlaps()-- read %8" F_U32P" overlaps from store 0x%016p (now %8" F_U32P" overlaps)\n",
   //        nr, store, ovlLen);
 
   return(ovlLen);
@@ -314,7 +314,7 @@ processOverlaps(gkStore      *gkp,
   uint64  nMaFr = 0;
   uint64  nFrag = 0;
 
-  fprintf(stderr, "processing "F_U32" overlaps currM="F_IID" lastP="F_IID" lastS="F_IID" ",
+  fprintf(stderr, "processing " F_U32 " overlaps currM=" F_IID " lastP=" F_IID " lastS=" F_IID " ",
           ovlLen, currM, lastP, lastS);
 
   for (uint32 oo=0; oo<ovlLen; oo++) {
@@ -449,7 +449,7 @@ processOverlaps(gkStore      *gkp,
     }
   }
 
-  fprintf(stderr, "-- nMate="F_U64" nMaFR="F_U64" nFrag="F_U64" -- nRev="F_U64" nLQ="F_U64" nDel="F_U64" nLib="F_U64" nNoD="F_U64"\n",
+  fprintf(stderr, "-- nMate=" F_U64 " nMaFR=" F_U64 " nFrag=" F_U64 " -- nRev=" F_U64 " nLQ=" F_U64 " nDel=" F_U64 " nLib=" F_U64 " nNoD=" F_U64 "\n",
           nMate, nMaFr, nFrag, nRev, nLQ, nDel, nLib, nNoD);
 
   currM = processMatedFragmentsInline(gkp, frag, currM, MIN(lastP, lastS));
@@ -617,9 +617,9 @@ main(int argc, char **argv) {
   delete    gkp;
 
   if (summaryFile) {
-    fprintf(summaryFile, "duplicateFrags:    "F_U32"\n", duplicateFrags);
-    fprintf(summaryFile, "duplicateMates:    "F_U32"\n", duplicateMates);
-    fprintf(summaryFile, "duplicateSelf:     "F_U32"\n", duplicateSelf);
+    fprintf(summaryFile, "duplicateFrags:    " F_U32 "\n", duplicateFrags);
+    fprintf(summaryFile, "duplicateMates:    " F_U32 "\n", duplicateMates);
+    fprintf(summaryFile, "duplicateSelf:     " F_U32 "\n", duplicateSelf);
   }
 
   if (summaryFile) {
@@ -634,7 +634,7 @@ main(int argc, char **argv) {
       fprintf(summaryFile, "%s", label[i]);
 
       for (uint32 j=0; j<4; j++)
-        fprintf(summaryFile, "\t"F_U32, mateOvlTypes[i][j]);
+        fprintf(summaryFile, "\t" F_U32, mateOvlTypes[i][j]);
 
       fprintf(summaryFile, "\n");
     }

@@ -309,7 +309,7 @@ mpaLibraryData::printSummary(FILE *output, int32 libOrient, gkLibrary *library) 
     return;
 
   if (library->orientation == libOrient)
-    fprintf(stderr, "%9.2f +- %8.2f -> %9.2f +- %8.2f %s "F_U64"/"F_U64" samples external happy "F_U64" sad "F_U64"\n",
+    fprintf(stderr, "%9.2f +- %8.2f -> %9.2f +- %8.2f %s " F_U64 "/" F_U64 " samples external happy " F_U64 " sad " F_U64 "\n",
             library->mean, library->stddev,
             mean,  stddev,
             AS_READ_ORIENT_NAMES[libOrient],
@@ -318,7 +318,7 @@ mpaLibraryData::printSummary(FILE *output, int32 libOrient, gkLibrary *library) 
             externHappy,
             externSad);
     else
-      fprintf(stderr, "%9s +- %8s -> %9.2f +- %8.2f %s "F_U64"/"F_U64" samples\n",
+      fprintf(stderr, "%9s +- %8s -> %9.2f +- %8.2f %s " F_U64 "/" F_U64 " samples\n",
               "N/A", "N/A",
               mean,  stddev,
               AS_READ_ORIENT_NAMES[libOrient],
@@ -354,7 +354,7 @@ mpaLibraryData::writeUpdate(FILE *output, int32 libOrient, gkLibrary *library) {
     return;
 
   if (numSamples <= 100) {
-    fprintf(stderr, "library %s has only "F_U64" samples; not updated in gatekeeper.\n",
+    fprintf(stderr, "library %s has only " F_U64 " samples; not updated in gatekeeper.\n",
             library->libraryName, numSamples);
     return;
   }

@@ -665,7 +665,7 @@ loadFrgUtg(char    *prefix,
     //  Otherwise, the fragment was placed somewhere, and it inherits the unitig status code.
     else {
       if (frgDat[frgId].sta != 'p')
-        fprintf(stderr, "ERROR: fragment "F_U32" has status %c\n", frgId, frgDat[frgId].sta);
+        fprintf(stderr, "ERROR: fragment " F_U32 " has status %c\n", frgId, frgDat[frgId].sta);
       assert(frgDat[frgId].sta == 'p');
 
       frgDat[frgId].sta = utgDat[utgId].sta;
@@ -812,10 +812,10 @@ loadPosMap(char *prefix, char *gkpName) {
     }
   }
 
-  fprintf(stderr, "Loaded "F_SIZE_T" scaffolds.\n",   scfNames.size());
-  fprintf(stderr, "Loaded "F_SIZE_T" contigs.\n",     ctgNames.size());
-  fprintf(stderr, "Loaded "F_SIZE_T" unitigs.\n",     utgNames.size());
-  fprintf(stderr, "Loaded "F_SIZE_T" fragments.\n",   frgNames.size());
+  fprintf(stderr, "Loaded " F_SIZE_T " scaffolds.\n",   scfNames.size());
+  fprintf(stderr, "Loaded " F_SIZE_T " contigs.\n",     ctgNames.size());
+  fprintf(stderr, "Loaded " F_SIZE_T " unitigs.\n",     utgNames.size());
+  fprintf(stderr, "Loaded " F_SIZE_T " fragments.\n",   frgNames.size());
 
   {
     uint32   fD=0, fC=0, fd=0, fu=0, fr=0, fs=0, fR=0, fp=0, fS=0, fo=0;
@@ -832,20 +832,20 @@ loadPosMap(char *prefix, char *gkpName) {
       else if (frgDat[i].sta == 'S')  fS++;
       else if (frgDat[i].sta == 'o')  fo++;
       else {
-        fprintf(stderr, "frag "F_U32" status %c\n", i, frgDat[i].sta);
+        fprintf(stderr, "frag " F_U32 " status %c\n", i, frgDat[i].sta);
         assert(0);
       }
 
-    fprintf(stderr, "  deleted                      "F_U32"\n", fD);
-    fprintf(stderr, "  singleton chaff              "F_U32"\n", fC);
-    fprintf(stderr, "  in degenerate contig         "F_U32"\n", fd);
-    fprintf(stderr, "  in unique unitig             "F_U32"\n", fu);
-    fprintf(stderr, "  in rock unitig               "F_U32"\n", fr);
-    fprintf(stderr, "  in stone unitig              "F_U32"\n", fs);
-    fprintf(stderr, "  in stone unitig, unresolved  "F_U32"\n", fR);
-    fprintf(stderr, "  in pebble unitig             "F_U32"\n", fp);
-    fprintf(stderr, "  in singleton unitig          "F_U32"\n", fS);
-    fprintf(stderr, "  in other unitig              "F_U32"\n", fo);
+    fprintf(stderr, "  deleted                      " F_U32 "\n", fD);
+    fprintf(stderr, "  singleton chaff              " F_U32 "\n", fC);
+    fprintf(stderr, "  in degenerate contig         " F_U32 "\n", fd);
+    fprintf(stderr, "  in unique unitig             " F_U32 "\n", fu);
+    fprintf(stderr, "  in rock unitig               " F_U32 "\n", fr);
+    fprintf(stderr, "  in stone unitig              " F_U32 "\n", fs);
+    fprintf(stderr, "  in stone unitig, unresolved  " F_U32 "\n", fR);
+    fprintf(stderr, "  in pebble unitig             " F_U32 "\n", fp);
+    fprintf(stderr, "  in singleton unitig          " F_U32 "\n", fS);
+    fprintf(stderr, "  in other unitig              " F_U32 "\n", fo);
   }
 }
 

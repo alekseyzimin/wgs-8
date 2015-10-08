@@ -53,7 +53,7 @@ DumpContigMultiAlignInfo (char *label, MultiAlignT *cma, int contigID) {
 
     MultiAlignT  *uma = ScaffoldGraph->tigStore->loadMultiAlign(unitig->id, TRUE);
 
-    fprintf(debug.diagnosticFP, "  unitig %8d, bgn: %10d, end: %10d, length: %10d (consensus: %10"F_SIZE_TP")\n",
+    fprintf(debug.diagnosticFP, "  unitig %8d, bgn: %10d, end: %10d, length: %10d (consensus: %10" F_SIZE_TP ")\n",
             unitig->id, pos->position.bgn, pos->position.end,
             abs(pos->position.bgn - pos->position.end),
             strlen(Getchar(uma->consensus, 0)));
@@ -83,7 +83,7 @@ DumpUnitigInfo(char *label, NodeCGW_T *unitig) {
   uma = ScaffoldGraph->tigStore->loadMultiAlign(unitig->id, TRUE);
   pos = GetIntUnitigPos(uma->u_list, 0);
 
-  fprintf(debug.diagnosticFP, "  unitig %8d, bgn: %10d, end: %10d, length: %10d (consensus: %10"F_SIZE_TP")\n",
+  fprintf(debug.diagnosticFP, "  unitig %8d, bgn: %10d, end: %10d, length: %10d (consensus: %10" F_SIZE_TP ")\n",
           unitig->id, pos->position.bgn, pos->position.end,
           abs(pos->position.bgn - pos->position.end),
           strlen(Getchar(uma->consensus, 0)));

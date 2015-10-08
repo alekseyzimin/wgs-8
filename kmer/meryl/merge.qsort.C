@@ -148,7 +148,7 @@ public:
       R->nextMer();
     }
 
-    //fprintf(stderr, "read()-- now up to "uint32FMT" mers ("uint32FMT" pos); loaded "uint32FMT" out of "uint32FMT" requested.\n", _mmmLen, _posLen, xxx, num);
+    //fprintf(stderr, "read()-- now up to " uint32FMT" mers (" uint32FMT" pos); loaded " uint32FMT" out of " uint32FMT" requested.\n", _mmmLen, _posLen, xxx, num);
   };
 
 
@@ -185,7 +185,7 @@ multipleOperations(merylArgs *args) {
   char  debugstring2[256];
 
   if (args->mergeFilesLen < 2) {
-    fprintf(stderr, "ERROR - must have at least two databases (you gave "uint32FMT")!\n", args->mergeFilesLen);
+    fprintf(stderr, "ERROR - must have at least two databases (you gave " uint32FMT")!\n", args->mergeFilesLen);
     exit(1);
   }
   if (args->outputFile == 0L) {
@@ -267,7 +267,7 @@ multipleOperations(merylArgs *args) {
     while (R[i]->validMer() && (R[i]->theFMer() <= lastLoaded))
       M->read(R[i], 2 * 1024);
 
-  fprintf(stderr, "Initial load:  length="uint32FMT" lastLoaded=%s\n",
+  fprintf(stderr, "Initial load:  length=" uint32FMT" lastLoaded=%s\n",
           M->length(), lastLoaded.merToString(debugstring));
 
   M->sort();
@@ -301,10 +301,10 @@ multipleOperations(merylArgs *args) {
 
 #if 0
       if (M->length() > 0)
-        fprintf(stderr, "LOADMORE length="uint32FMT" lastLoaded=%s first=%s\n",
+        fprintf(stderr, "LOADMORE length=" uint32FMT" lastLoaded=%s first=%s\n",
                 M->length(), lastLoaded.merToString(debugstring2), M->first().merToString(debugstring));
       else
-        fprintf(stderr, "LOADMORE length="uint32FMT" lastLoaded=%s first=EMPTY\n",
+        fprintf(stderr, "LOADMORE length=" uint32FMT" lastLoaded=%s first=EMPTY\n",
                 M->length(), lastLoaded.merToString(debugstring2));
 #endif
 
@@ -322,7 +322,7 @@ multipleOperations(merylArgs *args) {
       if (maxSize / args->mergeFilesLen > M->length())
         additionalLoading = maxSize / args->mergeFilesLen - M->length();
 
-      //fprintf(stderr, "LOADMORE adding "uint32FMT" from each file\n", additionalLoading);
+      //fprintf(stderr, "LOADMORE adding " uint32FMT" from each file\n", additionalLoading);
 
       lastLoaded.setMerSize(merSize);
       lastLoaded.smallest();

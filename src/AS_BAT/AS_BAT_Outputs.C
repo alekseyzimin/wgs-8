@@ -137,7 +137,7 @@ writeIUMtoFile(UnitigVector  &unitigs,
     assert(tigid < unitigs.size());
     partmap[tigid] = prt_count;
 
-    fprintf(iidm, "Unitig "F_U32" == IUM "F_U32" (in partition "F_U32" with "F_U32" frags)\n",
+    fprintf(iidm, "Unitig " F_U32 " == IUM " F_U32 " (in partition " F_U32 " with " F_U32 " frags)\n",
             utg->id(),
             (tigid),
             partmap[(tigid)],

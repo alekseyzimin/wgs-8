@@ -138,7 +138,7 @@ merMaskedSequence::loadMasking(uint32 onlySeqIID_) {
     _repeatID[i] = 0L;
 
     if ((onlySeqIID_ >= _numSeq) || (onlySeqIID_ == i)) {
-      fprintf(stderr, "Loading sequence "uint32FMT" of length "uint32FMT"\n", i, _seqLen[i]);
+      fprintf(stderr, "Loading sequence " uint32FMT" of length " uint32FMT"\n", i, _seqLen[i]);
 
       _masking[i]  = new char   [_seqLen[i]];
       _repeatID[i] = new uint32 [_seqLen[i]];
@@ -216,7 +216,7 @@ merMaskedSequence::buildMasking(void) {
   _merSize = MS->merSize();
 
   while (MS->nextMer()) {
-    //fprintf(stderr, "mer count="uint64FMT" pos="uint32FMT"\n", MS->theCount(), MS->getPosition(0));
+    //fprintf(stderr, "mer count=" uint64FMT" pos=" uint32FMT"\n", MS->theCount(), MS->getPosition(0));
 
     if (MS->theCount() == 1) {
       uint32 p = MS->getPosition(0);
@@ -276,7 +276,7 @@ computeDensity(merMaskedSequence *S, char *outputPrefix) {
     if (S->seqLen(s) == 0)
       continue;
 
-    sprintf(outputName, "%s.density.seq"uint32FMTW(02), outputPrefix, s);
+    sprintf(outputName, "%s.density.seq" uint32FMTW(02), outputPrefix, s);
     outputFile = fopen(outputName, "w");
 
     fprintf(stderr, "Starting '%s'\n", outputName);
@@ -352,12 +352,12 @@ computeMateRescue(merMaskedSequence *S, char *outputPrefix, mateRescueData *lib,
     if (S->seqLen(s) == 0)
       continue;
 
-    fprintf(stderr, "Starting sequence "uint32FMT"\n", s);
+    fprintf(stderr, "Starting sequence " uint32FMT"\n", s);
 
-    sprintf(outputName, "%s.mateRescue.seq"uint32FMTW(02)".out", outputPrefix, s);
+    sprintf(outputName, "%s.mateRescue.seq" uint32FMTW(02)".out", outputPrefix, s);
     outputFile = fopen(outputName, "w");
 
-    sprintf(outputName, "%s.mateRescue.seq"uint32FMTW(02)".dat", outputPrefix, s);
+    sprintf(outputName, "%s.mateRescue.seq" uint32FMTW(02)".dat", outputPrefix, s);
     outputData = fopen(outputName, "w");
 
     double  numRR[MAX_COVERAGE] = {0};  //  num repeats rescued (expected) for [] X coverage
@@ -511,7 +511,7 @@ computeMateRescue(merMaskedSequence *S, char *outputPrefix, mateRescueData *lib,
     fprintf(outputFile, "seqIID\tmerSize\ttRepeat\teRescue\teFailed\tXcov\tmean\tstddev\n");
 
     for (uint32 x=1, l=0, n=0; l<libLen; x++) {
-      fprintf(outputFile, uint32FMT"\t"uint32FMT"\t"uint32FMT"\t%.0f\t%.0f\t"uint32FMT"\t"int32FMT"\t"int32FMT"\n",
+      fprintf(outputFile, uint32FMT"\t" uint32FMT"\t" uint32FMT"\t%.0f\t%.0f\t" uint32FMT"\t"int32FMT"\t"int32FMT"\n",
               s, S->merSize(), numRT, numRR[x], numNR[x], x, lib[l].mean(), lib[l].stddev());
       n++;
       if (n >= lib[l].coverage()) {

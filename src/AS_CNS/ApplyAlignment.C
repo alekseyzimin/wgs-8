@@ -137,7 +137,7 @@ sanityCheck(beadIdx aboffset, beadIdx bboffset) {
   while (b) {
     if (b->column_index == -1) {
       e++;
-      fprintf(stderr, "bead "F_U64" in A has undef column_index.\n",
+      fprintf(stderr, "bead " F_U64 " in A has undef column_index.\n",
               (uint64)b->boffset.get());
     }
     b = (b->next.isInvalid()) ? NULL : GetBead(beadStore, b->next);
@@ -148,7 +148,7 @@ sanityCheck(beadIdx aboffset, beadIdx bboffset) {
   while (b) {
     if (b->column_index != -1) {
       e++;
-      fprintf(stderr, "bead "F_U64" in B has defined column_index %d.\n",
+      fprintf(stderr, "bead " F_U64 " in B has defined column_index %d.\n",
               (uint64)b->boffset.get(), b->column_index);
     }
     b = (b->next.isInvalid()) ? NULL : GetBead(beadStore, b->next);
@@ -178,7 +178,7 @@ findBeadInColumn(beadIdx bi, beadIdx fi) {
   int32 ff = GetBead(beadStore, fi)->frag_index;
 
 #ifdef DEBUG_FIND_BEAD
-  fprintf(stderr, "findBeadInColumn fragindex ff="F_S32"\n", ff);
+  fprintf(stderr, "findBeadInColumn fragindex ff=" F_S32 "\n", ff);
 #endif
 
   Bead *b = GetBead(beadStore, bi);
@@ -191,7 +191,7 @@ findBeadInColumn(beadIdx bi, beadIdx fi) {
   while (b->up.isValid()) {
     b = GetBead(beadStore, b->up);
 #ifdef DEBUG_FIND_BEAD
-    fprintf(stderr, "findBeadInColumn up bead="F_U64" ff=%d\n", (uint64)b->boffset.get(), b->frag_index);
+    fprintf(stderr, "findBeadInColumn up bead=" F_U64 " ff=%d\n", (uint64)b->boffset.get(), b->frag_index);
 #endif
     if (b->frag_index == ff)
       return(b->boffset);
@@ -203,7 +203,7 @@ findBeadInColumn(beadIdx bi, beadIdx fi) {
   while (b->down.isValid()) {
     b = GetBead(beadStore, b->down);
 #ifdef DEBUG_FIND_BEAD
-    fprintf(stderr, "findBeadInColumn down bead="F_U64" ff=%d\n", (uint64)b->boffset.get(), b->frag_index);
+    fprintf(stderr, "findBeadInColumn down bead=" F_U64 " ff=%d\n", (uint64)b->boffset.get(), b->frag_index);
 #endif
     if (b->frag_index == ff)
       return(b->boffset);

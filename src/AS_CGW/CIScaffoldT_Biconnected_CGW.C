@@ -102,7 +102,7 @@ int IsScaffold2EdgeConnected(ScaffoldGraphT *graph, CIScaffoldT *scaffold){
 
 #ifdef DEBUG
   fprintf(stderr,
-          "* IsScaffoldBiconnected on scaffold "F_CID" with %d elements\n",
+          "* IsScaffoldBiconnected on scaffold " F_CID" with %d elements\n",
           scaffold->id, numElements);
 #endif
 
@@ -116,8 +116,8 @@ int IsScaffold2EdgeConnected(ScaffoldGraphT *graph, CIScaffoldT *scaffold){
 
       dfsnum[i] = ++count1;
 #ifdef DEBUG
-      fprintf(stderr,"* i = "F_CID"\n", i);
-      fprintf(stderr,"* Contig "F_CID" dfsnum %d\n", contig->id, dfsnum[i]);
+      fprintf(stderr,"* i = " F_CID"\n", i);
+      fprintf(stderr,"* Contig " F_CID" dfsnum %d\n", contig->id, dfsnum[i]);
 #endif
 
       // Does this node have any edges that are scaffold internal
@@ -139,19 +139,19 @@ int IsScaffold2EdgeConnected(ScaffoldGraphT *graph, CIScaffoldT *scaffold){
 
       if(isIsolated){
 #ifdef DEBUG
-        fprintf(stderr,"* Node "F_CID" is isolated\n",contig->id);
+        fprintf(stderr,"* Node " F_CID" is isolated\n",contig->id);
 #endif
         num_isolated++;
       }else{
 #ifdef DEBUG
         fprintf(stderr,
-                "* Pushing on stack and calling dfs for node "F_CID"\n",
+                "* Pushing on stack and calling dfs for node " F_CID"\n",
                 contig->id);
 #endif
         ptrts.push(contig);
         bcc_dfs(ScaffoldGraph, contigs, contig,  dfsnum, lowpt, father, ptrts, &count1, &count2, &numBridges);
 #ifdef DEBUG
-        fprintf(stderr,"* Popping stack for contig "F_CID"\n", contig->id);
+        fprintf(stderr,"* Popping stack for contig " F_CID"\n", contig->id);
 #endif
         ptrts.pop();
       }
@@ -181,7 +181,7 @@ static void bcc_dfs(ScaffoldGraphT *sgraph,
 
   lowpt[contigNum] = dfsnum[contigNum];
 #ifdef DEBUG
-  fprintf(stderr, "contig "F_CID" contigNum %d lowpt[contigNum] = %d\n",
+  fprintf(stderr, "contig " F_CID" contigNum %d lowpt[contigNum] = %d\n",
           contig->id,contigNum,lowpt[contigNum]);
 #endif
 
@@ -195,7 +195,7 @@ static void bcc_dfs(ScaffoldGraphT *sgraph,
       continue;
 
 #ifdef DEBUG
-    fprintf(stderr," ("F_CID","F_CID",%c) wght %d\n",
+    fprintf(stderr," (" F_CID"," F_CID",%c) wght %d\n",
 	    edge->idA, edge->idB, edge->orient, edge->edgesContributing);
 #endif
 
@@ -205,7 +205,7 @@ static void bcc_dfs(ScaffoldGraphT *sgraph,
       father[otherNum] = contigNum;
 
 #ifdef DEBUG
-      fprintf(stderr,"Pushing ctg "F_CID" contigNum %d dfsnum %d father %d and calling dfs\n",
+      fprintf(stderr,"Pushing ctg " F_CID" contigNum %d dfsnum %d father %d and calling dfs\n",
               otherContig->id,otherNum,dfsnum[otherNum],father[otherNum]);
 #endif
 
@@ -242,7 +242,7 @@ static void bcc_dfs(ScaffoldGraphT *sgraph,
 
 #ifdef DEBUG
         fprintf(stderr,
-                " w:"F_CID" cnt:%d ("F_CID","F_CID",%c) wght %d\n",
+                " w:" F_CID" cnt:%d (" F_CID"," F_CID",%c) wght %d\n",
                 w->id, cnt, edge2->idA, edge2->idB,
                 edge2->orient, edge2->edgesContributing);
 #endif
@@ -262,7 +262,7 @@ static void bcc_dfs(ScaffoldGraphT *sgraph,
         (*numBridges)++;
         lastEdge->flags.bits.isBridge = TRUE;
 #ifdef DEBUG
-        fprintf(stderr,"* Edge ("F_CID","F_CID",%c) is a bridge\n",
+        fprintf(stderr,"* Edge (" F_CID"," F_CID",%c) is a bridge\n",
                 lastEdge->idA, lastEdge->idB, lastEdge->orient);
 #endif
         PrintGraphEdge(stderr, ScaffoldGraph->ContigGraph, "Bridge ", lastEdge, lastEdge->idA);

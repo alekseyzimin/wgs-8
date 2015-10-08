@@ -50,10 +50,10 @@ testFiles(char *filename, char *prefix, uint32 merSize) {
     uint32 cg = g->count(m);
 
     if ((ee != ef) || (ef != eg) || (ee != eg))
-      fprintf(stderr, "mer "uint64HEX" not found : e=%d  f=%d  g=%d\n", m, ee, ef, eg);
+      fprintf(stderr, "mer " uint64HEX" not found : e=%d  f=%d  g=%d\n", m, ee, ef, eg);
 
     if ((ce != cf) || (cf != cg) || (ce != cg))
-      fprintf(stderr, "mer "uint64HEX" count differs : e=%u  f=%u  g=%u (exists=%d)\n", m, ce, cf, cg, ee);
+      fprintf(stderr, "mer " uint64HEX" count differs : e=%u  f=%u  g=%u (exists=%d)\n", m, ce, cf, cg, ee);
 
     if ((m & 0xffffff) == 0) {
       //  Been a while since a report, so report.
@@ -62,7 +62,7 @@ testFiles(char *filename, char *prefix, uint32 merSize) {
 
     if ((ce > 1) && (d == 1)) {
       //  Report anything not unique, to make sure that we're testing real counts and not just existence.
-      fprintf(stderr, "mer "uint64HEX" : e=%u  f=%u  g=%u (exists=%d)\n", m, ce, cf, cg, ee);
+      fprintf(stderr, "mer " uint64HEX" : e=%u  f=%u  g=%u (exists=%d)\n", m, ce, cf, cg, ee);
       d = 0;
     }
 
@@ -93,7 +93,7 @@ testExistence(char *filename, uint32 merSize) {
   delete E;
 
   if (lost) {
-    fprintf(stderr, "Tried "uint64FMT", didn't find "uint64FMT" merStream mers in the existDB.\n", tried, lost);
+    fprintf(stderr, "Tried " uint64FMT", didn't find " uint64FMT" merStream mers in the existDB.\n", tried, lost);
     return(1);
   } else {
     return(0);
@@ -125,7 +125,7 @@ testExhaustive(char *filename, char *merylname, uint32 merSize) {
 
   fclose(DUMP);
 
-  fprintf(stderr, "Found "uint64FMT" mers in the meryl database.\n", expected);
+  fprintf(stderr, "Found " uint64FMT" mers in the meryl database.\n", expected);
   fprintf(stderr, "Need to iterate over %7.2f Mmers.\n", (uint64MASK(2 * merSize) + 1) / 1000000.0);
 
   DUMP = fopen("testExhaustive.ck.dump", "w");
@@ -145,7 +145,7 @@ testExhaustive(char *filename, char *merylname, uint32 merSize) {
   delete M;
 
   if (expected != found) {
-    fprintf(stderr, "Expected to find "uint64FMT" mers, but found "uint64FMT" instead.\n",
+    fprintf(stderr, "Expected to find " uint64FMT" mers, but found " uint64FMT" instead.\n",
             expected, found);
     return(1);
   } else {

@@ -56,7 +56,7 @@ computeIIDperBucket(uint32 fileLimit, uint64 memoryLimit, uint32 maxIID, vector<
   if (fileLimit > 0) {
     uint64  iidPerBucket = (uint64)ceil((double)maxIID / (double)fileLimit);
 
-    fprintf(stderr, "Explicit bucket count supplied, memory sizing disabled.  I'll put "F_U64" IIDs into each of "F_U32" buckets.\n",
+    fprintf(stderr, "Explicit bucket count supplied, memory sizing disabled.  I'll put " F_U64 " IIDs into each of " F_U32 " buckets.\n",
             iidPerBucket, fileLimit);
     return(iidPerBucket);
   }
@@ -65,7 +65,7 @@ computeIIDperBucket(uint32 fileLimit, uint64 memoryLimit, uint32 maxIID, vector<
     fileLimit = sysconf(_SC_OPEN_MAX) - 16;
     uint64  iidPerBucket = (uint64)ceil((double)maxIID / (double)fileLimit);
 
-    fprintf(stderr, "Reading overlaps from stdin, memory sizing disabled.  I'll put "F_U64" IIDs into each of "F_U32" buckets.\n",
+    fprintf(stderr, "Reading overlaps from stdin, memory sizing disabled.  I'll put " F_U64 " IIDs into each of " F_U32 " buckets.\n",
             iidPerBucket, fileLimit);
     return(iidPerBucket);
   }
@@ -95,7 +95,7 @@ computeIIDperBucket(uint32 fileLimit, uint64 memoryLimit, uint32 maxIID, vector<
 
   fileLimit = maxIID / iidPerBucket + 1;
 
-  fprintf(stderr, "Memory limit "F_U64"MB supplied.  I'll put "F_U64" IIDs (%.2f million overlaps) into each of "F_U32" buckets.\n",
+  fprintf(stderr, "Memory limit " F_U64 "MB supplied.  I'll put " F_U64 " IIDs (%.2f million overlaps) into each of " F_U32 " buckets.\n",
           memoryLimit / (uint64)1048576,
           iidPerBucket,
           overlapsPerBucket / 1000000.0,
@@ -154,7 +154,7 @@ markOBT(gkStore *gkp, uint32 maxIID, char *skipFragment, uint32 *iidToLib) {
     }
   }
 
-  fprintf(stderr, "Marked "F_U64" fragments.\n", numMarked);
+  fprintf(stderr, "Marked " F_U64 " fragments.\n", numMarked);
 }
 
 
@@ -180,7 +180,7 @@ markDUP(gkStore *gkp, uint32 maxIID, char *skipFragment, uint32 *iidToLib) {
     }
   }
 
-  fprintf(stderr, "Marked "F_U64" fragments.\n", numMarked);
+  fprintf(stderr, "Marked " F_U64 " fragments.\n", numMarked);
 }
 
 
@@ -222,9 +222,9 @@ writeToDumpFile(OVSoverlap          *overlap,
     fprintf(stderr, "Too many bucket files when adding overlap:\n");
     fprintf(stderr, "  %s\n", AS_OVS_toString(olapstring, *overlap));
     fprintf(stderr, "\n");
-    fprintf(stderr, "bucket       = "F_U32"\n", df);
-    fprintf(stderr, "iidPerBucket = "F_U32"\n", iidPerBucket);
-    fprintf(stderr, "dumpFileMax  = "F_U32"\n", dumpFileMax);
+    fprintf(stderr, "bucket       = " F_U32 "\n", df);
+    fprintf(stderr, "iidPerBucket = " F_U32 "\n", iidPerBucket);
+    fprintf(stderr, "dumpFileMax  = " F_U32 "\n", dumpFileMax);
     fprintf(stderr, "\n");
     fprintf(stderr, "\n");
     fprintf(stderr, "This might be a corrupt input file, or maybe you simply need to supply more\n");
@@ -382,7 +382,7 @@ main(int argc, char **argv) {
     if (fileList.size() == 0)
       fprintf(stderr, "ERROR: No input overlap files (-L or last on the command line) supplied.\n");
     if (fileLimit > sysconf(_SC_OPEN_MAX) - 16)
-      fprintf(stderr, "ERROR: Too many jobs (-F); only "F_SIZE_T" supported on this architecture.\n", sysconf(_SC_OPEN_MAX) - 16);
+      fprintf(stderr, "ERROR: Too many jobs (-F); only " F_SIZE_T " supported on this architecture.\n", sysconf(_SC_OPEN_MAX) - 16);
 
     exit(1);
   }
@@ -410,7 +410,7 @@ main(int argc, char **argv) {
   if (maxIID / iidPerBucket + 1 > dumpFileMax - 16) {
     fprintf(stderr, "ERROR:\n");
     fprintf(stderr, "ERROR:  Operating system limit of %d open files.  The current -F setting\n", dumpFileMax);
-    fprintf(stderr, "ERROR:  will need to create "F_U64" files to construct the store.\n", maxIID / iidPerBucket + 1);
+    fprintf(stderr, "ERROR:  will need to create " F_U64 " files to construct the store.\n", maxIID / iidPerBucket + 1);
     exit(1);
   }
 
@@ -466,7 +466,7 @@ main(int argc, char **argv) {
           (fovrlap.b_iid >= maxIID)) {
         char ovlstr[256];
 
-        fprintf(stderr, "Overlap has IDs out of range (maxIID "F_U64"), possibly corrupt input data.\n", maxIID);
+        fprintf(stderr, "Overlap has IDs out of range (maxIID " F_U64 "), possibly corrupt input data.\n", maxIID);
         fprintf(stderr, "  %s\n", AS_OVS_toString(ovlstr, fovrlap));
         exit(1);
       }
@@ -573,10 +573,10 @@ main(int argc, char **argv) {
   fprintf(stderr, "bucketizing DONE!\n");
 
   fprintf(stderr, "overlaps skipped:\n");
-  fprintf(stderr, "%16"F_U64P" OBT - low quality\n", skipOBT1LQ);
-  fprintf(stderr, "%16"F_U64P" DUP - non-duplicate overlap\n", skipOBT2HQ);
-  fprintf(stderr, "%16"F_U64P" DUP - different library\n", skipOBT2LIB);
-  fprintf(stderr, "%16"F_U64P" DUP - dedup not requested\n", skipOBT2NODEDUP);
+  fprintf(stderr, "%16" F_U64P" OBT - low quality\n", skipOBT1LQ);
+  fprintf(stderr, "%16" F_U64P" DUP - non-duplicate overlap\n", skipOBT2HQ);
+  fprintf(stderr, "%16" F_U64P" DUP - different library\n", skipOBT2LIB);
+  fprintf(stderr, "%16" F_U64P" DUP - dedup not requested\n", skipOBT2NODEDUP);
 
   delete [] skipFragment;  skipFragment = NULL;
   delete [] iidToLib;      iidToLib     = NULL;

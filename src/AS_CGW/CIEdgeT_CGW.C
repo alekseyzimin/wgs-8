@@ -90,7 +90,7 @@ void PrintCIEdgeT(FILE *fp, ScaffoldGraphT *graph,
     flagTrans = "&B";
   }
 
-  fprintf(fp,"%s A:"F_CID" B:"F_CID" wgt:%d %s %s %s %s%s ori:%c con:%d dst:%d std:%g %s\n",
+  fprintf(fp,"%s A:" F_CID" B:" F_CID" wgt:%d %s %s %s %s%s ori:%c con:%d dst:%d std:%g %s\n",
           label, edge->idA, edge->idB, edge->edgesContributing, flag,
           (edge->flags.bits.hasExtremalAFrag?"$A":"  "),
           (edge->flags.bits.hasExtremalBFrag?"$B":"  "),
@@ -104,7 +104,7 @@ void PrintCIEdgeT(FILE *fp, ScaffoldGraphT *graph,
 
 void PrintChunkInstanceHeader(FILE *stream, ScaffoldGraphT *graph,
                               ChunkInstanceT *chunk){
-  fprintf(stream,"\n* CI "F_CID" cov:%d len:%d frags:%d\n",
+  fprintf(stream,"\n* CI " F_CID" cov:%d len:%d frags:%d\n",
           chunk->id,
           ScaffoldGraph->tigStore->getUnitigCoverageStat(chunk->id),
           (int)chunk->bpLength.mean,

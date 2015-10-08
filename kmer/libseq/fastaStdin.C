@@ -110,7 +110,7 @@ fastaStdin::getSequence(uint32 iid,
   bool  ret = true;
 
 #ifdef DEBUG
-  fprintf(stderr, "fastaStdin::getSequence(full)-- "uint32FMT"\n", iid);
+  fprintf(stderr, "fastaStdin::getSequence(full)-- " uint32FMT"\n", iid);
 #endif
 
   if (iid == _nextIID)
@@ -151,7 +151,7 @@ fastaStdin::getSequence(uint32 iid,
                         uint32 bgn, uint32 end, char *s) {
 
 #ifdef DEBUG
-  fprintf(stderr, "fastaStdin::getSequence(part)-- "uint32FMT"\n", iid);
+  fprintf(stderr, "fastaStdin::getSequence(part)-- " uint32FMT"\n", iid);
 #endif
   fprintf(stderr, "fastaStdin::getSequence(part)-- ERROR!  Used for random access.\n");
   assert(0);

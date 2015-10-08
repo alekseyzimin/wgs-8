@@ -261,7 +261,7 @@ ReallocHashTable_AS(HashTable_AS *htable) {
   uint64 newMaxNodes   = htable->numNodes   << 1;
 
 #if 0
-  fprintf(stderr, "ReallocHashTable_AS()-- from "F_U64" to "F_U64" buckets (max nodes: "F_U64" to "F_U64")%s.\n",
+  fprintf(stderr, "ReallocHashTable_AS()-- from " F_U64 " to " F_U64 " buckets (max nodes: " F_U64 " to " F_U64 ")%s.\n",
           htable->numBuckets, newNumBuckets,
           htable->maxNodes, newMaxNodes,
           (newNumBuckets > htable->maxBuckets) ? ": TOO LARGE, DON'T EXPAND." : "");
@@ -462,7 +462,7 @@ DeleteFromHashTable_AS(HashTable_AS *table,
 
 #if 0
   if (keylen > 0)
-    fprintf(stderr, "delete - key "F_U64" %d,%d,%d keylen %d hashkey %d bucket %d\n",
+    fprintf(stderr, "delete - key " F_U64 " %d,%d,%d keylen %d hashkey %d bucket %d\n",
             key,
             ((int *)key)[0],
             ((int *)key)[1],
@@ -567,7 +567,7 @@ LookupInHashTable_AS(HashTable_AS *table,
 
 #if 0
   if (keylen > 0)
-    fprintf(stderr, "lookup - key "F_U64" %d,%d,%d keylen %d hashkey %d bucket %d\n",
+    fprintf(stderr, "lookup - key " F_U64 " %d,%d,%d keylen %d hashkey %d bucket %d\n",
             key,
             ((int *)key)[0],
             ((int *)key)[1],

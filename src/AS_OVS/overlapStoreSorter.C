@@ -92,14 +92,14 @@ writeOverlaps(char                *ovlName,
   if (errno)
     fprintf(stderr, "ERROR: Failed to open '%s' for writing: %s\n", name, strerror(errno)), exit(1);
 
-  fprintf(stderr, "Writing "F_U64" overlaps.\n", numOvl);
+  fprintf(stderr, "Writing " F_U64 " overlaps.\n", numOvl);
 
 	for (uint64 i=0; i<numOvl; i++ ) {
     AS_OVS_writeOverlap(bof, overlapsort + i);
 
     if (offset.a_iid > overlapsort[i].a_iid) {
-			fprintf(stderr, "LAST:  a:"F_U32"\n", offset.a_iid);
-			fprintf(stderr, "THIS:  a:"F_U32" b:"F_U32"\n", overlapsort[i].a_iid, overlapsort[i].b_iid);
+			fprintf(stderr, "LAST:  a:" F_U32 "\n", offset.a_iid);
+			fprintf(stderr, "THIS:  a:" F_U32 " b:" F_U32 "\n", overlapsort[i].a_iid, overlapsort[i].b_iid);
 		}
     assert(offset.a_iid <= overlapsort[i].a_iid);
 
@@ -173,8 +173,8 @@ writeOverlaps(char                *ovlName,
 
     fclose(F);	
 
-    fprintf(stderr, "Wrote "F_U64" overlaps into '%s'\n", ovs.numOverlapsTotal, name);
-    fprintf(stderr, "Smallest "F_U64" largest "F_U64"\n", ovs.smallestIID, ovs.largestIID);
+    fprintf(stderr, "Wrote " F_U64 " overlaps into '%s'\n", ovs.numOverlapsTotal, name);
+    fprintf(stderr, "Smallest " F_U64 " largest " F_U64 "\n", ovs.smallestIID, ovs.largestIID);
   }
 
   AS_OVS_closeBinaryOverlapFile(bof);    
@@ -266,7 +266,7 @@ main(int argc, char **argv) {
     sprintf(name,"%s/%04d.ovs", ovlName, jobIndex);
 
     if ((forceRun == false) && (AS_UTL_fileExists(name, FALSE, FALSE)))
-      fprintf(stderr, "Job "F_U32" is running or finished (remove '%s' or -force to try again).\n", jobIndex, name), exit(0);
+      fprintf(stderr, "Job " F_U32 " is running or finished (remove '%s' or -force to try again).\n", jobIndex, name), exit(0);
 
     errno = 0;
     FILE *F = fopen(name, "w");
@@ -312,11 +312,11 @@ main(int argc, char **argv) {
 
     if (nr != fileLimit + 1) {
       fprintf(stderr, "ERROR: short read on '%s'.\n", name);
-      fprintf(stderr, "ERROR: read "F_U64" sizes insteadof "F_U32".\n", nr, fileLimit + 1);
+      fprintf(stderr, "ERROR: read " F_U64 " sizes insteadof " F_U32 ".\n", nr, fileLimit + 1);
     }
     assert(nr == fileLimit + 1);
 
-    fprintf(stderr, "Found "F_U64" overlaps from '%s'.\n", sliceSizes[jobIndex], name);
+    fprintf(stderr, "Found " F_U64 " overlaps from '%s'.\n", sliceSizes[jobIndex], name);
 
     bucketSizes[i] = sliceSizes[jobIndex];
     totOvl        += sliceSizes[jobIndex];
@@ -326,7 +326,7 @@ main(int argc, char **argv) {
   sliceSizes = NULL;
 
   if (sizeof(OVSoverlap) * totOvl > maxMemory) {
-    fprintf(stderr, "ERROR:  Overlaps need %.2f GB memory, but process limited (via -M) to "F_U64" GB.\n",
+    fprintf(stderr, "ERROR:  Overlaps need %.2f GB memory, but process limited (via -M) to " F_U64 " GB.\n",
             sizeof(OVSoverlap) * totOvl / (1024.0 * 1024.0 * 1024.0), maxMemory >> 30);
 
     char name[FILENAME_MAX];
@@ -337,7 +337,7 @@ main(int argc, char **argv) {
     exit(1);
   }
 
-  fprintf(stderr, "Overlaps need %.2f GB memory, allowed to use up to (via -M) "F_U64" GB.\n",
+  fprintf(stderr, "Overlaps need %.2f GB memory, allowed to use up to (via -M) " F_U64 " GB.\n",
           sizeof(OVSoverlap) * totOvl / (1024.0 * 1024.0 * 1024.0), maxMemory >> 30);
 
   OVSoverlap *overlapsort = new OVSoverlap [totOvl];
@@ -356,10 +356,10 @@ main(int argc, char **argv) {
       sprintf(name, "%s/bucket%04d/slice%03d", ovlName, i, jobIndex);
 
     if (AS_UTL_fileExists(name, FALSE, FALSE) == false)
-      fprintf(stderr, "ERROR: "F_U64" overlaps claim to exist in bucket '%s', but file not found.\n",
+      fprintf(stderr, "ERROR: " F_U64 " overlaps claim to exist in bucket '%s', but file not found.\n",
               bucketSizes[i], name);
 
-    fprintf(stderr, "Loading "F_U64" overlaps from '%s'.\n", bucketSizes[i], name);
+    fprintf(stderr, "Loading " F_U64 " overlaps from '%s'.\n", bucketSizes[i], name);
 
     BinaryOverlapFile *bof = AS_OVS_openBinaryOverlapFile(name, FALSE);
     uint64             num = 0;
@@ -370,14 +370,14 @@ main(int argc, char **argv) {
     }
 
     if (num != bucketSizes[i])
-      fprintf(stderr, "ERROR: expected "F_U64" overlaps, found "F_U64" overlaps.\n", bucketSizes[i], num);
+      fprintf(stderr, "ERROR: expected " F_U64 " overlaps, found " F_U64 " overlaps.\n", bucketSizes[i], num);
     assert(num == bucketSizes[i]);
 
     AS_OVS_closeBinaryOverlapFile(bof);
   }
 
   if (numOvl != totOvl)
-    fprintf(stderr, "ERROR: read "F_U64" overlaps, expected "F_U64"\n", numOvl, totOvl);
+    fprintf(stderr, "ERROR: read " F_U64 " overlaps, expected " F_U64 "\n", numOvl, totOvl);
   assert(numOvl == totOvl);
 
   if (deleteIntermediateEarly) {

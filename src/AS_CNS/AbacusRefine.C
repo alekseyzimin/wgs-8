@@ -2262,7 +2262,7 @@ int
             firstbead = GetBead(beadStore,GetBead(beadStore,start_column->call)->down);
             newbead   = AppendGapBead(firstbead->boffset);
             firstbead = GetBead(beadStore,GetBead(beadStore,start_column->call)->down);
-            fprintf(stderr,"Adding gapbead "F_U64" after "F_U64" to add abacus room for abacus abutting left of multialignment\n",
+            fprintf(stderr,"Adding gapbead " F_U64 " after " F_U64 " to add abacus room for abacus abutting left of multialignment\n",
                     (uint64)newbead.get(), (uint64)firstbead->boffset.get());
             ColumnAppend(firstbead->column_index,newbead);
           }

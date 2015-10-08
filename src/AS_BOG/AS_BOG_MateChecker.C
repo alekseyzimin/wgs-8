@@ -146,7 +146,7 @@ UnitigBreakPoints* UnitigGraph::computeMateCoverage(Unitig* tig,
   }
 
   if (logFileFlagSet(LOG_MATE_SPLIT_ANALYSIS)) {
-    fprintf(logFile, "unitig %d with "F_SIZE_T" fwd and "F_SIZE_T" rev bads\n",
+    fprintf(logFile, "unitig %d with " F_SIZE_T " fwd and " F_SIZE_T " rev bads\n",
             tig->id(), fwdBads->size(), revBads->size());
     fprintf(logFile, "fwd:");
     for (uint32 i=0; i<fwdBads->size(); i++)
@@ -164,7 +164,7 @@ UnitigBreakPoints* UnitigGraph::computeMateCoverage(Unitig* tig,
       char  filename[FILENAME_MAX] = {0};
       sprintf(filename, "coverageplot/utg%09u.badCoverage", tig->id());
 
-      fprintf(logFile, "%s -- fwdBads "F_SIZE_T" revBads "F_SIZE_T"\n", filename, fwdBads->size(), revBads->size());
+      fprintf(logFile, "%s -- fwdBads " F_SIZE_T " revBads " F_SIZE_T "\n", filename, fwdBads->size(), revBads->size());
 
       if (AS_UTL_fileExists("coverageplot", TRUE, TRUE) == 0)
         AS_UTL_mkdir("coverageplot");

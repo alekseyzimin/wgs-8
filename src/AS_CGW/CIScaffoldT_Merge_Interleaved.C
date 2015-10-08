@@ -220,7 +220,7 @@ TranslateScaffoldOverlapToContigOverlap(CIScaffoldT     *scaffoldA,
   int BGapTowardAEnd = FALSE;
 
 #if 0
-  fprintf(stderr,"* Translate ("F_CID","F_CID",%c)   "F_CID" has ("F_CID","F_CID")  "F_CID" has ("F_CID","F_CID")\n",
+  fprintf(stderr,"* Translate (" F_CID"," F_CID",%c)   " F_CID" has (" F_CID"," F_CID")  " F_CID" has (" F_CID"," F_CID")\n",
           scaffoldA->id, scaffoldB->id, scaffoldEdgeOrient,
           scaffoldA->id, scaffoldA->info.Scaffold.AEndCI, scaffoldA->info.Scaffold.BEndCI,
           scaffoldB->id, scaffoldB->info.Scaffold.AEndCI, scaffoldB->info.Scaffold.BEndCI);
@@ -367,7 +367,7 @@ AbuttingWillWork(SEdgeT * curEdge,
 
     curEdge->distance.mean = originalMean;
 
-    fprintf(stderr,"AbuttingWillWork()-- Abut %s (%c%c%c) for scaffolds "F_CID" (%.1fbp) and "F_CID" (%.1fbp): gap %.1fbp +- %.1fbp weight %d %s edge\n",
+    fprintf(stderr,"AbuttingWillWork()-- Abut %s (%c%c%c) for scaffolds " F_CID" (%.1fbp) and " F_CID" (%.1fbp): gap %.1fbp +- %.1fbp weight %d %s edge\n",
             (passesMates)    ? "passes" : "fails",
             passesChiSquared ? 'p' : 'f',
             passesSmall      ? 'p' : 'f',

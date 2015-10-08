@@ -277,7 +277,7 @@ outputScf::init(NodeCGW_T *scaffold) {
 
   seq.push_back(0);
 
-  //AS_UTL_writeFastA(stderr, &seq[0], seq.size()-1, seq.size()-1, ">scf"F_U32"\n", scaffold->id);
+  //AS_UTL_writeFastA(stderr, &seq[0], seq.size()-1, seq.size()-1, ">scf" F_U32 "\n", scaffold->id);
 }
 
 
@@ -358,7 +358,7 @@ dumpUnitigs(uint32          bgnIID,
     outputTig     utg(unitig, ma, TRUE);
 
     if (dumpType & DUMP_LAYOUT) {
-      fprintf(outputUtgLen, "utg%08d\t"F_SIZE_T"\n", unitig->id, utg.seq.size() - 1);
+      fprintf(outputUtgLen, "utg%08d\t" F_SIZE_T "\n", unitig->id, utg.seq.size() - 1);
 
       for (uint32 fi=0; fi<utg.frg.size(); fi++) {
         outputObj  &obj = utg.frg[fi];
@@ -376,19 +376,19 @@ dumpUnitigs(uint32          bgnIID,
       char   *seq    = &utg.seq[0];
 
       if (type == AS_UNIQUE_UNITIG)
-        AS_UTL_writeFastA(outputUnique, seq, seqLen, seqLen, ">utg"F_U32"\n", unitig->id);
+        AS_UTL_writeFastA(outputUnique, seq, seqLen, seqLen, ">utg" F_U32 "\n", unitig->id);
 
       if (type == AS_SINGLE_UNITIG)
-        AS_UTL_writeFastA(outputSingle, seq, seqLen, seqLen, ">utg"F_U32"\n", unitig->id);
+        AS_UTL_writeFastA(outputSingle, seq, seqLen, seqLen, ">utg" F_U32 "\n", unitig->id);
 
       if (type == AS_ROCK_UNITIG)
-        AS_UTL_writeFastA(outputRock,   seq, seqLen, seqLen, ">utg"F_U32"\n", unitig->id);
+        AS_UTL_writeFastA(outputRock,   seq, seqLen, seqLen, ">utg" F_U32 "\n", unitig->id);
 
       if (type == AS_STONE_UNITIG)
-        AS_UTL_writeFastA(outputStone,  seq, seqLen, seqLen, ">utg"F_U32"\n", unitig->id);
+        AS_UTL_writeFastA(outputStone,  seq, seqLen, seqLen, ">utg" F_U32 "\n", unitig->id);
 
       if (type == AS_PEBBLE_UNITIG)
-        AS_UTL_writeFastA(outputPebble, seq, seqLen, seqLen, ">utg"F_U32"\n", unitig->id);
+        AS_UTL_writeFastA(outputPebble, seq, seqLen, seqLen, ">utg" F_U32 "\n", unitig->id);
     }
   }
 
@@ -444,7 +444,7 @@ dumpContigs(uint32          bgnIID,
     outputTig     ctg(contig, ma, FALSE);
 
     if (dumpType & DUMP_LAYOUT) {
-      fprintf(outputCtgLen, "utg%08d\t"F_SIZE_T"\n", contig->id, ctg.seq.size() - 1);
+      fprintf(outputCtgLen, "utg%08d\t" F_SIZE_T "\n", contig->id, ctg.seq.size() - 1);
 
       for (uint32 fi=0; fi<ctg.frg.size(); fi++) {
         outputObj  &obj = ctg.frg[fi];
@@ -469,13 +469,13 @@ dumpContigs(uint32          bgnIID,
       char   *seq    = &ctg.seq[0];
 
       if (type == AS_PLACED)
-        AS_UTL_writeFastA(outputPlaced, seq, seqLen, seqLen, ">ctg"F_U32"\n", contig->id);
+        AS_UTL_writeFastA(outputPlaced, seq, seqLen, seqLen, ">ctg" F_U32 "\n", contig->id);
 
       if ((type == AS_UNPLACED) && (ctg.frg.size() == 1))
-        AS_UTL_writeFastA(outputSingle, seq, seqLen, seqLen, ">ctg"F_U32"\n", contig->id);
+        AS_UTL_writeFastA(outputSingle, seq, seqLen, seqLen, ">ctg" F_U32 "\n", contig->id);
 
       if ((type == AS_UNPLACED) && (ctg.frg.size() > 1))
-        AS_UTL_writeFastA(outputUnplaced, seq, seqLen, seqLen, ">ctg"F_U32"\n", contig->id);
+        AS_UTL_writeFastA(outputUnplaced, seq, seqLen, seqLen, ">ctg" F_U32 "\n", contig->id);
     }
   }
 
@@ -529,7 +529,7 @@ dumpScaffolds(uint32          bgnIID,
     outputScf              scf(scaffold);
 
     if (dumpType & DUMP_LAYOUT) {
-      fprintf(outputScfLen, "scf%08d\t"F_SIZE_T"\n", scaffold->id, scf.seq.size() - 1);
+      fprintf(outputScfLen, "scf%08d\t" F_SIZE_T "\n", scaffold->id, scf.seq.size() - 1);
 
       for (uint32 fi=0; fi<scf.frg.size(); fi++) {
         outputObj  &obj = scf.frg[fi];
@@ -561,10 +561,10 @@ dumpScaffolds(uint32          bgnIID,
       char   *seq    = &scf.seq[0];
 
       if (scf.ctg.size() == 1)
-        AS_UTL_writeFastA(outputSingle, seq, seqLen, seqLen, ">scf"F_U32"\n", scaffold->id);
+        AS_UTL_writeFastA(outputSingle, seq, seqLen, seqLen, ">scf" F_U32 "\n", scaffold->id);
 
       if (scf.ctg.size() > 1)
-        AS_UTL_writeFastA(outputMulti,  seq, seqLen, seqLen, ">scf"F_U32"\n", scaffold->id);
+        AS_UTL_writeFastA(outputMulti,  seq, seqLen, seqLen, ">scf" F_U32 "\n", scaffold->id);
     }
   }
 

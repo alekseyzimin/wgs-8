@@ -134,7 +134,7 @@ public:
 
   void      dump(void) {
     for (uint32 i=0; i<_lastVal; i++)
-      fprintf(stderr, "HEAP["uint32FMT"]="uint64FMT"\n", i, _array->get(i));
+      fprintf(stderr, "HEAP[" uint32FMT"]=" uint64FMT"\n", i, _array->get(i));
   }
 
   void      clear(void) {

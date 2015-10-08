@@ -67,7 +67,7 @@ AS_GKP_reportError(int error, uint32 libIID, ...) {
     errorMs[AS_GKP_BAT_ZERO_UID           ] = "# BAT Error: Batch has zero or no UID; can't add it.\n";
     errorMs[AS_GKP_BAT_EXISTS             ] = "# BAT Error: Batch %s exists, can't add it again.\n";
 
-    errorMs[AS_GKP_FRG_INVALID_CHAR_SEQ   ] = "# FRG Error: Fragment %s invalid char %c at position "F_SIZE_T" in sequence.\n";
+    errorMs[AS_GKP_FRG_INVALID_CHAR_SEQ   ] = "# FRG Error: Fragment %s invalid char %c at position " F_SIZE_T " in sequence.\n";
     errorMs[AS_GKP_FRG_INVALID_CHAR_QLT   ] = "# FRG Error: Fragment %s invalid char %c at position " F_SIZE_T " in quality.\n";
     errorMs[AS_GKP_FRG_INVALID_LENGTH     ] = "# FRG Error: Fragment %s sequence length %d != %d quality length.\n";
     errorMs[AS_GKP_FRG_ZERO_UID           ] = "# FRG Error: Fragment has UID of zero; can't add it.\n";
@@ -88,16 +88,16 @@ AS_GKP_reportError(int error, uint32 libIID, ...) {
     errorMs[AS_GKP_ILL_NOT_QLT_START_LINE ] = "# ILL Error: File '%s': qlt name '%s' is not a quality start line.\n";
     errorMs[AS_GKP_ILL_SEQ_QLT_NAME_DIFFER] = "# ILL Error: File '%s': seq/qlt names differ; seq='%s' qlt='%s'\n";
     errorMs[AS_GKP_ILL_SEQ_QLT_LEN_DIFFER ] = "# ILL Error: File '%s': seq/qlt lengths differ for read '%s'; seq=%d qlt=%d\n";
-    errorMs[AS_GKP_ILL_SEQ_TOO_LONG       ] = "# ILL Alert: Fragment %s is longer than gkpShortReadLength bases, truncating from "F_U32" to "F_U32" bases.\n";
+    errorMs[AS_GKP_ILL_SEQ_TOO_LONG       ] = "# ILL Alert: Fragment %s is longer than gkpShortReadLength bases, truncating from " F_U32 " to " F_U32 " bases.\n";
     errorMs[AS_GKP_ILL_CANT_OPEN_INPUT    ] = "# ILL Error: Couldn't open Illumina file '%s' for reading: %s\n";
-    errorMs[AS_GKP_ILL_BAD_QV             ] = "# ILL Alert: Fragment %s has "F_U32" invalid QVs.\n";
+    errorMs[AS_GKP_ILL_BAD_QV             ] = "# ILL Alert: Fragment %s has " F_U32 " invalid QVs.\n";
 
     errorMs[AS_GKP_LIB_ILLEGAL_MEAN_STDDEV] = "# LIB Alert: Library %s has lllegal mean (%g) and standard deviation (%g); reset to mean 3000, stddev 300.\n";
     errorMs[AS_GKP_LIB_INVALID_MEAN       ] = "# LIB Alert: Library %s has invalid mean (%g); reset mean to 10 * stddev = %g.\n";
     errorMs[AS_GKP_LIB_INVALID_STDDEV     ] = "# LIB Alert: Library %s has invalid stddev (%g); reset stddev to 0.1 * mean = %g.\n";
     errorMs[AS_GKP_LIB_STDDEV_TOO_BIG     ] = "# LIB Alert: Library %s stddev (%g) too big for mean (%g); reset stddev to 0.1 * mean = %g.\n";
     errorMs[AS_GKP_LIB_STDDEV_TOO_SMALL   ] = "# LIB Alert: Library %s has suspicious mean (%g) and standard deviation (%g); reset stddev to 0.10 * mean = %g.\n";
-    errorMs[AS_GKP_LIB_EXISTS             ] = "# LIB Error: Library %s,"F_IID" already exists; can't add it again.\n";
+    errorMs[AS_GKP_LIB_EXISTS             ] = "# LIB Error: Library %s," F_IID " already exists; can't add it again.\n";
     errorMs[AS_GKP_LIB_ZERO_UID           ] = "# LIB Error: Library has zero or no UID; can't add it.\n";
     errorMs[AS_GKP_LIB_DOESNT_EXIST_UPDATE] = "# LIB Error: Library %s does not exist, can't update it.\n";
     errorMs[AS_GKP_LIB_UNKNOWN_ACTION     ] = "# LIB Error: invalid action %c.\n";
@@ -106,11 +106,11 @@ AS_GKP_reportError(int error, uint32 libIID, ...) {
     errorMs[AS_GKP_LKG_UNSUPPORTED_TYPE   ] = "# LKG Error: Unsupported LKG type '%c' for frags %s,%s in library %s.\n";
     errorMs[AS_GKP_LKG_FRG_DOESNT_EXIST   ] = "# LKG Error: Fragment %s not previously defined.\n";
     errorMs[AS_GKP_LKG_FRG_DELETED        ] = "# LKG Error: Fragment %s is marked as deleted.\n";
-    errorMs[AS_GKP_LKG_ALREADY_MATED      ] = "# LKG Error: Fragment %s,"F_IID" already has mate of iid="F_IID"; wanted to set to %s,"F_IID".\n";
+    errorMs[AS_GKP_LKG_ALREADY_MATED      ] = "# LKG Error: Fragment %s," F_IID " already has mate of iid=" F_IID "; wanted to set to %s," F_IID ".\n";
     errorMs[AS_GKP_LKG_LIB_DOESNT_EXIST   ] = "# LKG Error: Library %s not previously defined.\n";
-    errorMs[AS_GKP_LKG_DIFFERENT_LIB      ] = "# LKG Error: Fragment "F_IID" in lib "F_IID", different from fragment "F_IID" in lib "F_IID".\n";
-    errorMs[AS_GKP_LKG_UNMATED_LIB        ] = "# LKG Error: Fragments "F_IID" and "F_IID" cannot be added to unmated library "F_IID".\n";
-    errorMs[AS_GKP_LKG_DIFFERENT_ORIENT   ] = "# LKG Error: Fragments "F_IID" (mate type %c) and "F_IID" (mate type %c) not allowed in library "F_IID" (mate type %c).\n";
+    errorMs[AS_GKP_LKG_DIFFERENT_LIB      ] = "# LKG Error: Fragment " F_IID " in lib " F_IID ", different from fragment " F_IID " in lib " F_IID ".\n";
+    errorMs[AS_GKP_LKG_UNMATED_LIB        ] = "# LKG Error: Fragments " F_IID " and " F_IID " cannot be added to unmated library " F_IID ".\n";
+    errorMs[AS_GKP_LKG_DIFFERENT_ORIENT   ] = "# LKG Error: Fragments " F_IID " (mate type %c) and " F_IID " (mate type %c) not allowed in library " F_IID " (mate type %c).\n";
     errorMs[AS_GKP_LKG_UNKNOWN_ACTION     ] = "# LKG Error: Unknown action %c.\n";
 
     errorMs[AS_GKP_SFF_UID_ERROR          ] = "# SFF Error: 454 Universal Accession Number '%s' out of range.\n";
@@ -123,7 +123,7 @@ AS_GKP_reportError(int error, uint32 libIID, ...) {
     errorMs[AS_GKP_PLC_SELF_CONSTRAINT    ] = "# PLC Error: Can't constrain fragment %s using itself.\n";
     errorMs[AS_GKP_PLC_FRG_DOESNT_EXIST   ] = "# PLC Error: Fragment %s not previously defined.\n";
     errorMs[AS_GKP_PLC_FRG_DELETED        ] = "# PLC Error: Fragment %s is marked as deleted.\n";
-    errorMs[AS_GKP_PLC_ALREADY_CONSTRAINED] = "# PLC Error: Fragment %s,"F_IID" already has constraint enforced on it by %s,"F_IID" %s,"F_IID"; wanted to set to %s,"F_IID" %s"F_IID".\n";
+    errorMs[AS_GKP_PLC_ALREADY_CONSTRAINED] = "# PLC Error: Fragment %s," F_IID " already has constraint enforced on it by %s," F_IID " %s," F_IID "; wanted to set to %s," F_IID " %s" F_IID ".\n";
     errorMs[AS_GKP_PLC_UNKNOWN_ACTION     ] = "# PLC Error: Unknown action %c.\n";
 
     errorMs[AS_GKP_UNKNOWN_MESSAGE        ] = "# GKP Error: Unknown message with type %s.\n";
@@ -234,11 +234,11 @@ AS_GKP_summarizeErrors(char *gkpStoreName) {
   if (F) {
     fprintf(F, "libIID\tbgnIID\tendIID\tactive\tdeleted\tmated\ttotLen\tclrLen\tlibName\n");
 
-    fprintf(F, "0\t%d\t%d\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U64"\t"F_U64"\tGLOBAL\n",
+    fprintf(F, "0\t%d\t%d\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U64 "\t" F_U64 "\tGLOBAL\n",
             1, stats->numActiveFrag + stats->numDeletedFrag, stats->numActiveFrag, stats->numDeletedFrag, stats->numMatedFrag, stats->readLength, stats->clearLength);
 
     for (uint32 j=0; j<gkp->gkStore_getNumLibraries() + 1; j++)
-      fprintf(F, F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U64"\t"F_U64"\t%s\n",
+      fprintf(F, F_U32"\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U64 "\t" F_U64 "\t%s\n",
               j,
               stats->lowestIID[j],
               stats->highestIID[j],

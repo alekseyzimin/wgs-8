@@ -43,23 +43,23 @@ VA_DEF(PtrT)
 
 void PrintCINodeFields(FILE * stream, NodeCGW_T * node)
 {
-  fprintf(stream, "\t\tcontigID:"F_CID"\n", node->info.CI.contigID);
+  fprintf(stream, "\t\tcontigID:" F_CID"\n", node->info.CI.contigID);
   fprintf(stream, "\t\tnumFragments:%d\n", ScaffoldGraph->tigStore->getNumFrags(node->id, TRUE));
   fprintf(stream, "\t\tcoverageStat:%d\n", ScaffoldGraph->tigStore->getUnitigCoverageStat(node->id));
-  fprintf(stream, "\t\tbaseID:"F_CID"\n", node->info.CI.baseID);
+  fprintf(stream, "\t\tbaseID:" F_CID"\n", node->info.CI.baseID);
   fprintf(stream, "\t\tnumInstances:%d\n", node->info.CI.numInstances);
 }
 
 void PrintContigNodeFields(FILE * stream, NodeCGW_T * node)
 {
-  fprintf(stream, "\t\tAEndCI:"F_CID", BEndCI:"F_CID", numCI:%d\n",
+  fprintf(stream, "\t\tAEndCI:" F_CID", BEndCI:" F_CID", numCI:%d\n",
           node->info.Contig.AEndCI, node->info.Contig.BEndCI,
           node->info.Contig.numCI);
 }
 
 void PrintScaffoldNodeFields(FILE * stream, NodeCGW_T * node)
 {
-  fprintf(stream, "\t\tAEndCI:"F_CID", BEndCI:"F_CID", numElements:%d\n",
+  fprintf(stream, "\t\tAEndCI:" F_CID", BEndCI:" F_CID", numElements:%d\n",
           node->info.Scaffold.AEndCI, node->info.Scaffold.BEndCI,
           node->info.Scaffold.numElements);
   fprintf(stream, "\t\tleastSquareError:%.1f, numLeastSquareClones:%d\n",
@@ -102,15 +102,15 @@ void PrintNodeFlagBits(FILE * stream, NodeCGW_T * node)
 
 void PrintNodeFields(FILE * stream, NodeCGW_T * node)
 {
-  fprintf(stream,"\ttype:%c, scaffoldID:"F_CID", prevScaffoldID:"F_CID"\n",
+  fprintf(stream,"\ttype:%c, scaffoldID:" F_CID", prevScaffoldID:" F_CID"\n",
           node->type, node->scaffoldID, node->prevScaffoldID);
-  fprintf(stream,"\tindexInScaffold:%d, smoothExpectedCID:"F_CID"\n",
+  fprintf(stream,"\tindexInScaffold:%d, smoothExpectedCID:" F_CID"\n",
           node->indexInScaffold, node->smoothExpectedCID);
   fprintf(stream, "\tnumEssentialA:%d, numEssentialB:%d\n",
           node->numEssentialA, node->numEssentialB);
-  fprintf(stream, "\tessentialEdgeA:"F_CID", essentialEdgeB:"F_CID"\n",
+  fprintf(stream, "\tessentialEdgeA:" F_CID", essentialEdgeB:" F_CID"\n",
           node->essentialEdgeA, node->essentialEdgeB);
-  fprintf(stream,"\tAEndNext:"F_CID", BEndNext:"F_CID"\n",
+  fprintf(stream,"\tAEndNext:" F_CID", BEndNext:" F_CID"\n",
           node->AEndNext, node->BEndNext);
   fprintf(stream, "\tbpLength:(%.1f,%.1f), offsetAEnd:(%.1f,%.1f), offsetBEnd:(%.1f,%.1f)\n",
           node->bpLength.mean, node->bpLength.variance,
@@ -137,12 +137,12 @@ void PrintNodeFields(FILE * stream, NodeCGW_T * node)
         break;
     }
   PrintNodeFlagBits(stream, node);
-  fprintf(stream, "\tsetID:"F_CID"\n", node->setID);
+  fprintf(stream, "\tsetID:" F_CID"\n", node->setID);
 }
 
 
 void PrintCIScaffoldHeader(FILE *stream, ScaffoldGraphT *graph, CIScaffoldT *scaffold){
-  fprintf(stream,"\n* CIScaffold "F_CID" numCI:%d (a:"F_CID" b:"F_CID")  length: %d\n",
+  fprintf(stream,"\n* CIScaffold " F_CID" numCI:%d (a:" F_CID" b:" F_CID")  length: %d\n",
 	  scaffold->id, scaffold->info.Scaffold.numElements, scaffold->info.Scaffold.AEndCI, scaffold->info.Scaffold.BEndCI,
 	  (int)scaffold->bpLength.mean);
   // PrintNodeFields(stream, scaffold);
@@ -435,7 +435,7 @@ int RemoveCIFromScaffold(ScaffoldGraphT *sgraph, CIScaffoldT *ciScaffold,
 
 #if 0
   if(ciScaffold->info.Scaffold.numElements < 3){;
-  fprintf(stderr,"* Removing CI "F_CID" from scaffold "F_CID", elements left %d\nBEFORE:\n",
+  fprintf(stderr,"* Removing CI " F_CID" from scaffold " F_CID", elements left %d\nBEFORE:\n",
 	  CI->id, ciScaffold->id, ciScaffold->info.Scaffold.numElements);
 
   DumpCIScaffold(stderr,sgraph, ciScaffold, FALSE);
@@ -456,7 +456,7 @@ int RemoveCIFromScaffold(ScaffoldGraphT *sgraph, CIScaffoldT *ciScaffold,
     bnext = GetGraphNode(sgraph->ContigGraph, CI->BEndNext);
 
 #if 0
-  fprintf(stderr,"* Predecessor is "F_CID" Successor is "F_CID"\n",
+  fprintf(stderr,"* Predecessor is " F_CID" Successor is " F_CID"\n",
 	  CI->AEndNext, CI->BEndNext);
 #endif
 
@@ -472,7 +472,7 @@ int RemoveCIFromScaffold(ScaffoldGraphT *sgraph, CIScaffoldT *ciScaffold,
       assert(bnext->AEndNext == CI->id);
       bnext->AEndNext = NULLINDEX;
 #if 0
-      fprintf(stderr,"* bneighbor "F_CID" has AEndNext "F_CID" and BEndNext "F_CID"\n",
+      fprintf(stderr,"* bneighbor " F_CID" has AEndNext " F_CID" and BEndNext " F_CID"\n",
               bnext->id, bnext->AEndNext, bnext->BEndNext);
 #endif
     }
@@ -499,7 +499,7 @@ int RemoveCIFromScaffold(ScaffoldGraphT *sgraph, CIScaffoldT *ciScaffold,
 
 
 #if 0
-      fprintf(stderr,"* aneighbor "F_CID" has AEndNext "F_CID" and BEndNext "F_CID"\n",
+      fprintf(stderr,"* aneighbor " F_CID" has AEndNext " F_CID" and BEndNext " F_CID"\n",
 	      anext->id, anext->AEndNext, anext->BEndNext);
 #endif
     }
@@ -516,9 +516,9 @@ int RemoveCIFromScaffold(ScaffoldGraphT *sgraph, CIScaffoldT *ciScaffold,
     }
 
 #if 0
-    fprintf(stderr,"* bneighbor "F_CID" has AEndNext "F_CID" and BEndNext "F_CID"\n",
+    fprintf(stderr,"* bneighbor " F_CID" has AEndNext " F_CID" and BEndNext " F_CID"\n",
 	    bnext->id, bnext->AEndNext, bnext->BEndNext);
-    fprintf(stderr,"* aneighbor "F_CID" has AEndNext "F_CID" and BEndNext "F_CID"\n",
+    fprintf(stderr,"* aneighbor " F_CID" has AEndNext " F_CID" and BEndNext " F_CID"\n",
 	    anext->id, anext->AEndNext, anext->BEndNext);
 #endif
   }
@@ -533,7 +533,7 @@ int RemoveCIFromScaffold(ScaffoldGraphT *sgraph, CIScaffoldT *ciScaffold,
     // AddDelta adjusts contig positions and bpLength
     AddDeltaToScaffoldOffsets(ScaffoldGraph, ciScaffold->id, bnext->id, TRUE, base);
 
-    fprintf(stderr,"* After RemoveCIFromScaffold ci:"F_CID" scaffold:"F_CID" removing from a-end base = (%g,%g), bpLength = (%g,%g)\n",
+    fprintf(stderr,"* After RemoveCIFromScaffold ci:" F_CID" scaffold:" F_CID" removing from a-end base = (%g,%g), bpLength = (%g,%g)\n",
             CI->id,
             ciScaffold->id,
             base.mean, base.variance,
@@ -541,7 +541,7 @@ int RemoveCIFromScaffold(ScaffoldGraphT *sgraph, CIScaffoldT *ciScaffold,
   }
   ciScaffold->info.Scaffold.numElements--;
 #if 0
-  fprintf(stderr,"* Removing CI "F_CID" froms scaffold "F_CID"\nAFTER:\n",
+  fprintf(stderr,"* Removing CI " F_CID" froms scaffold " F_CID"\nAFTER:\n",
 	  CI->id, ciScaffold->id);
   DumpCIScaffold(stderr,sgraph, ciScaffold, FALSE);
 #endif
@@ -685,7 +685,7 @@ IsScaffoldInternallyConnected(ScaffoldGraphT *sgraph,
   }
   UFFreeSets(UFData);
 
-  //fprintf(stderr, "IsScaffoldInternallyConnected() sid:"F_CID" %d\n", scaffold->id, numComponents);
+  //fprintf(stderr, "IsScaffoldInternallyConnected() sid:" F_CID" %d\n", scaffold->id, numComponents);
 
   return numComponents;
 }
@@ -818,8 +818,8 @@ CheckScaffoldConnectivityAndSplit(ScaffoldGraphT *graph,
     //  Expected case, all connected.
     return(numComponents);
 
-  fprintf(stderr, "Scaffold "F_CID" is not connected, has %d components.\n", scaffoldID, numComponents);
-  fprintf(stderr, "Splitting into scaffolds: (search for \"Splitting "F_CID" into scaffold\" to get the new scaffolds)\n", scaffoldID);
+  fprintf(stderr, "Scaffold " F_CID" is not connected, has %d components.\n", scaffoldID, numComponents);
+  fprintf(stderr, "Splitting into scaffolds: (search for \"Splitting " F_CID" into scaffold\" to get the new scaffolds)\n", scaffoldID);
 
   //DumpACIScaffold(stderr,graph, scaffold, FALSE);
 
@@ -860,7 +860,7 @@ CheckScaffoldConnectivityAndSplit(ScaffoldGraphT *graph,
 
     //CDS_CID_t newScaffoldID = newScaffold.id;
 
-    fprintf(stderr, "Splitting "F_CID" into scaffold "F_CID"\n", scaffoldID, newScaffold.id);
+    fprintf(stderr, "Splitting " F_CID" into scaffold " F_CID"\n", scaffoldID, newScaffold.id);
 
     AppendGraphNode(graph->ScaffoldGraph, &newScaffold);
 
@@ -943,7 +943,7 @@ SetCIScaffoldTLength(ScaffoldGraphT *sgraph, CIScaffoldT *scaffold) {
 
   if ((scaffold->bpLength.mean     != maxOffset.mean) ||
       (scaffold->bpLength.variance != maxOffset.variance))
-    fprintf(stderr, "SetCIScaffoldTLength()-- adjusted scaffold "F_CID" from (%.0f +- %.0f) to (%.0f +- %.0f)\n",
+    fprintf(stderr, "SetCIScaffoldTLength()-- adjusted scaffold " F_CID" from (%.0f +- %.0f) to (%.0f +- %.0f)\n",
             scaffold->id,
             scaffold->bpLength.mean, scaffold->bpLength.variance,
             maxOffset.mean,          maxOffset.variance);
@@ -1110,7 +1110,7 @@ ScaffoldSanity(ScaffoldGraphT *graph, CIScaffoldT *scaffold) {
   }
 
   if (hasProblems > 0) {
-    fprintf(stderr, "ScaffoldSanity()-- scaffold %d has "F_U32" problems.\n", scaffold->id, hasProblems);
+    fprintf(stderr, "ScaffoldSanity()-- scaffold %d has " F_U32 " problems.\n", scaffold->id, hasProblems);
     InitCIScaffoldTIterator(graph, scaffold, TRUE, FALSE, &CIs);
     CI = NextCIScaffoldTIterator(&CIs);
     CDS_CID_t  prevCIid     = CI->id;
@@ -1213,7 +1213,7 @@ DemoteSmallSingletonScaffolds(void) {
     numDemoted++;
 
     fprintf(stderr,
-             "** Demoting Contig/Unitig "F_CID"/"F_CID" with coverage stat %d length %.0f scaffold "F_CID"\n",
+             "** Demoting Contig/Unitig " F_CID"/" F_CID" with coverage stat %d length %.0f scaffold " F_CID"\n",
              contig->id, CI->id, ScaffoldGraph->tigStore->getUnitigCoverageStat(CI->id), scaffold->bpLength.mean, scaffold->id);
     // Mark the Underlying Unitig as un-scaffolded, and not-unique
     SetNodeType(CI, UNRESOLVEDCHUNK_CGW);

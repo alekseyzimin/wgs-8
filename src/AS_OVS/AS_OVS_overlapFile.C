@@ -68,11 +68,11 @@ static void AS_OVS_initializeBOF(BinaryOverlapFile *bof, int isInternal, int isO
   //  lose data.  We carefully chose a size that also gives us a 4MB buffer.
 
   if ((bof->bufferMax % (AS_OVS_NWORDS + 1)) != 0)
-    fprintf(stderr, "ERROR: bufferMax="F_U32" AS_OVS_NWORDS=%d\n", bof->bufferMax, AS_OVS_NWORDS);
+    fprintf(stderr, "ERROR: bufferMax=" F_U32 " AS_OVS_NWORDS=%d\n", bof->bufferMax, AS_OVS_NWORDS);
   assert((bof->bufferMax % (AS_OVS_NWORDS + 1)) == 0);
 
   if ((bof->bufferMax % (AS_OVS_NWORDS + 2)) != 0)
-    fprintf(stderr, "ERROR: bufferMax="F_U32" AS_OVS_NWORDS=%d\n", bof->bufferMax, AS_OVS_NWORDS);
+    fprintf(stderr, "ERROR: bufferMax=" F_U32 " AS_OVS_NWORDS=%d\n", bof->bufferMax, AS_OVS_NWORDS);
   assert((bof->bufferMax % (AS_OVS_NWORDS + 2)) == 0);
 }
 

@@ -156,26 +156,26 @@ public:
     fprintf(F, "\n");
     fprintf(F, "LIBRARY %02d %s\n", libid, libname);
     fprintf(F, "\n");
-    fprintf(F, "reads "F_U32"\n", total);
+    fprintf(F, "reads " F_U32 "\n", total);
     fprintf(F, "\n");
     fprintf(F, "%-12s     count libFrac catFrac\n", "category");
     fprintf(F, "\n");
     fprintf(F, "UNPLACED\n");
-    fprintf(F, "%-12s %9"F_U32P"  %6.2f  %6.2f\n", "deleted",    frgDeleted,         frgDeleted         * 100.0 / total, frgDeleted         * 100.0 / allfate.frgDeleted);
-    fprintf(F, "%-12s %9"F_U32P"  %6.2f  %6.2f\n", "singleton",  frgSingleton,       frgSingleton       * 100.0 / total, frgSingleton       * 100.0 / allfate.frgSingleton);
-    fprintf(F, "%-12s %9"F_U32P"  %6.2f  %6.2f\n", "stoneUnres", utgStoneUnresolved, utgStoneUnresolved * 100.0 / total, utgStoneUnresolved * 100.0 / allfate.utgStoneUnresolved);
+    fprintf(F, "%-12s %9" F_U32P"  %6.2f  %6.2f\n", "deleted",    frgDeleted,         frgDeleted         * 100.0 / total, frgDeleted         * 100.0 / allfate.frgDeleted);
+    fprintf(F, "%-12s %9" F_U32P"  %6.2f  %6.2f\n", "singleton",  frgSingleton,       frgSingleton       * 100.0 / total, frgSingleton       * 100.0 / allfate.frgSingleton);
+    fprintf(F, "%-12s %9" F_U32P"  %6.2f  %6.2f\n", "stoneUnres", utgStoneUnresolved, utgStoneUnresolved * 100.0 / total, utgStoneUnresolved * 100.0 / allfate.utgStoneUnresolved);
     fprintf(F, "\n");
     fprintf(F, "UNITIGS\n");
-    fprintf(F, "%-12s %9"F_U32P"  %6.2f  %6.2f\n", "degenerate", ctgDegenerate, ctgDegenerate * 100.0 / total, ctgDegenerate * 100.0 / allfate.ctgDegenerate);
-    fprintf(F, "%-12s %9"F_U32P"  %6.2f  %6.2f\n", "unique",     utgUnique,     utgUnique     * 100.0 / total, utgUnique     * 100.0 / allfate.utgUnique);
-    fprintf(F, "%-12s %9"F_U32P"  %6.2f  %6.2f\n", "rock",       utgRock,       utgRock       * 100.0 / total, utgRock       * 100.0 / allfate.utgRock);
-    fprintf(F, "%-12s %9"F_U32P"  %6.2f  %6.2f\n", "stone",      utgStone,      utgStone      * 100.0 / total, utgStone      * 100.0 / allfate.utgStone);
-    fprintf(F, "%-12s %9"F_U32P"  %6.2f  %6.2f\n", "pebble",     utgPebble,     utgPebble     * 100.0 / total, utgPebble     * 100.0 / allfate.utgPebble);
+    fprintf(F, "%-12s %9" F_U32P"  %6.2f  %6.2f\n", "degenerate", ctgDegenerate, ctgDegenerate * 100.0 / total, ctgDegenerate * 100.0 / allfate.ctgDegenerate);
+    fprintf(F, "%-12s %9" F_U32P"  %6.2f  %6.2f\n", "unique",     utgUnique,     utgUnique     * 100.0 / total, utgUnique     * 100.0 / allfate.utgUnique);
+    fprintf(F, "%-12s %9" F_U32P"  %6.2f  %6.2f\n", "rock",       utgRock,       utgRock       * 100.0 / total, utgRock       * 100.0 / allfate.utgRock);
+    fprintf(F, "%-12s %9" F_U32P"  %6.2f  %6.2f\n", "stone",      utgStone,      utgStone      * 100.0 / total, utgStone      * 100.0 / allfate.utgStone);
+    fprintf(F, "%-12s %9" F_U32P"  %6.2f  %6.2f\n", "pebble",     utgPebble,     utgPebble     * 100.0 / total, utgPebble     * 100.0 / allfate.utgPebble);
     fprintf(F, "\n");
     fprintf(F, "CONTIGS\n");
-    fprintf(F, "%-12s %9"F_U32P"  %6.2f  %6.2f\n", "degenerate", ctgDegenerate, ctgDegenerate * 100.0 / total, ctgDegenerate * 100.0 / allfate.ctgDegenerate);
-    fprintf(F, "%-12s %9"F_U32P"  %6.2f  %6.2f\n", "big",        ctgBig,        ctgBig        * 100.0 / total, ctgBig        * 100.0 / allfate.ctgBig);
-    fprintf(F, "%-12s %9"F_U32P"  %6.2f  %6.2f\n", "small",      ctgSmall,      ctgSmall      * 100.0 / total, ctgSmall      * 100.0 / allfate.ctgSmall);
+    fprintf(F, "%-12s %9" F_U32P"  %6.2f  %6.2f\n", "degenerate", ctgDegenerate, ctgDegenerate * 100.0 / total, ctgDegenerate * 100.0 / allfate.ctgDegenerate);
+    fprintf(F, "%-12s %9" F_U32P"  %6.2f  %6.2f\n", "big",        ctgBig,        ctgBig        * 100.0 / total, ctgBig        * 100.0 / allfate.ctgBig);
+    fprintf(F, "%-12s %9" F_U32P"  %6.2f  %6.2f\n", "small",      ctgSmall,      ctgSmall      * 100.0 / total, ctgSmall      * 100.0 / allfate.ctgSmall);
 
     fclose(F);
   };
@@ -245,7 +245,7 @@ public:
       fprintf(F, "%8s", frgLabelS[ii]);
       for (uint32 jj=0; jj<NUM_FRG_LABELS; jj++)
         if (ii <= jj) {
-          fprintf(F, " %8"F_U32P, stat[ii][jj]);
+          fprintf(F, " %8" F_U32P, stat[ii][jj]);
         } else {
           fprintf(F, "         ");
           assert(stat[ii][jj] == 0);
@@ -269,7 +269,7 @@ public:
     fprintf(F, "\n");
     fprintf(F, "LIBRARY %02d %s\n", libid, libname);
     fprintf(F, "\n");
-    fprintf(F, "mates "F_U32"\n", total);
+    fprintf(F, "mates " F_U32 "\n", total);
     fprintf(F, "\n");
 
     fprintf(F, "\n");
@@ -329,9 +329,9 @@ public:
 
     if (dist < 0) {
       fprintf(stderr, "negative distance %d\n", dist);
-      fprintf(stderr, "A="F_U32" bgn="F_U32" end="F_U32" ori=%c %s\n",
+      fprintf(stderr, "A=" F_U32 " bgn=" F_U32 " end=" F_U32 " ori=%c %s\n",
               A, Abgn, Aend, Aori, frgNam[A].c_str());
-      fprintf(stderr, "B="F_U32" bgn="F_U32" end="F_U32" ori=%c %s\n",
+      fprintf(stderr, "B=" F_U32 " bgn=" F_U32 " end=" F_U32 " ori=%c %s\n",
               B, Bbgn, Bend, Bori, frgNam[B].c_str());
       dist = 0;
     }
@@ -350,9 +350,9 @@ public:
 
     else {
       fprintf(stderr, "invalid position and orientation\n");
-      fprintf(stderr, "A="F_U32" bgn="F_U32" end="F_U32" ori=%c %s\n",
+      fprintf(stderr, "A=" F_U32 " bgn=" F_U32 " end=" F_U32 " ori=%c %s\n",
               A, Abgn, Aend, Aori, frgNam[A].c_str());
-      fprintf(stderr, "B="F_U32" bgn="F_U32" end="F_U32" ori=%c %s\n",
+      fprintf(stderr, "B=" F_U32 " bgn=" F_U32 " end=" F_U32 " ori=%c %s\n",
               B, Bbgn, Bend, Bori, frgNam[B].c_str());
       //assert(0);
     }
@@ -409,29 +409,29 @@ public:
     fprintf(F, "LIBRARY %02d %s\n", libid, libname);
     fprintf(F, "\n");
     fprintf(F, "SCAFFOLD\n");
-    fprintf(F, "innie       %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", scf.distInnie.size(),  scf.meanInnie,  scf.sdevInnie);
-    fprintf(F, "outtie      %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", scf.distOuttie.size(), scf.meanOuttie, scf.sdevOuttie);
-    fprintf(F, "same        %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", scf.distSame.size(),   scf.meanSame,   scf.sdevSame);
+    fprintf(F, "innie       %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", scf.distInnie.size(),  scf.meanInnie,  scf.sdevInnie);
+    fprintf(F, "outtie      %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", scf.distOuttie.size(), scf.meanOuttie, scf.sdevOuttie);
+    fprintf(F, "same        %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", scf.distSame.size(),   scf.meanSame,   scf.sdevSame);
     fprintf(F, "\n");
     fprintf(F, "CONTIG\n");
-    fprintf(F, "innie       %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", ctg.distInnie.size(),  ctg.meanInnie,  ctg.sdevInnie);
-    fprintf(F, "outtie      %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", ctg.distOuttie.size(), ctg.meanOuttie, ctg.sdevOuttie);
-    fprintf(F, "same        %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", ctg.distSame.size(),   ctg.meanSame,   ctg.sdevSame);
+    fprintf(F, "innie       %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", ctg.distInnie.size(),  ctg.meanInnie,  ctg.sdevInnie);
+    fprintf(F, "outtie      %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", ctg.distOuttie.size(), ctg.meanOuttie, ctg.sdevOuttie);
+    fprintf(F, "same        %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", ctg.distSame.size(),   ctg.meanSame,   ctg.sdevSame);
     fprintf(F, "\n");
     fprintf(F, "UNITIG\n");
-    fprintf(F, "innie       %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", utg.distInnie.size(),  utg.meanInnie,  utg.sdevInnie);
-    fprintf(F, "outtie      %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", utg.distOuttie.size(), utg.meanOuttie, utg.sdevOuttie);
-    fprintf(F, "same        %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", utg.distSame.size(),   utg.meanSame,   utg.sdevSame);
+    fprintf(F, "innie       %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", utg.distInnie.size(),  utg.meanInnie,  utg.sdevInnie);
+    fprintf(F, "outtie      %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", utg.distOuttie.size(), utg.meanOuttie, utg.sdevOuttie);
+    fprintf(F, "same        %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", utg.distSame.size(),   utg.meanSame,   utg.sdevSame);
     fprintf(F, "\n");
     fprintf(F, "SAME SCAFFOLD DIFFERENT CONTIG\n");
-    fprintf(F, "innie       %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", scfctg.distInnie.size(),  scfctg.meanInnie,  scfctg.sdevInnie);
-    fprintf(F, "outtie      %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", scfctg.distOuttie.size(), scfctg.meanOuttie, scfctg.sdevOuttie);
-    fprintf(F, "same        %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", scfctg.distSame.size(),   scfctg.meanSame,   scfctg.sdevSame);
+    fprintf(F, "innie       %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", scfctg.distInnie.size(),  scfctg.meanInnie,  scfctg.sdevInnie);
+    fprintf(F, "outtie      %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", scfctg.distOuttie.size(), scfctg.meanOuttie, scfctg.sdevOuttie);
+    fprintf(F, "same        %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", scfctg.distSame.size(),   scfctg.meanSame,   scfctg.sdevSame);
     fprintf(F, "\n");
     fprintf(F, "SAME SCAFFOLD DIFFERENT UNITIG\n");
-    fprintf(F, "innie       %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", scfutg.distInnie.size(),  scfutg.meanInnie,  scfutg.sdevInnie);
-    fprintf(F, "outtie      %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", scfutg.distOuttie.size(), scfutg.meanOuttie, scfutg.sdevOuttie);
-    fprintf(F, "same        %9"F_SIZE_TP" samples %10.2f +- %-10.2f bp\n", scfutg.distSame.size(),   scfutg.meanSame,   scfutg.sdevSame);
+    fprintf(F, "innie       %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", scfutg.distInnie.size(),  scfutg.meanInnie,  scfutg.sdevInnie);
+    fprintf(F, "outtie      %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", scfutg.distOuttie.size(), scfutg.meanOuttie, scfutg.sdevOuttie);
+    fprintf(F, "same        %9" F_SIZE_TP " samples %10.2f +- %-10.2f bp\n", scfutg.distSame.size(),   scfutg.meanSame,   scfutg.sdevSame);
 
 
     fclose(F);
@@ -727,13 +727,13 @@ analyzeLibraryFate(char *outPrefix) {
     if ((libfate[li].size.scf.distOuttie.size() >= 100))
       validO = true;
 
-    fprintf((fici == mici) ? SCFsCTG : SCFdCTG, "scf %s -- frg %s at "F_U32" "F_U32" %c in ctg %s -- frg %s at "F_U32" "F_U32" %c in ctg %s -- orient %c dist "F_S32"\n",
+    fprintf((fici == mici) ? SCFsCTG : SCFdCTG, "scf %s -- frg %s at " F_U32 " " F_U32 " %c in ctg %s -- frg %s at " F_U32 " " F_U32 " %c in ctg %s -- orient %c dist " F_S32 "\n",
             scfNam[fisi].c_str(),
             frgNam[fi].c_str(), frgDat[fi].scf.bgn, frgDat[fi].scf.end, frgDat[fi].scf.ori, ctgNam[fici].c_str(),
             frgNam[mi].c_str(), frgDat[mi].scf.bgn, frgDat[mi].scf.end, frgDat[mi].scf.ori, ctgNam[mici].c_str(),
             orient, dist);
 
-    fprintf((fiui == miui) ? SCFsUTG : SCFdUTG, "scf %s -- frg %s at "F_U32" "F_U32" %c in utg %s -- frg %s at "F_U32" "F_U32" %c in utg %s -- orient %c dist "F_S32"\n",
+    fprintf((fiui == miui) ? SCFsUTG : SCFdUTG, "scf %s -- frg %s at " F_U32 " " F_U32 " %c in utg %s -- frg %s at " F_U32 " " F_U32 " %c in utg %s -- orient %c dist " F_S32 "\n",
             scfNam[fisi].c_str(),
             frgNam[fi].c_str(), frgDat[fi].scf.bgn, frgDat[fi].scf.end, frgDat[fi].scf.ori, utgNam[fiui].c_str(),
             frgNam[mi].c_str(), frgDat[mi].scf.bgn, frgDat[mi].scf.end, frgDat[mi].scf.ori, utgNam[miui].c_str(),

@@ -175,7 +175,7 @@ main(int argc, char **argv) {
   for (uint32 i=0; i<numLib+1; i++) {
     double tot = fragPerLib[i] + deldPerLib[i];
 
-    fprintf(stderr, "%-8u %-30s %8"F_U64P" %8"F_U64P" (%4.1f%%)  %8"F_U64P" (%4.1f%%)  %8"F_U64P" (%4.1f%%)  %8"F_U64P" (%4.1f%%)  %8"F_U64P" (%4.1f%%)  %8"F_U64P" (%4.1f%%)  %8"F_U64P" (%4.1f%%)\n",
+    fprintf(stderr, "%-8u %-30s %8" F_U64P" %8" F_U64P" (%4.1f%%)  %8" F_U64P" (%4.1f%%)  %8" F_U64P" (%4.1f%%)  %8" F_U64P" (%4.1f%%)  %8" F_U64P" (%4.1f%%)  %8" F_U64P" (%4.1f%%)  %8" F_U64P" (%4.1f%%)\n",
             i,
             (i == 0) ? "(none)" : AS_UID_toString(gkp->gkStore_getLibrary(i)->libraryUID),
             fragPerLib[i],

@@ -177,7 +177,7 @@ MarkInternalEdgeStatus(ScaffoldGraphT  *graph,
           ((GetNodeOrient(CI) != CIorient) ||
            (GetNodeOrient(MI) != MIorient))) {
 #ifdef VERBOSE_MARKING
-        //fprintf(stderr, "["F_CID","F_CID"]Bad orientation (%c,%c) (%c,%c)\n",
+        //fprintf(stderr, "[" F_CID"," F_CID"]Bad orientation (%c,%c) (%c,%c)\n",
         //        CI->id, MI->id,
         //        GetNodeOrient(CI).toLetter(), CIorient.toLetter(), GetNodeOrient(MI).toLetter(), MIorient.toLetter());
         PrintGraphEdge(stderr, ScaffoldGraph->ContigGraph, "BadOrient    ", edge, -1);

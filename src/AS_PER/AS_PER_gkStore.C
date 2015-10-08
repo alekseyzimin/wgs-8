@@ -100,9 +100,9 @@ gkStore::gkStore_open(int writable, int doNotUseUIDs) {
   }
 
   if (inf.gkVersion != AS_GKP_CURRENT_VERSION) {
-    fprintf(stderr, "gkStore_open()-- Invalid version!  Found version "F_U64", code supports version "F_S32".\n",
+    fprintf(stderr, "gkStore_open()-- Invalid version!  Found version " F_U64 ", code supports version " F_S32 ".\n",
             inf.gkVersion, AS_GKP_CURRENT_VERSION);
-    fprintf(stderr, "gkStore_open()-- Please backup store '%s', then run 'upgrade-v"F_U64"-to-v"F_U64"' from within the store directory.\n",
+    fprintf(stderr, "gkStore_open()-- Please backup store '%s', then run 'upgrade-v" F_U64 "-to-v" F_U64 "' from within the store directory.\n",
             storePath, inf.gkVersion, AS_GKP_CURRENT_VERSION);
     exit(1);
   }

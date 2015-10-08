@@ -721,7 +721,7 @@ void GenerateSurrogateStats(char *phase){
         break;
     }
 #ifdef DEBUG_DETAILED
-    fprintf(stderr,"* Node "F_CID" %c contig:"F_CID"  numInstances %d\n",
+    fprintf(stderr,"* Node " F_CID" %c contig:" F_CID"  numInstances %d\n",
             node->id, type, node->info.CI.contigID, node->info.CI.numInstances);
 #endif
     if((node->type != UNRESOLVEDCHUNK_CGW) ||    // is not a surrogate parent

@@ -72,9 +72,9 @@ memdup(const void *orig, size_t size) {
       //  as it might be determined by TRUEINT64.
       //
       if (sizeof(size_t) == 8)
-        fprintf(stderr, "memdup()-- can't allocate "int64FMT" bytes.\n%s\n", (int64)size, strerror(errno));
+        fprintf(stderr, "memdup()-- can't allocate " int64FMT" bytes.\n%s\n", (int64)size, strerror(errno));
       else
-        fprintf(stderr, "memdup()-- can't allocate "uint32FMT" bytes.\n%s\n", (uint32)size, strerror(errno));
+        fprintf(stderr, "memdup()-- can't allocate " uint32FMT" bytes.\n%s\n", (uint32)size, strerror(errno));
       exit(1);
     }
     memcpy(rslt, orig, size);

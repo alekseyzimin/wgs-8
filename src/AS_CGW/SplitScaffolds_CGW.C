@@ -64,7 +64,7 @@ void SplitScaffolds(ScaffoldGraphT *graph){
     if(numNodes < 3){
       continue;
     }
-    fprintf(stderr,"TESTING! Scaffold "F_CID" with %d nodes is splitting into 2 Scaffolds\n",
+    fprintf(stderr,"TESTING! Scaffold " F_CID" with %d nodes is splitting into 2 Scaffolds\n",
 	    scaffold->id, numNodes);
     nodes = (int *)safe_malloc(numNodes * sizeof(int));
     AssertPtr(nodes);
@@ -135,7 +135,7 @@ void SplitScaffolds(ScaffoldGraphT *graph){
       }
       assert((GetGraphNode(graph->ScaffoldGraph,
 			   newScaffoldID))->info.Scaffold.numElements > 0);
-      fprintf(stderr,"New Scaffold "F_CID" with %d nodes\n",
+      fprintf(stderr,"New Scaffold " F_CID" with %d nodes\n",
               newScaffoldID,
 	      (GetGraphNode(graph->ScaffoldGraph,
 			    newScaffoldID))->info.Scaffold.numElements);

@@ -40,8 +40,8 @@ binaryOperations(merylArgs *args) {
   //
   if (A->merSize() != B->merSize()) {
     fprintf(stderr, "ERROR - mersizes are different!\n");
-    fprintf(stderr, "ERROR - mersize of '%s' is "uint32FMT"\n", args->mergeFiles[0], A->merSize());
-    fprintf(stderr, "ERROR - mersize of '%s' is "uint32FMT"\n", args->mergeFiles[1], B->merSize());
+    fprintf(stderr, "ERROR - mersize of '%s' is " uint32FMT"\n", args->mergeFiles[0], A->merSize());
+    fprintf(stderr, "ERROR - mersize of '%s' is " uint32FMT"\n", args->mergeFiles[1], B->merSize());
     exit(1);
   }
 
@@ -87,7 +87,7 @@ binaryOperations(merylArgs *args) {
           Bcnt = uint32ZERO;
         }
 
-        //fprintf(stderr, "sub A="uint64HEX" B="uint64HEX"\n", Amer, Bmer);
+        //fprintf(stderr, "sub A=" uint64HEX" B=" uint64HEX"\n", Amer, Bmer);
 
         if (Amer == Bmer) {
           W->addMer(Amer, (Acnt > Bcnt) ? Acnt - Bcnt : 0);

@@ -48,7 +48,7 @@ public:
     assert(scfDat[si].sta == 'p');
 
     if (li >= libDat.size())
-      fprintf(stderr, "WARNING: fragment %s claims library "F_U32", invalid\n", frgNam[fi].c_str(), li);
+      fprintf(stderr, "WARNING: fragment %s claims library " F_U32 ", invalid\n", frgNam[fi].c_str(), li);
     assert(li < libDat.size());
 
     int32 fbgn = frgDat[fi].scf.bgn;
@@ -154,8 +154,8 @@ public:
 
     fprintf(O, "----------------------------------------\n");
     fprintf(O, "%s\n", label);
-    fprintf(O, "total       "F_U32" mate pairs involved\n", number);
-    fprintf(O, "expect fill %.0f gaps from "F_U32" mates\n", floor(fill.expectedFilled), fill.numPossible);
+    fprintf(O, "total       " F_U32 " mate pairs involved\n", number);
+    fprintf(O, "expect fill %.0f gaps from " F_U32 " mates\n", floor(fill.expectedFilled), fill.numPossible);
 
     if (fill.numPossible > 0) {
       sprintf(C, "%s.gapfill.%s", outPrefix, label);
@@ -261,7 +261,7 @@ analyzeGapFillProbability(char *outPrefix) {
     fista = 's';
 
     //if (fista != 's')
-    //  fprintf(stderr, "fista fi "F_U32" sta %c -> fista %c\n", fi, frgDat[fi].sta, fista);
+    //  fprintf(stderr, "fista fi " F_U32 " sta %c -> fista %c\n", fi, frgDat[fi].sta, fista);
 
     if ((fista == 0) || (mista == 0))
       continue;

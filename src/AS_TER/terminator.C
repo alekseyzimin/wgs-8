@@ -310,7 +310,7 @@ bool buildUTGMessage(int32 ID, SnapUnitigMesg *utg) {
             utg->iaccession);
   assert(utg->consensus != NULL);
   if (utg->length != strlen(utg->consensus))
-    fprintf(stderr, "buildUTGMessage()-- unitig %d length %d != consensus string length "F_SIZE_T"\n",
+    fprintf(stderr, "buildUTGMessage()-- unitig %d length %d != consensus string length " F_SIZE_T "\n",
             utg->iaccession, utg->length, strlen(utg->consensus));
   assert(utg->length == strlen(utg->consensus));
 
@@ -572,7 +572,7 @@ writeCCO(FILE *asmFile, bool doWrite) {
               cco.iaccession);
     assert(cco.consensus != NULL);
     if (cco.length != strlen(cco.consensus))
-      fprintf(stderr, "buildCCOMessage()-- contig %d length %d != consensus string length "F_SIZE_T"\n",
+      fprintf(stderr, "buildCCOMessage()-- contig %d length %d != consensus string length " F_SIZE_T "\n",
               cco.iaccession, cco.length, strlen(cco.consensus));
     assert(cco.length == strlen(cco.consensus));
 

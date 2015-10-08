@@ -83,7 +83,7 @@ ReadLine(FILE *fin, int skipComment) {
       if ((AS_MSG_globals->curLine[AS_MSG_globals->curLineMax - 2] != 0) &&
           (AS_MSG_globals->curLine[AS_MSG_globals->curLineMax - 2] != '\n')) {
 #if 0
-        fprintf(stderr, "WARNING: Input line "F_U64" is long (%s), resizing.\n", AS_MSG_globals->curLineNum, AS_MSG_globals->msgCode);
+        fprintf(stderr, "WARNING: Input line " F_U64 " is long (%s), resizing.\n", AS_MSG_globals->curLineNum, AS_MSG_globals->msgCode);
         fprintf(stderr, "         '%s'\n", AS_MSG_globals->curLine);
         fprintf(stderr, "         length = %d\n", strlen(AS_MSG_globals->curLine));
         fprintf(stderr, "         cloffset = %d\n", cloffset);
@@ -169,7 +169,7 @@ GetText(const char * const tag, FILE *fin, const int delnewlines) {
   assert(AS_MSG_globals->msgLen <= AS_MSG_globals->msgMax);
 
   //if (AS_MSG_globals->curLineNum > 258000000)
-  //  fprintf(stderr, "TEXT (len:"F_U64"): %s\n", AS_MSG_globals->msgLen, ret);
+  //  fprintf(stderr, "TEXT (len:" F_U64 "): %s\n", AS_MSG_globals->msgLen, ret);
 
   return(ret);
 }
@@ -223,7 +223,7 @@ GetType(char *format, char *name, FILE *fin) {
 void
 GetEOM(FILE *fin) {
   if (ReadLine(fin,TRUE)[0] != '}')
-    fprintf(stderr, "ERROR: ??? expecting end of message '}' at line "F_U64", got '%s' instead.\n",
+    fprintf(stderr, "ERROR: ??? expecting end of message '}' at line " F_U64 ", got '%s' instead.\n",
             AS_MSG_globals->curLineNum, AS_MSG_globals->curLine), exit(1);
 }
 

@@ -161,12 +161,12 @@ main (int argc, char **argv) {
       bgnID = onlID;
       endID = onlID + 1;
     } else {
-      fprintf(stderr, "ERROR: Invalid unitig "F_IID" (-u); only "F_IID" unitigs in the store.\n", onlID, endID);
+      fprintf(stderr, "ERROR: Invalid unitig " F_IID " (-u); only " F_IID " unitigs in the store.\n", onlID, endID);
       exit(1);
     }
   }
 
-  fprintf(stderr, "Checking unitig consensus for b="F_U32" to e="F_U32"\n", bgnID, endID);
+  fprintf(stderr, "Checking unitig consensus for b=" F_U32 " to e=" F_U32 "\n", bgnID, endID);
 
   for (uint32 i=bgnID; i<endID; i++) {
     MultiAlignT  *maOrig = tigStore->loadMultiAlign(i, true);
@@ -223,7 +223,7 @@ main (int argc, char **argv) {
       //  using those not placed.
 
     tryAgain:
-      fprintf(stderr, " - Fixing unitig %d with "F_SIZE_T" fragments\n",
+      fprintf(stderr, " - Fixing unitig %d with " F_SIZE_T " fragments\n",
               maOrig->maID, GetNumIntMultiPoss(maTest->f_list));
 
       ResetVA_IntMultiPos(maFixd->f_list);
@@ -255,10 +255,10 @@ main (int argc, char **argv) {
       maFixd->maID = tigStore->numUnitigs();
 
       if (GetNumIntMultiPoss(maNext->f_list) == 0)
-        fprintf(stderr, " - Testing new unitig %d with "F_SIZE_T" fragments\n",
+        fprintf(stderr, " - Testing new unitig %d with " F_SIZE_T " fragments\n",
                 maFixd->maID, GetNumIntMultiPoss(maFixd->f_list));
       else
-        fprintf(stderr, " - Testing new unitig %d with "F_SIZE_T" fragments ("F_SIZE_T" remain for next pass)\n",
+        fprintf(stderr, " - Testing new unitig %d with " F_SIZE_T " fragments (" F_SIZE_T " remain for next pass)\n",
                 maFixd->maID, GetNumIntMultiPoss(maFixd->f_list), GetNumIntMultiPoss(maNext->f_list));
 
       assert(GetNumIntMultiPoss(maFixd->f_list) > 0);
@@ -288,7 +288,7 @@ main (int argc, char **argv) {
 
       if (doUpdate) {
         tigStore->insertMultiAlign(maFixd, true, false);
-        fprintf(stderr, " - Added unitig %d with "F_SIZE_T" fragments.\n",
+        fprintf(stderr, " - Added unitig %d with " F_SIZE_T " fragments.\n",
                 maFixd->maID, GetNumIntMultiPoss(maFixd->f_list));
       } else {
         //  Usually set by insertMultiAlign, need to force it here
@@ -299,7 +299,7 @@ main (int argc, char **argv) {
       if (outputFile) {
         maFixd->maID = -1;
         DumpMultiAlignForHuman(outputFile, maFixd, true);
-        fprintf(stderr, " - Saved new unitig with "F_SIZE_T" fragments.\n",
+        fprintf(stderr, " - Saved new unitig with " F_SIZE_T " fragments.\n",
                 GetNumIntMultiPoss(maFixd->f_list));
       }
 

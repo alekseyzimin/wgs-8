@@ -195,13 +195,13 @@ FragmentInfo::load(const char *prefix) {
     return(false);
   }
   if (versionNumber != fiVersionNumber) {
-    fprintf(logFile, "FragmentInfo()-- File '%s' is version "F_U64", I can only read version "F_U64"; cannot load.\n",
+    fprintf(logFile, "FragmentInfo()-- File '%s' is version " F_U64 ", I can only read version " F_U64 "; cannot load.\n",
             name, versionNumber, fiVersionNumber);
     fclose(file);
     return(false);
   }
 
-  fprintf(logFile, "FragmentInfo()-- Loading fragment information for "F_U32" fragments and "F_U32" libraries from cache '%s'\n",
+  fprintf(logFile, "FragmentInfo()-- Loading fragment information for " F_U32 " fragments and " F_U32 " libraries from cache '%s'\n",
           _numFragments, _numLibraries, name);
 
   _fragLength    = new uint32 [_numFragments + 1];

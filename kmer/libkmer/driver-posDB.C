@@ -51,7 +51,7 @@ test1(char *filename) {
       if (missing != 1) {
         failed++;
 
-        fprintf(stdout, "%s @ "uint64FMT"/"uint64FMT": Found "uint64FMT" table entries, and "uint32FMT" matching positions (",
+        fprintf(stdout, "%s @ " uint64FMT"/" uint64FMT": Found " uint64FMT" table entries, and " uint32FMT" matching positions (",
                 T->theFMer().merToString(str), T->theSequenceNumber(), T->thePositionInStream(), posnLen, missing);
 
         for (uint32 i=0; i<posnLen; i++) {
@@ -65,7 +65,7 @@ test1(char *filename) {
     } else {
       failed++;
 
-      fprintf(stdout, "Found no matches for mer=%s at pos="uint64FMT"\n",
+      fprintf(stdout, "Found no matches for mer=%s at pos=" uint64FMT"\n",
               T->theFMer().merToString(str), T->thePositionInStream());
     }
   }
@@ -98,7 +98,7 @@ test2(char *filename, char *query) {
                     posnMax,
                     posnLen,
                     count)) {
-      fprintf(stdout, "Got a F match for mer=%s at "uint64FMT"/"uint64FMT" (in mers), numMatches="uint64FMT"\n",
+      fprintf(stdout, "Got a F match for mer=%s at " uint64FMT"/" uint64FMT" (in mers), numMatches=" uint64FMT"\n",
               T->theFMer().merToString(str), T->theSequenceNumber(), T->thePositionInStream(), posnLen);
     }
 
@@ -107,7 +107,7 @@ test2(char *filename, char *query) {
                     posnMax,
                     posnLen,
                     count)) {
-      fprintf(stdout, "Got a R match for mer=%s at "uint64FMT"/"uint64FMT" (in mers), numMatches="uint64FMT"\n",
+      fprintf(stdout, "Got a R match for mer=%s at " uint64FMT"/" uint64FMT" (in mers), numMatches=" uint64FMT"\n",
               T->theRMer().merToString(str), T->theSequenceNumber(), T->thePositionInStream(), posnLen);
     }
   }
@@ -252,7 +252,7 @@ main(int argc, char **argv) {
   if (merEnd   == ~uint64ZERO)   merEnd   = numMers;
 
   if (merBegin >= merEnd) {
-    fprintf(stderr, "ERROR: merbegin="uint64FMT" and merend="uint64FMT" are incompatible.\n",
+    fprintf(stderr, "ERROR: merbegin=" uint64FMT" and merend=" uint64FMT" are incompatible.\n",
             merBegin, merEnd);
     exit(1);
   }
@@ -272,7 +272,7 @@ main(int argc, char **argv) {
     onlyDB = new existDB(onlyF, mersize, existDBnoFlags, 0, ~uint32ZERO);
   }
 
-  fprintf(stderr, "Building table with merSize "uint32FMT", merSkip "uint32FMT"\n", mersize, merskip);
+  fprintf(stderr, "Building table with merSize " uint32FMT", merSkip " uint32FMT"\n", mersize, merskip);
 
   positionDB *positions = new positionDB(MS, mersize, merskip, maskDB, onlyDB, 0L, 0, 0, 0, 0, true);
 

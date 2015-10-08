@@ -150,7 +150,7 @@ FindOverlapEdgeChiSquare(ScaffoldGraphT *graph,
   double effectiveOlap = -olap.overlap;
 
   if(olap.suspicious){
-    fprintf(stderr,"* FOEXS: SUSPICIOUS Overlap found! Looked for ("F_CID","F_CID",%c)["F_S32","F_S32"] found ("F_CID","F_CID",%c) "F_S32"\n",
+    fprintf(stderr,"* FOEXS: SUSPICIOUS Overlap found! Looked for (" F_CID"," F_CID",%c)[" F_S32 "," F_S32 "] found (" F_CID"," F_CID",%c) " F_S32 "\n",
             sourceCI->id, targetId, edgeOrient.toLetter(),
             minOverlap, maxOverlap,
             olap.spec.cidA, olap.spec.cidB,
@@ -172,7 +172,7 @@ FindOverlapEdgeChiSquare(ScaffoldGraphT *graph,
     return(edge);
   }
 
-  fprintf(stderr,"* Failed pairwise test between (%g, %g) and (%g,%g) not returning edge ("F_CID","F_CID",%c) %g\n",
+  fprintf(stderr,"* Failed pairwise test between (%g, %g) and (%g,%g) not returning edge (" F_CID"," F_CID",%c) %g\n",
           inferredMean, inferredVariance, effectiveOlap, (double) ((MAX_OVERLAP_SLOP_CGW * MAX_OVERLAP_SLOP_CGW) / 9),
           edge->idA, edge->idB, edge->orient.toLetter(), edge->distance.mean);
 
@@ -211,14 +211,14 @@ dumpTrustedEdges(ScaffoldGraphT *sgraph, CIScaffoldT *scaffold) {
         continue;
 
       if(edge->flags.bits.isBridge){
-        fprintf(stderr,"* WARNING: chunk "F_CID" weight = %d bridge edge\n",
+        fprintf(stderr,"* WARNING: chunk " F_CID" weight = %d bridge edge\n",
                 chunk->id, weight);
         PrintGraphEdge(stderr, ScaffoldGraph->ContigGraph,
                        "Bridge ", edge, chunk->id);
 #ifdef DEBUG
         EdgeCGW_T *e;
         GraphEdgeIterator Edges(sgraph->ContigGraph,chunk->id,ALL_END, ALL_TRUSTED_EDGES);
-        fprintf(stderr,"Edges out from "F_CID":\n",chunk->id);
+        fprintf(stderr,"Edges out from " F_CID":\n",chunk->id);
         while(NULL!= (e = Edges.nextMerged()))
           PrintGraphEdge(stderr, ScaffoldGraph->ContigGraph,
                          "DEBUG Bridge ",e, chunk->id);
@@ -235,7 +235,7 @@ dumpTrustedEdges(ScaffoldGraphT *sgraph, CIScaffoldT *scaffold) {
       if (chunk->scaffoldID != otherChunk->scaffoldID)
         continue;
 
-      fprintf(stderr, "TRUSTED_EDGE "F_CID"("F_CID") - "F_CID"("F_CID") weight=%d\n",
+      fprintf(stderr, "TRUSTED_EDGE " F_CID"(" F_CID") - " F_CID"(" F_CID") weight=%d\n",
               chunk->id, chunk->setID,
               otherChunk->id, otherChunk->setID,
               weight);
@@ -685,7 +685,7 @@ RecomputeOffsetsInScaffold(ScaffoldGraphT *graph,
     thisCI->indexInScaffold = indexCIs;
     *lengthCIsPtr = thisCI->bpLength;
 
-    //fprintf(stderr, "Length of CI "F_CID" is %f indexInScaffold %d\n", thisCI->id, thisCI->bpLength.mean, thisCI->indexInScaffold);
+    //fprintf(stderr, "Length of CI " F_CID" is %f indexInScaffold %d\n", thisCI->id, thisCI->bpLength.mean, thisCI->indexInScaffold);
 
     indexCIs++;
     lengthCIsPtr++;
@@ -721,11 +721,11 @@ RecomputeOffsetsInScaffold(ScaffoldGraphT *graph,
         maxDiagonals = otherCI->indexInScaffold - thisCI->indexInScaffold;
 
 #if 0
-        fprintf(stderr, "Max Diagonals %d (%d,%d) ["F_CID"."F_CID","F_CID"."F_CID"]\n",
+        fprintf(stderr, "Max Diagonals %d (%d,%d) [" F_CID"." F_CID"," F_CID"." F_CID"]\n",
                 maxDiagonals, thisCI->indexInScaffold,
                 otherCI->indexInScaffold, thisCI->scaffoldID,
                 thisCI->id, otherCI->scaffoldID, otherCI->id);
-        fprintf(stderr, "Max Diagonals %d (%d,%d) ["F_CID"."F_CID","F_CID"."F_CID"]\n",
+        fprintf(stderr, "Max Diagonals %d (%d,%d) [" F_CID"." F_CID"," F_CID"." F_CID"]\n",
                 maxDiagonals, thisCI->indexInScaffold,
                 otherCI->indexInScaffold, thisCI->scaffoldID,
                 thisCI->id, otherCI->scaffoldID, otherCI->id);
@@ -946,18 +946,18 @@ RecomputeOffsetsInScaffold(ScaffoldGraphT *graph,
       dpbtrf_("L", &rows, &bands, gapCoefficients, &ldab, &info);
 
       //      dumpGapCoefficients(gapCoefficients, maxDiagonals, numComputeGaps, rows, bands); // debug
-      //      fprintf(stderr, "dpbtrf: ldab "F_FTN_INT" info "F_FTN_INT"\n", ldab, info);
+      //      fprintf(stderr, "dpbtrf: ldab " F_FTN_INT" info " F_FTN_INT"\n", ldab, info);
 
       if (info < 0) {
         //  The -info'th argument had an illegal value.
-        fprintf(stderr, "dpbtrf failed; arg "F_FTN_INT" is illegal.\n", -info);
+        fprintf(stderr, "dpbtrf failed; arg " F_FTN_INT" is illegal.\n", -info);
         isCholesky = false;
       }
       assert(info >= 0);
 
       if (info > 0) {
         //  Leading minor of order 'info' is not positive definite; factorization could not be completed.
-        fprintf(stderr, "dpbtrf failed with info="F_FTN_INT"; no solution found, giving up.\n", info);
+        fprintf(stderr, "dpbtrf failed with info=" F_FTN_INT"; no solution found, giving up.\n", info);
         isCholesky = false;
       }
     }
@@ -981,16 +981,16 @@ RecomputeOffsetsInScaffold(ScaffoldGraphT *graph,
       dgbtrf_(&rows, &rows, &bands, &bands, gapCoefficientsAlt, &ldab, IPIV, &info);
 
       //    dumpGapCoefficientsAlt(gapCoefficientsAlt, maxDiagonals, numComputeGaps, rows, bands); // debug
-      //    fprintf(stderr, "dgbtrf: ldab "F_FTN_INT" info "F_FTN_INT"\n", ldab, info);
+      //    fprintf(stderr, "dgbtrf: ldab " F_FTN_INT" info " F_FTN_INT"\n", ldab, info);
 
       if (info < 0) {
         //  The -info'th argument had an illegal value.
-        fprintf(stderr, "dgbtrf failed; arg "F_FTN_INT" is illegal.\n", -info);
+        fprintf(stderr, "dgbtrf failed; arg " F_FTN_INT" is illegal.\n", -info);
       }
       assert(info >= 0);
 
       if (info > 0) {
-        fprintf(stderr, "dgbtrf failed with info="F_FTN_INT"; a singularity will result in divide by zero, giving up.\n", info);
+        fprintf(stderr, "dgbtrf failed with info=" F_FTN_INT"; a singularity will result in divide by zero, giving up.\n", info);
         freeRecomputeData(&data);
         return(RECOMPUTE_SINGULAR);
       }
@@ -1281,7 +1281,7 @@ RecomputeOffsetsInScaffold(ScaffoldGraphT *graph,
             double newStd = (newLeftEdge - (-CGW_MISSED_OVERLAP))/3.0;
             double newVariance = newStd * newStd;
 
-            //fprintf(stderr,"GapChange Gap(%d:%d) CIs: "F_CID","F_CID" new:(%f,%f) old(%f,%f)\n",
+            //fprintf(stderr,"GapChange Gap(%d:%d) CIs: " F_CID"," F_CID" new:(%f,%f) old(%f,%f)\n",
             //        gapsToComputeGaps[gapIndex], gapIndex,
             //        prevCI->id, thisCI->id,
             //        (double)(- CGW_MISSED_OVERLAP), newVariance,
@@ -1769,7 +1769,7 @@ LeastSquaresGapEstimates(ScaffoldGraphT *graph,
     //
     if ((status == RECOMPUTE_ORDER_CONTIG_FAILED) ||
         (status == RECOMPUTE_MERGE_CONTIG_FAILED)) {
-      fprintf(stderr,"RecomputeOffsetsInScaffold() returned %s on scaffold "F_CID"; %d failures in a row, %s.\n",
+      fprintf(stderr,"RecomputeOffsetsInScaffold() returned %s on scaffold " F_CID"; %d failures in a row, %s.\n",
               statusLabel[status], sID, rIter, (rIter >= 5) ? "too many, give up" : "keep trying");
       if (rIter >= 5)
         break;
@@ -1785,7 +1785,7 @@ LeastSquaresGapEstimates(ScaffoldGraphT *graph,
     if ((status == RECOMPUTE_ORDER_CONTIG) ||
         (status == RECOMPUTE_MERGE_CONTIG) ||
         (status == RECOMPUTE_DELETE_CONTIG)) {
-      fprintf(stderr, "RecomputeOffsetsInScaffold() returned %s on scaffold "F_CID"; scaffold modified, keep trying\n",
+      fprintf(stderr, "RecomputeOffsetsInScaffold() returned %s on scaffold " F_CID"; scaffold modified, keep trying\n",
               statusLabel[status], sID);
       continue;
     }
@@ -1797,7 +1797,7 @@ LeastSquaresGapEstimates(ScaffoldGraphT *graph,
     //  size of each contig to truth.  Those seem to wander when we fail LeastSquares enough.
     //
     if (status != RECOMPUTE_OK) {
-      fprintf(stderr, "RecomputeOffsetsInScaffold() returned %s on scaffold "F_CID"; no more work will help.\n",
+      fprintf(stderr, "RecomputeOffsetsInScaffold() returned %s on scaffold " F_CID"; no more work will help.\n",
               statusLabel[status], sID);
       RebuildScaffoldGapsFromScaffold(graph, scaffold);
     }

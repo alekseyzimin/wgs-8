@@ -66,7 +66,7 @@ extendByMates(UnitigVector &unitigs,
     }
 
     writeLog("\n");
-    writeLog("unitig "F_U32" of size "F_SIZE_T" with "F_U32" extra fragments via mates\n",
+    writeLog("unitig " F_U32 " of size " F_SIZE_T " with " F_U32 " extra fragments via mates\n",
             ti, target->ufpath.size(), extraMates);
 
     if (extraMates == 0)
@@ -85,7 +85,7 @@ extendByMates(UnitigVector &unitigs,
 
       if ((mid != 0) &&
           (Unitig::fragIn(mid) == 0)) {
-        writeLog("  mate frag "F_IID"\n", mid);
+        writeLog("  mate frag " F_IID "\n", mid);
         frags.insert(mid);
         mates.insert(mid);
       }
@@ -146,7 +146,7 @@ extendByMates(UnitigVector &unitigs,
 
       placeContainsUsingBestOverlaps(tig, &frags);
 
-      writeLog("  new tig "F_U32" with "F_SIZE_T" fragments\n",
+      writeLog("  new tig " F_U32 " with " F_SIZE_T " fragments\n",
               tig->id(), tig->ufpath.size());
     }
 

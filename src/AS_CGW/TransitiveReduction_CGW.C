@@ -769,8 +769,8 @@ FindEdgeBetweenCIsChiSquare(GraphCGW_T *graph,
       // We found an overlap between source and target in the right orientation
       if (olap.suspicious) {
         fprintf(stderr,"* TR: SUSPICIOUS Overlap found! Looked for ("
-                F_CID","F_CID",%c)["F_S32","F_S32"] found ("
-                F_CID","F_CID",%c) "F_S32" (would have been "
+                F_CID"," F_CID",%c)[" F_S32 "," F_S32 "] found ("
+                F_CID"," F_CID",%c) " F_S32 " (would have been "
                 F_S32")\n",
                 sourceCI->id, targetId, edgeOrient.toLetter(),
                 minOverlap, maxOverlap,
@@ -1462,7 +1462,7 @@ SmoothWithInferredEdges(ScaffoldGraphT *graph,
         if (smooth_success == TRUE)
           {
             num_after = InstrumentContigEnd(graph, si_after, thisCI, A_END);
-            fprintf(stderr, "Smoothed CI "F_CID" on A_END\n",
+            fprintf(stderr, "Smoothed CI " F_CID" on A_END\n",
                     thisCI->id);
             fprintf(stderr,
                     "contigs: %d before (may include duplicates), %d after\n",
@@ -1517,7 +1517,7 @@ SmoothWithInferredEdges(ScaffoldGraphT *graph,
         if (smooth_success == TRUE)
           {
             num_after = InstrumentContigEnd(graph, si_after, thisCI, B_END);
-            fprintf(stderr, "Smoothed CI "F_CID" on B_END\n",
+            fprintf(stderr, "Smoothed CI " F_CID" on B_END\n",
                     thisCI->id);
             fprintf(stderr,
                     "contigs: %d before (may include duplicates), %d after\n",
@@ -1623,7 +1623,7 @@ DetectScaffoldCycles(CDS_CID_t currentScaffoldID) {
     edgeB = GetGraphEdge(ScaffoldGraph->ContigGraph, thisCI->essentialEdgeB);
     BendCI = GetGraphNode(ScaffoldGraph->ContigGraph,
                           (edgeB->idA == thisCI->id) ? edgeB->idB : edgeB->idA);
-    fprintf(stderr, "*** Found a Cycle in Essential Edge Graph\ncId:"F_CID" Aend:"F_CID" Bend:"F_CID"\n",
+    fprintf(stderr, "*** Found a Cycle in Essential Edge Graph\ncId:" F_CID" Aend:" F_CID" Bend:" F_CID"\n",
             thisCI->id, AendCI->id, BendCI->id);
 
     orientCI.setIsForward();
@@ -1965,7 +1965,7 @@ ActuallyInsertCIsIntoScaffolds(void) {
       CIScaffoldT *scaffold = GetGraphNode(ScaffoldGraph->ScaffoldGraph, currentScaffoldID);
       //  true = use merged, true = use trusted
       if (IsScaffoldInternallyConnected(ScaffoldGraph,  scaffold, true, true) == false) {
-        fprintf(stderr,"* Scaffold "F_CID" is DISCONNECTED IMMEDIATELY AFTER INITIAL CONSTRUCTION!!!!\n", currentScaffoldID);
+        fprintf(stderr,"* Scaffold " F_CID" is DISCONNECTED IMMEDIATELY AFTER INITIAL CONSTRUCTION!!!!\n", currentScaffoldID);
         DumpACIScaffold(stderr,ScaffoldGraph, scaffold, FALSE);
         assert(0);
       }
@@ -2137,7 +2137,7 @@ AddScaffoldInferredEdges(ScaffoldGraphT *graph) {
 
       }else{
         // This is a containment edge
-        fprintf(stderr,"* Did NOT add inferred edge ("F_CID","F_CID",%c) offsets [%g,%g] [%g,%g]... a containment?\n",
+        fprintf(stderr,"* Did NOT add inferred edge (" F_CID"," F_CID",%c) offsets [%g,%g] [%g,%g]... a containment?\n",
                 prevCI->id, thisCI->id, inferredEdgeOrient.toLetter(),
                 thisCI->offsetAEnd.mean, thisCI->offsetBEnd.mean,
                 prevCI->offsetAEnd.mean, prevCI->offsetBEnd.mean);

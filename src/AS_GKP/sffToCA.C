@@ -160,38 +160,38 @@ writeStatistics(char **argv, int argc, int firstFileArg, char *fragName, int hav
   fprintf(statOut, "\n");
 
   fprintf(statOut, "INPUT\n");
-  fprintf(statOut, "numReadsInSFF           "F_U32"\n", st.readsInSFF);
+  fprintf(statOut, "numReadsInSFF           " F_U32 "\n", st.readsInSFF);
   fprintf(statOut, "\n");
   fprintf(statOut, "LENGTH\n");
-  fprintf(statOut, "too short               "F_U32"\n", st.lenTooShort);
-  fprintf(statOut, "ok                      "F_U32"\n", st.lenOK);
-  fprintf(statOut, "trimmed by N            "F_U32"\n", st.lenTrimmedByN);
-  fprintf(statOut, "too long                "F_U32"\n", st.lenTooLong);
+  fprintf(statOut, "too short               " F_U32 "\n", st.lenTooShort);
+  fprintf(statOut, "ok                      " F_U32 "\n", st.lenOK);
+  fprintf(statOut, "trimmed by N            " F_U32 "\n", st.lenTrimmedByN);
+  fprintf(statOut, "too long                " F_U32 "\n", st.lenTooLong);
   fprintf(statOut, "                        -------\n");
-  fprintf(statOut, "                        "F_U32"\n", st.lenTooShort + st.lenOK + st.lenTrimmedByN + st.lenTooLong);
+  fprintf(statOut, "                        " F_U32 "\n", st.lenTooShort + st.lenOK + st.lenTrimmedByN + st.lenTooLong);
   fprintf(statOut, "\n");
 
   if (haveLinker) {
     fprintf(statOut, "LINKER\n");
-    fprintf(statOut, "not examined            "F_U32"\n", st.notExaminedForLinker);
-    fprintf(statOut, "none detected           "F_U32"\n", st.noLinker);
-    fprintf(statOut, "inconsistent            "F_U32"\n", st.badLinker);
-    fprintf(statOut, "partial                 "F_U32"\n", st.partialLinker);
-    fprintf(statOut, "good                    "F_U32"\n", st.fullLinker);
+    fprintf(statOut, "not examined            " F_U32 "\n", st.notExaminedForLinker);
+    fprintf(statOut, "none detected           " F_U32 "\n", st.noLinker);
+    fprintf(statOut, "inconsistent            " F_U32 "\n", st.badLinker);
+    fprintf(statOut, "partial                 " F_U32 "\n", st.partialLinker);
+    fprintf(statOut, "good                    " F_U32 "\n", st.fullLinker);
     fprintf(statOut, "                        -------\n");
-    fprintf(statOut, "                        "F_U32"\n", st.notExaminedForLinker + st.noLinker + st.badLinker + st.partialLinker + st.fullLinker);
+    fprintf(statOut, "                        " F_U32 "\n", st.notExaminedForLinker + st.noLinker + st.badLinker + st.partialLinker + st.fullLinker);
     fprintf(statOut, "\n");
   }
 
   fprintf(statOut, "OUTCOME\n");
-  fprintf(statOut, "fragment                "F_U32"\n", st.fragmentsOutput);
-  fprintf(statOut, "mate pair               "F_U32"\n", st.matesOutput);
-  fprintf(statOut, "deleted inconsistent    "F_U32"\n", st.badLinker);
-  fprintf(statOut, "deleted duplicate       "F_U32"\n", st.deletedDuplicates);
-  fprintf(statOut, "deleted too short       "F_U32"\n", st.deletedTooShort);
-  fprintf(statOut, "deleted N not allowed   "F_U32"\n", st.deletedByN);
+  fprintf(statOut, "fragment                " F_U32 "\n", st.fragmentsOutput);
+  fprintf(statOut, "mate pair               " F_U32 "\n", st.matesOutput);
+  fprintf(statOut, "deleted inconsistent    " F_U32 "\n", st.badLinker);
+  fprintf(statOut, "deleted duplicate       " F_U32 "\n", st.deletedDuplicates);
+  fprintf(statOut, "deleted too short       " F_U32 "\n", st.deletedTooShort);
+  fprintf(statOut, "deleted N not allowed   " F_U32 "\n", st.deletedByN);
   fprintf(statOut, "                        -------\n");
-  fprintf(statOut, "                        "F_U32"\n", st.fragmentsOutput + st.matesOutput + st.badLinker + st.deletedDuplicates + st.deletedTooShort + st.deletedByN);
+  fprintf(statOut, "                        " F_U32 "\n", st.fragmentsOutput + st.matesOutput + st.badLinker + st.deletedDuplicates + st.deletedTooShort + st.deletedByN);
 
   if (statOut != stderr)
     fclose(statOut);
@@ -329,7 +329,7 @@ readsff_manifest(FILE *sff, sffHeader *h, sffManifest *m) {
 
   uint64  padding_length = h->index_length - 16 - m->manifest_length;
   if (padding_length > 0) {
-    //fprintf(stderr, "manifest pad "F_U64"\n", padding_length);
+    //fprintf(stderr, "manifest pad " F_U64 "\n", padding_length);
     char *junk = (char *)safe_malloc(sizeof(char) * padding_length);
     AS_UTL_safeRead(sff, junk, "readsff_manifest_pad", sizeof(char), padding_length);
     safe_free(junk);
@@ -384,7 +384,7 @@ readsff_header(FILE *sff, sffHeader *h, sffManifest *m) {
 
   uint64  padding_length = h->header_length - 31 - h->number_of_flows_per_read - h->key_length;
   if (padding_length > 0) {
-    //fprintf(stderr, "header pad "F_U64"\n", padding_length);
+    //fprintf(stderr, "header pad " F_U64 "\n", padding_length);
     char *junk = (char *)safe_malloc(sizeof(char) * padding_length);
     AS_UTL_safeRead(sff, junk, "readsff_header_4", sizeof(char), padding_length);
     safe_free(junk);
@@ -420,7 +420,7 @@ readsff_read(FILE *sff, sffHeader *h, sffRead *r) {
 
 #ifdef DEBUG_READ
   if (DEBUG_READ_nRead > 210400) {
-    fprintf(stderr, "READ "F_U32" pos="F_OFF_T" header_length "F_U16" name_length "F_U16" number_of_bases "F_U32" clip "F_U16" "F_U16" "F_U16" "F_U16"\n",
+    fprintf(stderr, "READ " F_U32 " pos=" F_OFF_T " header_length "F_U16" name_length "F_U16" number_of_bases " F_U32 " clip "F_U16" "F_U16" "F_U16" "F_U16"\n",
             DEBUG_READ_nRead,
             pos,
             r->read_header_length,
@@ -445,7 +445,7 @@ readsff_read(FILE *sff, sffHeader *h, sffRead *r) {
 
 #ifdef DEBUG_READ
   if (DEBUG_READ_nRead > 210400) {
-    fprintf(stderr, "     "F_U32" "F_U32" "F_U32" "F_U32" "F_U32" "F_U32"\n",
+    fprintf(stderr, "     " F_U32 " " F_U32 " " F_U32 " " F_U32 " " F_U32 " " F_U32 "\n",
             ss[0], ss[1], ss[2], ss[3], ss[4], ss[5]);
   }
 #endif
@@ -470,7 +470,7 @@ readsff_read(FILE *sff, sffHeader *h, sffRead *r) {
   uint64  padding_length = r->read_header_length - 16 - r->name_length;
 #ifdef DEBUG_READ
   if (DEBUG_READ_nRead > 210400) {
-    fprintf(stderr, "     padding_length "F_U64"\n", padding_length);
+    fprintf(stderr, "     padding_length " F_U64 "\n", padding_length);
   }
 #endif
   if (padding_length > 0) {
@@ -527,7 +527,7 @@ readsff_read(FILE *sff, sffHeader *h, sffRead *r) {
                     r->number_of_bases * sizeof(uint8)) % 8;
 #ifdef DEBUG_READ
   if (DEBUG_READ_nRead > 210400) {
-    fprintf(stderr, "     padding_length "F_U64"\n", padding_length);
+    fprintf(stderr, "     padding_length " F_U64 "\n", padding_length);
   }
 #endif
   if (padding_length > 0) {
@@ -1072,7 +1072,7 @@ removeDuplicateReads(void) {
       //  loops, but those will stop quick enough.
 
       if ((beg + 1 < end) && (end-beg > 1000))
-        fprintf(stderr, "Large potential duplicate set from "F_U32" to "F_U32" ("F_U32" things)\n", beg, end, end - beg);
+        fprintf(stderr, "Large potential duplicate set from " F_U32 " to " F_U32 " (" F_U32 " things)\n", beg, end, end - beg);
 
       //  Load the fragments
       //
@@ -1442,7 +1442,7 @@ processMate(gkFragment *fr,
     //  Search the trimmed read for more (partial) linker.  If found, we'll nuke the whole read.
 
     if (processMate(fr, NULL, NULL, linker, search)) {
-      fprintf(logFile, "Multiple linker detected in '"F_STR"' at "F_S32"-"F_S32".  Delete the read.\n",
+      fprintf(logFile, "Multiple linker detected in '" F_STR"' at " F_S32 "-" F_S32 ".  Delete the read.\n",
               AS_UID_toString(fr->gkFragment_getReadUID()), 
               al.begJ, al.endJ);
       fr->gkFragment_setReadUID(AS_UID_undefined());
@@ -1487,7 +1487,7 @@ processMate(gkFragment *fr,
     //  Search the trimmed read for more (partial) linker.  If found, we'll nuke the whole read.
 
     if (processMate(fr, NULL, NULL, linker, search)) {
-      fprintf(logFile, "Multiple linker detected in '"F_STR"' at "F_S32"-"F_S32".  Delete the read.\n",
+      fprintf(logFile, "Multiple linker detected in '" F_STR"' at " F_S32 "-" F_S32 ".  Delete the read.\n",
               AS_UID_toString(fr->gkFragment_getReadUID()), 
               al.begJ, al.endJ);
       fr->gkFragment_setReadUID(AS_UID_undefined());

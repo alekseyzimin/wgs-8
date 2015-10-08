@@ -23,7 +23,7 @@ writeString(const char *str, FILE *F) {
   }
 
   if (errno) {
-    fprintf(stderr, "writeString()-- Failed to write string of length "uint32FMT": %s\n", len, strerror(errno));
+    fprintf(stderr, "writeString()-- Failed to write string of length " uint32FMT": %s\n", len, strerror(errno));
     fprintf(stderr, "writeString()-- First 80 bytes of string is:\n");
     fprintf(stderr, "%80.80s\n", str);
     return(false);

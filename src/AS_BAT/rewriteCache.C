@@ -122,7 +122,7 @@ main(int argc, char **argv) {
     if ((FI->fragmentLength(fi) == 0) &&
         (_cacheLen[fi] > 0)) {
       nDel++;
-      fprintf(F, "Removing "F_U32" overlaps from deleted deleted fragment "F_U32"\n", _cacheLen[fi], fi);
+      fprintf(F, "Removing " F_U32 " overlaps from deleted deleted fragment " F_U32 "\n", _cacheLen[fi], fi);
       _cacheLen[fi] = 0;
       continue;
     }
@@ -144,7 +144,7 @@ main(int argc, char **argv) {
     if (_cacheLen[fi] != on) {
       nMod++;
       nOvl += _cacheLen[fi] - on;
-      fprintf(F, "Removing "F_U32" overlaps from living fragment "F_U32"\n", _cacheLen[fi] - on, fi);
+      fprintf(F, "Removing " F_U32 " overlaps from living fragment " F_U32 "\n", _cacheLen[fi] - on, fi);
     }
 
     _cacheLen[fi] = on;
@@ -157,7 +157,7 @@ main(int argc, char **argv) {
   fclose(infile);
   fclose(otfile);
 
-  fprintf(stderr, "OverlapCache()-- Removed all overlaps from "F_U64" deleted fragments.  Removed "F_U64" overlaps from "F_U64" alive fragments.\n",
+  fprintf(stderr, "OverlapCache()-- Removed all overlaps from " F_U64 " deleted fragments.  Removed " F_U64 " overlaps from " F_U64 " alive fragments.\n",
           nDel, nOvl, nMod);
 
 

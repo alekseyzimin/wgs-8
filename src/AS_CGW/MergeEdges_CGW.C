@@ -57,7 +57,7 @@ static int ConfirmAnotherFragmentOverlap(GraphCGW_T *graph,
     maxOffset = -overlap;
   }
 
-  //fprintf(stderr,"* chunk = "F_CID" endB = %d minOffset = "F_S32" maxoffset = "F_S32" overlap = "F_S32"\n",
+  //fprintf(stderr,"* chunk = " F_CID" endB = %d minOffset = " F_S32 " maxoffset = " F_S32 " overlap = " F_S32 "\n",
   //        chunkID, endB, minOffset, maxOffset,overlap);
 
   /* Now we have to find if there are intraChunk or terminal fragments, other
@@ -101,7 +101,7 @@ static int ConfirmOverlap(GraphCGW_T *graph,
 
   if((!mateEdge->flags.bits.hasExtremalAFrag &&
       !mateEdge->flags.bits.hasExtremalBFrag)){
-    //fprintf(stderr,"*1*  Confirming edge between chunks ("F_CID","F_CID") -- no extremal fragment\n",
+    //fprintf(stderr,"*1*  Confirming edge between chunks (" F_CID"," F_CID") -- no extremal fragment\n",
     //    mateEdge->idA, mateEdge->idB);
     return TRUE;
   }
@@ -745,7 +745,7 @@ MergeGraphEdges_Greedy(GraphCGW_T            *graph,
 
       inputEdges.push_back(GetVAIndex_EdgeCGW_T(graph->edges, ne));
 
-      //fprintf(stderr, "MergeGraphEdges()--  greedy - edge "F_SIZE_T" with %d raw edges, %d %d, score=%f %.0f +- %.0f\n",
+      //fprintf(stderr, "MergeGraphEdges()--  greedy - edge " F_SIZE_T " with %d raw edges, %d %d, score=%f %.0f +- %.0f\n",
       //        GetVAIndex_EdgeCGW_T(graph->edges, ne),
       //        ne->edgesContributing,
       //        mergedEdges[ci].edges[0],
@@ -840,7 +840,7 @@ MergeGraphEdges(GraphCGW_T        *graph,
   if (inputEdges.size() == 3)
     return(0);
 
-  //fprintf(stderr, "MergeGraphEdges()--  "F_SIZE_T" raw edges between %d and %d - use greedy merging.\n",
+  //fprintf(stderr, "MergeGraphEdges()--  " F_SIZE_T " raw edges between %d and %d - use greedy merging.\n",
   //        inputEdges.size(),
   //        GetGraphEdge(graph, inputEdges[0])->idA,
   //        GetGraphEdge(graph, inputEdges[0])->idB);

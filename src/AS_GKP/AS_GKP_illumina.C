@@ -528,7 +528,7 @@ loadFastQReads(char    *lname,
       gkpStore->gkStore_addFragment(&lfrg->fr);
       gkpStore->gkStore_addFragment(&rfrg->fr);
 
-      fprintf(fastqUIDmap, F_U64"\t"F_U32"\t%s\t"F_U64"\t"F_U32"\t%s\n",
+      fprintf(fastqUIDmap, F_U64"\t" F_U32 "\t%s\t" F_U64 "\t" F_U32 "\t%s\n",
               lUID, nfrg + 1, lfrg->snam+1,
               rUID, nfrg + 2, rfrg->snam+1);
 
@@ -536,7 +536,7 @@ loadFastQReads(char    *lname,
       //  Only add the left fragment.
       gkpStore->gkStore_addFragment(&lfrg->fr);
 
-      fprintf(fastqUIDmap, F_U64"\t"F_U32"\t%s\n",
+      fprintf(fastqUIDmap, F_U64"\t" F_U32 "\t%s\n",
               lUID, nfrg + 1, lfrg->snam+1);
 
 
@@ -544,7 +544,7 @@ loadFastQReads(char    *lname,
       //  Only add the right fragment.
       gkpStore->gkStore_addFragment(&rfrg->fr);
 
-      fprintf(fastqUIDmap, F_U64"\t"F_U32"\t%s\n",
+      fprintf(fastqUIDmap, F_U64"\t" F_U32 "\t%s\n",
               rUID, nfrg + 1, rfrg->snam+1);
 
 
@@ -602,7 +602,7 @@ loadFastQReads(char    *uname,
       //  Add a fragment.
       gkpStore->gkStore_addFragment(&ufrg->fr);
 
-      fprintf(fastqUIDmap, F_U64"\t"F_U32"\t%s\n",
+      fprintf(fastqUIDmap, F_U64"\t" F_U32 "\t%s\n",
               uUID, nfrg + 1, ufrg->snam+1);
 
     } else {

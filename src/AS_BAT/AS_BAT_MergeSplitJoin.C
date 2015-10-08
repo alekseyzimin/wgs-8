@@ -627,7 +627,7 @@ mergeBubbles(UnitigVector &unitigs, Unitig *target, intersectionList *ilist) {
 
       if ((bubble == NULL) ||
           (bubble->getLength() > 50000)) {
-        writeLog("popBubbles()-- Skip bubble %u length %u with "F_SIZE_T" frags - edge from %d/%c' to utg %d %d/%c'\n",
+        writeLog("popBubbles()-- Skip bubble %u length %u with " F_SIZE_T " frags - edge from %d/%c' to utg %d %d/%c'\n",
                 bubble->id(), bubble->getLength(), bubble->ufpath.size(),
                 isect->invadFrg, isect->invad3p ? '3' : '5',
                 target->id(),
@@ -1003,7 +1003,7 @@ markRepeats_filterIntervalsSpannedByFragment(Unitig                    *target,
       if ((frgbgn <= intbgn) && (intbgn <= frgbgn + AS_OVERLAP_MIN_LEN / 2)) {
         //  Not anchored, expand the region to this location
 #ifdef VERBOSE_REGION_FITTING
-        writeLog("markRepeats()--  region["F_U32"].bgn expands from "F_U32" to "F_U32" at frag "F_U32"\n", i, aligned.lo(i), frgbgn, frg->ident);
+        writeLog("markRepeats()--  region[" F_U32 "].bgn expands from " F_U32 " to " F_U32 " at frag " F_U32 "\n", i, aligned.lo(i), frgbgn, frg->ident);
 #endif
         aligned.lo(i) = frgbgn;
         break;
@@ -1012,7 +1012,7 @@ markRepeats_filterIntervalsSpannedByFragment(Unitig                    *target,
       if (intbgn <= frgbgn) {
         //  First read begin that is inside the repeat region
 #ifdef VERBOSE_REGION_FITTING
-        writeLog("markRepeats()--  region["F_U32"].bgn contracts from "F_U32" to "F_U32" at frag "F_U32"\n", i, aligned.lo(i), frgbgn, frg->ident);
+        writeLog("markRepeats()--  region[" F_U32 "].bgn contracts from " F_U32 " to " F_U32 " at frag " F_U32 "\n", i, aligned.lo(i), frgbgn, frg->ident);
 #endif
         aligned.lo(i) = frgbgn;
         break;
@@ -1061,14 +1061,14 @@ markRepeats_filterIntervalsSpannedByFragment(Unitig                    *target,
 
     if      (newexpid != UINT32_MAX) {
 #ifdef VERBOSE_REGION_FITTING
-      writeLog("markRepeats()--  region["F_U32"].end expands from "F_U32" to "F_U32" at frag "F_U32"\n", i, aligned.hi(i), newexp, newexpid);
+      writeLog("markRepeats()--  region[" F_U32 "].end expands from " F_U32 " to " F_U32 " at frag " F_U32 "\n", i, aligned.hi(i), newexp, newexpid);
 #endif
       aligned.hi(i) = newexp;
     }
   
     else if (newcntid != UINT32_MAX) {
 #ifdef VERBOSE_REGION_FITTING
-      writeLog("markRepeats()--  region["F_U32"].end contracts from "F_U32" to "F_U32" at frag "F_U32"\n", i, aligned.hi(i), newcnt, newcntid);
+      writeLog("markRepeats()--  region[" F_U32 "].end contracts from " F_U32 " to " F_U32 " at frag " F_U32 "\n", i, aligned.hi(i), newcnt, newcntid);
 #endif
       aligned.hi(i) = newcnt;
     }
@@ -1082,7 +1082,7 @@ markRepeats_filterIntervalsSpannedByFragment(Unitig                    *target,
       if (aligned.hi(i) < aligned.lo(i))
         nc++;
 
-    writeLog("markRepeats()--  filtered "F_U32" repeat regions after picking read endpoints, now with "F_U32" repeat regions.\n",
+    writeLog("markRepeats()--  filtered " F_U32 " repeat regions after picking read endpoints, now with " F_U32 " repeat regions.\n",
              nc, aligned.numberOfIntervals() - nc);
   }
 
@@ -1105,7 +1105,7 @@ markRepeats_filterIntervalsSpannedByFragment(Unitig                    *target,
     //  begin (for the start) and the previous end for the end)
     //
     if (aligned.hi(i) < aligned.lo(i)) {
-      //writeLog("markRepeats()--  repeat alignment "F_U64","F_U64" DISCARD - CONTRACTED TO NULL\n",
+      //writeLog("markRepeats()--  repeat alignment " F_U64 "," F_U64 " DISCARD - CONTRACTED TO NULL\n",
       //         aligned.lo(i), aligned.hi(i));
       continue;
     }
@@ -1156,7 +1156,7 @@ markRepeats_filterIntervalsSpannedByFragment(Unitig                    *target,
 
     if (containedIn != NULL) {
       filteredCovered++;
-      //writeLog("markRepeats()--  repeat alignment %s"F_U64","F_U64"%s DISCARD - CONTAINED IN FRAGMENT "F_U32" "F_S32","F_S32"\n",
+      //writeLog("markRepeats()--  repeat alignment %s" F_U64 "," F_U64 "%s DISCARD - CONTAINED IN FRAGMENT " F_U32 " " F_S32 "," F_S32 "\n",
       //         (bgnFull ? "(end) " : ""), aligned.lo(i), aligned.hi(i), (endFull ? " (end)" : ""),
       //         containedIn->ident, containedIn->position.bgn, containedIn->position.end);
       continue;
@@ -1165,13 +1165,13 @@ markRepeats_filterIntervalsSpannedByFragment(Unitig                    *target,
     if ((regions.size() == 0) ||
         (regions.back().end + 100 < aligned.lo(i))) {
       regions.push_back(repeatRegion(aligned.lo(i), aligned.hi(i)));
-      //writeLog("markRepeats()--  repeat alignment "F_U32","F_U32"\n",
+      //writeLog("markRepeats()--  repeat alignment " F_U32 "," F_U32 "\n",
       //        regions.back().bgn, regions.back().end);
 
     } else {
       regions.back().bgn       = MIN(regions.back().bgn, aligned.lo(i));
       regions.back().end       = MAX(regions.back().end, aligned.hi(i));
-      //writeLog("markRepeats()--  repeat alignment "F_U32","F_U32" (merged from "F_U64","F_U64")\n",
+      //writeLog("markRepeats()--  repeat alignment " F_U32 "," F_U32 " (merged from " F_U64 "," F_U64 ")\n",
       //        regions.back().bgn, regions.back().end,
       //        aligned.lo(i), aligned.hi(i));
     }
@@ -1265,7 +1265,7 @@ markRepeats_filterIntervalsSpannedByMates(Unitig                    *target,
       if (target->id() != mrgtig) {
         //  Mate is not in this unitig, but it should be.  That's bad.
 #ifdef MATE_VERBOSE
-        writeLog("frg "F_U32","F_U32",%d  region "F_U32","F_U32"  expected "F_U32","F_U32"  mate in tig "F_U32"  BADMISSING\n",
+        writeLog("frg " F_U32 "," F_U32 ",%d  region " F_U32 "," F_U32 "  expected " F_U32 "," F_U32 "  mate in tig " F_U32 "  BADMISSING\n",
                 frgbgn, frgend, frg53, regions[i].bgn, regions[i].end, expbgn, expend, mrgtig);
 #endif
         spanBad++;
@@ -1285,7 +1285,7 @@ markRepeats_filterIntervalsSpannedByMates(Unitig                    *target,
           (mrgend <= expend) &&
           (frg53  != mrg53)) {
 #ifdef MATE_VERBOSE
-        writeLog("frg "F_U32","F_U32",%d  region "F_U32","F_U32"   expected "F_U32","F_U32"  mate "F_U32","F_U32",%d  GOOD\n",
+        writeLog("frg " F_U32 "," F_U32 ",%d  region " F_U32 "," F_U32 "   expected " F_U32 "," F_U32 "  mate " F_U32 "," F_U32 ",%d  GOOD\n",
                 frgbgn, frgend, frg53, regions[i].bgn, regions[i].end, expbgn, expend, mrgbgn, mrgend, mrg53);
 #endif
         spanGood++;
@@ -1294,14 +1294,14 @@ markRepeats_filterIntervalsSpannedByMates(Unitig                    *target,
                  (mrgend + 2 * stddev <= expend) &&
                  (frg53  != mrg53)) {
 #ifdef MATE_VERBOSE
-        writeLog("frg "F_U32","F_U32",%d  region "F_U32","F_U32"   expected "F_U32","F_U32"  mate "F_U32","F_U32",%d  GOODMAYBE\n",
+        writeLog("frg " F_U32 "," F_U32 ",%d  region " F_U32 "," F_U32 "   expected " F_U32 "," F_U32 "  mate " F_U32 "," F_U32 ",%d  GOODMAYBE\n",
                 frgbgn, frgend, frg53, regions[i].bgn, regions[i].end, expbgn, expend, mrgbgn, mrgend, mrg53);
 #endif
         spanGoodMaybe++;
 
       } else {
 #ifdef MATE_VERBOSE
-        writeLog("frg "F_U32","F_U32",%d  region "F_U32","F_U32"   expected "F_U32","F_U32"  mate "F_U32","F_U32",%d  BADDISTORIENT\n",
+        writeLog("frg " F_U32 "," F_U32 ",%d  region " F_U32 "," F_U32 "   expected " F_U32 "," F_U32 "  mate " F_U32 "," F_U32 ",%d  BADDISTORIENT\n",
                 frgbgn, frgend, frg53, regions[i].bgn, regions[i].end, expbgn, expend, mrgbgn, mrgend, mrg53);
 #endif
         spanBad++;
@@ -1315,7 +1315,7 @@ markRepeats_filterIntervalsSpannedByMates(Unitig                    *target,
         (2 <= spanGood))
       regions[i].ejectUnanchored = true;
 
-    writeLog("markRepeats()--  region["F_U32"] "F_U32","F_U32" -- length "F_U32" -- bad "F_U32" good "F_U32" goodmaybe "F_U32"%s\n",
+    writeLog("markRepeats()--  region[" F_U32 "] " F_U32 "," F_U32 " -- length " F_U32 " -- bad " F_U32 " good " F_U32 " goodmaybe " F_U32 "%s\n",
              i,
              regions[i].bgn, regions[i].end, regions[i].end - regions[i].bgn,
              spanBad, spanGood, spanGoodMaybe,
@@ -1463,11 +1463,11 @@ markRepeats_filterJunctions(Unitig                          *target,
 
   sort(breakpoints.begin(), breakpoints.end());
 
-  writeLog("markRepeats()--  unitig %d has "F_SIZE_T" interesting junctions:\n",
+  writeLog("markRepeats()--  unitig %d has " F_SIZE_T " interesting junctions:\n",
           target->id(), breakpoints.size());
 
   for (uint32 ji=0; ji<breakpoints.size(); ji++)
-    writeLog("markRepeats()--  junction["F_U32"] at "F_IID"/%c' position "F_U32" repeat %s count "F_U32"\n",
+    writeLog("markRepeats()--  junction[" F_U32 "] at " F_IID "/%c' position " F_U32 " repeat %s count " F_U32 "\n",
             ji,
             breakpoints[ji].breakFrag.fragId(), breakpoints[ji].breakFrag.frag3p() ? '3' : '5',
             breakpoints[ji].point,
@@ -1582,7 +1582,7 @@ markRepeats_breakUnitigs(UnitigVector                    &unitigs,
 
 
   if (newTigs.size() > 0) {
-    writeLog("markRepeats()-- SPLIT unitig %d of length %u with %ld fragments into "F_SIZE_T" unitigs:\n",
+    writeLog("markRepeats()-- SPLIT unitig %d of length %u with %ld fragments into " F_SIZE_T " unitigs:\n",
             target->id(), target->getLength(), target->ufpath.size(),
             newTigs.size());
     for (uint32 i=0; i<newTigs.size(); i++)
@@ -1599,7 +1599,7 @@ markRepeats_breakUnitigs(UnitigVector                    &unitigs,
   //  Run back over the ejected frags, and place them with either their mate, or at their best location.
 
   for (set<AS_IID>::iterator it=ejtFrags.begin(); it!=ejtFrags.end(); it++) {
-    writeLog("markRepeats()-- EJECT frag "F_U32"\n", *it);
+    writeLog("markRepeats()-- EJECT frag " F_U32 "\n", *it);
     placeFragInBestLocation(unitigs, *it);
   }
 
@@ -1622,7 +1622,7 @@ markRepeats_shatterRepeats(UnitigVector   &unitigs,
       //  Already shattered?
       continue;
 
-    writeLog("markRepeats()--  shatter unitig %u with "F_SIZE_T" fragments from repeat frag %u\n",
+    writeLog("markRepeats()--  shatter unitig %u with " F_SIZE_T " fragments from repeat frag %u\n",
             ti, rpt->ufpath.size(), iid);
 
     for (uint32 fi=0; fi<rpt->ufpath.size(); fi++)
@@ -1641,7 +1641,7 @@ markRepeats_shatterRepeats(UnitigVector   &unitigs,
       //  Already shattered?
       continue;
 
-    writeLog("markRepeats()--  frag "F_IID" covered by repeats, but still in unitig %d\n",
+    writeLog("markRepeats()--  frag " F_IID " covered by repeats, but still in unitig %d\n",
             iid, ti);
   }
 }
@@ -1758,7 +1758,7 @@ mergeSplitJoin(UnitigVector &unitigs, const char *prefix, bool shatterRepeats) {
   {
     Unitig        *target = unitigs[5];
 
-    writeLog("popBubbles()-- WORKING on unitig %d/"F_SIZE_T" with %ld fragments.\n",
+    writeLog("popBubbles()-- WORKING on unitig %d/" F_SIZE_T " with %ld fragments.\n",
             target->id(), unitigs.size(), target->ufpath.size());
 
     mergeBubbles(unitigs, target, ilist);
@@ -1776,7 +1776,7 @@ mergeSplitJoin(UnitigVector &unitigs, const char *prefix, bool shatterRepeats) {
   //  A and B are considering merging in unitig C.
 
   setLogFile(prefix, "popBubbles");
-  writeLog("popBubbles()-- working on "F_U64" unitigs.\n", unitigs.size());
+  writeLog("popBubbles()-- working on " F_U64 " unitigs.\n", unitigs.size());
 
   for (uint32 ti=0; ti<unitigs.size(); ti++) {
     Unitig        *target = unitigs[ti];
@@ -1786,7 +1786,7 @@ mergeSplitJoin(UnitigVector &unitigs, const char *prefix, bool shatterRepeats) {
         (target->getLength() < 300))
       continue;
 
-    writeLog("popBubbles()-- WORKING on unitig %d/"F_SIZE_T" of length %u with %ld fragments.\n",
+    writeLog("popBubbles()-- WORKING on unitig %d/" F_SIZE_T " of length %u with %ld fragments.\n",
             target->id(), unitigs.size(), target->getLength(), target->ufpath.size());
 
     mergeBubbles(unitigs, target, ilist);
@@ -1806,7 +1806,7 @@ mergeSplitJoin(UnitigVector &unitigs, const char *prefix, bool shatterRepeats) {
   uint32  blockSize = (tiLimit < 100000 * numThreads) ? numThreads : tiLimit / 99999;
 
   setLogFile(prefix, "mergeSplitJoin");
-  writeLog("repeatDetect()-- working on "F_U32" unitigs, with "F_U32" threads.\n", tiLimit, numThreads);
+  writeLog("repeatDetect()-- working on " F_U32 " unitigs, with " F_U32 " threads.\n", tiLimit, numThreads);
 
   omp_init_lock(&markRepeat_breakUnitigs_Lock);
  
@@ -1819,7 +1819,7 @@ mergeSplitJoin(UnitigVector &unitigs, const char *prefix, bool shatterRepeats) {
         (target->getLength() < 300))
       continue;
 
-    writeLog("repeatDetect()-- WORKING on unitig %d/"F_SIZE_T" of length %u with %ld fragments.\n",
+    writeLog("repeatDetect()-- WORKING on unitig %d/" F_SIZE_T " of length %u with %ld fragments.\n",
             target->id(), unitigs.size(), target->getLength(), target->ufpath.size());
 
     markRepeats(unitigs, target, shatterRepeats);

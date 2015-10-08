@@ -126,7 +126,7 @@ main(int argc, char **argv) {
 
   for (AS_IID iid=1; iid<=gkpStore->gkStore_getNumFragments(); iid++) {
     if (beVerbose)
-      fprintf(stderr, "Loading fragment "F_IID".\n", iid);
+      fprintf(stderr, "Loading fragment " F_IID ".\n", iid);
     gkpStore->gkStore_getFragment(iid, &fr, GKFRAGMENT_QLT);
 
     lr = gkpStore->gkStore_getLibrary(fr.gkFragment_getLibraryIID());
@@ -204,7 +204,7 @@ main(int argc, char **argv) {
       stat_tooShort++;
 
     if (beVerbose)
-      fprintf(stderr, "Updating fragment "F_IID".\n", iid);
+      fprintf(stderr, "Updating fragment " F_IID ".\n", iid);
     if (doUpdate) {
       fr.gkFragment_setClearRegion(finL, finR, AS_READ_CLEAR_OBTINITIAL);
       gkpStore->gkStore_setFragment(&fr);
@@ -212,14 +212,14 @@ main(int argc, char **argv) {
 
     if ((finL + AS_READ_MIN_LEN) > finR) {
       if (beVerbose)
-        fprintf(stderr, "Deleting fragment "F_IID" (mate "F_IID").\n",
+        fprintf(stderr, "Deleting fragment " F_IID " (mate " F_IID ").\n",
                 iid, fr.gkFragment_getMateIID());
       if (doUpdate)
         gkpStore->gkStore_delFragment(iid);
     }
 
     if (logFile)
-      fprintf(logFile, F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U32"%s\n",
+      fprintf(logFile, F_U32"\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U32 "%s\n",
               iid,
               fr.gkFragment_getClearRegionBegin(AS_READ_CLEAR_CLR),
               fr.gkFragment_getClearRegionEnd  (AS_READ_CLEAR_CLR),
@@ -235,25 +235,25 @@ main(int argc, char **argv) {
   delete gkpStore;
 
   fprintf(stdout, "Fragments trimmed using:\n");
-  fprintf(stdout, "  alreadyDeleted   "F_U32"\n", stat_alreadyDeleted);
-  fprintf(stdout, "  noTrimming       "F_U32"\n", stat_noTrimming);
-  fprintf(stdout, "  merBased         "F_U32"\n", stat_merBased);
-  fprintf(stdout, "  flowBased        "F_U32"\n", stat_flowBased);
-  fprintf(stdout, "  qualityBased     "F_U32"\n", stat_qualityBased);
+  fprintf(stdout, "  alreadyDeleted   " F_U32 "\n", stat_alreadyDeleted);
+  fprintf(stdout, "  noTrimming       " F_U32 "\n", stat_noTrimming);
+  fprintf(stdout, "  merBased         " F_U32 "\n", stat_merBased);
+  fprintf(stdout, "  flowBased        " F_U32 "\n", stat_flowBased);
+  fprintf(stdout, "  qualityBased     " F_U32 "\n", stat_qualityBased);
   
   fprintf(stdout, "Fragments trimmed using:\n");
-  fprintf(stdout, "  NOLIBRARY        "F_U32"\n", stat_NOLIBRARY);
+  fprintf(stdout, "  NOLIBRARY        " F_U32 "\n", stat_NOLIBRARY);
 
   fprintf(stdout, "Trimming result:\n");
-  fprintf(stdout, " no vector clear range known:  "F_U32" (trimed to quality clear)\n", stat_noVecClr);
-  fprintf(stdout, " no HQ non-vector sequence:    "F_U32" (deleted)\n", stat_noHQnonVec);
-  fprintf(stdout, " HQ vector trimmed:            "F_U32" (trimmed to intersection)\n", stat_HQtrim5 + stat_HQtrim3);
-  fprintf(stdout, "     5' end:                   "F_U32"\n", stat_HQtrim5);
-  fprintf(stdout, "     3' end:                   "F_U32"\n", stat_HQtrim3);
-  fprintf(stdout, " LQ vector trimmed:            "F_U32" (trimmed to intersection)\n", stat_LQtrim5 + stat_LQtrim3);
-  fprintf(stdout, "     5' end:                   "F_U32"\n", stat_LQtrim5);
-  fprintf(stdout, "     3' end:                   "F_U32"\n", stat_LQtrim3);
-  fprintf(stdout, " final clear range too short:  "F_U32" (deleted)\n", stat_tooShort);
+  fprintf(stdout, " no vector clear range known:  " F_U32 " (trimed to quality clear)\n", stat_noVecClr);
+  fprintf(stdout, " no HQ non-vector sequence:    " F_U32 " (deleted)\n", stat_noHQnonVec);
+  fprintf(stdout, " HQ vector trimmed:            " F_U32 " (trimmed to intersection)\n", stat_HQtrim5 + stat_HQtrim3);
+  fprintf(stdout, "     5' end:                   " F_U32 "\n", stat_HQtrim5);
+  fprintf(stdout, "     3' end:                   " F_U32 "\n", stat_HQtrim3);
+  fprintf(stdout, " LQ vector trimmed:            " F_U32 " (trimmed to intersection)\n", stat_LQtrim5 + stat_LQtrim3);
+  fprintf(stdout, "     5' end:                   " F_U32 "\n", stat_LQtrim5);
+  fprintf(stdout, "     3' end:                   " F_U32 "\n", stat_LQtrim3);
+  fprintf(stdout, " final clear range too short:  " F_U32 " (deleted)\n", stat_tooShort);
 
   return(0);
 }

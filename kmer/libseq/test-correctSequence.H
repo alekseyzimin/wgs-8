@@ -30,8 +30,8 @@ generateCorrectSequence(uint32 minLen, uint32 maxLen, uint32 numSeq) {
 
   uint32    seed = (uint32)(getTime() * 1000);
 
-  fprintf(stderr, "generateCorrectSequence()-- Using seed "uint32FMT"\n", seed);
-  fprintf(stderr, "generateCorrectSequence()-- Generating "uint32FMT" sequences of length "uint32FMT" to "uint32FMT"\n", numSeq, minLen, maxLen);
+  fprintf(stderr, "generateCorrectSequence()-- Using seed " uint32FMT"\n", seed);
+  fprintf(stderr, "generateCorrectSequence()-- Generating " uint32FMT" sequences of length " uint32FMT" to " uint32FMT"\n", numSeq, minLen, maxLen);
 
   correctSequence = new correctSequence_t [n];
   mtctx           = mtInit(seed);

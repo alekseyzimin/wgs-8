@@ -133,10 +133,10 @@ existDB::createFromSequence(char const  *sequence,
     _countsWords = _countsWords * _cntWidth / 64 + 1;
 
   if (beVerbose) {
-    fprintf(stderr, "existDB::createFromSequence()-- hashTable is "uint64FMT"MB\n", _hashTableWords >> 17);
-    fprintf(stderr, "existDB::createFromSequence()-- buckets is "uint64FMT"MB\n", _bucketsWords >> 17);
+    fprintf(stderr, "existDB::createFromSequence()-- hashTable is " uint64FMT"MB\n", _hashTableWords >> 17);
+    fprintf(stderr, "existDB::createFromSequence()-- buckets is " uint64FMT"MB\n", _bucketsWords >> 17);
     if (flags & existDBcounts)
-      fprintf(stderr, "existDB::createFromSequence()-- counts is "uint64FMT"MB\n", _countsWords >> 17);
+      fprintf(stderr, "existDB::createFromSequence()-- counts is " uint64FMT"MB\n", _countsWords >> 17);
   }
 
   _hashTable   = new uint64 [_hashTableWords];
@@ -236,7 +236,7 @@ existDB::createFromSequence(char const  *sequence,
   }
 
   if (beVerbose)
-    fprintf(stderr, "Compressed from "uint64FMT" to "uint64FMT" ("uint64FMT" bits)\n",
+    fprintf(stderr, "Compressed from " uint64FMT" to " uint64FMT" (" uint64FMT" bits)\n",
             _hashTable[tableSizeInEntries], pos, logBaseTwo64(pos));
 
   while (pos < _bucketsWords)

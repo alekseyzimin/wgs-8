@@ -92,20 +92,20 @@ public:
 
     if (suspicious)
 #if 0
-      sprintf(suspic, " (SUSPICIOUS: ni "F_U32" nn "F_U32" na "F_U32" no "F_U32")",
+      sprintf(suspic, " (SUSPICIOUS: ni " F_U32 " nn " F_U32 " na " F_U32 " no " F_U32 ")",
               s->nInnie, s->nNormal, s->nAnti, s->nOuttie);
 #else
       sprintf(suspic, " (SUSPICIOUS)");
 #endif
 
     if (reason[0] != 0)
-      fprintf(out, "Path from "F_U32"/%s to "F_U32"/%s NOT FOUND (%s)%s.\n",
+      fprintf(out, "Path from " F_U32 "/%s to " F_U32 "/%s NOT FOUND (%s)%s.\n",
               readIID, (innie == true) ? "5'3'" : "3'5'", 
               mateIID, (innie == true) ? "3'5'" : "5'3'",
               reason,
               suspic);
     else
-      fprintf(out, "Path from "F_U32"/%s to "F_U32"/%s found at iter "F_U64" of length "F_U64"%s.\n",
+      fprintf(out, "Path from " F_U32 "/%s to " F_U32 "/%s found at iter " F_U64 " of length " F_U64 "%s.\n",
               readIID, (innie == true) ? "5'3'" : "3'5'", 
               mateIID, (innie == true) ? "3'5'" : "5'3'",
               iteration,

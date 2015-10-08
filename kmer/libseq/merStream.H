@@ -52,7 +52,7 @@ public:
 #if 0
     char   merstring[256];
 
-    fprintf(stderr, "merStream::nextMer()-- seqPos="uint64FMT" merPos="uint64FMT" span="uint32FMT" base0span="uint32FMT" end="uint64FMT" %s %s\n",
+    fprintf(stderr, "merStream::nextMer()-- seqPos=" uint64FMT" merPos=" uint64FMT" span=" uint32FMT" base0span=" uint32FMT" end=" uint64FMT" %s %s\n",
             _ss->strPos(),
             _ss->strPos() - theFMer().getMerSpan(),
             theFMer().getMerSpan(),

@@ -328,7 +328,7 @@ AS_OVS_testEndComparisons_Test(const OVSoverlap &olap, uint32 c=1) {
     fprintf(stderr, "A AS_OVS_overlapAEndIs3prime(olap) = %d\n", AS_OVS_overlapAEndIs3prime(olap));
     fprintf(stderr, "A AS_OVS_overlapAIsContained(olap) = %d\n", AS_OVS_overlapAIsContained(olap));
     fprintf(stderr, "A AS_OVS_overlapAIsContainer(olap) = %d\n", AS_OVS_overlapAIsContainer(olap));
-    fprintf(stderr, "a_hang "F_S64" b_hang "F_S64" flipped "F_U64"\n", (int64)olap.dat.ovl.a_hang, (int64)olap.dat.ovl.b_hang, (int64)olap.dat.ovl.flipped);
+    fprintf(stderr, "a_hang " F_S64 " b_hang " F_S64 " flipped " F_U64 "\n", (int64)olap.dat.ovl.a_hang, (int64)olap.dat.ovl.b_hang, (int64)olap.dat.ovl.flipped);
   }
 
   if (AS_OVS_overlapBEndIs5prime(olap) + AS_OVS_overlapBEndIs3prime(olap) + AS_OVS_overlapBIsContained(olap) + AS_OVS_overlapBIsContainer(olap) != c) {
@@ -336,7 +336,7 @@ AS_OVS_testEndComparisons_Test(const OVSoverlap &olap, uint32 c=1) {
     fprintf(stderr, "B AS_OVS_overlapBEndIs3prime(olap) = %d\n", AS_OVS_overlapBEndIs3prime(olap));
     fprintf(stderr, "B AS_OVS_overlapBIsContained(olap) = %d\n", AS_OVS_overlapBIsContained(olap));
     fprintf(stderr, "B AS_OVS_overlapBIsContainer(olap) = %d\n", AS_OVS_overlapBIsContainer(olap));
-    fprintf(stderr, "a_hang "F_S64" b_hang "F_S64" flipped "F_U64"\n", (int64)olap.dat.ovl.a_hang, (int64)olap.dat.ovl.b_hang, (int64)olap.dat.ovl.flipped);
+    fprintf(stderr, "a_hang " F_S64 " b_hang " F_S64 " flipped " F_U64 "\n", (int64)olap.dat.ovl.a_hang, (int64)olap.dat.ovl.b_hang, (int64)olap.dat.ovl.flipped);
   }
 
   assert(AS_OVS_overlapAEndIs5prime(olap) + AS_OVS_overlapAEndIs3prime(olap) + AS_OVS_overlapAIsContained(olap) + AS_OVS_overlapAIsContainer(olap) == c);

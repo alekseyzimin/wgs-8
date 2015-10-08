@@ -60,9 +60,9 @@ writeToFile(OVSoverlap          *overlap,
     fprintf(stderr, "Too many bucket files when adding overlap:\n");
     fprintf(stderr, "  %s\n", AS_OVS_toString(olapstring, *overlap));
     fprintf(stderr, "\n");
-    fprintf(stderr, "bucket        = "F_U32"\n", df);
-    fprintf(stderr, "iidPerBucket  = "F_U32"\n", iidPerBucket);
-    fprintf(stderr, "sliceFileMax  = "F_U32"\n", sliceFileMax);
+    fprintf(stderr, "bucket        = " F_U32 "\n", df);
+    fprintf(stderr, "iidPerBucket  = " F_U32 "\n", iidPerBucket);
+    fprintf(stderr, "sliceFileMax  = " F_U32 "\n", sliceFileMax);
     fprintf(stderr, "\n");
     fprintf(stderr, "\n");
     fprintf(stderr, "This might be a corrupt input file, or maybe you simply need to supply more\n");
@@ -133,7 +133,7 @@ markOBT(gkStore *gkp, uint32 maxIID, char *skipFragment, uint32 *iidToLib) {
     }
   }
 
-  fprintf(stderr, "Marked "F_U64" fragments.\n", numMarked);
+  fprintf(stderr, "Marked " F_U64 " fragments.\n", numMarked);
 }
 
 
@@ -159,7 +159,7 @@ markDUP(gkStore *gkp, uint32 maxIID, char *skipFragment, uint32 *iidToLib) {
     }
   }
 
-  fprintf(stderr, "Marked "F_U64" fragments.\n", numMarked);
+  fprintf(stderr, "Marked " F_U64 " fragments.\n", numMarked);
 }
 
 
@@ -264,7 +264,7 @@ main(int argc, char **argv) {
     if (jobIndex == 0)
       fprintf(stderr, "ERROR: No job index (-job) supplied.\n");
     if (fileLimit > sysconf(_SC_OPEN_MAX) - 16)
-      fprintf(stderr, "ERROR: Too many jobs (-F); only "F_SIZE_T" supported on this architecture.\n", sysconf(_SC_OPEN_MAX) - 16);
+      fprintf(stderr, "ERROR: Too many jobs (-F); only " F_SIZE_T " supported on this architecture.\n", sysconf(_SC_OPEN_MAX) - 16);
 
     exit(1);
   }
@@ -344,7 +344,7 @@ main(int argc, char **argv) {
 
   int                 df;
 
-  fprintf(stderr, "maxError fraction: %.3f percent: %.3f encoded: "F_U64"\n",
+  fprintf(stderr, "maxError fraction: %.3f percent: %.3f encoded: " F_U64 "\n",
           maxErrorRate, maxErrorRate * 100, maxError);
 
   fprintf(stderr, "Bucketizing %s\n", ovlInput);
@@ -363,7 +363,7 @@ main(int argc, char **argv) {
         (fovrlap.b_iid >= maxIID)) {
       char ovlstr[256];
 
-      fprintf(stderr, "Overlap has IDs out of range (maxIID "F_U64"), possibly corrupt input data.\n", maxIID);
+      fprintf(stderr, "Overlap has IDs out of range (maxIID " F_U64 "), possibly corrupt input data.\n", maxIID);
       fprintf(stderr, "  %s\n", AS_OVS_toString(ovlstr, fovrlap));
       exit(1);
     }
@@ -503,12 +503,12 @@ main(int argc, char **argv) {
   }
 
   fprintf(stderr, "overlap fate:\n");
-  fprintf(stderr, "%16"F_U64P" SAV - overlaps output\n", saveTOTAL);
-  fprintf(stderr, "%16"F_U64P" ERR - low quality, more than %.3f fraction error\n", skipERATE, maxErrorRate);
-  fprintf(stderr, "%16"F_U64P" OBT - low quality\n", skipOBT1LQ);
-  fprintf(stderr, "%16"F_U64P" DUP - non-duplicate overlap\n", skipOBT2HQ);
-  fprintf(stderr, "%16"F_U64P" DUP - different library\n", skipOBT2LIB);
-  fprintf(stderr, "%16"F_U64P" DUP - dedup not requested\n", skipOBT2NODEDUP);
+  fprintf(stderr, "%16" F_U64P" SAV - overlaps output\n", saveTOTAL);
+  fprintf(stderr, "%16" F_U64P" ERR - low quality, more than %.3f fraction error\n", skipERATE, maxErrorRate);
+  fprintf(stderr, "%16" F_U64P" OBT - low quality\n", skipOBT1LQ);
+  fprintf(stderr, "%16" F_U64P" DUP - non-duplicate overlap\n", skipOBT2HQ);
+  fprintf(stderr, "%16" F_U64P" DUP - different library\n", skipOBT2LIB);
+  fprintf(stderr, "%16" F_U64P" DUP - dedup not requested\n", skipOBT2NODEDUP);
 
   delete [] sliceFile;
   delete [] sliceSize;

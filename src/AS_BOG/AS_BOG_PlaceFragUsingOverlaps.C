@@ -269,7 +269,7 @@ UnitigGraph::placeFragUsingOverlaps(ufNode frag,
 
     if (logFileFlagSet(LOG_PLACE_FRAG))
       for (uint32 i=0; i<UP.numberOfIntervals(); i++)
-        fprintf(logFile, "placeFragUsingOverlaps()-- frag %d in unitig %d (len %d nfrags "F_SIZE_T") at "F_S32","F_S32" from "F_U32" overlaps\n",
+        fprintf(logFile, "placeFragUsingOverlaps()-- frag %d in unitig %d (len %d nfrags " F_SIZE_T ") at " F_S32 "," F_S32 " from " F_U32 " overlaps\n",
                 frag.ident,
                 ovlPlace[bgn].tigID, unitigs[ovlPlace[bgn].tigID]->getLength(), unitigs[ovlPlace[bgn].tigID]->ufpath.size(),
                 UP.lo(i),

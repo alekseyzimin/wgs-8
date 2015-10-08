@@ -44,7 +44,7 @@ merStream::setBaseRange(uint64 beg, uint64 end) {
 
   assert(beg < end);
 
-  //fprintf(stderr, "merStream::setBaseRange()-- from "uint64FMT" to "uint64FMT".\n", beg, end);
+  //fprintf(stderr, "merStream::setBaseRange()-- from " uint64FMT" to " uint64FMT".\n", beg, end);
 
   //  We can't tell the seqStore when to stop; while we could compute the span of a spaced seed, we
   //  cannot compute it for a compressed seed.  We need to stop iterating when the beginning of the

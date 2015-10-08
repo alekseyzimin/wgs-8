@@ -55,7 +55,7 @@ seqCache::getSequenceIID(char *name) {
     iid = _fb->find(name);
 
 #ifdef DEBUG
-  fprintf(stderr, "seqCache::getSequenceIID()-- '%s' -> "uint32FMT"\n", name, iid);
+  fprintf(stderr, "seqCache::getSequenceIID()-- '%s' -> " uint32FMT"\n", name, iid);
 #endif
 
   return(iid);
@@ -168,7 +168,7 @@ seqCache::loadAllSequences(void) {
     char   *h=0L, *s=0L;
 
     if (_fb->getSequence(iid, h, hLen, hMax, s, sLen, sMax) == false)
-      fprintf(stderr, "seqCache::loadAllSequences()-- Failed to load iid "uint32FMT".\n",
+      fprintf(stderr, "seqCache::loadAllSequences()-- Failed to load iid " uint32FMT".\n",
               iid), exit(1);
 
     _cache[iid] = new seqInCore(iid, h, hLen, s, sLen, true);

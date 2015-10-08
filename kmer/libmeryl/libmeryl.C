@@ -118,20 +118,20 @@ merylStreamReader::merylStreamReader(const char *fn, uint32 ms) {
   _validMer       = true;
 
 #ifdef SHOW_VARIABLES
-  fprintf(stderr, "_merSizeInBits  = "uint32FMT"\n", _merSizeInBits);
-  fprintf(stderr, "_merCompression = "uint32FMT"\n", _merCompression);
-  fprintf(stderr, "_prefixSize     = "uint32FMT"\n", _prefixSize);
-  fprintf(stderr, "_merDataSize    = "uint32FMT"\n", _merDataSize);
-  fprintf(stderr, "_numUnique      = "uint64FMT"\n", _numUnique);
-  fprintf(stderr, "_numDistinct    = "uint64FMT"\n", _numDistinct);
-  fprintf(stderr, "_numTotal       = "uint64FMT"\n", _numTotal);
-  fprintf(stderr, "_thisBucket     = "uint64FMT"\n", _thisBucket);
-  fprintf(stderr, "_thisBucketSize = "uint64FMT"\n", _thisBucketSize);
-  fprintf(stderr, "_thisMerCount   = "uint64FMT"\n", _thisMerCount);
+  fprintf(stderr, "_merSizeInBits  = " uint32FMT"\n", _merSizeInBits);
+  fprintf(stderr, "_merCompression = " uint32FMT"\n", _merCompression);
+  fprintf(stderr, "_prefixSize     = " uint32FMT"\n", _prefixSize);
+  fprintf(stderr, "_merDataSize    = " uint32FMT"\n", _merDataSize);
+  fprintf(stderr, "_numUnique      = " uint64FMT"\n", _numUnique);
+  fprintf(stderr, "_numDistinct    = " uint64FMT"\n", _numDistinct);
+  fprintf(stderr, "_numTotal       = " uint64FMT"\n", _numTotal);
+  fprintf(stderr, "_thisBucket     = " uint64FMT"\n", _thisBucket);
+  fprintf(stderr, "_thisBucketSize = " uint64FMT"\n", _thisBucketSize);
+  fprintf(stderr, "_thisMerCount   = " uint64FMT"\n", _thisMerCount);
 #endif
 
   if ((ms > 0) && (_merSizeInBits >> 1 != ms)) {
-    fprintf(stderr, "merylStreamReader()-- ERROR: User requested mersize "uint32FMT" but '%s' is mersize "uint32FMT"\n",
+    fprintf(stderr, "merylStreamReader()-- ERROR: User requested mersize " uint32FMT" but '%s' is mersize " uint32FMT"\n",
             ms, fn, _merSizeInBits >> 1);
     exit(1);
   }

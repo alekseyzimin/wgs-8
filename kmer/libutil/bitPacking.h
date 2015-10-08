@@ -119,7 +119,7 @@ getDecodedValue(uint64 *ptr,
     abort();
   }
   if (siz > 64) {
-    fprintf(stderr, "ERROR: getDecodedValue() called with huge size ("uint64FMT")!\n", siz);
+    fprintf(stderr, "ERROR: getDecodedValue() called with huge size (" uint64FMT")!\n", siz);
     abort();
   }
 #endif
@@ -155,7 +155,7 @@ setDecodedValue(uint64 *ptr,
     abort();
   }
   if (siz > 64) {
-    fprintf(stderr, "ERROR: getDecodedValue() called with huge size ("uint64FMT")!\n", siz);
+    fprintf(stderr, "ERROR: getDecodedValue() called with huge size (" uint64FMT")!\n", siz);
     abort();
   }
 #endif
@@ -201,7 +201,7 @@ getDecodedValues(uint64 *ptr,
       abort();
     }
     if (siz[i] > 64) {
-      fprintf(stderr, "ERROR: getDecodedValue() called with huge size ("uint64FMT")!\n", siz);
+      fprintf(stderr, "ERROR: getDecodedValue() called with huge size (" uint64FMT")!\n", siz);
       abort();
     }
 #endif
@@ -255,7 +255,7 @@ setDecodedValues(uint64 *ptr,
       abort();
     }
     if (siz[i] > 64) {
-      fprintf(stderr, "ERROR: getDecodedValue() called with huge size ("uint64FMT")!\n", siz);
+      fprintf(stderr, "ERROR: getDecodedValue() called with huge size (" uint64FMT")!\n", siz);
       abort();
     }
 #endif
@@ -315,7 +315,7 @@ preIncrementDecodedValue(uint64 *ptr,
     abort();
   }
   if (siz > 64) {
-    fprintf(stderr, "ERROR: getDecodedValue() called with huge size ("uint64FMT")!\n", siz);
+    fprintf(stderr, "ERROR: getDecodedValue() called with huge size (" uint64FMT")!\n", siz);
     abort();
   }
 #endif
@@ -365,7 +365,7 @@ preDecrementDecodedValue(uint64 *ptr,
     abort();
   }
   if (siz > 64) {
-    fprintf(stderr, "ERROR: getDecodedValue() called with huge size ("uint64FMT")!\n", siz);
+    fprintf(stderr, "ERROR: getDecodedValue() called with huge size (" uint64FMT")!\n", siz);
     abort();
   }
 #endif
@@ -415,7 +415,7 @@ postIncrementDecodedValue(uint64 *ptr,
     abort();
   }
   if (siz > 64) {
-    fprintf(stderr, "ERROR: getDecodedValue() called with huge size ("uint64FMT")!\n", siz);
+    fprintf(stderr, "ERROR: getDecodedValue() called with huge size (" uint64FMT")!\n", siz);
     abort();
   }
 #endif
@@ -470,7 +470,7 @@ postDecrementDecodedValue(uint64 *ptr,
     abort();
   }
   if (siz > 64) {
-    fprintf(stderr, "ERROR: getDecodedValue() called with huge size ("uint64FMT")!\n", siz);
+    fprintf(stderr, "ERROR: getDecodedValue() called with huge size (" uint64FMT")!\n", siz);
     abort();
   }
 #endif

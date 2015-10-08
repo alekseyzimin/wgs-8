@@ -109,7 +109,7 @@ struct BestOverlapGraph {
     //
     if (olap.dat.ovl.corr_erate <= mismatchCutoff) {
       if (logFileFlags & LOG_OVERLAP_QUALITY)
-        fprintf(logFile, "OVERLAP GOOD:     %d %d %c  hangs "F_S64" "F_S64" err %.3f %.3f\n",
+        fprintf(logFile, "OVERLAP GOOD:     %d %d %c  hangs " F_S64 " " F_S64 " err %.3f %.3f\n",
                 olap.a_iid, olap.b_iid,
                 olap.dat.ovl.flipped ? 'A' : 'N',
                 (int64)olap.dat.ovl.a_hang,
@@ -136,7 +136,7 @@ struct BestOverlapGraph {
 
     if (nerr <= mismatchLimit) {
       if (logFileFlags & LOG_OVERLAP_QUALITY)
-        fprintf(logFile, "OVERLAP SAVED:    %d %d %c  hangs "F_S64" "F_S64" err %.3f %.3f olen %f nerr %f\n",
+        fprintf(logFile, "OVERLAP SAVED:    %d %d %c  hangs " F_S64 " " F_S64 " err %.3f %.3f olen %f nerr %f\n",
                 olap.a_iid, olap.b_iid,
                 olap.dat.ovl.flipped ? 'A' : 'N',
                 (int64)olap.dat.ovl.a_hang,
@@ -148,7 +148,7 @@ struct BestOverlapGraph {
     }
 
     if (logFileFlags & LOG_OVERLAP_QUALITY)
-      fprintf(logFile, "OVERLAP REJECTED: %d %d %c  hangs "F_S64" "F_S64" err %.3f %.3f olen %f nerr %f\n",
+      fprintf(logFile, "OVERLAP REJECTED: %d %d %c  hangs " F_S64 " " F_S64 " err %.3f %.3f olen %f nerr %f\n",
               olap.a_iid, olap.b_iid,
               olap.dat.ovl.flipped ? 'A' : 'N',
               (int64)olap.dat.ovl.a_hang,
@@ -220,9 +220,9 @@ struct BestOverlapGraph {
     }
 
     if ((aovl <= 0) || (bovl <= 0) || (aovl > alen) || (bovl > blen)) {
-      fprintf(stderr, "WARNING: bogus overlap found for A="F_U32" B="F_U32"\n", a_iid, b_iid);
-      fprintf(stderr, "WARNING:                     A len="F_S32" hang="F_S32" ovl="F_S32"\n", alen, a_hang, aovl);
-      fprintf(stderr, "WARNING:                     B len="F_S32" hang="F_S32" ovl="F_S32"\n", blen, b_hang, bovl);
+      fprintf(stderr, "WARNING: bogus overlap found for A=" F_U32 " B=" F_U32 "\n", a_iid, b_iid);
+      fprintf(stderr, "WARNING:                     A len=" F_S32 " hang=" F_S32 " ovl=" F_S32 "\n", alen, a_hang, aovl);
+      fprintf(stderr, "WARNING:                     B len=" F_S32 " hang=" F_S32 " ovl=" F_S32 "\n", blen, b_hang, bovl);
     }
 
     if (aovl < 0)     aovl = 0;

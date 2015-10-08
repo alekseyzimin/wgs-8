@@ -558,7 +558,7 @@ isQualityScaffoldMergingEdge(SEdgeT                     *curEdge,
       (maxDelta     <= 0.0))
     return(TRUE);
 
-  fprintf(stderr,"isQualityScaffoldMergingEdge()-- Merge scaffolds "F_CID" (%.1fbp) and "F_CID" (%.1fbp): gap %.1fbp +- %.1fbp weight %d %s edge\n",
+  fprintf(stderr,"isQualityScaffoldMergingEdge()-- Merge scaffolds " F_CID" (%.1fbp) and " F_CID" (%.1fbp): gap %.1fbp +- %.1fbp weight %d %s edge\n",
           scaffoldA->id, scaffoldA->bpLength.mean,
           scaffoldB->id, scaffoldB->bpLength.mean,
           curEdge->distance.mean,
@@ -658,7 +658,7 @@ ExamineSEdgeForUsability(SEdgeT            *curEdge,
   }
 
   if (TouchesMarkedScaffolds(curEdge)) {
-    //fprintf(stderr, "* Edge ("F_CID","F_CID",%c) touches marked scaffolds\n",
+    //fprintf(stderr, "* Edge (" F_CID"," F_CID",%c) touches marked scaffolds\n",
     //        curEdge->idA, curEdge->idB, curEdge->orient.toLetter());
     return;
   }
@@ -673,7 +673,7 @@ ExamineSEdgeForUsability(SEdgeT            *curEdge,
       (scaffoldA->essentialEdgeA != NULLINDEX &&
        (scaffoldA->essentialEdgeA == scaffoldB->essentialEdgeA ||
         scaffoldA->essentialEdgeA == scaffoldB->essentialEdgeB))) {
-    //fprintf(stderr, "* We're already trying to merge scaffold ("F_CID","F_CID") ...back off!\n",
+    //fprintf(stderr, "* We're already trying to merge scaffold (" F_CID"," F_CID") ...back off!\n",
     //        scaffoldA->id, scaffoldB->id);
     return;
   }
@@ -703,7 +703,7 @@ ExamineUsableSEdges(vector<SEdgeT *>  &sEdges,
     if (maxWeightEdge >= sEdges[i]->edgesContributing)
       continue;
 
-    fprintf(stderr, "ExamineUsableSEdges()- maxWeightEdge from "F_S32" to "F_S32" at idx "F_S32" out of "F_SIZE_T"\n",
+    fprintf(stderr, "ExamineUsableSEdges()- maxWeightEdge from " F_S32 " to " F_S32 " at idx " F_S32 " out of " F_SIZE_T "\n",
             maxWeightEdge, sEdges[i]->edgesContributing, i, sEdges.size());
     maxWeightEdge = sEdges[i]->edgesContributing;
   }
@@ -900,7 +900,7 @@ MergeScaffoldsAggressive(ScaffoldGraphT *graph, char *logicalcheckpointnumber, i
 
   ScaffoldSanity(ScaffoldGraph);
 
-  fprintf(stderr, "MergeScaffoldsAggressive()-- begins.  minWeightToMerge="F_S32"\n", GlobalData->minWeightToMerge);
+  fprintf(stderr, "MergeScaffoldsAggressive()-- begins.  minWeightToMerge=" F_S32 "\n", GlobalData->minWeightToMerge);
 
   iSpec.sai                    = CreateScaffoldAlignmentInterface();
   iSpec.contigNow              = TRUE;

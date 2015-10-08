@@ -68,13 +68,13 @@ encodeSequenceQuality(char *enc,
     qv = *qlt - '0' + 1;
 
     if (*qlt < '0') {
-      fprintf(stderr, "encodeSequenceQuality()-- Illegal qv %c (int %d) detected at position "F_U32"!  Change to low-qv '%c'.\n",
+      fprintf(stderr, "encodeSequenceQuality()-- Illegal qv %c (int %d) detected at position " F_U32 "!  Change to low-qv '%c'.\n",
               *qlt, *qlt, pos, '0');
       qv = 1;
     }
 
     if (*qlt > QUALITY_MAX + '0') {
-      fprintf(stderr, "encodeSequenceQuality()-- Illegal qv %c (int %d) detected at position "F_U32"!  Change to high-qv '%c'.\n",
+      fprintf(stderr, "encodeSequenceQuality()-- Illegal qv %c (int %d) detected at position " F_U32 "!  Change to high-qv '%c'.\n",
               *qlt, *qlt, pos, QUALITY_MAX + '0');
       qv = QUALITY_MAX + 1;
     }
@@ -102,7 +102,7 @@ encodeSequenceQuality(char *enc,
         sv = SEQ_N;
         break;
       default:
-        fprintf(stderr,"encodeSequenceQuality()-- Illegal base %c detected at position "F_U32"!  Change to 'N' with low QV.\n", *seq, pos);
+        fprintf(stderr,"encodeSequenceQuality()-- Illegal base %c detected at position " F_U32 "!  Change to 'N' with low QV.\n", *seq, pos);
         sv = SEQ_N;
         qv = 1;
         break;

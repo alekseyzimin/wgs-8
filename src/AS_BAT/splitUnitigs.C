@@ -462,7 +462,7 @@ main(int argc, char **argv) {
     endID = onlID + 1;
   }
   
-  fprintf(stderr, "Analyzing unitig for b="F_U32" to e="F_U32"\n", bgnID, endID);
+  fprintf(stderr, "Analyzing unitig for b=" F_U32 " to e=" F_U32 "\n", bgnID, endID);
 
   uint32   rcMax = 1024 * 1024;
   uint32   rcBgn = 0;
@@ -759,7 +759,7 @@ main(int argc, char **argv) {
 
       nCreatedSum++;
 
-      fprintf(stderr, "Creating new unitig %d with "F_SIZE_T" fragments\n",
+      fprintf(stderr, "Creating new unitig %d with " F_SIZE_T " fragments\n",
               maNew[i]->maID, GetNumIntMultiPoss(maNew[i]->f_list));
 
       if ((doConsensus) &&
@@ -786,12 +786,12 @@ main(int argc, char **argv) {
   }
 
 
-  fprintf(stderr, "nShort      "F_U32"\n", nShort);
-  fprintf(stderr, "nTested     "F_U32"\n", nTested);
-  fprintf(stderr, "nSplit      "F_U32"\n", nSplit);
-  fprintf(stderr, "nCreated    "F_U32"\n", nCreated);
-  fprintf(stderr, "nCreatedMin "F_U32"\n", nCreatedMin);
-  fprintf(stderr, "nCreatedMax "F_U32"\n", nCreatedMax);
+  fprintf(stderr, "nShort      " F_U32 "\n", nShort);
+  fprintf(stderr, "nTested     " F_U32 "\n", nTested);
+  fprintf(stderr, "nSplit      " F_U32 "\n", nSplit);
+  fprintf(stderr, "nCreated    " F_U32 "\n", nCreated);
+  fprintf(stderr, "nCreatedMin " F_U32 "\n", nCreatedMin);
+  fprintf(stderr, "nCreatedMax " F_U32 "\n", nCreatedMax);
 
   delete [] rc;
   delete [] gcc;

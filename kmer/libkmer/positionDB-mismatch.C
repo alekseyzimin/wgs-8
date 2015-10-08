@@ -48,7 +48,7 @@ dumpPatterns(uint64 *strings, uint32 stringsLen, uint32 ts) {
       }
     }
 
-    fprintf(stdout, "%s\t"uint32FMT"\n", str, cnt);
+    fprintf(stdout, "%s\t" uint32FMT"\n", str, cnt);
   }
 }
 #endif
@@ -81,7 +81,7 @@ positionDB::setUpMismatchMatcher(uint32 nErrorsAllowed, uint64 approxMers) {
     for (uint32 x=1; x<_nErrorsAllowed; x++)
       ne *= 3;
 
-    //fprintf(stderr, "Storing ne="uint32FMT" errors.\n", ne);
+    //fprintf(stderr, "Storing ne=" uint32FMT" errors.\n", ne);
 
     e1 = new uint64 [ne];
     e2 = new uint64 [ne];
@@ -121,7 +121,7 @@ positionDB::setUpMismatchMatcher(uint32 nErrorsAllowed, uint64 approxMers) {
     stringsLen = makeUnique(strings, stringsLen);
     stringsLen = makeUnique(strings, stringsLen);
     //dumpPatterns(strings, stringsLen, _tableSizeInBits);
-    //fprintf(stderr, "DONE1 totpat="uint64FMT" toterr="uint64FMT" stringsLen="uint32FMT"\n", totpat, toterr, stringsLen);
+    //fprintf(stderr, "DONE1 totpat=" uint64FMT" toterr=" uint64FMT" stringsLen=" uint32FMT"\n", totpat, toterr, stringsLen);
   }
 
 
@@ -141,7 +141,7 @@ positionDB::setUpMismatchMatcher(uint32 nErrorsAllowed, uint64 approxMers) {
     stringsLen = makeUnique(strings, stringsLen);
     stringsLen = makeUnique(strings, stringsLen);
     //dumpPatterns(strings, stringsLen, _tableSizeInBits);
-    //fprintf(stderr, "DONE2 totpat="uint64FMT" toterr="uint64FMT" stringsLen="uint32FMT"\n", totpat, toterr, stringsLen);
+    //fprintf(stderr, "DONE2 totpat=" uint64FMT" toterr=" uint64FMT" stringsLen=" uint32FMT"\n", totpat, toterr, stringsLen);
   }
 
 
@@ -163,7 +163,7 @@ positionDB::setUpMismatchMatcher(uint32 nErrorsAllowed, uint64 approxMers) {
     stringsLen = makeUnique(strings, stringsLen);
     stringsLen = makeUnique(strings, stringsLen);
     //dumpPatterns(strings, stringsLen, _tableSizeInBits);
-    //fprintf(stderr, "DONE3 totpat="uint64FMT" toterr="uint64FMT" stringsLen="uint32FMT"\n", totpat, toterr, stringsLen);
+    //fprintf(stderr, "DONE3 totpat=" uint64FMT" toterr=" uint64FMT" stringsLen=" uint32FMT"\n", totpat, toterr, stringsLen);
   }
 
 
@@ -187,7 +187,7 @@ positionDB::setUpMismatchMatcher(uint32 nErrorsAllowed, uint64 approxMers) {
     stringsLen = makeUnique(strings, stringsLen);
     stringsLen = makeUnique(strings, stringsLen);
     //dumpPatterns(strings, stringsLen, _tableSizeInBits);
-    //fprintf(stderr, "DONE4 totpat="uint64FMT" toterr="uint64FMT" stringsLen="uint32FMT"\n", totpat, toterr, stringsLen);
+    //fprintf(stderr, "DONE4 totpat=" uint64FMT" toterr=" uint64FMT" stringsLen=" uint32FMT"\n", totpat, toterr, stringsLen);
   }
 
 
@@ -216,7 +216,7 @@ positionDB::setUpMismatchMatcher(uint32 nErrorsAllowed, uint64 approxMers) {
     stringsLen = makeUnique(strings, stringsLen);
     stringsLen = makeUnique(strings, stringsLen);
     //dumpPatterns(strings, stringsLen, _tableSizeInBits);
-    //fprintf(stderr, "DONE5 totpat="uint64FMT" toterr="uint64FMT" stringsLen="uint32FMT"\n", totpat, toterr, stringsLen);
+    //fprintf(stderr, "DONE5 totpat=" uint64FMT" toterr=" uint64FMT" stringsLen=" uint32FMT"\n", totpat, toterr, stringsLen);
   }
 
 
@@ -247,7 +247,7 @@ positionDB::setUpMismatchMatcher(uint32 nErrorsAllowed, uint64 approxMers) {
     stringsLen = makeUnique(strings, stringsLen);
     stringsLen = makeUnique(strings, stringsLen);
     //dumpPatterns(strings, stringsLen, _tableSizeInBits);
-    //fprintf(stderr, "DONE6 totpat="uint64FMT" toterr="uint64FMT" stringsLen="uint32FMT"\n", totpat, toterr, stringsLen);
+    //fprintf(stderr, "DONE6 totpat=" uint64FMT" toterr=" uint64FMT" stringsLen=" uint32FMT"\n", totpat, toterr, stringsLen);
   }
 
 
@@ -286,13 +286,13 @@ positionDB::setUpMismatchMatcher(uint32 nErrorsAllowed, uint64 approxMers) {
   double work = (double)_hashedErrorsLen * approxMers / _tableSizeInEntries + 2.0 * _hashedErrorsLen;
 #endif
 
-  //fprintf(stderr, "Built "uint32FMT" hashed errors at tableSize "uint32FMT" (work=%f.0).\n",
+  //fprintf(stderr, "Built " uint32FMT" hashed errors at tableSize " uint32FMT" (work=%f.0).\n",
   //        _hashedErrorsLen,
   //        _tableSizeInBits,
   //        work);
 
   //for (uint32 i=0; i<_hashedErrorsLen; i++)
-  //  fprintf(stderr, "he["uint32FMTW(5)"] = "uint64HEX"\n", i, _hashedErrors[i]);
+  //  fprintf(stderr, "he[" uint32FMTW(5)"] = " uint64HEX"\n", i, _hashedErrors[i]);
 
   return(work);
 }
@@ -321,7 +321,7 @@ positionDB::getUpToNMismatches(uint64   mer,
     try {
       posn    = new uint64 [posnMax];
     } catch (...) {
-      fprintf(stderr, "positionDB::getUpToNMismatches()-- Can't allocate space for initial positions, requested "uint64FMT" uint64's.\n", posnMax);
+      fprintf(stderr, "positionDB::getUpToNMismatches()-- Can't allocate space for initial positions, requested " uint64FMT" uint64's.\n", posnMax);
       abort();
     }
   }
