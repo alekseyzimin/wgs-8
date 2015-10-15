@@ -1,6 +1,8 @@
-bin_PROGRAMS += bin/bogart bin/bogus bin/bogusness bin/splitUnitigs	\
-                bin/computeCoverageStat bin/markRepeatUnique		\
-                bin/rewriteCache bin/erate-estimate
+bin_PROGRAMS += bin/bogart bin/bogus bin/bogusness bin/classifyMates	\
+                bin/classifyMatesApply bin/classifyMatesPairwise	\
+                bin/splitUnitigs bin/computeCoverageStat		\
+                bin/markRepeatUnique bin/rewriteCache			\
+                bin/erate-estimate
 
 # TODO: Need kmer compilation for this last 3 execs
 #bin/classifyMates	\
@@ -24,9 +26,20 @@ bin_bogart_SOURCES = %D%/bogart.C %D%/AS_BAT_BestOverlapGraph.C		\
 %D%/AS_BAT_Unitig.C
 bin_bogus_SOURCES = %D%/bogus.C %D%/AS_BAT_bogusUtil.C
 bin_bogusness_SOURCES = %D%/bogusness.C %D%/AS_BAT_bogusUtil.C
-#bin_classifyMates_SOURCES = %D%/classifyMates.C         $(DNC_OBJECTS)  libutil.a
-#bin_classifyMatesApply_SOURCES = %D%/classifyMatesApply.C    $(DNC_OBJECTS)  libutil.a
-#bin_classifyMatesPairwise_SOURCES = %D%/classifyMatesPairwise.C $(DNC_OBJECTS)  libutil.a
+
+DNC_SRCS = %D%/classifyMates-BFS.C %D%/classifyMates-DFS.C		\
+%D%/classifyMates-RFS.C %D%/classifyMates-Suspicious.C	\
+%D%/classifyMates-globalData.C
+
+bin_classifyMates_SOURCES = %D%/classifyMates.C $(DNC_SRCS)
+bin_classifyMates_LDADD = $(LDADD) $(KMERLIBS)
+
+bin_classifyMatesApply_SOURCES = %D%/classifyMatesApply.C $(DNC_SRCS)
+bin_classifyMatesApply_LDADD = $(LDADD) $(KMERLIBS)
+
+bin_classifyMatesPairwise_SOURCES = %D%/classifyMatesPairwise.C $(DNC_SRCS)
+bin_classifyMatesPairwise_LDADD = $(LDADD) $(KMERLIBS)
+
 bin_splitUnitigs_SOURCES = %D%/splitUnitigs.C                         
 bin_computeCoverageStat_SOURCES = %D%/computeCoverageStat.C                  
 bin_markRepeatUnique_SOURCES = %D%/markRepeatUnique.C                     

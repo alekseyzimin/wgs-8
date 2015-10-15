@@ -4,12 +4,14 @@ noinst_HEADERS =
 AM_CPPFLAGS = -I$(srcdir)/src -I$(srcdir)/src/AS_UTL -I$(srcdir)/src/AS_MSG -I$(srcdir)/src/AS_OVS
 AM_CPPFLAGS += -I$(srcdir)/src/AS_PER -I$(srcdir)/src/AS_REZ -I$(srcdir)/src/AS_CNS -I$(srcdir)/src/AS_ALN
 AM_CPPFLAGS += -I$(srcdir)/src/AS_CGW -I$(srcdir)/src/AS_CGB -I$(srcdir)/src/AS_UID -I$(srcdir)/src/AS_GKP
-AM_CPPFLAGS += -I$(srcdir)/src/AS_MER
+AM_CPPFLAGS += -I$(srcdir)/src/AS_MER -I$(srcdir)/src/AS_OBT
 AM_LDFLAGS = -lpthread -fopenmp -lz
 
-# Is that the way kmer library should be included?
+# Kmer library includes
 AM_CPPFLAGS += -I$(srcdir)/kmer/libutil -I$(srcdir)/kmer/libbio -I$(srcdir)/kmer/libseq -I$(srcdir)/kmer/libmeryl
 AM_CPPFLAGS += -I$(srcdir)/kmer/meryl -I$(srcdir)/kmer/libkmer
+KMERLIBS = lib/libmerylguts.a lib/libkmer.a lib/libmeryl.a	\
+           lib/libseq.a lib/libbio.a lib/libutil.a
 
 noinst_LIBRARIES = libCA.a
 libCA_a_SOURCES =

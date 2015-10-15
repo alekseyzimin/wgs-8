@@ -1,6 +1,5 @@
 bin_PROGRAMS += bin/meryl bin/mercy bin/overmerry bin/merTrim		\
                 bin/merTrimApply bin/estimate-mer-threshold
-KMERLIBS = lib/libmerylguts.a lib/libkmer.a lib/libmeryl.a lib/libseq.a lib/libbio.a lib/libutil.a
 
 bin_meryl_SOURCES = %D%/meryl.C %D%/AS_MER_gkpStore_to_FastABase.C %D%/AS_MER_gkpStoreChain.C
 bin_meryl_LDADD = $(LDADD) $(KMERLIBS)
