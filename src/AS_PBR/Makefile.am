@@ -27,7 +27,7 @@ bin/pbutgcns: %D%/pbutgcns.Linux-amd64.bin
 bin/falcon_sense: %D%/falcon_sense.Linux-amd64.bin
 	$(AM_V_GEN)cp $< $@
 
-dist_bin_SCRIPTS +=  bin/PBcR bin/convertToPBCNS bin/addCNSToStore bin/pbdagcon bin/pbutgcns bin/falcon_sense
+dist_bin_SCRIPTS +=  %D%/PBcR.pl  %D%/convertToPBCNS.pl %D%/addCNSToStore.pl %D%/pbdagcon.Linux-amd64.bin %D%/pbutgcns.Linux-amd64.bin %D%/falcon_sense.Linux-amd64.bin bin/PBcR bin/convertToPBCNS bin/addCNSToStore bin/pbdagcon bin/pbutgcns bin/falcon_sense
 
 #noinst_HEADERS += %D%/AS_PBR_output.hh %D%/AS_PBR_mates.hh	\
 #%D%/AS_PBR_util.hh %D%/AS_PBR_store.hh %D%/AS_PBR_correct.hh	\
