@@ -22,6 +22,8 @@ LDADD = libCA.a
 # an extension?
 %: %.pl
 	$(AM_V_GEN)mkdir -p $(dir $@) && cp $< $@
+%: %.Linux-amd64.bin
+	$(AM_V_GEN)mkdir -p $(dir $@) && cp $< $@
 
 # Load kmer Makefiles
 include $(srcdir)/kmer/libmeryl/Makefile.am
