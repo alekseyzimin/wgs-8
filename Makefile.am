@@ -4,7 +4,7 @@ noinst_HEADERS =
 AM_CPPFLAGS = -I$(srcdir)/src -I$(srcdir)/src/AS_UTL -I$(srcdir)/src/AS_MSG -I$(srcdir)/src/AS_OVS
 AM_CPPFLAGS += -I$(srcdir)/src/AS_PER -I$(srcdir)/src/AS_REZ -I$(srcdir)/src/AS_CNS -I$(srcdir)/src/AS_ALN
 AM_CPPFLAGS += -I$(srcdir)/src/AS_CGW -I$(srcdir)/src/AS_CGB -I$(srcdir)/src/AS_UID -I$(srcdir)/src/AS_GKP
-AM_CPPFLAGS += -I$(srcdir)/src/AS_MER -I$(srcdir)/src/AS_OBT
+AM_CPPFLAGS += -I$(srcdir)/src/AS_MER -I$(srcdir)/src/AS_OBT $(BOOST_CPPFLAGS)
 AM_LDFLAGS = -lpthread -fopenmp -lz
 
 # Kmer library includes
@@ -48,7 +48,7 @@ include $(srcdir)/src/AS_ALN/Makefile.am
 include $(srcdir)/src/AS_CGB/Makefile.am
 include $(srcdir)/src/AS_BOG/Makefile.am
 include $(srcdir)/src/AS_BAT/Makefile.am
-# include $(srcdir)/src/AS_PBR/Makefile.am
+include $(srcdir)/src/AS_PBR/Makefile.am
 include $(srcdir)/src/AS_REZ/Makefile.am
 include $(srcdir)/src/AS_CNS/Makefile.am
 include $(srcdir)/src/AS_LIN/Makefile.am
