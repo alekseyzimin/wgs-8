@@ -83,13 +83,13 @@ main(int argc, char **argv) {
     // read the layouts and dump them in a human-readable format
     LayRecord layout;
     while (readLayRecord(store, layout)) {
-        fprintf(stdout, "LAY\t"F_IID"\t"F_U32"\n", layout.iid, layout.mp.size());
+        fprintf(stdout, "LAY\t" F_IID "\t" F_U32 "\n", layout.iid, layout.mp.size());
         for (vector<OverlapPos>::const_iterator iter = layout.mp.begin(); iter != layout.mp.end(); iter++) {
-            fprintf(stdout, "TLE\t"F_IID"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_U32"\t"F_S32"\t"F_S32"\n", iter->ident, iter->position.bgn, iter->position.end, layout.bClrs[iter->ident].bgn, layout.bClrs[iter->ident].end, layout.bOvls[iter->ident].dat.ovl.a_hang, layout.bOvls[iter->ident].dat.ovl.b_hang);
+            fprintf(stdout, "TLE\t" F_IID "\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_U32 "\t" F_S32 "\t" F_S32 "\n", iter->ident, iter->position.bgn, iter->position.end, layout.bClrs[iter->ident].bgn, layout.bClrs[iter->ident].end, layout.bOvls[iter->ident].dat.ovl.a_hang, layout.bOvls[iter->ident].dat.ovl.b_hang);
         }
 
        for (map<AS_IID, OVSoverlap>::const_iterator iter = layout.bOvls.begin(); iter != layout.bOvls.end(); iter++) {
-          fprintf(stderr, F_IID"\t"F_IID"\t%c\t"F_S32"\t"F_S32"\t%f\t%f\n", layout.iid, iter->first, (iter->second.dat.ovl.flipped ? 'I' : 'N'), iter->second.dat.ovl.a_hang, iter->second.dat.ovl.b_hang, AS_OVS_decodeQuality(iter->second.dat.ovl.orig_erate), AS_OVS_decodeQuality(iter->second.dat.ovl.corr_erate));  
+          fprintf(stderr, F_IID"\t" F_IID "\t%c\t" F_S32 "\t" F_S32 "\t%f\t%f\n", layout.iid, iter->first, (iter->second.dat.ovl.flipped ? 'I' : 'N'), iter->second.dat.ovl.a_hang, iter->second.dat.ovl.b_hang, AS_OVS_decodeQuality(iter->second.dat.ovl.orig_erate), AS_OVS_decodeQuality(iter->second.dat.ovl.corr_erate));  
        }
     }
     closeLayFile(store);

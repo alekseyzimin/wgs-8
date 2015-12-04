@@ -162,7 +162,7 @@ void computeRepeatThreshold(PBRThreadGlobals &thread_globals, AS_IID firstFrag) 
 }
 
 void filterRepeatReads(PBRThreadGlobals &thread_globals, AS_IID firstFrag) {
-    fprintf(stderr, "Storing "F_SIZE_T" fragments out of "F_SIZE_T"\n", thread_globals.gappedReadSet->count(), thread_globals.gappedReadSet->size());
+    fprintf(stderr, "Storing " F_SIZE_T " fragments out of " F_SIZE_T "\n", thread_globals.gappedReadSet->count(), thread_globals.gappedReadSet->size());
 
     // create files to partition the scores
     FILE **partitionedScores = new FILE*[thread_globals.partitions];
@@ -225,7 +225,7 @@ void filterRepeatReads(PBRThreadGlobals &thread_globals, AS_IID firstFrag) {
                 olapCount = read;
                 ovlPosition = 0;
 
-                if (thread_globals.verboseLevel >= VERBOSE_OFF) fprintf(stderr, "Loaded "F_U64" overlaps\n", olapCount);
+                if (thread_globals.verboseLevel >= VERBOSE_OFF) fprintf(stderr, "Loaded " F_U64 " overlaps\n", olapCount);
             }
 
             // store information on the short-read sequence
@@ -318,13 +318,13 @@ void filterRepeatReads(PBRThreadGlobals &thread_globals, AS_IID firstFrag) {
                     if (storeShortMap && thread_globals.maxUncorrectedGap > 0) {
                         partitionedStores[mpLow]->appendRecord(record);
                     }
-                    fprintf(partitionedScores[mpLow], F_IID"\t"F_IID"\n", iter->first, (*j));
+                    fprintf(partitionedScores[mpLow], F_IID"\t" F_IID "\n", iter->first, (*j));
                     // if our second guess was right, write it here
                 } else if (thread_globals.partitionStarts[mpHigh].first <= (*j) && thread_globals.partitionStarts[mpHigh].second > (*j)) {
                     if (storeShortMap && thread_globals.maxUncorrectedGap > 0) {
                         partitionedStores[mpHigh]->appendRecord(record);
                     }
-                    fprintf(partitionedScores[mpHigh], F_IID"\t"F_IID"\n", iter->first, (*j));
+                    fprintf(partitionedScores[mpHigh], F_IID"\t" F_IID "\n", iter->first, (*j));
                     // last ditch effort, our guesses were both wrong, search for the partition containing the pacbio sequence we need
                 } else {
                     bool error = true;
@@ -336,7 +336,7 @@ void filterRepeatReads(PBRThreadGlobals &thread_globals, AS_IID firstFrag) {
                             if (storeShortMap && thread_globals.maxUncorrectedGap > 0) {
                                 partitionedStores[mpLow]->appendRecord(record);
                             }
-                            fprintf(partitionedScores[mpLow], F_IID"\t"F_IID"\n", iter->first, (*j));
+                            fprintf(partitionedScores[mpLow], F_IID"\t" F_IID "\n", iter->first, (*j));
 
                             error = false;
                         }
@@ -348,7 +348,7 @@ void filterRepeatReads(PBRThreadGlobals &thread_globals, AS_IID firstFrag) {
                             if (storeShortMap && thread_globals.maxUncorrectedGap > 0) {
                                 partitionedStores[mpHigh]->appendRecord(record);
                             }
-                            fprintf(partitionedScores[mpHigh], F_IID"\t"F_IID"\n", iter->first, (*j));
+                            fprintf(partitionedScores[mpHigh], F_IID"\t" F_IID "\n", iter->first, (*j));
                             error = false;
                         }
                     }

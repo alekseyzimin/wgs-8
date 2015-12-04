@@ -69,8 +69,8 @@ static void processRecord(string &header, string& fasta,
         return;
     }
 
-   AS_UTL_writeFastA(fastaOut, fasta.substr(maxStartIndex, maxEndIndex - maxStartIndex + 1).c_str(), maxEndIndex - maxStartIndex + 1, FASTA_LINE_LENGTH, ">%s/"F_U32"_"F_U32"\n", (char *)header.c_str(), maxStartIndex, maxEndIndex);
-   AS_UTL_writeQVFastA(qualOut, (char *)qualCAEncoding.substr(maxStartIndex, maxEndIndex - maxStartIndex + 1).c_str(), maxEndIndex - maxStartIndex + 1, (FASTA_LINE_LENGTH/3), ">%s/"F_U32"_"F_U32"\n", (char *)header.c_str(), maxStartIndex, maxEndIndex);
+   AS_UTL_writeFastA(fastaOut, fasta.substr(maxStartIndex, maxEndIndex - maxStartIndex + 1).c_str(), maxEndIndex - maxStartIndex + 1, FASTA_LINE_LENGTH, ">%s/" F_U32 "_" F_U32 "\n", (char *)header.c_str(), maxStartIndex, maxEndIndex);
+   AS_UTL_writeQVFastA(qualOut, (char *)qualCAEncoding.substr(maxStartIndex, maxEndIndex - maxStartIndex + 1).c_str(), maxEndIndex - maxStartIndex + 1, (FASTA_LINE_LENGTH/3), ">%s/" F_U32 "_" F_U32 "\n", (char *)header.c_str(), maxStartIndex, maxEndIndex);
 
     cout << "@" << header << "/" << maxStartIndex << "_" << maxEndIndex << endl;
     cout << fasta.substr(maxStartIndex, maxEndIndex - maxStartIndex + 1)

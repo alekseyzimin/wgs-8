@@ -625,7 +625,7 @@ uint32 writeLayRecord(LayRecordStore *out, LayRecord &r, boost::dynamic_bitset<>
 
 			// we also record a subset of the sequences following a gap
 			if (isRecordingGaps) {
-                if (VERBOSE) fprintf(stderr, "Setting after on position %td of "F_SIZE_T" (read %d) and set position %d due to gap at %d\n", iter-r.mp.begin(), r.mp.size(), iter->ident, (MAX(iter->position.bgn, iter->position.end)), lastGapEnd);
+                if (VERBOSE) fprintf(stderr, "Setting after on position %td of " F_SIZE_T " (read %d) and set position %d due to gap at %d\n", iter-r.mp.begin(), r.mp.size(), iter->ident, (MAX(iter->position.bgn, iter->position.end)), lastGapEnd);
 
                 if (bits->test(iter->ident) == false) {
                     // drop with random chance

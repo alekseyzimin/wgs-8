@@ -232,7 +232,7 @@ void *  correctFragments(void *ptr) {
             }
             olapCount = read;
             ovlPosition = 0;
-            if (waGlobal->verboseLevel >= VERBOSE_DEBUG) fprintf(stderr, "Thread %d loaded "F_U64" overlaps\n", wa->id, olapCount);
+            if (waGlobal->verboseLevel >= VERBOSE_DEBUG) fprintf(stderr, "Thread %d loaded " F_U64 " overlaps\n", wa->id, olapCount);
         }
 
         // track fwd/reverse matches for a PacBio sequence

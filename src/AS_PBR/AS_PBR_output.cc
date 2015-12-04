@@ -372,7 +372,7 @@ void outputResults(PBRThreadGlobals *waGlobal, uint32 part, OUTPUT_TYPE outputTy
             AS_IID illumina;
             AS_IID corrected;
 
-            fscanf(inRankFile, F_IID"\t"F_IID"\n", &illumina, &corrected);
+            fscanf(inRankFile, F_IID"\t" F_IID "\n", &illumina, &corrected);
             readRanking[illumina].insert(corrected);
         }
         fclose(inRankFile);
@@ -569,13 +569,13 @@ void outputResults(PBRThreadGlobals *waGlobal, uint32 part, OUTPUT_TYPE outputTy
                 if (bClr.bgn >= bClr.end) { continue; }
                 if (offset < 0) {
                     offset = MIN(iter->position.bgn, iter->position.end);
-                    //fprintf(stderr, "Updating offset in layout "F_IID" to be "F_U32"\n", i, offset);
+                    //fprintf(stderr, "Updating offset in layout " F_IID " to be " F_U32 "\n", i, offset);
                 }
                 uint32 min = MIN(iter->position.bgn, iter->position.end);
                 uint32 max = MAX(iter->position.bgn, iter->position.end);
                 uint32 length = max - min;
 
-                //fprintf(stderr, "Writing layout for frg "F_IID" "F_IID" "F_U32" "F_U32" "F_U32"\n", i, iter->ident, iter->position.bgn, iter->position.end, offset);
+                //fprintf(stderr, "Writing layout for frg " F_IID " " F_IID " " F_U32 " " F_U32 " " F_U32 "\n", i, iter->ident, iter->position.bgn, iter->position.end, offset);
                 if (outputType != OUT_AMOS) {
                    loadOneSequence(waGlobal->gkp, iter->ident, qseq);
                    uint32 qlen = bClr.end - bClr.bgn;
@@ -629,7 +629,7 @@ if (waGlobal->verboseLevel >= VERBOSE_DEBUG) fprintf(stderr, "Output match for %
         }
 
         if (outputType == OUT_AMOS) {
-           if (waGlobal->verboseLevel >= VERBOSE_OFF) fprintf(stderr, "Beginning output of "F_SIZE_T" reads\n", readsToPrint.size());
+           if (waGlobal->verboseLevel >= VERBOSE_OFF) fprintf(stderr, "Beginning output of " F_SIZE_T " reads\n", readsToPrint.size());
            loadSequence(waGlobal->gkp, readsToPrint, frgToEnc);
            map<AS_IID, char*> *theFrgs = &frgToEnc;
            for (map<AS_IID, uint8>::const_iterator iter = readsToPrint.begin(); iter != readsToPrint.end(); iter++) {
