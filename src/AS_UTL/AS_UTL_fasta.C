@@ -43,8 +43,8 @@ AS_UTL_isValidSequence(char *s, int sl) {
 
 void
 AS_UTL_writeFastA(FILE *f,
-                  char *s, int sl, int bl,
-                  char *h, ...) {
+                  const char *s, int sl, int bl,
+                  const char *h, ...) {
   va_list ap;
   char   *o  = (char *)safe_malloc(sizeof(char) * (sl + sl / 60 + 2));
   int     si = 0;

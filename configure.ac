@@ -21,4 +21,20 @@ AM_CONDITIONAL([SITE_LOCAL], [test x$SITE_NAME = xLOCAL])
 AM_CONDITIONAL([SITE_JCVI], [test x$SITE_NAME = xJCVI])
 AM_CONDITIONAL([SITE_BRI], [test x$SITE_NAME = xBRI])
 
+# Set LOCAL_NAME, the type of the machine
+AC_MSG_CHECKING([for machine and os type LOCAL_NAME])
+OSTYPE=`uname`
+OSVERSION=`uname -r`
+MACHINETYPE=`uname -m`
+AS_IF([test "x$MACHINETYPE" = xx86_64], [MACHINETYPE=amd64],
+      [test "x$MACHINETYPE" = "xPower Macintosh"], [MACHINETYPE=ppc])
+AS_IF([test "x$OSTYPE" = xSunOS],
+      [MACHINETYPE=`uname -p`]
+      AS_IF([test "x$MACHINETYPE" = "xsparc"],
+            [AS_IF([test x`/usr/bin/isainfo -b` = x64], [MACHINETYPE=sparc64], [MACHINETYPE=sparc32])]))
+AS_IF([test "x$SITENAME" = xBRI], [LOCAL_NAME=$OSTYPE-$OSVERSION-$MACHINETYPE],
+      [LOCAL_NAME=$OSTYPE-$MACHINETYPE])
+AC_MSG_RESULT([$LOCAL_NAME])
+AC_SUBST([LOCAL_NAME])
+
 AC_OUTPUT([Makefile])

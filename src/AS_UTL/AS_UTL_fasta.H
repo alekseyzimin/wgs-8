@@ -67,8 +67,8 @@ AS_UTL_isValidSequence(char *s, int sl);
 //  Writes sequence as fasta, with at most 'bl' letters per line (unlimited if 0).
 void 
 AS_UTL_writeFastA(FILE *f,
-                  char *s, int sl, int bl,
-                  char *h, ...);
+                  const char *s, int sl, int bl,
+                  const char *h, ...);
 
 //  Writes QVs as decimal 'fasta' ("00 00 00 00 ...") with up to 'bl' QVs per line.
 void
