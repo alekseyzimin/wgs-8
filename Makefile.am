@@ -5,7 +5,12 @@ AM_CPPFLAGS = -I$(srcdir)/src -I$(srcdir)/src/AS_UTL -I$(srcdir)/src/AS_MSG -I$(
 AM_CPPFLAGS += -I$(srcdir)/src/AS_PER -I$(srcdir)/src/AS_REZ -I$(srcdir)/src/AS_CNS -I$(srcdir)/src/AS_ALN
 AM_CPPFLAGS += -I$(srcdir)/src/AS_CGW -I$(srcdir)/src/AS_CGB -I$(srcdir)/src/AS_UID -I$(srcdir)/src/AS_GKP
 AM_CPPFLAGS += -I$(srcdir)/src/AS_MER -I$(srcdir)/src/AS_OBT $(BOOST_CPPFLAGS)
-AM_LDFLAGS = -lpthread -fopenmp -lz
+AM_CPPFLAGS += -D_GLIBCXX_PARALLEL -fopenmp
+AM_CFLAGS = -D_GLIBCXX_PARALLEL -fopenmp
+AM_LDFLAGS = -lpthread -D_GLIBCXX_PARALLEL -fopenmp -lz
+
+#AM_LDFLAGS = -lpthread -fopenmp -lz
+
 
 # Kmer library includes
 AM_CPPFLAGS += -I$(srcdir)/kmer/libutil -I$(srcdir)/kmer/libbio -I$(srcdir)/kmer/libseq -I$(srcdir)/kmer/libmeryl
