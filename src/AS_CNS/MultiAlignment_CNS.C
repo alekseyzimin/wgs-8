@@ -1225,9 +1225,9 @@ SetUngappedFragmentPositions(FragType type,int32 n_frags, MultiAlignT *uma) {
     if (epos.position.bgn == epos.position.end) {
       fprintf(stderr,"SetUngappedFragmentPositions()-- Encountered bgn==end==" F_S32 " in ungapped coords within SetUngappedFragmentPositions for " F_CID "(gapped coords " F_S32 "," F_S32 ")\n",
               epos.position.bgn,frag->ident,frag->position.bgn,frag->position.end);
-      assert(frag->position.bgn != frag->position.end);
+      //assert(frag->position.bgn != frag->position.end);
 
-      if (frag->position.bgn < frag->position.end) {
+      if (frag->position.bgn <= frag->position.end) {
         if (epos.position.bgn > 0)
           epos.position.bgn--;
         else
