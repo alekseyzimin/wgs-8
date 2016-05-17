@@ -168,8 +168,9 @@ operator==(AS_UID x, AS_UID y) {
   return(AS_UID_compare(x, y) == 0);
 }
 
-AS_UID  AS_UID_lookup(char *uidstr, char **nxtstr);
-AS_UID  AS_UID_load(char *uidstr);
+AS_UID  AS_UID_lookup(const char *uidstr, const char* &nxtstr);
+inline AS_UID AS_UID_lookup(const char* uidstr) { const char* tmp; return AS_UID_lookup(uidstr, tmp); }
+AS_UID  AS_UID_load(const char *uidstr);
 
 
 #endif  //  AS_UTL_UID_H

@@ -370,7 +370,7 @@ processSCF(SnapScaffoldMesg *scf_mesg) {
 
 
 
-FILE *openOutput(char *prefix, char *format) {
+FILE *openOutput(const char *prefix, const char *format) {
   char  N[FILENAME_MAX];
   FILE *F;
 
@@ -388,11 +388,11 @@ FILE *openOutput(char *prefix, char *format) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   GenericMesg      *pmesg;
   char              name[FILENAME_MAX];
-  char             *prefix = NULL;
-  char             *infile = NULL;
+  const char       *prefix = NULL;
+  const char       *infile = NULL;
 
   int               dumpUnitigs     = 1;
   int               dumpDegenerates = 1;

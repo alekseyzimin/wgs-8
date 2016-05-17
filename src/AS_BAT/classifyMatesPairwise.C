@@ -64,7 +64,7 @@ vector<libInfo>   linf;
 
 
 void
-loadFragmentData(char         *gkpStoreName,
+loadFragmentData(const char   *gkpStoreName,
                  set<AS_IID>   trstLibs,
                  set<AS_IID>   testLibs) {
   gkStore          *gkpStore  = new gkStore(gkpStoreName, FALSE, FALSE);
@@ -196,10 +196,10 @@ testIfTruePEAreOverlapping(OVSoverlap  *avl,
 
 
 int
-main(int argc, char **argv) {
-  char       *gkpStoreName      = NULL;
-  char       *ovlStoreName      = NULL;
-  char       *resultsName       = NULL;
+main(int argc, const char** argv) {
+  const char       *gkpStoreName      = NULL;
+  const char       *ovlStoreName      = NULL;
+  const char       *resultsName       = NULL;
 
   bool        beVerbose         = true;
 

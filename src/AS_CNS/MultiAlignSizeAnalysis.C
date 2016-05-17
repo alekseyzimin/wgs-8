@@ -110,7 +110,7 @@ sizeAnalysis::finalize(void) {
 }
 
 void
-sizeAnalysis::printSummary(FILE *out, char *description, vector<uint32> &data) {
+sizeAnalysis::printSummary(FILE *out, const char *description, vector<uint32> &data) {
   uint64  cnt = data.size();
   uint64  sum = 0;
   uint64  tot = 0;

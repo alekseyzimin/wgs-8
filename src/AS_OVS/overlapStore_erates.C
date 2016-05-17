@@ -38,7 +38,7 @@ static const char *rcsid = "$Id: overlapStore_erates.C 4371 2013-08-01 17:19:47Z
 
 
 void
-updateErates(char *storeName, char *eratesName) {
+updateErates(const char *storeName, const char *eratesName) {
   int             i;
   char            name[FILENAME_MAX];
 

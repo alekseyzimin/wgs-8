@@ -72,13 +72,12 @@ public:
 
 
 int
-main(int argc, char **argv) {
-  char  *gkpName = NULL;
-
-  char  *tigName = NULL;
+main(int argc, const char** argv) {
+  const char  *gkpName = NULL;
+  const char  *tigName = NULL;
   int32  tigVers = -1;
 
-  vector<char *>  alignMapNames;
+  vector<const char *>  alignMapNames;
 
   bool   doConsensus = false;
   bool   doModify    = true;
@@ -93,7 +92,7 @@ main(int argc, char **argv) {
 
   bool   showResult = false;
 
-  char               *lookupFile = NULL;
+  const char         *lookupFile = NULL;
   map<string,uint32>  lookupIID;
 
 #ifdef UNFINISHED_ADD_TO_SINGLETON

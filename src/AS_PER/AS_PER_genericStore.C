@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: AS_PER_genericStore.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: AS_PER_genericStore.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -420,7 +420,7 @@ appendIndexStore(StoreStruct *s, void *element) {
 }
 
 int64
-appendStringStore(StoreStruct *s, char *str, uint32 len) {
+appendStringStore(StoreStruct *s, const char *str, uint32 len) {
 
   assert(s->readOnly == FALSE);
   assert(s->storeType == STRING_STORE);

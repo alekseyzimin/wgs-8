@@ -97,13 +97,13 @@ typedef struct {
 
 
 void
-alignLinker(char           *alignA,
-            char           *alignB,
-            char           *stringA,
-            char           *stringB,
-            alignLinker_s  *a,
-            int             endToEnd,
-            int             allowNs,
-            int             ahang, int bhang);
+alignLinker(char          *alignA,
+            char          *alignB,
+            const char    *stringA,
+            const char    *stringB,
+            alignLinker_s *a,
+            int            endToEnd,
+            int            allowNs,
+            int            ahang, int bhang);
 
 #endif  //  AS_ALN_BRUTEFORCEDP

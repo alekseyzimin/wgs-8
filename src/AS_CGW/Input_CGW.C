@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: Input_CGW.C 4518 2014-03-31 20:11:04Z brianwalenz $";
+static const char *rcsid = "$Id: Input_CGW.C 4518 2014-03-31 20:11:04Z brianwalenz $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -257,7 +257,7 @@ ReloadMatesFromGatekeeper(void) {
 
 
 void
-ProcessInput(int optind, int argc, char *argv[]){
+ProcessInput(int optind, int argc, const char *argv[]){
   int32  numFRG = 0;
   int32  numUTG = 0;
 

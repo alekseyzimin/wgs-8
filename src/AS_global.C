@@ -60,7 +60,7 @@ const char *releaseid = "8.2";
 //  want to remove.
 //
 int
-AS_configure(int argc, char **argv) {
+AS_configure(int argc, const char **argv) {
   char *p = NULL;
   int   i, j;
 
@@ -232,9 +232,9 @@ AS_configure(int argc, char **argv) {
   if (p) {
     char  D[FILENAME_MAX] = {0};
     char  N[FILENAME_MAX] = {0};
-    char  H[1024]         = {0};  //  HOST_NAME_MAX?  Undefined.
-    char *E;
-    FILE *F;
+    char  H[1024]         = {0}; //  HOST_NAME_MAX?  Undefined.
+    const char *E;
+    FILE       *F;
 
     //  Make a directory for logs.  Allow all errors, in particular,
     //  the error of "directory already exists".

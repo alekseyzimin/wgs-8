@@ -44,7 +44,7 @@ using namespace std;
 
 
 bool
-testIndex(char *ovlName, bool doFixes) {
+testIndex(const char *ovlName, bool doFixes) {
   char name[FILENAME_MAX];
   FILE *I = NULL;
   FILE *F = NULL;
@@ -118,17 +118,16 @@ testIndex(char *ovlName, bool doFixes) {
 
 
 int
-main(int argc, char **argv) {
-  char           *ovlName      = NULL;
-  uint32          maxJob       = 0;
-  uint32          cntJob       = 0;
+main(int argc, const char** argv) {
+  const char *ovlName = NULL;
+  uint32      maxJob  = 0;
+  uint32      cntJob  = 0;
 
-  bool            deleteIntermediates = false;
+  bool deleteIntermediates = false;
+  bool doExplicitTest      = false;
+  bool doFixes             = false;
 
-  bool            doExplicitTest = false;
-  bool            doFixes        = false;
-
-  char            name[FILENAME_MAX];
+  char name[FILENAME_MAX];
 
   argc = AS_configure(argc, argv);
 

@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: AS_PER_gkStore_stats.C 4372 2013-08-01 18:33:49Z brianwalenz $";
+static const char *rcsid = "$Id: AS_PER_gkStore_stats.C 4372 2013-08-01 18:33:49Z brianwalenz $";
 
 #include "AS_global.H"
 #include "AS_PER_gkpStore.H"

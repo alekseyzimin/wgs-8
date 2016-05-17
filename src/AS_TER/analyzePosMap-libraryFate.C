@@ -142,7 +142,7 @@ public:
   };
 
 
-  void       report(char *prefix, uint32 libid, char *libname, readFate &allfate) {
+  void       report(const char *prefix, uint32 libid, const char *libname, readFate &allfate) {
     char   N[FILENAME_MAX];
     FILE  *F;
 
@@ -255,7 +255,7 @@ public:
   };
 
 
-  void       report(char *prefix, uint32 libid, char *libname, mateFate &allfate) {
+  void       report(const char *prefix, uint32 libid, const char *libname, mateFate &allfate) {
     char   N[FILENAME_MAX];
     FILE  *F;
 
@@ -388,7 +388,7 @@ public:
   ~sizeFate() {
   };
 
-  void       report(char *prefix, uint32 libid, char *libname, sizeFate &allfate) {
+  void       report(const char *prefix, uint32 libid, const char *libname, sizeFate &allfate) {
     char   N[FILENAME_MAX];
     FILE  *F;
 
@@ -461,7 +461,7 @@ public:
 
 
 void
-analyzeLibraryFate(char *outPrefix) {
+analyzeLibraryFate(const char *outPrefix) {
   libraryFate  *libfate = new libraryFate [libDat.size()];
   libraryFate   allfate;
 

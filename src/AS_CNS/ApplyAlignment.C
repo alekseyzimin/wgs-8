@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: ApplyAlignment.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: ApplyAlignment.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -292,7 +292,7 @@ alignPosition(beadIdx *aindex, int32 &apos, int32  alen,
               beadIdx *bindex, int32 &bpos, int32  blen,
               beadIdx &lasta,
               beadIdx &lastb,
-              char   *label) {
+              const char   *label) {
 
   assert(apos < alen);
   assert(bpos < blen);
@@ -362,7 +362,8 @@ ApplyAlignment(int32 afid,
       bindex[bi].set(bfrag->firstbead.get() + bi);
 
     //  USED?
-    bfrag->manode = NULL;
+    //    bfrag->manode = NULL;
+    bfrag->manode = 0;
   } else {
     assert(0);
   }

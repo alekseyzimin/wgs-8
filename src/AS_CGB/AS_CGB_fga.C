@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: AS_CGB_fga.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: AS_CGB_fga.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 // Module: AS_CGB_fga.c
 //
@@ -36,8 +36,8 @@ static char *rcsid = "$Id: AS_CGB_fga.C 4371 2013-08-01 17:19:47Z brianwalenz $"
 #define DOVETAIL_OR_CONTAINED_FLAG
 
 
-void view_fgb_chkpnt(char * Store_File_Prefix,
-                     Tfragment frags[],
+void view_fgb_chkpnt(const char * Store_File_Prefix,
+                     Tfragment    frags[],
                      Tedge edges[]) {
 
   /* We are creating two line-by-line sortable files that can be UNIX

@@ -36,8 +36,14 @@ typedef uint32 AS_IID;
 static
 inline
 AS_IID
-AS_IID_fromString(char *str, char **nxt) {
-  return(strtoull(str, nxt, 10));
+AS_IID_fromString(const char *str, const char *&nxt) {
+  return(strtoull(str, (char**)&nxt, 10));
+}
+static
+inline
+AS_IID
+AS_IID_fromString(const char* str) {
+  return(strtoull(str, NULL, 10));
 }
 
 static

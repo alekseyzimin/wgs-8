@@ -35,15 +35,15 @@ using namespace std;
 //  array.  There are bbLen & tgPos overlaps at this location.  The array is NOT contiguous.
 
 
-cmGlobalData::cmGlobalData(char    *resultName_,
-                           uint32   distMin_,
-                           uint32   distMax_,
-                           bool     innie_,
-                           uint32   nodesMax_,
-                           uint32   depthMax_,
-                           uint32   pathsMax_,
-                           uint64   memoryLimit_,
-                           bool     suspiciousSearch_) {
+cmGlobalData::cmGlobalData(const char *resultName_,
+                           uint32      distMin_,
+                           uint32      distMax_,
+                           bool        innie_,
+                           uint32      nodesMax_,
+                           uint32      depthMax_,
+                           uint32      pathsMax_,
+                           uint64      memoryLimit_,
+                           bool        suspiciousSearch_) {
 
   distMin      = distMin_;
   distMax      = distMax_;
@@ -466,7 +466,7 @@ cmGlobalData::buildBBSSmap(gkStore     *gkpStore,
 
 
 void
-cmGlobalData::loadFragments(char        *gkpStoreName,
+cmGlobalData::loadFragments(const char  *gkpStoreName,
                             set<AS_IID> &searchLibs,
                             set<AS_IID> &backboneLibs) {
 
@@ -602,8 +602,8 @@ cmGlobalData::resetOverlapStoreRange(OverlapStore *ovlStore,
 
 
 void
-cmGlobalData::loadOverlaps(char  *ovlStoreName,
-                           double maxErrorFraction) {
+cmGlobalData::loadOverlaps(const char *ovlStoreName,
+                           double      maxErrorFraction) {
 
   uint64            maxError    = AS_OVS_encodeQuality(maxErrorFraction);
 

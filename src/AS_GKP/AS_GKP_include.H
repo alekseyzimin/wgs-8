@@ -72,14 +72,14 @@ Check_PlacementMesg(PlacementMesg   *plc_mesg);
 
 
 void
-buildGateKeeperInfo(char      *gkpStoreName);
+buildGateKeeperInfo(const char      *gkpStoreName);
 
 void
-dumpGateKeeperInfo(char       *gkpStoreName,
+dumpGateKeeperInfo(const char       *gkpStoreName,
                    int         asTable);
 
 void
-dumpGateKeeperLibraries(char       *gkpStoreName,
+dumpGateKeeperLibraries(const char       *gkpStoreName,
                         AS_IID      begIID,
                         AS_IID      endIID,
                         char       *iidToDump,
@@ -87,7 +87,7 @@ dumpGateKeeperLibraries(char       *gkpStoreName,
                         int         withoutUIDs);
 
 void
-dumpGateKeeperFragments(char       *gkpStoreName,
+dumpGateKeeperFragments(const char       *gkpStoreName,
                         AS_IID      begIID,
                         AS_IID      endIID,
                         char       *iidToDump,
@@ -97,8 +97,8 @@ dumpGateKeeperFragments(char       *gkpStoreName,
                         int         withoutUIDs);
 
 void
-dumpGateKeeperAsFasta(char       *gkpStoreName,
-                      char       *prefix,
+dumpGateKeeperAsFasta(const char       *gkpStoreName,
+                      const char       *prefix,
                       int         withLibName,
                       AS_IID      begIID,
                       AS_IID      endIID,
@@ -110,7 +110,7 @@ dumpGateKeeperAsFasta(char       *gkpStoreName,
                       int         withoutUIDs);
 
 void
-dumpGateKeeperAsFRG(char       *gkpStoreName,
+dumpGateKeeperAsFRG(const char       *gkpStoreName,
                     int         dumpFormat,
                     AS_IID      begIID,
                     AS_IID      endIID,
@@ -121,8 +121,8 @@ dumpGateKeeperAsFRG(char       *gkpStoreName,
                     int         withoutUIDs);
 
 void
-dumpGateKeeperAsNewbler(char       *gkpStoreName,
-                        char       *prefix,
+dumpGateKeeperAsNewbler(const char       *gkpStoreName,
+                        const char       *prefix,
                         int         withLibName,
                         AS_IID      begIID,
                         AS_IID      endIID,
@@ -134,8 +134,8 @@ dumpGateKeeperAsNewbler(char       *gkpStoreName,
                         int         withoutUIDs);
 
 void
-dumpGateKeeperAsFastQ(char       *gkpStoreName,
-                      char       *prefix,
+dumpGateKeeperAsFastQ(const char       *gkpStoreName,
+                      const char       *prefix,
                       int         withLibName,
                       AS_IID      begIID,
                       AS_IID      endIID,
@@ -147,31 +147,31 @@ dumpGateKeeperAsFastQ(char       *gkpStoreName,
                       int         withoutUIDs);
 
 int
-dumpGateKeeperIsFeatureSet(char       *gkpStoreName,
+dumpGateKeeperIsFeatureSet(const char       *gkpStoreName,
                            AS_IID     featureLibIID,
-                           char      *featureName);
+                           const char      *featureName);
 
 void
-Build_Partition(char      *gatekeeperName,
-                char      *partitionFile,
+Build_Partition(const char      *gatekeeperName,
+                const char      *partitionFile,
                 int32      flags);
 
 int
-rebuildMap(char *gkpStoreName);
+rebuildMap(const char *gkpStoreName);
 
 void
-rearrangeStore(char *uidFile,
-               char *gkpStore,
-               char *newStore);
+rearrangeStore(const char *uidFile,
+               const char *gkpStore,
+               const char *newStore);
 
 void
-updateVectorClear(char *vectorClearFile, char *gkpStoreName);
+updateVectorClear(const char *vectorClearFile, const char *gkpStoreName);
 
 void
-revertClearRange(char *clearRegionName, char *gkpStoreName);
+revertClearRange(const char *clearRegionName, const char *gkpStoreName);
 
 void
-editStore(char *editsFileName, char *gkpStoreName, int update);
+editStore(const char *editsFileName, const char *gkpStoreName, int update);
 
 
 
@@ -181,7 +181,7 @@ void
 AS_GKP_reportError(int error, uint32 libIID, ...);
 
 bool
-AS_GKP_summarizeErrors(char *gkpStoreName);
+AS_GKP_summarizeErrors(const char *gkpStoreName);
 
 
 #define AS_GKP_BAT_ZERO_UID              1

@@ -986,7 +986,7 @@ int MergeGraphEdges(GraphCGW_T *graph, vector<CDS_CID_t> &inputEdges);
 
 
 
-void DumpGraphEdges(GraphCGW_T *graph, char *outname);
+void DumpGraphEdges(GraphCGW_T *graph, const char *outname);
 
 void GraphEdgeSanity(GraphCGW_T *graph, CDS_CID_t eid);
 
@@ -1015,7 +1015,7 @@ void InsertGraphEdge(GraphCGW_T *graph,  CDS_CID_t cedgeID);
 void PrintGraphEdge(FILE *fp, GraphCGW_T *graph, const char *label,
                     EdgeCGW_T *edge, CDS_CID_t cid);
 
-void PrintContigEdgeInScfContext(FILE *fp, GraphCGW_T *graph, char *label, EdgeCGW_T *edge, int cid);
+void PrintContigEdgeInScfContext(FILE *fp, GraphCGW_T *graph, const char *label, EdgeCGW_T *edge, int cid);
 
 
 
@@ -1199,7 +1199,7 @@ UnitigOverlapType existsContainmentRelationship(NodeCGW_T *ci,
 void ComputeMatePairDetailedStatus(void);
 void ComputeMatePairStatisticsRestricted( int operateOnNodes,
                                           int minSamplesForOverride,
-                                          char *instance_label);
+                                          const char *instance_label);
 
 
 

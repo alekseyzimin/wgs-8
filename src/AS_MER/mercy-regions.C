@@ -167,7 +167,7 @@ readBadMers(char *depthname, map<uint64,intervalList<uint32>*> &badMers) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   map<uint64,intervalList<uint32>*>    badMers;
   map<uint64,intervalList<uint32>*>    variation;
   map<uint64,intervalList<uint32>*>   lowCoverage;

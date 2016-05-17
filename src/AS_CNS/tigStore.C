@@ -56,7 +56,7 @@ const char *mainid = "$Id: tigStore.C 4572 2014-10-14 23:06:05Z brianwalenz $";
 
 void
 changeProperties(MultiAlignStore *tigStore,
-                 char            *editName) {
+                 const char            *editName) {
   char  editLine[1024];
 
   errno = 0;
@@ -385,7 +385,7 @@ dumpCoverage(MultiAlignStore *tigStore,
              uint32           maxCoverage,
              uint64          *coverageHistogram,
              uint32           coverageHistogramLen,
-             char            *outPrefix) {
+             const char      *outPrefix) {
   intervalList<int32>  allL;
 
   uint32        maxPos = 0;
@@ -612,7 +612,7 @@ dumpThinOverlap(MultiAlignStore *tigStore,
 
 
 void
-operationBuild(char *buildName, char *tigName,  int tigVers) {
+operationBuild(const char *buildName, const char *tigName,  int tigVers) {
   uint32  utgID = 0;
   uint32  ctgID = 0;
   uint32  orgID = 0;
@@ -672,7 +672,7 @@ operationBuild(char *buildName, char *tigName,  int tigVers) {
 
 
 void
-operationCompress(char *tigName, int tigVers) {
+operationCompress(const char *tigName, int tigVers) {
   MultiAlignStore  *tigStore = new MultiAlignStore(tigName, tigVers, 0, 0, FALSE, FALSE, FALSE);
   bool              isUnitig = TRUE;
 
@@ -820,25 +820,25 @@ dumpFmap(FILE         *out,
 
 
 int
-main (int argc, char **argv) {
-  char          tmpName[FILENAME_MAX] = {0};
-  char         *gkpName        = NULL;
-  char         *tigName        = NULL;
-  int           tigVers        = -1;
-  int           tigPartU       = 0;
-  int           tigPartC       = 0;
-  bool          tigIDset       = false;
-  uint32        tigIDbgn       = 0;
-  uint32        tigIDend       = UINT32_MAX;
-  int32         tigIsUnitig    = TRUE;
-  uint32        opType         = 0;
-  uint32        dumpFlags      = 0;
-  uint32        dumpAll        = 0;
-  char         *editName       = NULL;
-  char         *replaceName    = NULL;
-  bool          sameVersion    = true;
-  bool		append	       = false;
-  char         *buildName      = NULL;
+main (int argc, const char** argv) {
+  char        tmpName[FILENAME_MAX] = {0};
+  const char *gkpName        = NULL;
+  const char *tigName        = NULL;
+  int         tigVers        = -1;
+  int         tigPartU       = 0;
+  int         tigPartC       = 0;
+  bool        tigIDset       = false;
+  uint32      tigIDbgn       = 0;
+  uint32      tigIDend       = UINT32_MAX;
+  int32       tigIsUnitig    = TRUE;
+  uint32      opType         = 0;
+  uint32      dumpFlags      = 0;
+  uint32      dumpAll        = 0;
+  const char *editName       = NULL;
+  const char *replaceName    = NULL;
+  bool        sameVersion    = true;
+  bool	      append	       = false;
+  const char *buildName      = NULL;
 
   uint32        minNreads      = 0;
   uint32        maxNreads      = UINT32_MAX;
@@ -857,7 +857,7 @@ main (int argc, char **argv) {
   uint64            *cov       = NULL;
   uint64             covMax    = 0;
 
-  char              *outPrefix = NULL;
+  const char        *outPrefix = NULL;
 
   argc = AS_configure(argc, argv);
 

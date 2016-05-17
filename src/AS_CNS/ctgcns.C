@@ -32,7 +32,7 @@ const char *mainid = "$Id: ctgcns.C 4465 2013-11-04 19:40:29Z brianwalenz $";
 
 
 void
-writeToOutFile(char *outName, int32 tigPart, MultiAlignT *ma) {
+writeToOutFile(const char *outName, int32 tigPart, MultiAlignT *ma) {
   errno = 0;
 
   FILE *outFile = fopen(outName, "a");
@@ -51,7 +51,7 @@ writeToOutFile(char *outName, int32 tigPart, MultiAlignT *ma) {
 
 
 void
-importFromFile(char *inName, int32 tigPart) {
+importFromFile(const char *inName, int32 tigPart) {
   errno = 0;
 
   FILE *inFile = fopen(inName, "r");
@@ -87,29 +87,28 @@ importFromFile(char *inName, int32 tigPart) {
 
 
 int
-main (int argc, char **argv) {
+main (int argc, const char** argv) {
   char   tmpName[FILENAME_MAX] = {0};
 
-  char  *gkpName = NULL;
+  const char *gkpName = NULL;
+  const char *tigName = NULL;
+  int32       tigVers = -1;
+  int32       tigPart = -1;
 
-  char  *tigName = NULL;
-  int32  tigVers = -1;
-  int32  tigPart = -1;
+  int64 ctgBgn = -1;
+  int64 ctgEnd = -1;
 
-  int64  ctgBgn = -1;
-  int64  ctgEnd = -1;
+  const char *ctgName = NULL;
+  const char *outName = NULL;
+  const char *inName  = NULL;
 
-  char  *ctgName = NULL;
-  char  *outName = NULL;
-  char  *inName  = NULL;
+  bool forceCompute = false;
 
-  bool   forceCompute = false;
+  int32 numFailures = 0;
+  int32 numSkipped  = 0;
 
-  int32  numFailures = 0;
-  int32  numSkipped  = 0;
-
-  bool   useUnitig  = false;
-  bool   showResult = false;
+  bool useUnitig  = false;
+  bool showResult = false;
 
   CNS_Options options = { CNS_OPTIONS_SPLIT_ALLELES_DEFAULT,
                           CNS_OPTIONS_MIN_ANCHOR_DEFAULT,

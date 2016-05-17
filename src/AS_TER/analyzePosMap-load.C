@@ -71,7 +71,7 @@ vector<string>       scfNam;
 
 
 FILE *
-openFile(char *prefix, char *mapname) {
+openFile(const char *prefix, const char *mapname) {
   char  fileName[FILENAME_MAX];
 
   sprintf(fileName, "%s.posmap.%s", prefix, mapname);
@@ -88,7 +88,7 @@ openFile(char *prefix, char *mapname) {
 
 
 void
-readLibraries(char *prefix) {
+readLibraries(const char *prefix) {
   FILE    *file     = openFile(prefix, "libraries");
   uint32   lineMax  = 1048576;
   char    *line     = new char [1048576];
@@ -118,7 +118,7 @@ readLibraries(char *prefix) {
 
 
 void
-readFrags(char *prefix) {
+readFrags(const char *prefix) {
   FILE    *file     = openFile(prefix, "frags");
   uint32   lineMax  = 1048576;
   char    *line     = new char [1048576];
@@ -180,7 +180,7 @@ readFrags(char *prefix) {
 
 
 void
-readMates(char *prefix) {
+readMates(const char *prefix) {
   FILE    *file     = openFile(prefix, "mates");
   uint32   lineMax  = 1048576;
   char    *line     = new char [1048576];
@@ -220,8 +220,8 @@ readMates(char *prefix) {
 
 
 void
-createScf(char   *prefix,
-          char   *posmap,
+createScf(const char   *prefix,
+          const char   *posmap,
           char    status) {
   FILE   *file    = openFile(prefix, posmap);
   uint32  lineMax = 1048576;
@@ -262,8 +262,8 @@ createScf(char   *prefix,
 
 
 void
-createCtg(char   *prefix,
-          char   *posmap,
+createCtg(const char   *prefix,
+          const char   *posmap,
           char    status) {
   FILE   *file    = openFile(prefix, posmap);
   uint32  lineMax = 1048576;
@@ -304,8 +304,8 @@ createCtg(char   *prefix,
 
 
 void
-createUtg(char   *prefix,
-          char   *posmap,
+createUtg(const char   *prefix,
+          const char   *posmap,
           char    status) {
   FILE   *file    = openFile(prefix, posmap);
   uint32  lineMax = 1048576;
@@ -392,8 +392,8 @@ parseUtgType(splitToWords  &W) {
 
 
 void
-loadCtgScf(char    *prefix,
-           char    *posmap) {
+loadCtgScf(const char    *prefix,
+           const char    *posmap) {
   FILE   *file    = openFile(prefix, posmap);
   uint32  lineMax = 1048576;
   char   *line    = new char [lineMax];
@@ -423,8 +423,8 @@ loadCtgScf(char    *prefix,
 
 
 void
-loadUtgScf(char    *prefix,
-           char    *posmap) {
+loadUtgScf(const char    *prefix,
+           const char    *posmap) {
   FILE   *file    = openFile(prefix, posmap);
   uint32  lineMax = 1048576;
   char   *line    = new char [lineMax];
@@ -454,8 +454,8 @@ loadUtgScf(char    *prefix,
 }
 
 void
-loadUtgCtg(char    *prefix,
-           char    *posmap) {
+loadUtgCtg(const char    *prefix,
+           const char    *posmap) {
   FILE   *file    = openFile(prefix, posmap);
   uint32  lineMax = 1048576;
   char   *line    = new char [lineMax];
@@ -487,8 +487,8 @@ loadUtgCtg(char    *prefix,
 
 
 void
-loadUtgDeg(char    *prefix,
-           char    *posmap) {
+loadUtgDeg(const char    *prefix,
+           const char    *posmap) {
   FILE   *file    = openFile(prefix, posmap);
   uint32  lineMax = 1048576;
   char   *line    = new char [lineMax];
@@ -527,8 +527,8 @@ loadUtgDeg(char    *prefix,
 
 
 void
-loadFrgDeg(char    *prefix,
-           char    *posmap) {
+loadFrgDeg(const char    *prefix,
+           const char    *posmap) {
   FILE   *file    = openFile(prefix, posmap);
   uint32  lineMax = 1048576;
   char   *line    = new char [lineMax];
@@ -560,8 +560,8 @@ loadFrgDeg(char    *prefix,
 
 
 void
-loadFrgScf(char    *prefix,
-           char    *posmap) {
+loadFrgScf(const char    *prefix,
+           const char    *posmap) {
   FILE   *file    = openFile(prefix, posmap);
   uint32  lineMax = 1048576;
   char   *line    = new char [lineMax];
@@ -589,8 +589,8 @@ loadFrgScf(char    *prefix,
 }
 
 void
-loadFrgCtg(char    *prefix,
-           char    *posmap) {
+loadFrgCtg(const char    *prefix,
+           const char    *posmap) {
   FILE   *file    = openFile(prefix, posmap);
   uint32  lineMax = 1048576;
   char   *line    = new char [lineMax];
@@ -622,8 +622,8 @@ loadFrgCtg(char    *prefix,
 
 
 void
-loadFrgUtg(char    *prefix,
-           char    *posmap) {
+loadFrgUtg(const char    *prefix,
+           const char    *posmap) {
   FILE   *file    = openFile(prefix, posmap);
   uint32  lineMax = 1048576;
   char   *line    = new char [lineMax];
@@ -682,7 +682,7 @@ loadFrgUtg(char    *prefix,
 
 
 void
-promoteDegenerates(char *prefix, char *posmap) {
+promoteDegenerates(const char *prefix, const char *posmap) {
 }
 
 
@@ -692,7 +692,7 @@ promoteDegenerates(char *prefix, char *posmap) {
 //  After all fragments are placed on scaffolds, this will read the frgutg posmap to determine which
 //  fragment are unplaced in surrogates.
 void
-labelFragments(char *prefix) {
+labelFragments(const char *prefix) {
   FILE   *file    = openFile(prefix, "frgutg");
   uint32  lineMax = 1048576;
   char   *line    = new char [lineMax];
@@ -725,7 +725,7 @@ labelFragments(char *prefix) {
 
 
 void
-loadPosMap(char *prefix, char *gkpName) {
+loadPosMap(const char *prefix, const char *gkpName) {
 
   //  Initialize
 

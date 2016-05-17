@@ -227,7 +227,7 @@ readRandomFragments(char *gkpName, uint32 numReads) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   char      gkpName[FILENAME_MAX] = {0};
   uint32    numFrags   = 0;  //  Create a store with numFrags bogus frags in it
   uint32    numMates   = 0;  //  Add mates to random frags

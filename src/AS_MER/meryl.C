@@ -36,7 +36,7 @@ const char *mainid = "$Id: meryl.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 //
 
 int
-main(int argc, char **argv) {
+main(int argc, const char **argv) {
   argc = AS_configure(argc, argv);
 
   merylArgs   *args = new merylArgs(argc, argv);

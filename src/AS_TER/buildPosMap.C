@@ -123,7 +123,7 @@ bool writeUnplaced = false;
 
 
 FILE *
-openFile(char *label, char *prefix, int write) {
+openFile(const char *label, const char *prefix, int write) {
   char  N[FILENAME_MAX];
   FILE *F = NULL;
 
@@ -142,7 +142,7 @@ openFile(char *label, char *prefix, int write) {
 
 
 void
-processMDI(SnapMateDistMesg *mdi, char *prefix) {
+processMDI(SnapMateDistMesg *mdi, const char *prefix) {
   int32  samples = 0;
 
   for (int32 i=0; i<mdi->num_buckets; i++)
@@ -281,7 +281,7 @@ decodeUnitigType(char unitigTypeCode) {
 
 void
 processAFG(AugFragMesg *afg, gkStore *gkp) {
-  char *libraryName = "N/A";
+  const char *libraryName = "N/A";
 
   if (gkp) {
     gkFragment  frg;
@@ -324,7 +324,7 @@ processAFG(AugFragMesg *afg, gkStore *gkp) {
 
 void
 processAMP(AugMatePairMesg *amp, gkStore *gkp) {
-  char *libraryName = "N/A";
+  const char *libraryName = "N/A";
 
   if (gkp) {
     AS_IID   lib1  = uid2lib[amp->fragment1];
@@ -790,7 +790,7 @@ transferFrg(FILE *ctg, FILE *scf) {
     //  ori
     //  type (optional)
 
-    AS_UID uid = AS_UID_lookup(W[1], NULL);
+    AS_UID uid = AS_UID_lookup(W[1]);
     AS_IID iid = uid2iid[uid];
 
     if (iid > 0) {
@@ -857,7 +857,7 @@ transferVar(FILE *ctg, FILE *scf) {
       int32 bgn = atoi(W[2]);
       int32 end = atoi(W[3]);
 
-      AS_UID uid = AS_UID_lookup(W[1], NULL);
+      AS_UID uid = AS_UID_lookup(W[1]);
       AS_IID iid = uid2iid[uid];
 
       if (iid > 0) {
@@ -890,14 +890,13 @@ transferVar(FILE *ctg, FILE *scf) {
 
 
 
-int main (int argc, char *argv[]) {
-  char    *outputPrefix       = NULL;
-  char    *asmName            = NULL;
-  FILE    *asmFile            = stdin;
-  char    *gkpName            = NULL;
-  gkStore *gkp                = NULL;
-
-  GenericMesg *pmesg          = NULL;
+int main (int argc, const char *argv[]) {
+  const char  *outputPrefix = NULL;
+  const char  *asmName      = NULL;
+  FILE        *asmFile      = stdin;
+  const char  *gkpName      = NULL;
+  gkStore     *gkp          = NULL;
+  GenericMesg *pmesg        = NULL;
 
   argc = AS_configure(argc, argv);
 

@@ -197,7 +197,7 @@ private:
   void                    purgeVersion(int version);
   void                    purgeCurrentVersion(void);
 
-  friend void operationCompress(char *tigName, int tigVers);
+  friend void operationCompress(const char *tigName, int tigVers);
 
   FILE                   *openDB(uint32 V, uint32 P);
 

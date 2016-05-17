@@ -47,14 +47,13 @@ using namespace std;
 #include <vector>
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
 
     //  Options for everyone.  Everyone needs a filename!
     //
-    char            *fileName    = NULL;
-
-    char *progName = argv[0];
-    LayRecordStore* store = NULL;
+    const char      *fileName = NULL;
+    const char      *progName = argv[0];
+    LayRecordStore*  store    = NULL;
 
     argc = AS_configure(argc, argv);
 

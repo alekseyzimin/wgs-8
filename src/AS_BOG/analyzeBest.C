@@ -33,10 +33,10 @@ const char *mainid = "$Id: analyzeBest.C 4571 2014-10-09 13:18:54Z brianwalenz $
 
 int
 main(int argc, char **argv) {
-  char  *gkpName = 0L;
-  char  *bEdge   = "best.edges";
-  char  *bCont   = "best.contains";
-  char  *bSing   = "best.singletons";
+  char       *gkpName = NULL;
+  const char *bEdge   = "best.edges";
+  const char *bCont   = "best.contains";
+  const char *bSing   = "best.singletons";
 
   int arg=1;
   int err=0;

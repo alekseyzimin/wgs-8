@@ -63,16 +63,16 @@ typedef int8_t          int8;
 #define  uint32MASK(X)   ((~uint32ZERO) >> (32 - (X)))
 #define  uint32FMTW(X)   "%" #X PRIu32
 #define  uint32FMT       "%" PRIu32
-#define  uint32HEX       "0x%08"PRIx32
+#define  uint32HEX       "0x%08" PRIx32
 #define  int32FMTW(X)    "%" #X PRId32
-#define  int32FMT        "%"PRId32
+#define  int32FMT        "%" PRId32
 
 #define  uint16ZERO      (0x0000)
 #define  uint16ONE       (0x0001)
 #define  uint16MAX       (0xffff)
 #define  uint16MASK(X)   ((~uint16ZERO) >> (16 - (X)))
 #define  uint16FMTW(X)   "%" #X PRIu16
-#define  uint16FMT       "%"PRIu16
+#define  uint16FMT       "%" PRIu16
 
 #define  uint8ZERO       (0x00)
 #define  uint8ONE        (0x01)

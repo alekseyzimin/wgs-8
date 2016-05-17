@@ -43,7 +43,7 @@ using AS_ARD::AS_ARD_database;
 using AS_ARD::IDBOutput;
 using AS_ARD::DBTextOutput;
 
-int main(int argc, char ** argv)
+int main(int argc, const char** argv)
 {
    char * asmFilename       = NULL;
    char * prefix            = NULL;

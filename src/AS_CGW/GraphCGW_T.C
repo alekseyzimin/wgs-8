@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: GraphCGW_T.C 4557 2014-08-11 12:24:27Z brianwalenz $";
+static const char *rcsid = "$Id: GraphCGW_T.C 4557 2014-08-11 12:24:27Z brianwalenz $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -332,9 +332,9 @@ void DeleteGraphCGW(GraphCGW_T *graph){
 
 /* Diagnostic */
 size_t ReportMemorySizeGraphCGW(GraphCGW_T *graph, FILE *stream){
-  char *nodeName = NULL;
-  char *edgeName = NULL;
-  size_t totalMemorySize = 0;
+  const char *nodeName        = NULL;
+  const char *edgeName        = NULL;
+  size_t      totalMemorySize = 0;
 
   switch(graph->type){
     case CI_GRAPH:
@@ -361,7 +361,7 @@ size_t ReportMemorySizeGraphCGW(GraphCGW_T *graph, FILE *stream){
 
 
 void
-DumpGraphEdges(GraphCGW_T *graph, char *outname) {
+DumpGraphEdges(GraphCGW_T *graph, const char *outname) {
   FILE *outfile = fopen(outname, "w");
 
   fprintf(stderr, "DumpGraphEdges()-- to '%s'\n", outname);
@@ -786,14 +786,14 @@ void  DeleteGraphEdge(GraphCGW_T *graph,  EdgeCGW_T *edge){
 
 void PrintGraphEdge(FILE *fp, GraphCGW_T *graph,
                     const char *label, EdgeCGW_T *edge, CDS_CID_t cid){
-  char actualOverlap[256];
-  int32 actual = 0;
-  int32 delta = 0;
-  char *flagTrans = "  ";
-  char flagbuf[32];
+  char            actualOverlap[256];
+  int32           actual         = 0;
+  int32           delta          = 0;
+  const char     *flagTrans      = "  ";
+  char            flagbuf[32];
   ChunkInstanceT *ChunkInstanceA = GetGraphNode(graph, edge->idA);
   ChunkInstanceT *ChunkInstanceB = GetGraphNode(graph, edge->idB);
-  CDS_CID_t eid = GetVAIndex_EdgeCGW_T(graph->edges, edge);
+  CDS_CID_t       eid            = GetVAIndex_EdgeCGW_T(graph->edges, edge);
 
   if(edge->flags.bits.isDeleted){
     fprintf(fp,"***FOLLOWING EDGE IS DELETED!!!!***\n");
@@ -869,16 +869,16 @@ void PrintGraphEdge(FILE *fp, GraphCGW_T *graph,
 
 
 void PrintContigEdgeInScfContext(FILE *fp, GraphCGW_T *graph,
-                                 char *label, EdgeCGW_T *edge,
+                                 const char *label, EdgeCGW_T *edge,
                                  CDS_CID_t cid){
-  char actualOverlap[256];
-  int32 actual = 0;
-  int32 delta = 0;
-  char *flagTrans = "  ";
-  char flagbuf[32];
+  char            actualOverlap[256];
+  int32           actual         = 0;
+  int32           delta          = 0;
+  const char     *flagTrans      = "  ";
+  char            flagbuf[32];
   ChunkInstanceT *ChunkInstanceA = GetGraphNode(graph, edge->idA);
   ChunkInstanceT *ChunkInstanceB = GetGraphNode(graph, edge->idB);
-  CDS_CID_t eid = GetVAIndex_EdgeCGW_T(graph->edges, edge);
+  CDS_CID_t       eid            = GetVAIndex_EdgeCGW_T(graph->edges, edge);
 
   if(edge->flags.bits.isDeleted){
     fprintf(fp,"***FOLLOWING EDGE IS DELETED!!!!***\n");
@@ -1128,9 +1128,9 @@ AddGraphEdge(GraphCGW_T *graph,
 
 void DumpGraph(GraphCGW_T *graph, FILE *stream){
 
-  char *graphType = "";
-  GraphNodeIterator nodes;
-  NodeCGW_T *node = NULL;
+  const char        *graphType = "";
+  GraphNodeIterator  nodes;
+  NodeCGW_T         *node      = NULL;
 
   if(graph->type == CI_GRAPH)
     graphType = "CI";
@@ -2941,7 +2941,7 @@ void ComputeMatePairDetailedStatus(void) {
 
 void ComputeMatePairStatisticsRestricted(int operateOnNodes,
                                          int32 minSamplesForOverride,
-                                         char *instance_label) {
+                                         const char *instance_label) {
   GraphCGW_T *graph = NULL;
   GraphNodeIterator nodes;
   NodeCGW_T *node;
@@ -3608,7 +3608,7 @@ void RecycleDeletedGraphElements(GraphCGW_T *graph){
 
 
 #define SEGLEN 50
-static void dumpFastaRecord(FILE *stream, char *header, char *sequence){
+static void dumpFastaRecord(FILE *stream, const char *header, const char *sequence){
   int i;
   int32 FragLen = (int32) strlen(sequence);
 

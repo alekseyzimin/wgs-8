@@ -26,7 +26,7 @@ static const char *rcsid = "$Id: AS_PER_gkLibrary.C 4382 2013-08-06 23:02:39Z br
 
 static
 int
-decodeBoolean(char *feature, char *value) {
+decodeBoolean(const char *feature, const char *value) {
   int  ret = 0;
 
   //  Decodes a string with 0/1, false/true, no/yes into an integer flag.
@@ -58,7 +58,7 @@ decodeBoolean(char *feature, char *value) {
 
 
 void
-gkLibrary::gkLibrary_setFeature(char *fea, char *val) {
+gkLibrary::gkLibrary_setFeature(const char *fea, const char *val) {
 
   //  Unitigger options
 

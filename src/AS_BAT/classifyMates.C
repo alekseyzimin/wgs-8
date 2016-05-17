@@ -178,10 +178,10 @@ cmWriter(void *G, void *S) {
 
 
 int
-main(int argc, char **argv) {
-  char       *gkpStoreName      = NULL;
-  char       *ovlStoreName      = NULL;
-  char       *resultsName       = NULL;
+main(int argc, const char** argv) {
+  const char *gkpStoreName = NULL;
+  const char *ovlStoreName = NULL;
+  const char *resultsName  = NULL;
 
   bool        doCache           = false;
   bool        doCacheOnly       = false;

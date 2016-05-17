@@ -191,7 +191,7 @@ readVars(FILE    *varscf,
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   FILE   *varscf   = 0L;
   FILE   *frgscf   = 0L;
 

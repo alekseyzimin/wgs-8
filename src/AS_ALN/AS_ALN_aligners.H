@@ -50,7 +50,7 @@ typedef struct {
 
 
 void
-PrintALNoverlap(char *message,
+PrintALNoverlap(const char *message,
                 char *aseq,
                 char *bseq,
                 ALNoverlap *align);

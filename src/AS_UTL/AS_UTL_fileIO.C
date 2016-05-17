@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-//static char *rcsid = "$Id: AS_UTL_fileIO.C 4436 2013-09-27 20:26:53Z brianwalenz $";
+//static const char *rcsid = "$Id: AS_UTL_fileIO.C 4436 2013-09-27 20:26:53Z brianwalenz $";
 
 #include "AS_UTL_fileIO.H"
 

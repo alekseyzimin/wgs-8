@@ -163,7 +163,7 @@ main (int argc, char * argv []) {
     strcpy(thread_globals.exePath, argv[0]);
     fprintf(stderr, "Starting %s, running from %s\n", EXECUTABLE_NAME, thread_globals.exePath);
 
-    argc = AS_configure(argc, argv);
+    argc = AS_configure(argc, (const char**)argv);
 
     int err = 0;
     int arg = 1;

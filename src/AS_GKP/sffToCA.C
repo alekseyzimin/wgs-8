@@ -60,7 +60,7 @@ uint32 DEBUG_READ_nRead = 0;
 #define TRIM_CHOP        3
 #define TRIM_ERRR        9
 
-char *TRIM_NAMES[4]  = { "none", "soft", "hard", "chop" };
+const char *TRIM_NAMES[4]  = { "none", "soft", "hard", "chop" };
 
 char h_alignA[AS_READ_MAX_NORMAL_LEN + AS_READ_MAX_NORMAL_LEN + 2] = {0};
 char h_alignB[AS_READ_MAX_NORMAL_LEN + AS_READ_MAX_NORMAL_LEN + 2] = {0};
@@ -119,7 +119,7 @@ statistics st = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 static
 void
-writeStatistics(char **argv, int argc, int firstFileArg, char *fragName, int haveLinker, char **linker, int *search, char *stsName) {
+writeStatistics(const char **argv, int argc, int firstFileArg, const char *fragName, int haveLinker, const char **linker, int *search, const char *stsName) {
 
   errno = 0;
   FILE *statOut = fopen(stsName, "w");
@@ -889,7 +889,7 @@ processRead(sffHeader *h,
 
 
 int
-loadSFF(char *sffName) {
+loadSFF(const char *sffName) {
   sffHeader                  h;
   sffManifest                m;
   sffRead                    r;
@@ -1193,7 +1193,7 @@ int
 processMate(gkFragment *fr,
             gkFragment *m1,
             gkFragment *m2,
-            char        *linker[AS_LINKER_MAX_SEQS],
+            const char        *linker[AS_LINKER_MAX_SEQS],
             int          search[AS_LINKER_MAX_SEQS]) {
 
   alignLinker_s  al = {0, 0, 0, 0, 0, 0, 0, 0, 0.0, 0.0, 0.0};  //  Winning alignment
@@ -1685,7 +1685,7 @@ processMate(gkFragment *fr,
 
 
 int
-detectMates(char *linker[AS_LINKER_MAX_SEQS], int search[AS_LINKER_MAX_SEQS]) {
+detectMates(const char *linker[AS_LINKER_MAX_SEQS], int search[AS_LINKER_MAX_SEQS]) {
   gkFragment    fr;
   gkFragment    m1;
   gkFragment    m2;
@@ -1789,7 +1789,7 @@ detectMates(char *linker[AS_LINKER_MAX_SEQS], int search[AS_LINKER_MAX_SEQS]) {
 
 
 void
-addLibrary(char *libraryName,
+addLibrary(const char *libraryName,
            int   insertSize,
            int   insertStdDev,
            int   haveLinker)  {
@@ -2065,11 +2065,11 @@ dumpFastQFiles(char *outPrefix) {
 
 
 int
-main(int argc, char **argv) {
-  int       insertSize       = 0;
-  int       insertStdDev     = 0;
-  char     *libraryName      = 0L;
-  int       firstFileArg     = 0;
+main(int argc, const char** argv) {
+  int         insertSize   = 0;
+  int         insertStdDev = 0;
+  const char *libraryName  = NULL;
+  int         firstFileArg = 0;
 
   char      oPrefix[FILENAME_MAX] = {0};
   char      frgName[FILENAME_MAX] = {0};
@@ -2077,22 +2077,22 @@ main(int argc, char **argv) {
   char      logName[FILENAME_MAX] = {0};
   char      stsName[FILENAME_MAX] = {0};
 
-  bool      doDeDup          = 1;
+  bool doDeDup = 1;
 
   // initialize linker search structure
   // One array stores the character sequences of the linker
   // A boolean array stores which linkers are to be used in the search
 
-  int       haveLinker        = FALSE;
-  int       invalidLinkerSeq  = FALSE;
-  char     *linker[AS_LINKER_MAX_SEQS] = { NULL };
-  int       search[AS_LINKER_MAX_SEQS] = { 0    };
-  
+  int haveLinker                         = FALSE;
+  int invalidLinkerSeq                   = FALSE;
+  const char* linker[AS_LINKER_MAX_SEQS] = { NULL };
+  int       search[AS_LINKER_MAX_SEQS]   = { 0    };
+
   // the first slot of the linker array is the FLX mate pair linker (which is a palindrome)
-  char   *linkerFLX     = linker[0] = "GTTGGAACCGAAAGGGTTTGAATTCAAACCCTTTCGGTTCCAAC";  // palindrome
+  const char *linkerFLX = linker[0] = "GTTGGAACCGAAAGGGTTTGAATTCAAACCCTTTCGGTTCCAAC"; // palindrome
   // the next two slots are the Titanium linker. It requires two linkers because they are not palindromes
-  char   *linkerFIX     = linker[1] = "TCGTATAACTTCGTATAATGTATGCTATACGAAGTTATTACG";    // linker for Titanium reads
-  char   *linkerXIF     = linker[2] = "CGTAATAACTTCGTATAGCATACATTATACGAAGTTATACGA";    // rc of linker for Titanium reads
+  const char *linkerFIX = linker[1] = "TCGTATAACTTCGTATAATGTATGCTATACGAAGTTATTACG"; // linker for Titanium reads
+  const char *linkerXIF = linker[2] = "CGTAATAACTTCGTATAGCATACATTATACGAAGTTATACGA"; // rc of linker for Titanium reads
   // subsequent linkers will be used for future barcoding
   // final linkers are custom, provided by the user, filled in when parsing parameters
 

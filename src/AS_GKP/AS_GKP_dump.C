@@ -52,7 +52,7 @@ public:
 
 class dumpFile {
 public:
-  dumpFile(gkStore *gkp, char *prefix, char *extension) {
+  dumpFile(gkStore *gkp, const char *prefix, const char *extension) {
 
     sprintf(_mono._N[0], "%s.%s",         prefix, extension);
     sprintf(_mono._N[1], "%s.1.%s",       prefix, extension);
@@ -115,7 +115,7 @@ public:
 
 
 void
-dumpGateKeeperInfo(char       *gkpStoreName,
+dumpGateKeeperInfo(const char       *gkpStoreName,
                    int         asTable) {
 
   gkStore   *gkp = new gkStore(gkpStoreName, FALSE, FALSE, TRUE);
@@ -198,7 +198,7 @@ dumpGateKeeperInfo(char       *gkpStoreName,
 
 
 void
-dumpGateKeeperLibraries(char       *gkpStoreName,
+dumpGateKeeperLibraries(const char       *gkpStoreName,
                         AS_IID      bgnIID,
                         AS_IID      endIID,
                         char       *iidToDump,
@@ -250,7 +250,7 @@ dumpGateKeeperLibraries(char       *gkpStoreName,
 
 
 void
-dumpGateKeeperFragments(char       *gkpStoreName,
+dumpGateKeeperFragments(const char       *gkpStoreName,
                         AS_IID      bgnIID,
                         AS_IID      endIID,
                         char       *iidToDump,
@@ -430,8 +430,8 @@ adjustBeginEndAddMates(gkStore *gkp,
 
 
 void
-dumpGateKeeperAsFasta(char       *gkpStoreName,
-                      char       *prefix,
+dumpGateKeeperAsFasta(const char       *gkpStoreName,
+                      const char       *prefix,
                       int         withLibName,
                       AS_IID      bgnIID,
                       AS_IID      endIID,
@@ -574,7 +574,7 @@ dumpGateKeeperAsFasta(char       *gkpStoreName,
 
 
 void
-dumpGateKeeperAsFRG(char       *gkpStoreName,
+dumpGateKeeperAsFRG(const char       *gkpStoreName,
                     int         dumpFormat,
                     AS_IID      bgnIID,
                     AS_IID      endIID,
@@ -856,8 +856,8 @@ dumpGateKeeperAsFRG(char       *gkpStoreName,
 
 
 void
-dumpGateKeeperAsNewbler(char       *gkpStoreName,
-                        char       *prefix,
+dumpGateKeeperAsNewbler(const char       *gkpStoreName,
+                        const char       *prefix,
                         int         withLibName,
                         AS_IID      bgnIID,
                         AS_IID      endIID,
@@ -952,8 +952,8 @@ dumpGateKeeperAsNewbler(char       *gkpStoreName,
 
 
 void
-dumpGateKeeperAsFastQ(char       *gkpStoreName,
-                      char       *prefix,
+dumpGateKeeperAsFastQ(const char       *gkpStoreName,
+                      const char       *prefix,
                       int         withLibName,
                       AS_IID      bgnIID,
                       AS_IID      endIID,
@@ -1248,9 +1248,9 @@ dumpGateKeeperAsFastQ(char       *gkpStoreName,
 
 
 int
-dumpGateKeeperIsFeatureSet(char      *gkpStoreName,
+dumpGateKeeperIsFeatureSet(const char      *gkpStoreName,
                            AS_IID     libIID,
-                           char      *featureName)
+                           const char      *featureName)
 {
    assert(featureName != NULL);
   

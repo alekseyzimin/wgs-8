@@ -18,7 +18,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
-static char *rcsid = "$Id: CIScaffoldT_Cleanup_CGW.C 4447 2013-10-11 17:27:23Z brianwalenz $";
+static const char *rcsid = "$Id: CIScaffoldT_Cleanup_CGW.C 4447 2013-10-11 17:27:23Z brianwalenz $";
 
 #include <stdio.h>
 #include <stdlib.h>

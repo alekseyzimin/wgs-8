@@ -32,7 +32,7 @@ const char *mainid = "$Id: analyzeScaffolds.C 4371 2013-08-01 17:19:47Z brianwal
 #include "CIScaffoldT_Analysis.H"
 
 
-int main (int argc, char *argv[]) {
+int main (int argc, const char *argv[]) {
   int32       checkpointVers           = 0;
   int32       tigStoreVers             = 0;
 

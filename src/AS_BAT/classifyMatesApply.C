@@ -114,16 +114,13 @@ private:
 
 
 int
-main(int argc, char **argv) {
-  char      *gkpStoreName      = NULL;
-
-  bool       justPrint         = false;
-
-  char     **resultsNames      = new char * [argc];
-  uint32     resultsNamesLen   = 0;
-
-  char      *outputName        = NULL;
-  FILE      *outputFile        = NULL;
+main(int argc, const char** argv) {
+  const char  *gkpStoreName    = NULL;
+  bool         justPrint       = false;
+  const char **resultsNames    = new const char * [argc];
+  uint32       resultsNamesLen = 0;
+  const char  *outputName      = NULL;
+  FILE        *outputFile      = NULL;
 
   argc = AS_configure(argc, argv);
 

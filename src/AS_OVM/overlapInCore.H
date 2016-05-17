@@ -482,7 +482,7 @@ extern char  Quality_Buffer [2 * AS_READ_MAX_NORMAL_LEN];
 extern FILE  * Kmer_Skip_File;
 extern BinaryOverlapFile  *Out_BOF;
 extern gkStore  *OldFragStore;
-extern char  * Frag_Store_Path;
+extern const char  * Frag_Store_Path;
 extern pthread_mutex_t  FragStore_Mutex;
 extern pthread_mutex_t  Write_Proto_Mutex;
 extern AS_IID  First_Hash_Frag;

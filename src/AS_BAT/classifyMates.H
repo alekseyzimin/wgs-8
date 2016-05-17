@@ -155,12 +155,12 @@ class classifyMatesResultFile {
   };
 
 public:
-  classifyMatesResultFile(char   *filename,
-                          char    algorithm,
-                          uint32  iterationLimit_,
-                          bool    innie_,
-                          uint32  minDistance_,
-                          uint32  maxDistance_) {
+  classifyMatesResultFile(const char *filename,
+                          char        algorithm,
+                          uint32      iterationLimit_,
+                          bool        innie_,
+                          uint32      minDistance_,
+                          uint32      maxDistance_) {
     header.magicNumber    = 0x1a2b0001;
     header.isBFS          = (algorithm == 'b');
     header.isDFS          = (algorithm == 'd');
@@ -178,7 +178,7 @@ public:
     AS_UTL_safeWrite(F, &header, "classifyMatesResultFileHeader", sizeof(classifyMatesResultFileHeader), 1);
   };
 
-  classifyMatesResultFile(char *filename) {
+  classifyMatesResultFile(const char *filename) {
     errno = 0;
     F = fopen(filename, "r");
     if (errno)

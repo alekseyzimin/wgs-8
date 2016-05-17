@@ -33,7 +33,7 @@
  Assumptions: - All inserted keys are bigger than minf and smaller than pinf
 **********************************************************************/
 
-static char *rcsid = "$Id: AS_UTL_skiplist.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: AS_UTL_skiplist.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 
 /*

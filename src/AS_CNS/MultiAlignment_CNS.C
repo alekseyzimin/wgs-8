@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: MultiAlignment_CNS.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: MultiAlignment_CNS.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -658,7 +658,7 @@ ClearBead(beadIdx bid) {
 
 //external
 void
-AlignBeadToColumn(int32 cid, beadIdx bid, char *label) {
+AlignBeadToColumn(int32 cid, beadIdx bid, const char *label) {
   Column *column=GetColumn(columnStore,cid);
   Bead *call = GetBead(beadStore,column->call);
   Bead *first = GetBead(beadStore,call->down);

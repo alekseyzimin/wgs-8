@@ -39,11 +39,11 @@ const char *mainid = "$Id: filterOverlap.C 4371 2013-08-01 17:19:47Z brianwalenz
 void   filterOVL(void);
 void   filterOBT(void);
 
-uint32  minLength      = 0;
-uint32  maxError       = 0;
-uint32  noDovetail     = 0;
-uint32  noContainment  = 0;
-char   *gkpStoreName   = NULL;
+uint32      minLength     = 0;
+uint32      maxError      = 0;
+uint32      noDovetail    = 0;
+uint32      noContainment = 0;
+const char *gkpStoreName  = NULL;
 
 typedef struct {
   uint64   len:AS_READ_MAX_NORMAL_LEN_BITS;
@@ -59,7 +59,7 @@ uint32    numReads       = 0;
 fragInfo *readLength     = NULL;
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   int    toBinary      = 0;
   int    toASCII       = 0;
   int    format        = FORMAT_NONE;

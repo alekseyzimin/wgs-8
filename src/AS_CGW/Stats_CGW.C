@@ -18,7 +18,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
-static char *rcsid = "$Id: Stats_CGW.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: Stats_CGW.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -187,7 +187,7 @@ void GenerateCIGraphStats(void){
 
 
 /* Generate stats for the subgraph of the Contig graph induced by placed contigs */
-void GeneratePlacedContigGraphStats(char *label,int iteration){
+void GeneratePlacedContigGraphStats(const char *label,int iteration){
 
   char buffer[2048];
   FILE *fout;
@@ -324,7 +324,7 @@ void GeneratePlacedContigGraphStats(char *label,int iteration){
    Links/Scaffold edge w/BACs     (weight 2 or more?)
    Nature of 2/10k scaffolding (output to text file)
 */
-void GenerateScaffoldGraphStats(char *label, int iteration){
+void GenerateScaffoldGraphStats(const char *label, int iteration){
 
   char buffer[2048];
   FILE *fout;
@@ -551,7 +551,7 @@ void GenerateScaffoldGraphStats(char *label, int iteration){
    overlap confirmed (non tandem)
    not confirmed (no overlap)
 */
-void GenerateLinkStats(GraphCGW_T *graph, char *label, int iteration){
+void GenerateLinkStats(GraphCGW_T *graph, const char *label, int iteration){
   int i;
   char buffer[2048];
   FILE *mates_per_link;
@@ -656,7 +656,7 @@ int32 ApproximateUnitigCoverage(NodeCGW_T *unitig){
 }
 
 
-void GenerateSurrogateStats(char *phase){
+void GenerateSurrogateStats(const char *phase){
   FILE *surrogPer, *surrogSize, *surrogFrags, *surrogRatio;
   FILE *surrogCreated;
   char buffer[1024];

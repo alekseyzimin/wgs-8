@@ -27,7 +27,7 @@ static const char *rcsid = "$Id: AS_UTL_fasta.C 4371 2013-08-01 17:19:47Z brianw
 #include <stdarg.h>
 
 int 
-AS_UTL_isValidSequence(char *s, int sl) {
+AS_UTL_isValidSequence(const char *s, int sl) {
   AS_UTL_initValidSequence();
   int p = 0;
    
@@ -72,8 +72,8 @@ AS_UTL_writeFastA(FILE *f,
 
 void
 AS_UTL_writeQVFastA(FILE *f,
-                    char *q, int ql, int bl,
-                    char *h, ...) {
+                    const char *q, int ql, int bl,
+                    const char *h, ...) {
   va_list ap;
   char   *o  = (char *)safe_malloc(sizeof(char) * (3*ql + 3*ql / 60 + 2));
   int     qi = 0;
@@ -113,9 +113,9 @@ AS_UTL_writeQVFastA(FILE *f,
 
 void
 AS_UTL_writeFastQ(FILE *f,
-                  char *s, int sl,
-                  char *q, int ql,
-                  char *h, ...) {
+                  const char *s, int sl,
+                  const char *q, int ql,
+                  const char *h, ...) {
   va_list ap;
   char   *o  = (char *)safe_malloc(sizeof(char) * (ql + 1));
   int     qi = 0;

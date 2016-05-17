@@ -618,7 +618,7 @@ sortAndOutput(char   *outfilename,
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   uint32            merSize          = 0;
   char             *fragStore        = 0L;
   char             *outputFile       = 0L;

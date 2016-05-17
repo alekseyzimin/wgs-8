@@ -130,7 +130,7 @@ main (int argc, char * argv []) {
   bool      joinUnitigs             = false;
   int       badMateBreakThreshold   = -7;
 
-  argc = AS_configure(argc, argv);
+  argc = AS_configure(argc, (const char**)argv);
 
   int err = 0;
   int arg = 1;

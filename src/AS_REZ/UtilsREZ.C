@@ -31,7 +31,7 @@
 
 **********************************************************************/
 
-static char *rcsid = "$Id: UtilsREZ.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: UtilsREZ.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include <stdio.h>
 #include <stdlib.h>

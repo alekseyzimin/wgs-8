@@ -656,7 +656,7 @@ void setUpRestrictions(int last_stored_frag,char *listfile,int *usabilityArray){
 }
 
 
-void usage(char *pgm){
+void usage(const char *pgm){
   fprintf (stderr,
            "USAGE:  %s -g <GkpStoreName> -o <full_ovlStore> -n <startingFrgNum> [-C] [-e <erate cutoff>] [-E] [-m <minlen>] [-Q] [-D] [-N <maxovls>] [-i <file specifying IIDs to use> | -I <file specifying IIDs to use>] [-R] [-s <uid2sample file> [-S <same-sample bonus> | -T <same-sample-as-seed bonus>]] [-P] [-5 | -3]\n"
            "\t-n startingFrgNum = fragment to walk out from\n"
@@ -729,8 +729,8 @@ int ovlThickness(OVSoverlap o, int frglen, int afrg, int Aend){
 
 
 
-int main (int argc , char * argv[] ) {
-  char *prefix;
+int main (int argc , const char * argv[] ) {
+  const char *prefix;
   int ckptNum = NULLINDEX;
   int i, index;
   char subset_map[1000];
@@ -779,7 +779,7 @@ int main (int argc , char * argv[] ) {
   { /* Parse the argument list using "man 3 getopt". */
     int ch,errflg=0;
     optarg = NULL;
-    while (!errflg && ((ch = getopt(argc, argv,"BCDe:Ef:g:m:n:N:o:PQs:S:T:i:I:R53")) != EOF)){
+    while (!errflg && ((ch = getopt(argc, (char*const*)argv,"BCDe:Ef:g:m:n:N:o:PQs:S:T:i:I:R53")) != EOF)){
       switch(ch) {
         case 'B':
           bestType=BEST_MEANS_BEST_UPPER_BOUND;

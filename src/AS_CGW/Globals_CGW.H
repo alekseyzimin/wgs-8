@@ -34,7 +34,7 @@ public:
   ~Globals_CGW();
 
   //  Returns last ckp number for this runCA directory.
-  int    setPrefix(char *runCAroot);
+  int    setPrefix(const char *runCAroot);
 
   int    verbose;
   int    debugLevel;

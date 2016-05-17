@@ -521,7 +521,7 @@ VA_DEF(IntUnitigMesg)  //  Used by unitigger.
 //  Returns a number in the range [1, NUM_OF_REC_TYPES -1]
 //  as a function of the first 3 characters of the passed string.
 //
-int GetMessageType(char *string);
+int GetMessageType(const char *string);
 
 //   Returns a string as a function of message type
 //

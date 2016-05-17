@@ -291,7 +291,7 @@ void updateICMRecord(IntConConMesg *icm_mesg, char * inFile, char *seqAn, char *
 }
 
 int32
-main(int32 argc, char **argv) {
+main(int32 argc, const char** argv) {
    int32 arg = 1;
    int32 err = 0;
    int32 hlp = 0;

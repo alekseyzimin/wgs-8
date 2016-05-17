@@ -307,7 +307,7 @@ void processScaffold(AS_UID lastuid,
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char **argv) {
   uint32           i = 0;
 
   AS_UID           uidjunk = AS_UID_undefined();
@@ -383,22 +383,21 @@ main(int argc, char **argv) {
 
 
 
-  uint32     inlen = 0;
-  uint32     inmax = 4194304;  //  4 million fragments per scaffold should be enough (but we'll realloc later if not)
-  intDep    *in    = (intDep *)safe_malloc(sizeof(intDep) * inmax);
-
+  uint32  inlen         = 0;
+  uint32  inmax         = 4194304; //  4 million fragments per scaffold should be enough (but we'll realloc later if not)
+  intDep *in            = (intDep *)safe_malloc(sizeof(intDep) * inmax);
   char       line[1024] = {0};
-  char      *cont       = NULL;
+  const char   *cont          = NULL;
 
   if (mode == MODE_SCAFFOLD)
     fprintf(stdout, "uid\tstart\tend\tmode\tmean\tmedian\n");
 
   while (fgets(line, 1024, stdin) != NULL) {
 
-    uidjunk = AS_UID_lookup(line, &cont);
-    uid     = AS_UID_lookup(cont, &cont);
-    beg     = strtol(cont, &cont, 10);
-    end     = strtol(cont, &cont, 10);
+    uidjunk = AS_UID_lookup(line, cont);
+    uid     = AS_UID_lookup(cont, cont);
+    beg     = strtol(cont, (char**)&cont, 10);
+    end     = strtol(cont, (char**)&cont, 10);
 
     if (AS_UID_compare(lastuid, AS_UID_undefined()) == 0)
       lastuid = uid;

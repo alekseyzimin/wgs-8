@@ -19,7 +19,7 @@ static integer c__1 = 1;
 static doublereal c_b10 = -1.;
 static doublereal c_b12 = 1.;
 
-/* Subroutine */ int dpotf2_(char *uplo, integer *n, doublereal *a, integer *
+/* Subroutine */ int dpotf2_(const char *uplo, integer *n, doublereal *a, integer *
 	lda, integer *info)
 {
     /* System generated locals */
@@ -36,13 +36,13 @@ static doublereal c_b12 = 1.;
 	    integer *);
     extern /* Subroutine */ int dscal_(integer *, doublereal *, doublereal *, 
 	    integer *);
-    extern logical lsame_(char *, char *);
-    extern /* Subroutine */ int dgemv_(char *, integer *, integer *, 
+    extern logical lsame_(const char *, const char *);
+    extern /* Subroutine */ int dgemv_(const char *, integer *, integer *, 
 	    doublereal *, doublereal *, integer *, doublereal *, integer *, 
 	    doublereal *, doublereal *, integer *);
     logical upper;
     extern logical disnan_(doublereal *);
-    extern /* Subroutine */ int xerbla_(char *, integer *);
+    extern /* Subroutine */ int xerbla_(const char *, integer *);
 
 
 /*  -- LAPACK routine (version 3.2) -- */

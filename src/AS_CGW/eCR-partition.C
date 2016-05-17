@@ -25,11 +25,11 @@ const char *mainid = "$Id: eCR-partition.C 4371 2013-08-01 17:19:47Z brianwalenz
 
 
 int
-main(int argc, char **argv) {
-  int   ckptNum            = -1;
-  int   numPartRequested   = 0;
-  char *partInfoName       = NULL;
-  FILE *partInfoFile       = NULL;
+main(int argc, const char** argv) {
+  int         ckptNum          = -1;
+  int         numPartRequested = 0;
+  const char *partInfoName     = NULL;
+  FILE       *partInfoFile     = NULL;
 
   argc = AS_configure(argc, argv);
 

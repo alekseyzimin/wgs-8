@@ -1881,7 +1881,7 @@ CNS_PrintAlign(char   *aO,
 
 
 void
-PrintALNoverlap(char *message,
+PrintALNoverlap(const char *message,
                 char *aseq,
                 char *bseq,
                 ALNoverlap *align) {

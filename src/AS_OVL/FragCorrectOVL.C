@@ -216,7 +216,7 @@ typedef  struct
 
 //  Static Globals
 
-static char  * Correction_Filename = DEFAULT_CORRECTION_FILENAME;
+static const char  * Correction_Filename = DEFAULT_CORRECTION_FILENAME;
     // Name of file to which correction information is sent
 static int  Degree_Threshold = DEFAULT_DEGREE_THRESHOLD;
     // Set keep flag on end of fragment if number of olaps < this value
@@ -251,7 +251,7 @@ static gkStore  *gkpStore = NULL;
     // Fragment store from which fragments are loaded
 static gkStream  *Frag_Stream = NULL;
     // Stream to extract fragments from internal store
-static char  * gkpStore_Path = NULL;
+static const char  * gkpStore_Path = NULL;
     // Name of directory containing fragment store from which to get fragments
 static gkStore  *Internal_gkpStore = NULL;
     // Holds partial frag store to be processed simultanously by
@@ -275,7 +275,7 @@ static Olap_Info_t  * Olap = NULL;
 static int  Olaps_From_Store = FALSE;
     // Indicates if overlap info comes from  get-olaps  or from
     // a binary overlap store
-static char  * Olap_Path = NULL;
+static const char  * Olap_Path = NULL;
     // Name of file containing a sorted list of overlaps
 static pthread_mutex_t  Print_Mutex;
     // To make debugging printout come out together
@@ -312,7 +312,7 @@ static void  Extract_Needed_Frags
 static char  Filter
     (char ch);
 static void  Get_Olaps_From_Store
-    (char * path, AS_IID lo_id, AS_IID hi_id, Olap_Info_t * * olap, uint64 * num);
+    (const char * path, AS_IID lo_id, AS_IID hi_id, Olap_Info_t * * olap, uint64 * num);
 static void  Init_Frag_List
     (Frag_List_t * list);
 static void  Initialize_Globals
@@ -328,7 +328,7 @@ static int  OVL_Min_int
 static void  Output_Corrections
     (FILE * fp);
 static void  Parse_Command_Line
-    (int argc, char * argv []);
+    (int argc, const char * argv []);
 static void  Process_Olap
     (Olap_Info_t * olap, char * b_seq, char * rev_seq, int * rev_id,
      int shredded, Thread_Work_Area_t * wa);
@@ -354,7 +354,7 @@ int  main
   {
    FILE  * fp;
 
-   Parse_Command_Line  (argc, argv);
+   Parse_Command_Line  (argc, (const char**)argv);
 
    Now = time (NULL);
    fprintf (stderr, "### Starting at  %s", ctime (& Now));
@@ -1123,7 +1123,7 @@ static char  Filter
 
 
 static void  Get_Olaps_From_Store
-    (char * path, AS_IID lo_id, AS_IID hi_id, Olap_Info_t * * olap, uint64 * num)
+    (const char * path, AS_IID lo_id, AS_IID hi_id, Olap_Info_t * * olap, uint64 * num)
 
 //  Open overlap store  path  and read from it the overlaps for fragments
 //   lo_id .. hi_id , putting them in  (* olap)  for which space
@@ -1492,7 +1492,7 @@ static void  Output_Corrections
 
 static
 void
-Parse_Command_Line(int argc, char **argv) {
+Parse_Command_Line(int argc, const char** argv) {
 
   argc = AS_configure(argc, argv);
 

@@ -82,7 +82,7 @@ public:
     return(AS_UID_undefined());
   };
 
-  void   dump(char *label, FILE *F) {
+  void   dump(const char *label, FILE *F) {
     for(int32 i=0; i<=len; i++) {
       if (AS_UID_isDefined(map[i]))
         fprintf(F,"%s\t%d\t%s\n", label, i, AS_UID_toString(map[i]));
@@ -984,14 +984,13 @@ writeSLK(FILE *asmFile, bool doWrite) {
 
 
 
-int main (int argc, char *argv[]) {
+int main (int argc, const char *argv[]) {
   FILE       *asmFile                  = NULL;
-  char       *outputPrefix             = NULL;
+  const char *outputPrefix             = NULL;
   char        outputName[FILENAME_MAX] = {0};
   int32       checkpointVers           = 0;
   int32       tigStoreVers             = 0;
   uint64      uidStart                 = 0;
-
   int32       outputScaffolds          = FALSE;
 
   GlobalData = new Globals_CGW();

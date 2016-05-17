@@ -46,7 +46,7 @@ int GRANULARITY=10;
 
 #define LBUFLEN 512
 
-void usage(char *pgm)
+void usage(const char *pgm)
 {
 	fprintf( stderr,
 		 "usage: %s -q <query.fasta> [-d <db.fasta>] -k <kmer size> [-f] [-g <skip>] [-m minlen] [-t]\n"
@@ -386,13 +386,13 @@ int hit_compare(const void *a, const void *b){
 
 
 
-int main(int argc, char *argv[])
+int main(int argc, const char *argv[])
 { int    K=-1,KB=-1;
   char **Seqs;
   char **Names;
   char **SeqsB;
   char **NamesB;
-  char *seqfilename=NULL,*dbfilename=NULL;
+  const char *seqfilename=NULL,*dbfilename=NULL;
   int internalCompare=0; /* whether query and database sequences are the same */
   int *Profiles;
   int *ProfilesB=NULL;
@@ -412,7 +412,7 @@ int main(int argc, char *argv[])
   { /* Parse the argument list using "man 3 getopt". */
     int ch,errflg=0;
     optarg = NULL;
-    while (!errflg && ((ch = getopt(argc, argv, "fFg:hk:q:d:m:t")) != EOF))
+    while (!errflg && ((ch = getopt(argc, (char*const*)argv, "fFg:hk:q:d:m:t")) != EOF))
       {
 	switch(ch) {
 	case 'f':

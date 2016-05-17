@@ -278,7 +278,7 @@ void as_graph_traversal(FILE *fout,
 			size_t fragment_visited[]);
 
 //  AS_CGB_fgb.c
-void view_fgb_chkpnt(char *Store_Path_Prefix,
+void view_fgb_chkpnt(const char *Store_Path_Prefix,
                      Tfragment frags[],
                      Tedge edges[]);
 
@@ -290,7 +290,7 @@ void reorder_edges(Tfragment *frags,
 //  AS_CGB_count_fragment_and_edge_labels.c
 void count_fragment_and_edge_labels(Tfragment frags[],
                                     Tedge     edges[],
-                                    char      comment[]);
+                                    const char  comment[]);
 
 
 ////////////////////////////////////////

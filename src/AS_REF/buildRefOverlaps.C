@@ -179,7 +179,7 @@ loadFragments(void) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   char    *mappingFileName   = 0L;
   char    *gkpStoreName      = 0L;
 

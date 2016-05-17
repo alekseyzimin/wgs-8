@@ -445,7 +445,7 @@ fixUnitig(IntUnitigMesg *iunitig, OverlapStore *ovs) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   OverlapStore  *ovs        = NULL;
 
   argc = AS_configure(argc, argv);

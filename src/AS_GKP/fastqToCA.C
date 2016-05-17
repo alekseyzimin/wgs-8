@@ -37,7 +37,7 @@ using namespace std;
 
 
 void
-addFeature(LibraryMesg *libMesg, char *feature, char *value) {
+addFeature(LibraryMesg *libMesg, const char *feature, const char *value) {
   int32 nf = libMesg->num_features;
 
   libMesg->features[nf] = (char *)safe_malloc(sizeof(char) * (strlen(feature) + 1));
@@ -106,35 +106,34 @@ checkFiles(char **names, int32 namesLen) {
 
 
 int
-main(int argc, char **argv) {
-  int             insertSize         = 0;
-  int             insertStdDev       = 0;
-  bool            constantInsertSize = false;
+main(int argc, char** argv) {
+  int  insertSize         = 0;
+  int  insertStdDev       = 0;
+  bool constantInsertSize = false;
 
-  char           *libraryName        = 0L;
+  const char *libraryName = NULL;
 
-  bool            isMated            = false;
+  bool isMated = false;
 
-  char           *type               = "sanger";
+  const char *type         = "sanger";
+  const char *technology   = "illumina";
+  const char *orientInnie  = "innie";
+  const char *orientOuttie = "outtie";
+  const char *orient       = orientInnie;
 
-  char           *technology         = "illumina";
-  char           *orientInnie        = "innie";
-  char           *orientOuttie       = "outtie";
-  char           *orient             = orientInnie;
 
+  char **reads    = new char * [argc];
+  int32        readsLen = 0;
 
-  char          **reads              = new char * [argc];
-  int32           readsLen           = 0;
+  char **mates    = new char * [argc];
+  int32        matesLen = 0;
 
-  char          **mates              = new char * [argc];
-  int32           matesLen           = 0;
+  bool isNonRandom = false;
 
-  bool            isNonRandom        = false;
+  vector<const char *> featureKeys;
+  vector<const char *> featureVals;
 
-  vector<char *>  featureKeys;
-  vector<char *>  featureVals;
-
-  argc = AS_configure(argc, argv);
+  argc = AS_configure(argc, (const char**)argv);
 
   int arg = 1;
   int err = 0;

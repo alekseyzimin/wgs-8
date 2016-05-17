@@ -28,12 +28,12 @@
 
 using namespace std;
 
-void  AS_UTL_decodeRange(char *range, set<uint64> &ranges);
-void  AS_UTL_decodeRange(char *range, set<uint32> &ranges);
+void  AS_UTL_decodeRange(const char *range, set<uint64> &ranges);
+void  AS_UTL_decodeRange(const char *range, set<uint32> &ranges);
 
-void  AS_UTL_decodeRange(char *range, uint64 &lo, uint64 &hi);
-void  AS_UTL_decodeRange(char *range,  int64 &lo,  int64 &hi);
-void  AS_UTL_decodeRange(char *range, uint32 &lo, uint32 &hi);
-void  AS_UTL_decodeRange(char *range,  int32 &lo,  int32 &hi);
+void  AS_UTL_decodeRange(const char *range, uint64 &lo, uint64 &hi);
+void  AS_UTL_decodeRange(const char *range,  int64 &lo,  int64 &hi);
+void  AS_UTL_decodeRange(const char *range, uint32 &lo, uint32 &hi);
+void  AS_UTL_decodeRange(const char *range,  int32 &lo,  int32 &hi);
 
 #endif  //  AS_UTL_DECODERANGE_H

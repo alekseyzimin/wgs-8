@@ -288,17 +288,17 @@ public:
 
   //  Command line parameters
   //
-  char         *gkpPath;
-  char         *fqInputPath;
-  char         *fqOutputPath;
+  const char         *gkpPath;
+  const char         *fqInputPath;
+  const char         *fqOutputPath;
 
-  char         *fqVerifyPath;
+  const char         *fqVerifyPath;
 
   uint32        merSize;
 
-  char         *merCountsFile;
-  bool          merCountsCache;
-  char         *adapCountsFile;
+  const char *merCountsFile;
+  bool        merCountsCache;
+  const char *adapCountsFile;
 
   bool          adapIllumina;
   bool          adap454;
@@ -311,8 +311,8 @@ public:
   bool          correctMismatch;
   bool          correctIndel;
 
-  char         *resPath;
-  FILE         *resFile;
+  const char *resPath;
+  FILE       *resFile;
 
   bool          endTrimDefault;
   uint32        endTrimNum;
@@ -662,7 +662,7 @@ public:
   uint32     getClrEnd(void) { return(seqMap[clrEnd]); };
   uint32     getSeqLen(void) { return(seqMap[seqLen]); };
 
-  void       dump(char *label);
+  void       dump(const char *label);
 
   //  Public for the writer.
   gkFragment           fr;
@@ -1747,7 +1747,7 @@ mertrimComputation::attemptTrimming(bool doTrimming, char endTrimQV) {
 
 
 void
-mertrimComputation::dump(char *label) {
+mertrimComputation::dump(const char *label) {
   char    *logLine = new char [4 * seqLen];
   uint32   logPos = 0;
   uint32   bogus  = (clrEnd == 0) ? 0 : UINT32_MAX;
@@ -2210,7 +2210,7 @@ mertrimWriter(void *G, void *S) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   mertrimGlobalData  *g        = new mertrimGlobalData;
 
   argc = AS_configure(argc, argv);

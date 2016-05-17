@@ -31,7 +31,7 @@ const char *mainid = "$Id: ExtractMessages.C 4371 2013-08-01 17:19:47Z brianwale
 #include "AS_UTL_fileIO.H"
 
 void
-usage(char *name) {
+usage(const char *name) {
   fprintf(stderr, "usage: %s [-x] [-i] [-m message type] [-o outputfile] < <input file>\n", name);
   fprintf(stderr, "       -i      include the following messages in the next output\n");
   fprintf(stderr, "       -x      exclude the following messages from the next output\n");
@@ -53,7 +53,7 @@ usage(char *name) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   int            msglist[NUM_OF_REC_TYPES + 1];
   FILE          *outfile[NUM_OF_REC_TYPES + 1];
   off_t          count[NUM_OF_REC_TYPES + 1];

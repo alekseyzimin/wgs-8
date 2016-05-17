@@ -36,7 +36,7 @@ class mpaLibrary;
 
 class matePairAnalysis {
 public:
-  matePairAnalysis(char *gkpStore);
+  matePairAnalysis(const char *gkpStore);
   ~matePairAnalysis();
 
   void         evaluateTig(MultiAlignT *ma);
@@ -44,8 +44,8 @@ public:
   void         finalize(void);
 
   void         printSummary(FILE *out);
-  void         writeUpdate(char *prefix);
-  void         drawPlots(char *prefix);
+  void         writeUpdate(const char *prefix);
+  void         drawPlots(const char *prefix);
 
   double       mean(uint32 libid);
   double       stddev(uint32 libid);

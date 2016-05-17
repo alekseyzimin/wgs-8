@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: AS_FGB_main.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: AS_FGB_main.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include "AS_CGB_all.H"
 
@@ -58,13 +58,13 @@ input_messages_from_a_file(FILE       *fovl,
                            const uint32 overlap_error_threshold);
 
 void
-process_gkp_store_for_fragments(char *gkpStoreName,
+process_gkp_store_for_fragments(const char *gkpStoreName,
                                 Tfragment   *frags,
                                 Tedge       *edges);
 
 void
-process_ovl_store(char * OVL_Store_Path,
-                  Tfragment  frags[],
+process_ovl_store(const char *OVL_Store_Path,
+                  Tfragment   frags[],
                   Tedge      edges[],
                   IntFragment_ID *afr_to_avx,
                   VA_TYPE(IntEdge_ID)  *next_edge,

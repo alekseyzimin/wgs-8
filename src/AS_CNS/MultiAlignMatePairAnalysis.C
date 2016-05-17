@@ -88,7 +88,7 @@ public:
 
 
 
-matePairAnalysis::matePairAnalysis(char *gkpName) {
+matePairAnalysis::matePairAnalysis(const char *gkpName) {
 
   gkpStore = new gkStore(gkpName, FALSE, FALSE);
   libdata  = new mpaLibrary [gkpStore->gkStore_getNumLibraries() + 1];
@@ -374,15 +374,15 @@ mpaLibraryData::writeUpdate(FILE *output, int32 libOrient, gkLibrary *library) {
 
 
 void
-matePairAnalysis::writeUpdate(char *prefix) {
+matePairAnalysis::writeUpdate(const char *prefix) {
   char   datName[FILENAME_MAX];
 
   fprintf(stderr, "\n\n");
+  int copy = strlen(prefix);
+  if (prefix[copy] == '/')
+    --copy;
 
-  if (prefix[strlen(prefix)-1] == '/')
-    prefix[strlen(prefix)-1] = 0;
-
-  sprintf(datName, "%s.distupdate", prefix);
+  sprintf(datName, "%.*s.distupdate", copy, prefix);
   errno = 0;
   FILE *F = fopen(datName, "w");
   if (errno)
@@ -400,13 +400,14 @@ matePairAnalysis::writeUpdate(char *prefix) {
 }
 
 void
-matePairAnalysis::drawPlots(char *prefix) {
+matePairAnalysis::drawPlots(const char *prefix) {
   char   datName[FILENAME_MAX];
 
-  if (prefix[strlen(prefix)-1] == '/')
-    prefix[strlen(prefix)-1] = 0;
+  int copy = strlen(prefix);
+  if (prefix[copy] == '/')
+    --copy;
 
-  sprintf(datName, "%s.gp", prefix);
+  sprintf(datName, "%.*s.gp", copy, prefix);
   errno = 0;
   FILE *gp = fopen(datName, "w");
   if (errno)

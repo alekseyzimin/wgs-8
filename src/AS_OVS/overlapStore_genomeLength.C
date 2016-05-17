@@ -176,8 +176,8 @@ computeTruncatedMean(uint32  overlapLimit,
 
 
 void
-estimateGenomeLength(char    *ovlName,
-                     char    *gkpName,
+estimateGenomeLength(const char    *ovlName,
+                     const char    *gkpName,
                      uint32   overlapLimit,  //  K
                      uint32   bgnIID,
                      uint32   endIID,

@@ -85,7 +85,7 @@ AS_UID_toString(AS_UID uid) {
 //  AS_UID_load() to save it in the assembler.
 //
 AS_UID
-AS_UID_lookup(char *uidstr, char **nxtstr) {
+AS_UID_lookup(const char *uidstr, const char *&nxtstr) {
   AS_UID  uid = AS_UID_undefined();
 
   assert(uidstr != NULL);
@@ -153,11 +153,12 @@ AS_UID_lookup(char *uidstr, char **nxtstr) {
   }
 
   //  Now bump past the uid, almost like strtoull does.
-  if (nxtstr) {
+  //  if (nxtstr) {
     while (*uidstr && !isspace(*uidstr))  uidstr++;
     while (*uidstr &&  isspace(*uidstr))  uidstr++;
-    *nxtstr = uidstr;
-  }
+    nxtstr = uidstr;
+    //    *nxtstr = uidstr;
+    //  }
 
   return(uid);
 }
@@ -170,8 +171,8 @@ AS_UID_lookup(char *uidstr, char **nxtstr) {
 //  Use AS_UID_lookup() instead.
 //
 AS_UID
-AS_UID_load(char *uidstr) {
-  AS_UID  uid = AS_UID_lookup(uidstr, NULL);
+AS_UID_load(const char *uidstr) {
+  AS_UID  uid = AS_UID_lookup(uidstr);
 
   if ((uid.UID > 0) || (uid.isString == 1))
     return(uid);

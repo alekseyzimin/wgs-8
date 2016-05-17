@@ -41,7 +41,7 @@ const char *mainid = "$Id: overmerry.C 4523 2014-04-11 20:07:55Z brianwalenz $";
 
 
 
-//  Instead of using the internal overlap, which has enough extra stuff in it that we cannot store a
+//  Instead of using the intern<al overlap, which has enough extra stuff in it that we cannot store a
 //  sequence iid for the table sequence and have it be small, we make our own overlap structure.
 
 class kmerhit {
@@ -255,14 +255,14 @@ public:
 
   //  Command line parameters
   //
-  char    *gkpPath;
-  char    *merCountsFile;
-  uint32   merSize;
-  uint32   compression;
-  uint32   maxCountGlobal;
-  uint32   maxCountType;
-  uint32   numThreads;
-  bool     beVerbose;
+  const char *gkpPath;
+  const char *merCountsFile;
+  uint32      merSize;
+  uint32      compression;
+  uint32      maxCountGlobal;
+  uint32      maxCountType;
+  uint32      numThreads;
+  bool        beVerbose;
 
   //  for the READER only
   //
@@ -288,7 +288,7 @@ public:
 
   //  for the WRITER only.
   //
-  char              *outputName;
+  const char        *outputName;
   BinaryOverlapFile *outputFile;
 };
 
@@ -789,7 +789,7 @@ ovmWriter(void *G, void *S) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   ovmGlobalData  *g = new ovmGlobalData;
 
   //assert(sizeof(kmerhit) == 8);

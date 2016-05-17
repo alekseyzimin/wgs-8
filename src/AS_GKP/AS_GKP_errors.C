@@ -217,7 +217,7 @@ AS_GKP_reportError(int error, uint32 libIID, ...) {
 
 
 bool
-AS_GKP_summarizeErrors(char *gkpStoreName) {
+AS_GKP_summarizeErrors(const char *gkpStoreName) {
   gkStore      *gkp    = new gkStore(gkpStoreName, FALSE, FALSE, TRUE);
   gkStoreStats *stats  = new gkStoreStats(gkp);
 

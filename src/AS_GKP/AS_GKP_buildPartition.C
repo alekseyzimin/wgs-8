@@ -33,8 +33,8 @@ static char const *rcsid = "$Id: AS_GKP_buildPartition.C 4371 2013-08-01 17:19:4
 
 
 void
-Build_Partition(char      *gatekeeperName,
-                char      *partitionFile,
+Build_Partition(const char      *gatekeeperName,
+                const char      *partitionFile,
                 int32      flags) {
 
   gkStore *gkp       = new gkStore(gatekeeperName, FALSE, FALSE);

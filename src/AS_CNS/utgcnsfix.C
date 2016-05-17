@@ -29,24 +29,23 @@ const char *mainid = "$Id: utgcnsfix.C 4442 2013-10-04 14:33:50Z brianwalenz $";
 
 
 int
-main (int argc, char **argv) {
-  char  *gkpName = NULL;
-
-  char  *tigName = NULL;
-  int32  tigVers = 0;
-  int32  tigPart = 0;
+main (int argc, const char** argv) {
+  const char *gkpName = NULL;
+  const char *tigName = NULL;
+  int32       tigVers = 0;
+  int32       tigPart = 0;
 
   AS_IID bgnID = 0;
   AS_IID onlID = UINT32_MAX;
   AS_IID endID = UINT32_MAX;
 
-  bool   showResult = false;
-  bool   doUpdate   = true;
-  bool   doNothing  = false;
-  bool   doCache    = false;
+  bool showResult = false;
+  bool doUpdate   = true;
+  bool doNothing  = false;
+  bool doCache    = false;
 
-  char  *outputName = NULL;
-  FILE  *outputFile = NULL;
+  const char *outputName = NULL;
+  FILE       *outputFile = NULL;
 
   CNS_Options options = { CNS_OPTIONS_SPLIT_ALLELES_DEFAULT,
                           CNS_OPTIONS_MIN_ANCHOR_DEFAULT,

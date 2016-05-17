@@ -25,12 +25,12 @@ static const char *rcsid = "$Id: AS_UTL_decodeRange.C 4445 2013-10-11 17:23:01Z 
 
 
 void
-AS_UTL_decodeRange(char *range, set<uint64> &ranges) {
-  char    *ap = range;
+AS_UTL_decodeRange(const char *range, set<uint64> &ranges) {
+  const char    *ap = range;
   uint32   av = 0,      bv = 0;
 
   while (*ap != 0) {
-    av = strtoull(ap, &ap, 10);
+    av = strtoull(ap, (char**)&ap, 10);
 
     if (*ap == ',') {
       ap++;
@@ -41,7 +41,7 @@ AS_UTL_decodeRange(char *range, set<uint64> &ranges) {
 
     } else if (*ap == '-') {
       ap++;
-      bv = strtoull(ap, &ap, 10);
+      bv = strtoull(ap, (char**)&ap, 10);
 
       for (uint32 xx=av; xx<=bv; xx++)
         ranges.insert(xx);
@@ -58,12 +58,12 @@ AS_UTL_decodeRange(char *range, set<uint64> &ranges) {
 
 
 void
-AS_UTL_decodeRange(char *range, set<uint32> &ranges) {
-  char    *ap = range;
+AS_UTL_decodeRange(const char *range, set<uint32> &ranges) {
+  const char    *ap = range;
   uint32   av = 0,      bv = 0;
 
   while (*ap != 0) {
-    av = strtoul(ap, &ap, 10);
+    av = strtoul(ap, (char**)&ap, 10);
 
     if (*ap == ',') {
       ap++;
@@ -74,7 +74,7 @@ AS_UTL_decodeRange(char *range, set<uint32> &ranges) {
 
     } else if (*ap == '-') {
       ap++;
-      bv = strtoull(ap, &ap, 10);
+      bv = strtoull(ap, (char**)&ap, 10);
 
       for (uint32 xx=av; xx<=bv; xx++)
         ranges.insert(xx);
@@ -91,14 +91,14 @@ AS_UTL_decodeRange(char *range, set<uint32> &ranges) {
 
 
 void
-AS_UTL_decodeRange(char *range, uint64 &lo, uint64 &hi) {
-  char    *ap = range;
+AS_UTL_decodeRange(const char *range, uint64 &lo, uint64 &hi) {
+  const char    *ap = range;
 
-  lo = hi = strtoull(ap, &ap, 10);
+  lo = hi = strtoull(ap, (char**)&ap, 10);
 
   if (*ap == '-') {
     ap++;
-    hi = strtoull(ap, &ap, 10);
+    hi = strtoull(ap, (char**)&ap, 10);
 
   } else if (*ap != 0) {
     fprintf(stderr, "ERROR: invalid range '%s'\n", range);
@@ -108,14 +108,14 @@ AS_UTL_decodeRange(char *range, uint64 &lo, uint64 &hi) {
 
 
 void
-AS_UTL_decodeRange(char *range, int64 &lo, int64 &hi) {
-  char    *ap = range;
+AS_UTL_decodeRange(const char *range, int64 &lo, int64 &hi) {
+  const char    *ap = range;
 
-  lo = hi = strtoll(ap, &ap, 10);
+  lo = hi = strtoll(ap, (char**)&ap, 10);
 
   if (*ap == '-') {
     ap++;
-    hi = strtoll(ap, &ap, 10);
+    hi = strtoll(ap, (char**)&ap, 10);
 
   } else if (*ap != 0) {
     fprintf(stderr, "ERROR: invalid range '%s'\n", range);
@@ -125,14 +125,14 @@ AS_UTL_decodeRange(char *range, int64 &lo, int64 &hi) {
 
 
 void
-AS_UTL_decodeRange(char *range, uint32 &lo, uint32 &hi) {
-  char    *ap = range;
+AS_UTL_decodeRange(const char *range, uint32 &lo, uint32 &hi) {
+  const char    *ap = range;
 
-  lo = hi = strtoul(ap, &ap, 10);
+  lo = hi = strtoul(ap, (char**)&ap, 10);
 
   if (*ap == '-') {
     ap++;
-    hi = strtoul(ap, &ap, 10);
+    hi = strtoul(ap, (char**)&ap, 10);
 
   } else if (*ap != 0) {
     fprintf(stderr, "ERROR: invalid range '%s'\n", range);
@@ -142,14 +142,14 @@ AS_UTL_decodeRange(char *range, uint32 &lo, uint32 &hi) {
 
 
 void
-AS_UTL_decodeRange(char *range, int32 &lo, int32 &hi) {
-  char    *ap = range;
+AS_UTL_decodeRange(const char *range, int32 &lo, int32 &hi) {
+  const char    *ap = range;
 
-  lo = hi = strtol(ap, &ap, 10);
+  lo = hi = strtol(ap, (char**)&ap, 10);
 
   if (*ap == '-') {
     ap++;
-    hi = strtol(ap, &ap, 10);
+    hi = strtol(ap, (char**)&ap, 10);
 
   } else if (*ap != 0) {
     fprintf(stderr, "ERROR: invalid range '%s'\n", range);

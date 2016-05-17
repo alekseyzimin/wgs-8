@@ -24,7 +24,7 @@
 
 static const char *rcsid_INPUT_CGW_H = "$Id: Input_CGW.H 4429 2013-09-24 22:07:01Z brianwalenz $";
 
-void ProcessInput(int optind, int argc, char *argv[]);
+void ProcessInput(int optind, int argc, const char *argv[]);
 
 void ReloadMatesFromGatekeeper(void);
 

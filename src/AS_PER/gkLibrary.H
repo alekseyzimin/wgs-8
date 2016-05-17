@@ -102,7 +102,7 @@ public:
     orientation                = 0;
   };
 
-  void gkLibrary_setFeature(char *fea, char *val);
+  void gkLibrary_setFeature(const char *fea, const char *val);
 
 private:
 public:

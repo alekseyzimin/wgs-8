@@ -312,7 +312,7 @@ bool AS_ARD_database::addVAR2DB(AS_UID ccoID, IntMultiVar * var) {
    for (i = 0; i < var->num_reads; i++) {
       std::size_t end = readIIDs.find("/", pos) - pos;
 
-      result = result & addVARAFG2DB(varID, AS_IID_fromString((char *)readIIDs.substr(pos, end).c_str(), NULL));
+      result = result & addVARAFG2DB(varID, AS_IID_fromString((char *)readIIDs.substr(pos, end).c_str()));
       pos += end + 1;
    }
 #endif

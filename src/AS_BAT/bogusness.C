@@ -39,14 +39,14 @@ const char *mainid = "$Id: bogusness.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 #define IDEAL_UNIQWEAK    3  //  A portion of this unique unitig might be unjoinable
 #define IDEAL_MIXED       4  //  Used for classifying bubbles
 
-char *types[4] = { "REPT", "UNIQ", "SEPR", "WEAK" };
+const char *types[4] = { "REPT", "UNIQ", "SEPR", "WEAK" };
 
 #define STATUS_BEGINSin   0
 #define STATUS_ENDSin     1
 #define STATUS_CONTAINS   2
 #define STATUS_CONTAINED  3
 
-char *statuses[4] = { "BEGINSin", "ENDSin", "CONTAINS", "CONTAINED" };
+const char *statuses[4] = { "BEGINSin", "ENDSin", "CONTAINS", "CONTAINED" };
 
 
 

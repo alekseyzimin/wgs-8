@@ -33,9 +33,9 @@ const char *mainid = "$Id: estimate-mer-threshold.C 4523 2014-04-11 20:07:55Z br
 
 
 int
-main(int argc, char **argv) {
-  char              *gkpPath = 0L;
-  char              *merCountsFile = 0L;
+main(int argc, const char** argv) {
+  const char              *gkpPath = NULL;
+  const char              *merCountsFile = NULL;
 
   merylStreamReader *MF  = 0L;
 

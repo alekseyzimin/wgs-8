@@ -90,7 +90,7 @@ main (int argc, char * argv []) {
 
     strcpy(thread_globals.prefix, "asm");
 
-    argc = AS_configure(argc, argv);
+    argc = AS_configure(argc, (const char**)argv);
 
     int err = 0;
     int arg = 1;

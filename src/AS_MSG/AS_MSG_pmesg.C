@@ -18,7 +18,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
-static char *rcsid= "$Id: AS_MSG_pmesg.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid= "$Id: AS_MSG_pmesg.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include "AS_MSG_pmesg_internal.H"
 
@@ -207,7 +207,7 @@ GetString(const char * const tag, FILE *fin) {
 
 
 char
-GetType(char *format, char *name, FILE *fin) {
+GetType(const char *format, const char *name, FILE *fin) {
   char value[2];
   ReadLine(fin, TRUE);
   if (sscanf(AS_MSG_globals->curLine, format, value) != 1) {
@@ -229,13 +229,13 @@ GetEOM(FILE *fin) {
 
 
 AS_UID
-GetUID(char *tag, FILE *fin) {
+GetUID(const char *tag, FILE *fin) {
   return(AS_UID_load(GetString(tag, fin)));
 }
 
 
 AS_UID
-GetUIDIID(char *tag, AS_IID *iid, FILE *fin) {
+GetUIDIID(const char *tag, AS_IID *iid, FILE *fin) {
   char   *uidstr = GetString(tag, fin) + 1;
   char   *iidstr = uidstr;
 
@@ -342,7 +342,7 @@ AS_MSG_setFormatVersion(int format) {
 
 
 int
-GetMessageType(char *string){
+GetMessageType(const char *string){
   int t;
   AS_MSG_globalsInitialize();
   for(t = 1; t < NUM_OF_REC_TYPES;t++){

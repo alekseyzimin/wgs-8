@@ -119,25 +119,25 @@ typedef void* PtrT;
 // Integers
 #define F_S16    "%" PRId16
 #define F_S16P      PRId16
-#define F_S16I  "%*"PRId16
+#define F_S16I  "%*" PRId16
 #define F_U16    "%" PRIu16
 #define F_U16P      PRIu16
-#define F_U16I  "%*"PRIu16
+#define F_U16I  "%*" PRIu16
 #define F_S32    "%" PRId32
 #define F_S32P      PRId32
-#define F_S32I  "%*"PRId32
+#define F_S32I  "%*" PRId32
 #define F_U32    "%" PRIu32
 #define F_U32P      PRIu32
-#define F_U32I  "%*"PRIu32
+#define F_U32I  "%*" PRIu32
 #define F_S64    "%" PRId64
 #define F_S64P      PRId64
-#define F_S64I  "%*"PRId64
+#define F_S64I  "%*" PRId64
 #define F_U64    "%" PRIu64
 #define F_U64P      PRIu64
-#define F_U64I  "%*"PRIu64
+#define F_U64I  "%*" PRIu64
 #define F_X64    "%" PRIx64
 #define F_X64P      PRIx64
-#define F_X64I  "%*"PRIx64
+#define F_X64I  "%*" PRIx64
 
 // Floating points
 #define F_F32         "%f"
@@ -237,7 +237,7 @@ extern uint32 AS_READ_MIN_LEN;
 extern uint32 AS_OVERLAP_MIN_LEN;
 
 
-int AS_configure(int argc, char **argv);
+int AS_configure(int argc, const char **argv);
 
 
 

@@ -96,7 +96,7 @@ public:
 
 class bits {
 public:
-  bits(uint64 num, char *label) {
+  bits(uint64 num, const char *label) {
     nm = num / 32 + 1;
     ba = new uint32 [nm];
     memset(ba, 0, sizeof(uint32) * nm);
@@ -280,15 +280,15 @@ public:
 
 class cmGlobalData {
 public:
-  cmGlobalData(char    *resultName_,
-               uint32   distMin_,
-               uint32   distMax_,
-               bool     innie_,
-               uint32   nodesMax_,
-               uint32   depthMax_,
-               uint32   pathsMax_,
-               uint64   memoryLimit_,
-               bool     doSearchSuspicious_);
+  cmGlobalData(const char *resultName_,
+               uint32      distMin_,
+               uint32      distMax_,
+               bool        innie_,
+               uint32      nodesMax_,
+               uint32      depthMax_,
+               uint32      pathsMax_,
+               uint64      memoryLimit_,
+               bool        doSearchSuspicious_);
   ~cmGlobalData();
 
   bool   load(set<AS_IID>  &searchLibs,
@@ -305,7 +305,7 @@ public:
                       set<AS_IID> &searchLibs,
                       set<AS_IID> &backboneLibs);
 
-  void   loadFragments(char         *gkpStoreName,
+  void   loadFragments(const char   *gkpStoreName,
                        set<AS_IID>  &searchLibs,
                        set<AS_IID>  &backboneLibs);
 
@@ -315,8 +315,8 @@ public:
   void   resetOverlapStoreRange(OverlapStore *ovlStore,
                                 AS_IID curFragIID, AS_IID &minFragIID, AS_IID &maxFragIID);
 
-  void   loadOverlaps(char   *ovlStoreName,
-                      double  maxErrorFraction);
+  void   loadOverlaps(const char *ovlStoreName,
+                      double      maxErrorFraction);
   void   loadOverlaps_invert(void);
 
   void   computeNextPlacement(cmThreadData  *t,

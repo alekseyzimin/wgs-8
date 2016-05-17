@@ -18,7 +18,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
-static char *rcsid = "$Id: SEdgeT_CGW.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: SEdgeT_CGW.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 //#define DEBUG 1
 
@@ -42,11 +42,11 @@ static char *rcsid = "$Id: SEdgeT_CGW.C 4371 2013-08-01 17:19:47Z brianwalenz $"
 #define  LOG_LINE_LEN  255
 
 /* ************************************************************/
-void PrintSEdgeT(FILE *fp, ScaffoldGraphT *graph, char *label, SEdgeT *edge, CDS_CID_t sid){
+void PrintSEdgeT(FILE *fp, ScaffoldGraphT *graph, const char *label, SEdgeT *edge, CDS_CID_t sid){
   char actualOverlap[LOG_LINE_LEN + 1];
   int actual = 0;
   int delta = 0;
-  char* flag = "  ";
+  const char* flag = "  ";
   CIScaffoldT *scaffoldA = GetCIScaffoldT(graph->CIScaffolds, edge->idA);
   CIScaffoldT *scaffoldB = GetCIScaffoldT(graph->CIScaffolds, edge->idB);
 

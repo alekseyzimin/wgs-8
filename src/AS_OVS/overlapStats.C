@@ -175,7 +175,7 @@ process_FragmentEnds(OVSoverlap *ovls, uint64 ovlsLen, gkStore *gkp,
 }
 
 void
-finalize_FragmentEnds(gkStore *gkp, RepeatModel *rm, FragmentEndData *red, char *label) {
+finalize_FragmentEnds(gkStore *gkp, RepeatModel *rm, FragmentEndData *red, const char *label) {
   char  name[FILENAME_MAX];
   int   i;
 
@@ -368,9 +368,9 @@ finalize_LibraryRandomness(gkStore *gkp, RepeatModel *rm, LibraryOverlapData *ov
 
 
 int
-main(int argc, char **argv) {
-  char   *ovsName = NULL;
-  char   *gkpName = NULL;
+main(int argc, const char** argv) {
+  const char   *ovsName = NULL;
+  const char   *gkpName = NULL;
 
   argc = AS_configure(argc, argv);
 

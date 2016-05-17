@@ -271,12 +271,12 @@ extern vector<string>       scfNam;
 
 
 
-void   loadPosMap(char *prefix, char *gkpName);
+void   loadPosMap(const char *prefix, const char *gkpName);
 
-void   analyzeGapFillProbability(char *outPrefix);
-void   analyzeLibraryFate(char *outPrefix);
+void   analyzeGapFillProbability(const char *outPrefix);
+void   analyzeLibraryFate(const char *outPrefix);
 
-void   analyzeSurrogates(char *outPrefix);
-void   analyzeDegenerates(char *outPrefix);
+void   analyzeSurrogates(const char *outPrefix);
+void   analyzeDegenerates(const char *outPrefix);
 
 #endif  //  ANALYZEPOSMAP_H

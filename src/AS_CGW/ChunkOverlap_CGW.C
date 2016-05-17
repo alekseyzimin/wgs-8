@@ -18,7 +18,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
-static char *rcsid = "$Id: ChunkOverlap_CGW.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: ChunkOverlap_CGW.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include "ChunkOverlap_CGW.H"
 #include "AS_UTL_reverseComplement.H"
@@ -181,7 +181,7 @@ void DestroyChunkOverlapper(ChunkOverlapperT *chunkOverlapper){
 
 static
 void
-printChunkOverlapCheckT(char *label, ChunkOverlapCheckT *olap) {
+printChunkOverlapCheckT(const char *label, ChunkOverlapCheckT *olap) {
   fprintf(stderr, "%s %d,%d,%c - min/max %d/%d %d/%d erate %f flags %d%d%d%d%d overlap %d hang %d,%d qual %f offset %d,%d\n",
           label,
           olap->spec.cidA, olap->spec.cidB, olap->spec.orientation.toLetter(),

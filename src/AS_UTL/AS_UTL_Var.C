@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: AS_UTL_Var.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: AS_UTL_Var.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 /********************************************************************/
 /* Variable Length C Array Package
@@ -262,8 +262,8 @@ EnableRange_VA(VarArrayType *va, size_t maxElements){
 void
 SetElements_VA(VarArrayType *va,
                size_t        indx,
-               void         *data,
-               size_t       nume){
+               const void   *data,
+               size_t        nume){
   EnableRange_VA(va, (indx+nume));
   if (va->Elements + indx * va->sizeofElement != data)
     memcpy(va->Elements + indx * va->sizeofElement, data, va->sizeofElement * nume);

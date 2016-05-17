@@ -39,10 +39,10 @@ typedef  enum {
 
 
 void
-updateErates(char *storeName, char *eratesName);
+updateErates(const char *storeName, const char *eratesName);
 
 void
-dumpStore(char   *storeName,
+dumpStore(const char   *storeName,
           uint32  dumpBinary,
           double  dumpERate,
           uint32  dumpLength,
@@ -53,8 +53,8 @@ dumpStore(char   *storeName,
           bool    beVerbose);
 
 void
-dumpPicture(char    *ovlName,
-            char    *gkpName,
+dumpPicture(const char    *ovlName,
+            const char    *gkpName,
             uint32   clearRegion,
             double   dumpERate,
             uint32   dumpLength,
@@ -62,8 +62,8 @@ dumpPicture(char    *ovlName,
             uint32   qryIID);
 
 void
-estimateGenomeLength(char    *ovlName,
-                     char    *gkpName,
+estimateGenomeLength(const char    *ovlName,
+                     const char    *gkpName,
                      uint32   overlapLimit,  //  K
                      uint32   bgnIID,
                      uint32   endIID,

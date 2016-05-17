@@ -776,9 +776,9 @@ build(merylArgs *args) {
     if (args->beVerbose)
       fprintf(stderr, "Merge results.\n");
 
-    int     argc = 0;
-    char  **argv = new char* [7 + 2 * args->segmentLimit];
-    bool   *arga = new bool  [7 + 2 * args->segmentLimit];
+    int          argc = 0;
+    const char **argv = new const char* [7 + 2 * args->segmentLimit];
+    bool        *arga = new bool  [7 + 2 * args->segmentLimit];
 
     arga[argc] = false;  argv[argc++] = "meryl-build-merge";
     arga[argc] = false;  argv[argc++] = "-M";
@@ -793,9 +793,9 @@ build(merylArgs *args) {
       arga[argc] = false;
       argv[argc++] = "-s";
       arga[argc] = true;
-      argv[argc] = new char [strlen(args->outputFile) + 33];
-      sprintf(argv[argc], "%s.batch" uint32FMT, args->outputFile, i);
-      argc++;
+      char *tmp = new char [strlen(args->outputFile) + 33];
+      sprintf(tmp, "%s.batch" uint32FMT, args->outputFile, i);
+      argv[argc++] = tmp;
     }
 
     arga[argc] = false;  argv[argc++] = "-o";

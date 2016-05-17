@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: AS_FGB_io.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: AS_FGB_io.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 //  Fragment Overlap Graph Builder file input and output.  This
 //  functional unit reads a *.ovl prototype i/o file an massages it
@@ -538,7 +538,7 @@ static void add_overlap_to_graph(Aedge  an_edge,
 /****************************************************************************/
 
 void
-process_gkp_store_for_fragments(char *gkpStoreName,
+process_gkp_store_for_fragments(const  char *gkpStoreName,
                                 Tfragment   *frags,
                                 Tedge       *edges) {
   IntFragment_ID    iid = 0;
@@ -602,7 +602,7 @@ process_gkp_store_for_fragments(char *gkpStoreName,
 
 
 
-void process_ovl_store(char * OVL_Store_Path,
+void process_ovl_store(const char * OVL_Store_Path,
                        Tfragment  frags[],
                        Tedge      edges[],
                        IntFragment_ID *afr_to_avx,

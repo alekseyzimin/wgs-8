@@ -34,11 +34,11 @@ const char *mainid = "$Id: initialTrim.C 4371 2013-08-01 17:19:47Z brianwalenz $
 #include "trim.H"
 
 int
-main(int argc, char **argv) {
-  char   *gkpName             = 0L;
-  FILE   *logFile             = 0L;
-  bool    beVerbose           = false;
-  bool    doUpdate            = true;
+main(int argc, const char** argv) {
+  const char *gkpName   = NULL;
+  FILE       *logFile   = 0L;
+  bool        beVerbose = false;
+  bool        doUpdate  = true;
 
   argc = AS_configure(argc, argv);
 

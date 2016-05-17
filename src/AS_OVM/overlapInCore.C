@@ -190,7 +190,7 @@ FILE  * Kmer_Skip_File = NULL;
 BinaryOverlapFile  *Out_BOF = NULL;
 
 gkStore  *OldFragStore;
-char  * Frag_Store_Path;
+const char  * Frag_Store_Path;
 
 pthread_mutex_t  FragStore_Mutex;
 pthread_mutex_t  Write_Proto_Mutex;
@@ -603,7 +603,7 @@ Initialize_Globals (void) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   char  bolfile_name[FILENAME_MAX] = {0};
   char  Outfile_Name[FILENAME_MAX] = {0};
   int  illegal;

@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: Globals_CGW.C 4518 2014-03-31 20:11:04Z brianwalenz $";
+static const char *rcsid = "$Id: Globals_CGW.C 4518 2014-03-31 20:11:04Z brianwalenz $";
 
 #include "AS_global.H"
 #include "Globals_CGW.H"
@@ -77,7 +77,7 @@ Globals_CGW::~Globals_CGW() {
 
 
 int
-Globals_CGW::setPrefix(char *runCAroot) {
+Globals_CGW::setPrefix(const char *runCAroot) {
   char  testname[FILENAME_MAX];
   int   ckp = -1;
 

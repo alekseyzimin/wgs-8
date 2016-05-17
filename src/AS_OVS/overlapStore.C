@@ -26,10 +26,10 @@ const char *mainid = "$Id: overlapStore.C 4577 2014-10-21 14:44:28Z brianwalenz 
 #include "AS_PER_gkpStore.H"  //  Just to know clear region labels
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   uint32          operation   = OP_NONE;
-  char           *storeName   = NULL;
-  char           *gkpName     = NULL;
+  const char     *storeName   = NULL;
+  const char     *gkpName     = NULL;
   uint32          clearRegion = AS_READ_CLEAR_ERROR;
 
   uint32          dumpBinary  = FALSE;
@@ -37,7 +37,7 @@ main(int argc, char **argv) {
   uint32          dumpLength  = 0;
   uint32          dumpType    = 0;
 
-  char           *erateFile   = NULL;
+  const char     *erateFile   = NULL;
 
   uint32          bgnIID      = 0;
   uint32          endIID      = UINT32_MAX;

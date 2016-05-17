@@ -7,7 +7,7 @@
 #include "meryl.H"
 
 int
-main(int argc, char **argv) {
+main(int argc, const char **argv) {
   merylArgs   *args = new merylArgs(argc, argv);
 
   switch (args->personality) {

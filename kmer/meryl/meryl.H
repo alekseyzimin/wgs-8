@@ -24,7 +24,7 @@
 
 class merylArgs {
 public:
-  merylArgs(int argc, char **argv);
+  merylArgs(int argc, const char **argv);
   merylArgs(const char *prefix);
   ~merylArgs();
 
@@ -76,9 +76,9 @@ public:
   bool              mergeBatch;
   uint32            batchNumber;
 
-  char             *sgeJobName;
-  char             *sgeBuildOpt;
-  char             *sgeMergeOpt;
+  const char       *sgeJobName;
+  const char       *sgeBuildOpt;
+  const char       *sgeMergeOpt;
   bool              isOnGrid;
 
   uint32            lowCount;

@@ -498,7 +498,7 @@ closeInput(FILE *F, char *filename, bool P) {
 
 
 FILE *
-openOutput(char *prefix, const char *extension) {
+openOutput(const char *prefix, const char *extension) {
   char  N[FILENAME_MAX];
   FILE *F = NULL;
 

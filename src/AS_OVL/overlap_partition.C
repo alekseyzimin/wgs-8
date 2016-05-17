@@ -322,11 +322,11 @@ partitionLength(gkStore      *gkp,
 
 
 int
-main(int argc, char **argv) {
-  char            *gkpStoreName        = NULL;
+main(int argc, const char** argv) {
+  const char      *gkpStoreName        = NULL;
   gkStore         *gkpStore            = NULL;
 
-  char            *outputPrefix        = NULL;
+  const char      *outputPrefix        = NULL;
   char             outputName[FILENAME_MAX];
 
   uint64           ovlHashBlockLength  = 0;

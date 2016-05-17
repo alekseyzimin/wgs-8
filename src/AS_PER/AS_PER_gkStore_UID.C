@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: AS_PER_gkStore_UID.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: AS_PER_gkStore_UID.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include "AS_PER_gkpStore.H"
 
@@ -220,16 +220,17 @@ gkStore::gkStore_loadSTRtoUID(void) {
 //  Given a string, returns the AS_UID for it.
 //
 AS_UID
-gkStore::gkStore_getUIDfromString(char *uidstr) {
+gkStore::gkStore_getUIDfromString(const char *uidstr) {
   AS_UID  uid = AS_UID_undefined();
   
   if (doNotLoadUIDs == TRUE) {
     return uid;
   }
   
-  uint64  loc = 0;
-  uint64  len = 0;
-  char    end = 0;
+  uint64      loc = 0;
+  uint64      len = 0;
+  char        end = 0;
+  const char* tmp = NULL;
 
   gkStore_loadSTRtoUID();
 
@@ -242,15 +243,22 @@ gkStore::gkStore_getUIDfromString(char *uidstr) {
   while (uidstr[len] && !isspace(uidstr[len]))
     len++;
 
-  end         = uidstr[len];
-  uidstr[len] = 0;
+  tmp = uidstr;
+  end = uidstr[len];
+  if(end)
+    tmp = strndup(uidstr, len);
 
-  if (LookupInHashTable_AS(STRtoUID, (INTPTR)uidstr, len, &loc, 0)) {
+  // end         = uidstr[len];
+  // uidstr[len] = 0;
+
+  if (LookupInHashTable_AS(STRtoUID, (INTPTR)tmp, len, &loc, 0)) {
     uid.isString  = 1;
     uid.UID       = loc;
   }
 
-  uidstr[len] = end;
+  if(end)
+    safe_free(tmp);
+  //  uidstr[len] = end;
 
   return(uid);
 }
@@ -278,10 +286,11 @@ gkStore::gkStore_getUIDstring(AS_UID u) {
 //  exists, a duplicate is NOT added.
 //
 AS_UID
-gkStore::gkStore_addUID(char *uidstr) {
+gkStore::gkStore_addUID(const char *uidstr) {
   uint64     loc = 0;
   uint64     len = 0;
   char       end = 0;
+  const char*      tmp = NULL;
 
   if (doNotLoadUIDs == TRUE) {
     fprintf(stderr, "gkStore_addUID: UID string store is turned off but it is being added to.\n");
@@ -297,15 +306,19 @@ gkStore::gkStore_addUID(char *uidstr) {
   while (uidstr[len] && !isspace(uidstr[len]))
     len++;
 
-  end         = uidstr[len];
-  uidstr[len] = 0;
+  tmp = uidstr;
+  end = uidstr[len];
+  if(end)
+    tmp = strndup(uidstr, len);
+  //  end         = uidstr[len];
+  //  uidstr[len] = 0;
 
   gkStore_loadSTRtoUID();
 
   //  If the UID is already in the store, just return as if it was
   //  new.  Otherwise, add it to the store.
 
-  if (LookupInHashTable_AS(STRtoUID, (INTPTR)uidstr, len, &loc, 0) == FALSE) {
+  if (LookupInHashTable_AS(STRtoUID, (INTPTR)tmp, len, &loc, 0) == FALSE) {
     char    *str = NULL;
     uint32   act = 0;
     int64    off = 0;
@@ -313,7 +326,7 @@ gkStore::gkStore_addUID(char *uidstr) {
     loc = getLastElemStore(uid) + 1;
 
     //  Stash the UID on disk.
-    off = appendStringStore(uid, uidstr, len);
+    off = appendStringStore(uid, tmp, len);
 
     //  If our string store changed, update all the pointers in our hash table.
     if (off)
@@ -324,7 +337,7 @@ gkStore::gkStore_addUID(char *uidstr) {
     if (InsertInHashTable_AS(STRtoUID,
                              (INTPTR)str, len,
                              loc, 0) == HASH_FAILURE) {
-      fprintf(stderr, "gkStore_addUID()-- failed to insert uid '%s' into store; already there?!\n", uidstr);
+      fprintf(stderr, "gkStore_addUID()-- failed to insert uid '%s' into store; already there?!\n", tmp);
       assert(0);
     }
   }
@@ -334,7 +347,9 @@ gkStore::gkStore_addUID(char *uidstr) {
   u.isString  = 1;
   u.UID       = loc;
 
-  uidstr[len] = end;
+  //  uidstr[len] = end;
+  if(end)
+    safe_free(tmp);
 
-  return(u);
+   return(u);
 }

@@ -52,7 +52,7 @@ FILE  *dumpMCMF = 0L;
 char   merstring[1024];
 
 uint32
-findMode(char *name) {
+findMode(const char *name) {
   merylStreamReader  *M = new merylStreamReader(name);
   uint32             *H = new uint32 [16384];
 
@@ -184,7 +184,7 @@ compare(merylStreamReader *F,
 
 
 void
-output(char              *title,
+output(const char        *title,
        uint32             mode,
        uint32             R[NUMCATEGORIES][NUMCATEGORIES]) {
 
@@ -211,7 +211,7 @@ output(char              *title,
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   merylStreamReader  *AF = 0L;
   merylStreamReader  *TF = 0L;
   merylStreamReader  *AC = 0L;

@@ -1799,7 +1799,7 @@ processSubRead(const AS_IID           iid,
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
 
   argc = AS_configure(argc, argv);
 
@@ -1816,7 +1816,7 @@ main(int argc, char **argv) {
   uint32             iidMin = 1;
   uint32             iidMax = UINT32_MAX;
 
-  char              *outputPrefix = NULL;
+  const char        *outputPrefix = NULL;
   char               outputName[FILENAME_MAX];
 
   FILE              *summaryFile  = NULL;

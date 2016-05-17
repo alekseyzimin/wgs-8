@@ -91,7 +91,7 @@ dumpCloneMiddle(int isScaffold, int id) {
 
 
 void
-usage(char *pgm) {
+usage(const char *pgm) {
   fprintf(stderr, "usage: %s -g <gkpStore> -o <ovlStore> -c <ckpName> -n <ckpNum> [other options]\n", pgm);
   fprintf(stderr, "  META OPTION\n");
   fprintf(stderr, "    -p <prefix>          -- attempt to guess all the required options, if your assembly\n");
@@ -114,7 +114,7 @@ usage(char *pgm) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   int ckptNum     = NULLINDEX;
   int id          = NULLINDEX;
   int specificScf = NULLINDEX;

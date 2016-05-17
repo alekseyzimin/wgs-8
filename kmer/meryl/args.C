@@ -58,7 +58,7 @@ readString(FILE *F) {
 }
 
 char*
-duplString(char *str) {
+duplString(const char *str) {
   char   *dupstr = 0L;
   if (str) {
     uint32  len = (uint32)strlen(str);
@@ -263,7 +263,7 @@ merylArgs::clear(void) {
 
 
 
-merylArgs::merylArgs(int argc, char **argv) {
+merylArgs::merylArgs(int argc, const char **argv) {
 
   clear();
 
@@ -302,7 +302,7 @@ merylArgs::merylArgs(int argc, char **argv) {
     //  needs escaped we need to escape them again.  So, we copy byte
     //  by byte and insert escapes at the right points.
 
-    for (char *op=argv[arg]; *op; op++, optptr++) {
+    for (const char *op=argv[arg]; *op; op++, optptr++) {
       if (isspace(*op) || !isalnum(*op))
         if ((*op != '-') && (*op != '_') && (*op != '.') && (*op != '/'))
           *optptr++ = '\\';

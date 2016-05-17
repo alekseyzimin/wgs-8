@@ -293,7 +293,7 @@ outputScf::init(NodeCGW_T *scaffold) {
 
 
 FILE *
-openPrefixFile(char *prefix, char *label) {
+openPrefixFile(const char *prefix, const char *label) {
   char     N[FILENAME_MAX];
   FILE    *F;
 
@@ -313,7 +313,7 @@ dumpReads(uint32          bgnIID,
           uint32          endIID,
           vector<uint32>  objIID,
           uint32          dumpType,
-          char           *outputPrefix) {
+          const char           *outputPrefix) {
 }
 
 
@@ -323,7 +323,7 @@ dumpUnitigs(uint32          bgnIID,
             uint32          endIID,
             vector<uint32>  objIID,
             uint32          dumpType,
-            char           *outputPrefix) {
+            const char           *outputPrefix) {
 
   FILE    *outputUnique  = openPrefixFile(outputPrefix, ".utg.unique.fasta");
   FILE    *outputSingle  = openPrefixFile(outputPrefix, ".utg.single.fasta");
@@ -411,7 +411,7 @@ dumpContigs(uint32          bgnIID,
             uint32          endIID,
             vector<uint32>  objIID,
             uint32          dumpType,
-            char           *outputPrefix) {
+            const char           *outputPrefix) {
   FILE    *outputPlaced   = openPrefixFile(outputPrefix, ".ctg.placed.fasta");
   FILE    *outputUnplaced = openPrefixFile(outputPrefix, ".ctg.unplaced.fasta");
   FILE    *outputSingle   = openPrefixFile(outputPrefix, ".ctg.single.fasta");
@@ -496,7 +496,7 @@ dumpScaffolds(uint32          bgnIID,
               uint32          endIID,
               vector<uint32>  objIID,
               uint32          dumpType,
-              char           *outputPrefix) {
+              const char           *outputPrefix) {
   FILE    *outputMulti   = openPrefixFile(outputPrefix, ".scf.multi.fasta");
   FILE    *outputSingle  = openPrefixFile(outputPrefix, ".scf.single.fasta");
 
@@ -581,11 +581,11 @@ dumpScaffolds(uint32          bgnIID,
 
 
 
-int main (int argc, char *argv[]) {
+int main (int argc, const char *argv[]) {
   int32           checkpointVers           = 0;
   int32           tigStoreVers             = 0;
 
-  char           *outputPrefix             = NULL;
+  const char     *outputPrefix             = NULL;
 
   uint32          objectType               = DUMP_NOTHING;
 
@@ -598,7 +598,7 @@ int main (int argc, char *argv[]) {
 
   GlobalData = new Globals_CGW();
 
-  argc = AS_configure(argc, argv);
+  argc = AS_configure(argc, (const char**)argv);
 
   int arg=1;
   int err=0;

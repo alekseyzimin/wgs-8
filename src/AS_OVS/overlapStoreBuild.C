@@ -50,7 +50,7 @@ uint32  lastLibLastIID  = 0;
 
 static
 uint64
-computeIIDperBucket(uint32 fileLimit, uint64 memoryLimit, uint32 maxIID, vector<char *> &fileList) {
+computeIIDperBucket(uint32 fileLimit, uint64 memoryLimit, uint32 maxIID, vector<const char *> &fileList) {
   uint64  numOverlaps = 0;
 
   if (fileLimit > 0) {
@@ -195,7 +195,7 @@ writeToDumpFile(OVSoverlap          *overlap,
                 uint32               dumpFileMax,
                 uint64              *dumpLength,
                 uint32               iidPerBucket,
-                char                *ovlName) {
+                const char          *ovlName) {
 
   uint32 df = overlap->a_iid / iidPerBucket;
 
@@ -261,9 +261,9 @@ writeToDumpFile(OVSoverlap          *overlap,
 
 
 int
-main(int argc, char **argv) {
-  char           *ovlName      = NULL;
-  char           *gkpName      = NULL;
+main(int argc, const char** argv) {
+  const char     *ovlName      = NULL;
+  const char     *gkpName      = NULL;
   uint32          fileLimit    = 512;
   uint64          memoryLimit  = 0;
 
@@ -273,7 +273,7 @@ main(int argc, char **argv) {
   double          maxErrorRate = 1.0;
   uint64          maxError     = AS_OVS_encodeQuality(maxErrorRate);
 
-  vector<char *>  fileList;
+  vector<const char *>  fileList;
 
   uint32          nThreads = 4;
 

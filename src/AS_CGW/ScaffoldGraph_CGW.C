@@ -18,7 +18,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
-static char *rcsid = "$Id: ScaffoldGraph_CGW.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: ScaffoldGraph_CGW.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include "AS_global.H"
 #include "AS_UTL_Var.H"
@@ -237,7 +237,7 @@ CheckpointScaffoldGraph(const char *logicalname, const char *location) {
 
 /****************************************************************************/
 
-ScaffoldGraphT *CreateScaffoldGraph(char *name) {
+ScaffoldGraphT *CreateScaffoldGraph(const char *name) {
   char buffer[2000];
   ScaffoldGraphT *sgraph = (ScaffoldGraphT *)safe_calloc(1,sizeof(ScaffoldGraphT));
 

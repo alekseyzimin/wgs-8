@@ -314,9 +314,9 @@ findRegion(MultiAlignT *ma, uint32 endSkip, uint32 &minBase, uint32 &maxBase) {
 
 
 int
-main(int argc, char **argv) {
-  char      *gkpName   = NULL;
-  char      *tigName   = NULL;
+main(int argc, const char** argv) {
+  const char      *gkpName   = NULL;
+  const char      *tigName   = NULL;
   int32      tigVers   = -1;
 
   AS_IID     bgnID     = 0;

@@ -218,9 +218,9 @@ public:
   void           gkStore_rebuildUIDtoIID(void);
 
   //  The next three functions should only be used by AS_UTL_UID.c (and the null constructor).
-  AS_UID         gkStore_getUIDfromString(char *uidstr);
+  AS_UID         gkStore_getUIDfromString(const char *uidstr);
   char          *gkStore_getUIDstring(AS_UID uid);
-  AS_UID         gkStore_addUID(char *uidstr);
+  AS_UID         gkStore_addUID(const char *uidstr);
 
   ////////////////////////////////////////
   //

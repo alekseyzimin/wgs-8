@@ -112,7 +112,7 @@ public:
 
 class scaffoldStatistics {
 public:
-  scaffoldStatistics(char *label_) {
+  scaffoldStatistics(const char *label_) {
     strcpy(label, label_);
 
     number = 0;
@@ -124,7 +124,7 @@ public:
     fill.finalize();
   };
 
-  void         eraseReport(char *outPrefix) {
+  void         eraseReport(const char *outPrefix) {
     char  C[FILENAME_MAX];
     FILE *O;
     FILE *F;
@@ -140,7 +140,7 @@ public:
   };
 
 
-  void         printReport(char *outPrefix) {
+  void         printReport(const char *outPrefix) {
     char  C[FILENAME_MAX];
     FILE *O;
     FILE *F;
@@ -194,7 +194,7 @@ public:
 //   - for each external mate, compute the probability the frag belongs in a gap, plot histogram
 //
 void
-analyzeGapFillProbability(char *outPrefix) {
+analyzeGapFillProbability(const char *outPrefix) {
   scaffoldStatistics   *scfStatDiffScaffold    = new scaffoldStatistics("diffScaffold");
   scaffoldStatistics   *scfStatDiffScafDegen   = new scaffoldStatistics("diffScafDegen");
   scaffoldStatistics   *scfStatDiffScafSing    = new scaffoldStatistics("diffScafSing");

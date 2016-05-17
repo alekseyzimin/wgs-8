@@ -139,22 +139,22 @@ enforceMaximumClearRange(OVSoverlap  *ovl,
 
 
 int
-main(int argc, char **argv) {
-  char             *gkpName          = 0L;
-  gkStore          *gkpStore         = 0L;
-  char             *ovlPrimaryName   = 0L;
-  OverlapStore     *ovlPrimary       = 0L;
-  OverlapStore     *ovlSecondary     = 0L;
-  char             *ovlSecondaryName = 0L;
+main(int argc, const char** argv) {
+  const char   *gkpName          = NULL;
+  gkStore      *gkpStore         = NULL;
+  const char   *ovlPrimaryName   = NULL;
+  OverlapStore *ovlPrimary       = NULL;
+  OverlapStore *ovlSecondary     = NULL;
+  const char   *ovlSecondaryName = NULL;
 
   uint32            errorRate    = AS_OVS_encodeQuality(0.015);
   double            errorLimit   = 2.5;
 
-  char             *outputPrefix  = NULL;
-  char              logName[FILENAME_MAX] = {0};
-  char              sumName[FILENAME_MAX] = {0};
-  FILE             *logFile = 0L;
-  FILE             *sumFile = 0L;
+  const char *outputPrefix         = NULL;
+  char       logName[FILENAME_MAX] = {0};
+  char       sumName[FILENAME_MAX] = {0};
+  FILE       *logFile              = NULL;
+  FILE       *sumFile              = NULL;
 
   bool              doModify = true;  //  Make this false for testing
 

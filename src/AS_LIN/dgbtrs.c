@@ -19,7 +19,7 @@ static doublereal c_b7 = -1.;
 static integer c__1 = 1;
 static doublereal c_b23 = 1.;
 
-/* Subroutine */ int dgbtrs_(char *trans, integer *n, integer *kl, integer *
+/* Subroutine */ int dgbtrs_(const char *trans, integer *n, integer *kl, integer *
 	ku, integer *nrhs, doublereal *ab, integer *ldab, integer *ipiv, 
 	doublereal *b, integer *ldb, integer *info)
 {
@@ -31,15 +31,15 @@ static doublereal c_b23 = 1.;
     extern /* Subroutine */ int dger_(integer *, integer *, doublereal *, 
 	    doublereal *, integer *, doublereal *, integer *, doublereal *, 
 	    integer *);
-    extern logical lsame_(char *, char *);
-    extern /* Subroutine */ int dgemv_(char *, integer *, integer *, 
+    extern logical lsame_(const char *, const char *);
+    extern /* Subroutine */ int dgemv_(const char *, integer *, integer *, 
 	    doublereal *, doublereal *, integer *, doublereal *, integer *, 
 	    doublereal *, doublereal *, integer *), dswap_(integer *, 
-	    doublereal *, integer *, doublereal *, integer *), dtbsv_(char *, 
-	    char *, char *, integer *, integer *, doublereal *, integer *, 
+	    doublereal *, integer *, doublereal *, integer *), dtbsv_(const char *, 
+	    const char *, const char *, integer *, integer *, doublereal *, integer *, 
 	    doublereal *, integer *);
     logical lnoti;
-    extern /* Subroutine */ int xerbla_(char *, integer *);
+    extern /* Subroutine */ int xerbla_(const char *, integer *);
     logical notran;
 
 

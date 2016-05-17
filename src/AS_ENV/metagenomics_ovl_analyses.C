@@ -611,35 +611,35 @@ void   deletionStatus_setup(int lastfrag){
   return;
 }
 
-int main (int argc, char *argv[]){
+int main (int argc, const char *argv[]){
 
-  char full_ovlPath[1000];
-  char full_frgPath[1000];
-  char full_gkpPath[1000];
-  char sampleFileName[1000];
-  int setFullGkp=0;
-  int setFullOvl=0;
-  uint32  lastfrag,lastovlfrg;
-  char *smpsFile=NULL;
-  FILE *smps;
-  AS_IID    iid1,iid2;
-  int errflg=0;
-  char ch;
-  int i,j,k;
-  int smpIdx;
-  int clean;
-  int sb;
-  double d;
-  int begidx=-1,endidx=-1;
-  FILE *simFile=NULL;
-  FILE *binaryCvgFile=NULL;
-  FILE *depthCvgFile=NULL;
-  FILE *antiOvlHistoFile=NULL;
+  char        full_ovlPath[1000];
+  char        full_frgPath[1000];
+  char        full_gkpPath[1000];
+  char        sampleFileName[1000];
+  int         setFullGkp       = 0;
+  int         setFullOvl       = 0;
+  uint32      lastfrag,lastovlfrg;
+  const char *smpsFile         = NULL;
+  FILE       *smps;
+  AS_IID      iid1,iid2;
+  int         errflg           = 0;
+  char        ch;
+  int         i,j,k;
+  int         smpIdx;
+  int         clean;
+  int         sb;
+  double      d;
+  int         begidx           = -1,endidx=-1;
+  FILE       *simFile          = NULL;
+  FILE       *binaryCvgFile    = NULL;
+  FILE       *depthCvgFile     = NULL;
+  FILE       *antiOvlHistoFile = NULL;
 
   argc = AS_configure(argc, argv);
 
   while  (! errflg
-	  && ((ch = getopt (argc, argv, "b:dDe:g:m:o:s:A:B:C:S:"))!=EOF)){
+	  && ((ch = getopt (argc, (char*const*)argv, "b:dDe:g:m:o:s:A:B:C:S:"))!=EOF)){
     switch  (ch)
       {
       case 'b':

@@ -74,7 +74,7 @@ loadFragments(gkStore *gkp) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   gkStore           *gkpstore     = 0L;
   OverlapStore      *ovlstore     = 0L;
   OVSoverlap         ovl;

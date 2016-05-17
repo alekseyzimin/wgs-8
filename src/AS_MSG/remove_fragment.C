@@ -32,11 +32,11 @@ const char *mainid = "$Id: remove_fragment.C 4371 2013-08-01 17:19:47Z brianwale
 #include "AS_UTL_Hash.H"
 
 int
-main(int argc, char ** argv) {
-  char           *inputName    = NULL;
-  char           *strippedName = NULL;
-  char           *removedName  = NULL;
-  char           *UIDname      = NULL;
+main(int argc, const char ** argv) {
+  const char *inputName    = NULL;
+  const char *strippedName = NULL;
+  const char *removedName  = NULL;
+  const char *UIDname      = NULL;
 
   FILE           *I = NULL;
   FILE           *S = NULL;

@@ -568,7 +568,7 @@ void ComputeContigInstrumenterStats(ScaffoldGraphT * graph,
 void PrintContigInstrumenter(ScaffoldGraphT * graph,
                              ContigInstrumenter * ci,
                              InstrumenterVerbosity verbose,
-                             char * prefix,
+                             const char * prefix,
                              FILE * printTo);
 
 void PrintScaffoldInstrumenterMateDetails(ScaffoldInstrumenter * si,
@@ -576,7 +576,7 @@ void PrintScaffoldInstrumenterMateDetails(ScaffoldInstrumenter * si,
 					  int printType);
 void PrintExternalMateDetailsAndDists(ScaffoldGraphT * graph,
 				      VA_TYPE(MateDetail) * mda,
-				      char * prefix,
+				      const char * prefix,
 				      FILE * printTo,
 				      int printtype);
 void PrintUnmatedDetails(ScaffoldInstrumenter * si,

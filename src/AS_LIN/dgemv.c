@@ -6,7 +6,7 @@
 
 #include "f2c.h"
 
-/* Subroutine */ int dgemv_(char *trans, integer *m, integer *n, doublereal *
+/* Subroutine */ int dgemv_(const char *trans, integer *m, integer *n, doublereal *
 	alpha, doublereal *a, integer *lda, doublereal *x, integer *incx,
 	doublereal *beta, doublereal *y, integer *incy)
 {
@@ -19,9 +19,9 @@
     static integer info;
     static doublereal temp;
     static integer lenx, leny, i, j;
-    extern logical lsame_(char *, char *);
+    extern logical lsame_(const char *, const char *);
     static integer ix, iy, jx, jy, kx, ky;
-    extern /* Subroutine */ int xerbla_(char *, integer *);
+    extern /* Subroutine */ int xerbla_(const char *, integer *);
 
 
 /*  Purpose

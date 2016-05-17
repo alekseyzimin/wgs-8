@@ -18,7 +18,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
-static char *rcsid= "$Id: AS_MSG_pmesg1.C 4518 2014-03-31 20:11:04Z brianwalenz $";
+static const char *rcsid= "$Id: AS_MSG_pmesg1.C 4518 2014-03-31 20:11:04Z brianwalenz $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -149,13 +149,13 @@ GetUIDUIDMatePairType(AS_UID *UID1, AS_UID *UID2, FILE *fin) {
   // get first UID
   while (*currLoc != ',') { currLoc++; }
   *currLoc = '\0';
-  (*UID1) = AS_UID_lookup(str, NULL);
+  (*UID1) = AS_UID_lookup(str);
 
   // get second UID
   str = ++currLoc;
   while (*currLoc != ',') { currLoc++; }
   *currLoc = '\0';
-  (*UID2) = AS_UID_lookup(str, NULL);
+  (*UID2) = AS_UID_lookup(str);
 
   // return the type value
   return(DecodeLinkType(*(++currLoc)));

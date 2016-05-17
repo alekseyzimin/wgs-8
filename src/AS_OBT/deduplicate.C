@@ -481,7 +481,7 @@ deleteFragments(gkStore *gkp, fragT *frag) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   uint32             errorLimit   = AS_OVS_encodeQuality(DEFAULT_ERATE);
   gkStore           *gkp          = 0L;
   OverlapStore      *ovsprimary   = 0L;
@@ -623,7 +623,7 @@ main(int argc, char **argv) {
   }
 
   if (summaryFile) {
-    char *label[4] = { "~a~b", "a~b", "~ab", "ab" };
+    const char *label[4] = { "~a~b", "a~b", "~ab", "ab" };
 
     fprintf(summaryFile, "\n");
     fprintf(summaryFile, "\n");

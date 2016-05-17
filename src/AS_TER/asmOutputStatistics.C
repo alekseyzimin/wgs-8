@@ -516,7 +516,7 @@ getNidx(uint32 n, vector<T> v) {
 
 
 void
-generateStatisticsFromASMFile(char *progName, char *asmName) {
+generateStatisticsFromASMFile(const char *progName, const char *asmName) {
   GenericMesg *pmesg       = NULL;
 
   errno = 0;
@@ -568,7 +568,7 @@ generateStatisticsFromASMFile(char *progName, char *asmName) {
 
 
 void
-generateStatisticsFromGKPStore(char *progName, char *gkpName) {
+generateStatisticsFromGKPStore(const char *progName, const char *gkpName) {
   //  Open the gkStore, but discard UID info for now.
   gkStore    *gkp = new gkStore(gkpName, FALSE, TRUE);
   gkStream   *gks = new gkStream(gkp, 0, 0, GKFRAGMENT_INF);
@@ -719,26 +719,26 @@ generateStatisticsFromGKPStore(char *progName, char *gkpName) {
 
 
 void
-generateStatisticsFromStores(char *progName,
-                             char *gkpName,
-                             char *ovlName,
-                             char *tigName, uint32 tigVersion,
-                             char *ckpName, uint32 ckpVersion) {
+generateStatisticsFromStores(const char *progName,
+                             const char *gkpName,
+                             const char *ovlName,
+                             const char *tigName, uint32 tigVersion,
+                             const char *ckpName, uint32 ckpVersion) {
 
 }
 
 
 
 
-int main (int argc, char *argv[]) {
-  char   *outputPrefix       = NULL;
-  char   *gkpName            = NULL;
-  char   *ovlName            = NULL;
-  char   *tigName            = NULL;
-  uint32  tigVers            = 0;
-  char   *ckpName            = NULL;
-  uint32  ckpVers            = 0;
-  char   *asmName            = NULL;
+int main (int argc, const char *argv[]) {
+  const char *outputPrefix = NULL;
+  const char *gkpName      = NULL;
+  const char *ovlName      = NULL;
+  const char       *tigName      = NULL;
+  uint32      tigVers      = 0;
+  const char       *ckpName      = NULL;
+  uint32      ckpVers      = 0;
+  const char       *asmName      = NULL;
 
   argc = AS_configure(argc, argv);
 

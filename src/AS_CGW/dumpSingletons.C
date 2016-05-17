@@ -66,7 +66,7 @@ getFragmentClear(int    iid,
 
 
 int
-main( int argc, char **argv) {
+main( int argc, const char** argv) {
   int          ckptNum           = NULLINDEX;
   int          makeMiniScaffolds = 1;
   uint64       uidStart          = 1230000;

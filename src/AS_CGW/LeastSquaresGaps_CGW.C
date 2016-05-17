@@ -18,7 +18,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
-static char *rcsid = "$Id: LeastSquaresGaps_CGW.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: LeastSquaresGaps_CGW.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include "AS_global.H"
 #include "AS_UTL_Var.H"
@@ -42,18 +42,18 @@ static char *rcsid = "$Id: LeastSquaresGaps_CGW.C 4371 2013-08-01 17:19:47Z bria
 #define F_FTN_INT    "%ld"
 
 extern "C" {
-extern int dgemv_(char *, FTN_INT *, FTN_INT *,
+extern int dgemv_(const char *, FTN_INT *, FTN_INT *,
                   double *, double *, FTN_INT *, double *, FTN_INT *,
                   double *, double *, FTN_INT *);
 
-extern int dpbtrf_(char *, FTN_INT *, FTN_INT *, double *,
+extern int dpbtrf_(const char *, FTN_INT *, FTN_INT *, double *,
                    FTN_INT *, FTN_INT *);
-extern int dpbtrs_(char *, FTN_INT *, FTN_INT *, FTN_INT *, double *,
+extern int dpbtrs_(const char *, FTN_INT *, FTN_INT *, FTN_INT *, double *,
                    FTN_INT *, double *, FTN_INT *, FTN_INT *);
 
 extern int dgbtrf_(FTN_INT *m, FTN_INT *n, FTN_INT *kl, FTN_INT *ku, 
                    double *ab, FTN_INT *ldab, FTN_INT *ipiv, FTN_INT *info);
-extern int dgbtrs_(char *trans, FTN_INT *n, FTN_INT *kl, FTN_INT *ku,
+extern int dgbtrs_(const char *trans, FTN_INT *n, FTN_INT *kl, FTN_INT *ku,
                    FTN_INT *nrhs, double *ab, FTN_INT *ldab, FTN_INT *ipiv, 
                    double *b, FTN_INT *ldb, FTN_INT *info);
 }
@@ -359,7 +359,7 @@ dumpGapCoefficientsAlt(double *gapCoefficientsAlt,
 
 
 void
-dumpScaffoldContigPositions(ScaffoldGraphT *graph, CIScaffoldT *scaffold, char *label) {
+dumpScaffoldContigPositions(ScaffoldGraphT *graph, CIScaffoldT *scaffold, const char *label) {
   CIScaffoldTIterator      CIs;
   ChunkInstanceT          *CI;
 

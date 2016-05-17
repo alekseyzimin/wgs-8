@@ -236,7 +236,7 @@ std::cerr << "Running command " << command << std::endl;
                if( ret == CS_ROW_FAIL ) {
                   std::cerr << "Error retrieving row" << std::endl;
                }
-               mdi.erefines = AS_UID_lookup(EUID, NULL);
+               mdi.erefines = AS_UID_lookup(EUID);
                mdi.irefines = CIID;
                mdi.mean = mean;
                mdi.stddev = std;
@@ -368,7 +368,7 @@ std::cerr << "Running command " << command << std::endl;
                if( ret == CS_ROW_FAIL ) {
                   std::cerr << "Error retrieving row" << std::endl;
                }
-               afg.eaccession = AS_UID_lookup(afg_EUID, NULL);
+               afg.eaccession = AS_UID_lookup(afg_EUID);
                afg.iaccession = afg_CIID;
                afg.mate_status = (MateStatType)afg_mst;
                afg.chaff = afg_cha;
@@ -595,7 +595,7 @@ std::cerr << "Running command " << command << std::endl;
                   utg.f_list = new SnapMultiPos[nfr];
 
 std::cerr<< "The UID I got is " << EUID << std::endl;
-                  utg.eaccession = AS_UID_lookup(EUID, NULL);
+                  utg.eaccession = AS_UID_lookup(EUID);
 std::cerr<< "The converted form is I got is " << AS_UID_toString(utg.eaccession) << std::endl;
                   utg.iaccession = CIID;
                   utg.coverage_stat = cov;
@@ -610,7 +610,7 @@ std::cerr<< "The converted form is I got is " << AS_UID_toString(utg.eaccession)
                   memset(src, 0, 255);
                }
 
-               utg.f_list[seen_frg].eident = AS_UID_lookup(afg_EUID, NULL);
+               utg.f_list[seen_frg].eident = AS_UID_lookup(afg_EUID);
                utg.f_list[seen_frg].type = (FragType)mps_typ;
                utg.f_list[seen_frg].position.bgn = mps_pos1;
                utg.f_list[seen_frg].position.end = mps_pos2;
@@ -932,7 +932,7 @@ std::cerr << "Running command " << command << std::endl;
                   ctg.num_vars = 0;
                   ctg.vars = NULL;
 
-                  ctg.eaccession = AS_UID_lookup(EUID, NULL);
+                  ctg.eaccession = AS_UID_lookup(EUID);
                   ctg.iaccession = CIID;
                   ctg.placed = (ContigStatus) pla;
                   ctg.length = len;
@@ -947,7 +947,7 @@ std::cerr << "Running command " << command << std::endl;
                }
 
                if (seen_frg < ctg.num_pieces || seen_frg == 0) {
-                  ctg.pieces[seen_frg].eident = AS_UID_lookup(afg_EUID, NULL);
+                  ctg.pieces[seen_frg].eident = AS_UID_lookup(afg_EUID);
                   ctg.pieces[seen_frg].type = (FragType)mps_typ;
                   ctg.pieces[seen_frg].position.bgn = mps_pos1;
                   ctg.pieces[seen_frg].position.end = mps_pos2;
@@ -985,7 +985,7 @@ std::cerr << "Running command " << command << std::endl;
                }
 
                if (seen_utg < ctg.num_unitigs || seen_utg == 0) {
-                  ctg.unitigs[seen_utg].eident = AS_UID_lookup(utg_EUID, NULL);
+                  ctg.unitigs[seen_utg].eident = AS_UID_lookup(utg_EUID);
                   ctg.unitigs[seen_utg].type = (UnitigType)ups_typ;
                   ctg.unitigs[seen_utg].position.bgn = ups_pos1;
                   ctg.unitigs[seen_utg].position.end = ups_pos2;
@@ -1060,7 +1060,7 @@ std::cerr << "Outputting " << std::endl;
 }
 #endif
 
-int main(int argc, char ** argv)
+int main(int argc, const char** argv)
 {
    char * asmFilename       = NULL;
    char * prefix            = NULL;

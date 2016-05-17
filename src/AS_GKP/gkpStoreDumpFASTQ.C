@@ -31,7 +31,7 @@ const char *mainid = "$Id: gkpStoreDumpFASTQ.C 4371 2013-08-01 17:19:47Z brianwa
 
 class libInfo {
 public:
-  libInfo(char *outPrefix, char *libName) {
+  libInfo(const char *outPrefix, const char *libName) {
     sprintf(aname, "%s.%s.1.fastq",       outPrefix, libName);
     sprintf(bname, "%s.%s.2.fastq",       outPrefix, libName);
     sprintf(pname, "%s.%s.paired.fastq",  outPrefix, libName);
@@ -75,18 +75,18 @@ public:
 
 
 int
-main(int argc, char **argv) {
-  char            *gkpStoreName      = NULL;
-  char            *outPrefix         = NULL;
+main(int argc, const char** argv) {
+  const char *gkpStoreName = NULL;
+  const char *outPrefix    = NULL;
 
-  AS_IID           libToDump         = 0;
-  uint32           clrToDump         = AS_READ_CLEAR_LATEST;
+  AS_IID libToDump = 0;
+  uint32 clrToDump = AS_READ_CLEAR_LATEST;
 
-  AS_IID           bgnIID            = 1;
-  AS_IID           endIID            = AS_IID_MAX;
+  AS_IID bgnIID = 1;
+  AS_IID endIID = AS_IID_MAX;
 
-  bool             dumpAllBases      = true;
-  bool             dumpAllReads      = false;
+  bool dumpAllBases = true;
+  bool dumpAllReads = false;
 
   argc = AS_configure(argc, argv);
 

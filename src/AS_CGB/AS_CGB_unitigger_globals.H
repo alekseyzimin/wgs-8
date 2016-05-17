@@ -181,22 +181,22 @@ typedef struct {
 
 
 typedef struct {
-  char * frag_store;
-  char * chimeras_file;
-  char * spurs_file;
-  char   bubble_overlaps_filename[FILENAME_MAX];
+  const char * frag_store;
+  const char * chimeras_file;
+  const char * spurs_file;
+  char         bubble_overlaps_filename[FILENAME_MAX];
 
   /* Reaper/FGB input */
-  int     num_ovl_files;
-  char ** the_ovl_files;
+  int           num_ovl_files;
+  const char ** the_ovl_files;
 
-  char * OVL_Store_Path;
+  const char * OVL_Store_Path;
   // The directory containing the overlap store.
 
-  char * Output_Graph_Store_Prefix;
+  const char * Output_Graph_Store_Prefix;
   // The directory containing the output graph store files.
 
-  char * Dump_File_Name;
+  const char * Dump_File_Name;
   // The file name of the output fragments and overlaps in OVL format.
 
   char * tigStorePath;

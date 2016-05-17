@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
 
-static char *rcsid = "$Id: AS_CGB_Bubble.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: AS_CGB_Bubble.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include <stdlib.h>
 #include <stdio.h>

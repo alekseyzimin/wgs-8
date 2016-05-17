@@ -17,7 +17,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
-static char *rcsid = "$Id: Instrument_CGW.C 4389 2013-08-24 05:55:52Z brianwalenz $";
+static const char *rcsid = "$Id: Instrument_CGW.C 4389 2013-08-24 05:55:52Z brianwalenz $";
 
 #include "AS_global.H"
 #include "Instrument_CGW.H"
@@ -2031,7 +2031,7 @@ void PrintFragment(CIFragT * frag, CDS_CID_t index, FILE * printTo)
 
 void PrintContigPlacement(ContigPlacement * cp,
                           int32 inFromLeft,
-                          char * prefix,
+                          const char * prefix,
                           FILE * printTo)
 {
   if(inFromLeft != NULLINDEX)
@@ -2045,7 +2045,7 @@ void PrintContigPlacement(ContigPlacement * cp,
 }
 
 
-void PrintContigPair(IntContigPairs * cp, char * prefix, FILE * printTo)
+void PrintContigPair(IntContigPairs * cp, const char * prefix, FILE * printTo)
 {
   fprintf(printTo,
           "%scontig1 = " F_CID", contig2 = " F_CID", mean = %f, stddev = %f, orientation = %c\n",
@@ -2055,7 +2055,7 @@ void PrintContigPair(IntContigPairs * cp, char * prefix, FILE * printTo)
 
 
 void PrintInstrumenterStats(InstrumenterStatistics * is,
-                            char * prefix,
+                            const char * prefix,
                             FILE * printTo)
 {
   fprintf(printTo, "%sNumber of negatives: %d\n",
@@ -2081,7 +2081,7 @@ void PrintInstrumenterStats(InstrumenterStatistics * is,
 
 void PrintMateDetailAndDist(MateDetail * md,
                             DistT * dptr,
-                            char * prefix,
+                            const char * prefix,
                             FILE * printTo)
 {
   fprintf(printTo,
@@ -2124,7 +2124,7 @@ void safelyAppendInstInfo(char **locs,int32 utgIID, int *lenloc, int *lenUsed){
 
 void PrintExternalMateDetailAndDist(MateDetail * md,
                                     DistT * dptr,
-                                    char * prefix,
+                                    const char * prefix,
                                     FILE * printTo,
                                     int printtype)
 {
@@ -2213,7 +2213,7 @@ void PrintExternalMateDetailAndDist(MateDetail * md,
 */
 void PrintMateDetailsAndDists(ScaffoldGraphT * graph,
                               VA_TYPE(MateDetail) * mda,
-                              char * prefix,
+                              const char * prefix,
                               FILE * printTo)
 {
   int32 i;
@@ -2233,7 +2233,7 @@ void PrintMateDetailsAndDists(ScaffoldGraphT * graph,
 
 void PrintExternalMateDetailsAndDists(ScaffoldGraphT * graph,
                                       VA_TYPE(MateDetail) * mda,
-                                      char * prefix,
+                                      const char * prefix,
                                       FILE * printTo,
                                       int printtype)
 {
@@ -2253,7 +2253,7 @@ void PrintMateComparison(int32 numBefore,
                          int32 totalBefore,
                          int32 numAfter,
                          int32 totalAfter,
-                         char * string,
+                         const char * string,
                          int moreIsBetter,
                          int printRawNumbers,
                          FILE * printTo)
@@ -2292,13 +2292,13 @@ int32 GetMateStatsSum(MateStats * ms)
 void PrintMateStatsSet(MateStatsSet * mss,
                        InstrumenterLevel level,
                        int inter,
-                       char * prefix,
+                       const char * prefix,
                        FILE * printTo)
 {
-  char * unit;
-  char * nextUnit;
-  char * relation;
-  char * otherRelation;
+  const char * unit;
+  const char * nextUnit;
+  const char * relation;
+  const char * otherRelation;
 
   if(level == InstrumenterUnitigLevel)
     {
@@ -2395,7 +2395,7 @@ void PrintMateStatsSet(MateStatsSet * mss,
 
 void PrintMateInstrumenter(MateInstrumenter * mi,
                            InstrumenterLevel level,
-                           char * prefix,
+                           const char * prefix,
                            FILE * printTo)
 {
   if(mi->options & INST_OPT_INTRA_MATES)
@@ -2417,14 +2417,14 @@ void PrintMateInstrumenter(MateInstrumenter * mi,
 
 void PrintInstrumenterBookkeeping(InstrumenterBookkeeping * bk,
                                   int printMissingMates,
-                                  char * prefix,
+                                  const char * prefix,
                                   FILE * printTo)
 {
 }
 
 
 void PrintBreakpoint(InstrumenterBreakpoint * bp,
-                     char * prefix,
+                     const char * prefix,
                      FILE * printTo)
 {
   fprintf(printTo, "%s" F_CID" (%c)\t" F_CID"\t" F_CID"\t(" F_S32 "," F_S32 ")\t%6d\t\t",
@@ -2463,7 +2463,7 @@ void PrintBreakpoint(InstrumenterBreakpoint * bp,
 
 
 void PrintBreakpoints(VA_TYPE(InstrumenterBreakpoint) * bps,
-                      char * prefix,
+                      const char * prefix,
                       FILE * printTo)
 {
   int32 i;
@@ -2488,7 +2488,7 @@ void PrintBreakpoints(VA_TYPE(InstrumenterBreakpoint) * bps,
 void PrintUnitigInstrumenter(ScaffoldGraphT * graph,
                              UnitigInstrumenter * ui,
                              InstrumenterVerbosity verbose,
-                             char * prefix,
+                             const char * prefix,
                              FILE * printTo)
 {
   if(ui->id != NULLINDEX)
@@ -2557,7 +2557,7 @@ void PrintUnitigInstrumenter(ScaffoldGraphT * graph,
 void PrintContigInstrumenter(ScaffoldGraphT * graph,
                              ContigInstrumenter * ci,
                              InstrumenterVerbosity verbose,
-                             char * prefix,
+                             const char * prefix,
                              FILE * printTo)
 {
   if(ci->id != NULLINDEX)
@@ -2632,7 +2632,7 @@ void PrintContigInstrumenter(ScaffoldGraphT * graph,
 
 
 void PrintInferredStddevs(VA_TYPE(double) * stddevs,
-                          char * prefix,
+                          const char * prefix,
                           FILE * printTo)
 {
   int32 incRun = 0;
@@ -2703,7 +2703,7 @@ void PrintScaffoldGaps(ScaffoldInstrumenter * si,
 
 
 void PrintUnanchoredContigIDs(ScaffoldInstrumenter * si,
-                              char * prefix,
+                              const char * prefix,
                               FILE * printTo)
 {
   CDS_CID_t i;
@@ -2724,7 +2724,7 @@ void PrintUnanchoredContigIDs(ScaffoldInstrumenter * si,
 void PrintScaffoldInstrumenter(ScaffoldGraphT * graph,
                                ScaffoldInstrumenter * si,
                                InstrumenterVerbosity verbose,
-                               char * prefix,
+                               const char * prefix,
                                FILE * printTo)
 {
   char nextPrefix[1024];
@@ -3975,7 +3975,7 @@ void PrintScaffoldMateDetail(HashTable_AS * cpHT,
                              MateDetail * md,
                              PairOrient oShouldBe,
                              PairOrient oIs,
-                             char * category,
+                             const char * category,
                              CDS_CID_t id,
                              FILE * printTo,
 			     int printType)
@@ -4152,7 +4152,7 @@ void PrintScaffoldMateDetailArray(HashTable_AS * cpHT,
                                   VA_TYPE(MateDetail) * mda,
                                   PairOrient oShouldBe,
                                   PairOrient oIs,
-                                  char * category,
+                                  const char * category,
                                   CDS_CID_t id,
                                   FILE * printTo,
 				  int printType)

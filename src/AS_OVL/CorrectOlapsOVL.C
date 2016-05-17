@@ -246,7 +246,7 @@ static void  Display_Frags
 static void  Dump_Erate_File
     (char * path, AS_IID lo_id, AS_IID hi_id, Olap_Info_t * olap, uint64 num);
 static void  Fasta_Print
-    (FILE * fp, char * s, char * hdr);
+    (FILE * fp, const char * s, const char * hdr);
 static char  Filter
     (char ch);
 static int  Find
@@ -919,7 +919,7 @@ static void  Dump_Erate_File
 
 
 static void  Fasta_Print
-    (FILE * fp, char * s, char * hdr)
+    (FILE * fp, const char * s, const char * hdr)
 
 //  Print string  s  in fasta format to  fp .  Put string  hdr
 //  on header line.
@@ -1490,7 +1490,7 @@ static void  Parse_Command_Line
    int  ch, errflg = FALSE;
    char  * p;
 
-   argc = AS_configure(argc, argv);
+   argc = AS_configure(argc, (const char**)argv);
 
    optarg = NULL;
 

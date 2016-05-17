@@ -53,7 +53,7 @@ uint32           minOverlap = 20;
 
 static
 void
-readMapping(char *filename) {
+readMapping(const char *filename) {
   char  L[1024];
   FILE *F;
 
@@ -602,9 +602,9 @@ outputScaffoldLinks(void) {
 
 
 int
-main(int argc, char **argv) {
-  char    *mappingFileName   = 0L;
-  char    *gkpStoreName      = 0L;
+main(int argc, const char** argv) {
+  const char    *mappingFileName   = 0L;
+  const char    *gkpStoreName      = 0L;
   uint32   buildOnlyUnitigs  = 0;
 
   argc = AS_configure(argc, argv);

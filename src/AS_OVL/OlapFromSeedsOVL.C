@@ -1298,8 +1298,8 @@ static int  Char_To_Code
 // Return a value 0..4 corresponding to a,c,g,t,- respectively
 
   {
-   char  * s = "acgt-";
-   char  * p;
+    const char  * s = "acgt-";
+    const char  * p;
 
    p = strchr (s, tolower (ch));
    if (p == NULL)
@@ -1320,7 +1320,7 @@ static int  Code_To_Char
 // Return character a,c,g,t,- corresponding to codes 0..4 respectively
 
   {
-   char  * s = "acgt-";
+    const char  * s = "acgt-";
 
    if (4 < code)
      {
@@ -3327,7 +3327,7 @@ static void  Parse_Command_Line
    char  * p;
 
    // set environment variables
-   argc = AS_configure (argc, argv);
+   argc = AS_configure (argc, (const char**)argv);
 
    optarg = NULL;
 

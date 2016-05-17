@@ -6,7 +6,7 @@
 static
 AS_UID
 lookupUID(char *uidstr) {
-  AS_UID uid = AS_UID_lookup(uidstr, 0L);
+  AS_UID uid = AS_UID_lookup(uidstr);
 
   if (AS_UID_compare(uid, AS_UID_undefined()) == 0)
     uid = AS_UID_load(uidstr);

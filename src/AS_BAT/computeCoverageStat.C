@@ -364,15 +364,15 @@ getGlobalArrivalRate(MultiAlignStore *tigStore,
 
 
 int
-main(int argc, char **argv) {
-  char             *gkpName      = NULL;
-  char             *tigName      = NULL;
-  int32             tigVers      = -1;
+main(int argc, const char** argv) {
+  const char *gkpName = NULL;
+  const char *tigName = NULL;
+  int32       tigVers = -1;
 
   int64             genomeSize   = 0;
 
   char              outName[FILENAME_MAX];
-  char             *outPrefix = NULL;
+  const char       *outPrefix = NULL;
   FILE             *outCGA = NULL;
   FILE             *outLOG = NULL;
   FILE             *outSTA = NULL;

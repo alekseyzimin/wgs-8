@@ -413,7 +413,7 @@ NextFragmentBead(FragmentBeadIterator *bi);
 void
 ClearBead(beadIdx bid);
 void
-AlignBeadToColumn(int32 cid, beadIdx bid, char *label);
+AlignBeadToColumn(int32 cid, beadIdx bid, const char *label);
 beadIdx
 UnAlignBeadFromColumn(beadIdx bid);
 beadIdx

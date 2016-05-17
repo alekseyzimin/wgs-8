@@ -41,7 +41,7 @@ public:
   void         evaluateTig(MultiAlignT *ma, bool isUnitig);
   void         finalize(void);
 
-  void         printSummary(FILE *out, char *description, vector<uint32> &data);
+  void         printSummary(FILE *out, const char *description, vector<uint32> &data);
   void         printSummary(FILE *out);
 
 private:

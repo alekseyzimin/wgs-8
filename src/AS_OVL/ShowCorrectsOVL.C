@@ -38,7 +38,7 @@
  * $Revision: 1.14 $
 */
 
-static char *rcsid = "$Id: ShowCorrectsOVL.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: ShowCorrectsOVL.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 
 //  System include files

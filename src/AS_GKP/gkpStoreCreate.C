@@ -39,9 +39,9 @@ getLine(char *inLine, uint32 inLineLen, FILE *inFile) {
 
 
 int
-main(int argc, char **argv) {
-  char            *gkpStoreName      = NULL;
-  char            *outPrefix         = NULL;
+main(int argc, const char** argv) {
+  const char            *gkpStoreName      = NULL;
+  const char            *outPrefix         = NULL;
 
   AS_IID           libToDump         = 0;
   uint32           clrToDump         = AS_READ_CLEAR_LATEST;

@@ -28,8 +28,8 @@ static const char *rcsid_CISCAFFOLDT_MERGE_H = "$Id: CIScaffoldT_Merge_CGW.H 437
 
 void
 MergeScaffoldsAggressive(ScaffoldGraphT *sgraph,
-                              char *logicalname,
-                              int verbose);
+                         const char *logicalname,
+                         int verbose);
 
 
 #endif

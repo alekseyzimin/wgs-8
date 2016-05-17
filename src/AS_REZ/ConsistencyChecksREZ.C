@@ -30,7 +30,7 @@
 
 **********************************************************************/
 
-static char *rcsid = "$Id: ConsistencyChecksREZ.C 4371 2013-08-01 17:19:47Z brianwalenz $";
+static const char *rcsid = "$Id: ConsistencyChecksREZ.C 4371 2013-08-01 17:19:47Z brianwalenz $";
 
 #include "AS_global.H"
 

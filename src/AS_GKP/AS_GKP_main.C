@@ -39,7 +39,7 @@ const char *mainid = "$Id: AS_GKP_main.C 4535 2014-06-10 22:08:29Z skoren $";
 #include "AS_MSG_pmesg.H"
 #include "AS_GKP_include.H"
 
-char            *progName       = NULL;
+const char     *progName        = NULL;
 long		srandSeed	= 0;
 
 gkStore         *gkpStore       = NULL;
@@ -52,7 +52,7 @@ FILE            *fastqUIDmap = NULL;
 
 static
 void
-usage(char *filename, int longhelp) {
+usage(const char *filename, int longhelp) {
   fprintf(stdout, "usage1: %s -o gkpStore [append/create options] <input.frg> <input.frg> ...\n", filename);
   fprintf(stdout, "usage2: %s -P partitionfile gkpStore\n", filename);
   fprintf(stdout, "usage3: %s [id-selection] [options] [format] gkpStore\n", filename);
@@ -198,7 +198,7 @@ usage(char *filename, int longhelp) {
 
 
 char *
-constructIIDdumpFromIDFile(char *gkpStoreName, char *iidToDump, char *uidFileName, char *iidFileName) {
+constructIIDdumpFromIDFile(const char *gkpStoreName, char *iidToDump, const char *uidFileName, const char *iidFileName) {
 
   if ((uidFileName == NULL) && (iidFileName == NULL))
     return(iidToDump);
@@ -224,7 +224,7 @@ constructIIDdumpFromIDFile(char *gkpStoreName, char *iidToDump, char *uidFileNam
     }
     fgets(L, 1024, F);
     while (!feof(F)) {
-      AS_IID      iid = AS_IID_fromString(L, NULL);
+      AS_IID      iid = AS_IID_fromString(L);
       if (iid >= lastElem)
         fprintf(stderr, "%s: IID " F_IID " too big, ignored.\n", progName, iid);
       else
@@ -248,7 +248,7 @@ constructIIDdumpFromIDFile(char *gkpStoreName, char *iidToDump, char *uidFileNam
     fgets(L, 1024, F);
     while (!feof(F)) {
       chomp(L);
-      AS_UID  uid = AS_UID_lookup(L, NULL);
+      AS_UID  uid = AS_UID_lookup(L);
       AS_IID  iid = gkp->gkStore_getUIDtoIID(uid, NULL);
 
       if (iid == 0)
@@ -272,7 +272,7 @@ constructIIDdumpFromIDFile(char *gkpStoreName, char *iidToDump, char *uidFileNam
 
 
 char *
-constructIIDdump(char  *gkpStoreName,
+constructIIDdump(const char  *gkpStoreName,
                  char  *iidToDump,
                  uint32 dumpRandLib,
                  uint32 dumpRandMateNum,
@@ -392,7 +392,7 @@ constructIIDdump(char  *gkpStoreName,
 
 
 char *
-constructIIDdumpLongest(char  *gkpStoreName,
+constructIIDdumpLongest(const char  *gkpStoreName,
                  char  *iidToDump,
                  uint32 dumpRandLib,
                  uint32 dumpLongestMin,
@@ -479,56 +479,55 @@ constructIIDdumpLongest(char  *gkpStoreName,
 #define DUMP_FEATURE     9
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
 
   //  Options for everyone.  Everyone needs a GateKeeper!
   //
-  char            *gkpStoreName    = NULL;
+  const char *gkpStoreName = NULL;
 
   //  Options for appending or creating:
   //
-  int              append             = 0;
-  int              outputExists       = 0;
-  char            *vectorClearFile    = NULL;
-  int              assembler          = AS_ASSEMBLER_GRANDE;
-  int              firstFileArg       = 0;
-  int              fixInsertSizes     = 0;
-  int              packedLength       = 160;
+  int         append          = 0;
+  int         outputExists    = 0;
+  const char *vectorClearFile = NULL;
+  int         assembler       = AS_ASSEMBLER_GRANDE;
+  int         firstFileArg    = 0;
+  int         fixInsertSizes  = 0;
+  int         packedLength    = 160;
 
   //  Options for partitioning
   //
-  char            *partitionFile = NULL;
+  const char *partitionFile = NULL;
 
   //  Options for dumping:
   //
-  AS_IID           begIID            = 0;
-  AS_IID           endIID            = 2000000000;  //  I hope I never see an assembly with 2 billion IIDs!
-  char            *uidFileName       = NULL;
-  char            *iidFileName       = NULL;
-  int              dump              = DUMP_NOTHING;
-  int              dumpTabular       = 0;
-  int              dumpWithSequence  = 0;
-  int              dumpAllReads      = 0;
-  int              dumpClear         = AS_READ_CLEAR_LATEST;
-  int              dumpAllBases      = 0;
-  int              doNotFixMates     = 0;
-  int			   dumpInvert		 = 0;
-  int              dumpFormat        = 2;
-  char            *dumpPrefix        = NULL;
-  int              dumpWithLibName   = 0;
-  uint32           dumpRandLib       = 0;  //  0 means "from any library"
-  uint32           dumpRandMateNum   = 0;
-  uint32           dumpRandSingNum   = 0;  //  Not a command line option
-  double           dumpRandFraction  = 0.0;
-  uint64           dumpRandLength    = 0;
-  uint32           dumpLongestMin    = 0;
-  uint64           dumpLongestTotal  = 0;
-  char            *iidToDump         = NULL;
-  
-  AS_IID           featureLibIID     = 0;
-  char            *featureName       = NULL;
+  AS_IID      begIID           = 0;
+  AS_IID      endIID           = 2000000000; //  I hope I never see an assembly with 2 billion IIDs!
+  const char *uidFileName      = NULL;
+  const char *iidFileName      = NULL;
+  int         dump             = DUMP_NOTHING;
+  int         dumpTabular      = 0;
+  int         dumpWithSequence = 0;
+  int         dumpAllReads     = 0;
+  int         dumpClear        = AS_READ_CLEAR_LATEST;
+  int         dumpAllBases     = 0;
+  int         doNotFixMates    = 0;
+  int         dumpInvert       = 0;
+  int         dumpFormat       = 2;
+  const char *dumpPrefix       = NULL;
+  int         dumpWithLibName  = 0;
+  uint32      dumpRandLib      = 0; //  0 means "from any library"
+  uint32      dumpRandMateNum  = 0;
+  uint32      dumpRandSingNum  = 0; //  Not a command line option
+  double      dumpRandFraction = 0.0;
+  uint64      dumpRandLength   = 0;
+  uint32      dumpLongestMin   = 0;
+  uint64      dumpLongestTotal = 0;
+  char       *iidToDump        = NULL;
 
-  int              dumpDoNotUseUIDs  = FALSE;
+  AS_IID      featureLibIID    = 0;
+  const char *featureName      = NULL;
+  int         dumpDoNotUseUIDs = FALSE;
 
   progName = argv[0];
   gkpStore = NULL;

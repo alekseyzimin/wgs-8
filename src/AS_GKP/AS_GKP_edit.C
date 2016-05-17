@@ -33,7 +33,7 @@ static char const *rcsid = "$Id: AS_GKP_edit.C 4382 2013-08-06 23:02:39Z brianwa
 
 
 void
-updateVectorClear(char *vectorClearFile, char *gkpStoreName) {
+updateVectorClear(const char *vectorClearFile, const char *gkpStoreName) {
   char          line[256];
   int           nlines  = 0;
   int           nupdate = 0;
@@ -56,17 +56,17 @@ updateVectorClear(char *vectorClearFile, char *gkpStoreName) {
 
   fgets(line, 256, v);
   while (!feof(v)) {
-    char          *pine = line;
-    char          *lstr;
-    char          *rstr;
+    const char    *pine = line;
+    const char    *lstr;
+    const char    *rstr;
 
     chomp(line);
 
-    AS_UID    uid = AS_UID_lookup(pine, &pine);
+    AS_UID    uid = AS_UID_lookup(pine, pine);
     munch(pine);
-    int       l   = strtol(lstr = pine, &pine, 10);
+    int       l   = strtol(lstr = pine, (char**)&pine, 10);
     munch(pine);
-    int       r   = strtol(rstr = pine, &pine, 10);
+    int       r   = strtol(rstr = pine, (char**)&pine, 10);
     int       ll;
     int       rr;
     int       mm;
@@ -124,7 +124,7 @@ updateVectorClear(char *vectorClearFile, char *gkpStoreName) {
 
 
 void
-revertClearRange(char *clearRegionName, char *gkpStoreName) {
+revertClearRange(const char *clearRegionName, const char *gkpStoreName) {
   gkStore    *gkpStore = new gkStore(gkpStoreName, FALSE, TRUE);
   gkFragment  fr;
   uint32      br, er;  //  Begin, End, of the range to revert to
@@ -166,16 +166,16 @@ revertClearRange(char *clearRegionName, char *gkpStoreName) {
 
 static
 void
-setClear(AS_IID IID, char *E, uint32 which, int update, int verbose) {
+setClear(AS_IID IID, const char *E, uint32 which, int update, int verbose) {
   uint32 bo, eo, bn, en;
 
   gkFragment fr;
 
   gkpStore->gkStore_getFragment(IID, &fr, GKFRAGMENT_INF);
 
-  bn = strtoul(E, &E, 10);
+  bn = strtoul(E, (char**)&E, 10);
   munch(E);
-  en = strtoul(E, &E, 10);
+  en = strtoul(E, (char**)&E, 10);
 
   fr.gkFragment_getClearRegion(bo, eo, which);
   fr.gkFragment_setClearRegion(bn, en, which);
@@ -244,18 +244,18 @@ allFrags(gkStore *gkpStore,
 
 static
 bool
-edit_mateiid(AS_IID     IID,
-             char      *ACT,
-             char      *VAL,
-               char      *LIN,
-             bool       update,
+edit_mateiid(AS_IID      IID,
+             char       *ACT,
+             const char *VAL,
+             char       *LIN,
+             bool        update,
              bool       verbose) {
   gkFragment fr;
 
   gkpStore->gkStore_getFragment(IID, &fr, GKFRAGMENT_INF);
 
   AS_IID    o = fr.gkFragment_getMateIID();
-  AS_IID    n = AS_IID_fromString(VAL, &VAL);
+  AS_IID    n = AS_IID_fromString(VAL, VAL);
 
   fr.gkFragment_setMateIID(n);
 
@@ -285,18 +285,18 @@ edit_mateiid(AS_IID     IID,
 
 static
 bool
-edit_mateuid(AS_IID     IID,
-             char      *ACT,
-             char      *VAL,
-               char      *LIN,
-             bool       update,
+edit_mateuid(AS_IID      IID,
+             char       *ACT,
+             const char *VAL,
+             char       *LIN,
+             bool        update,
              bool       verbose) {
   gkFragment fr;
 
   gkpStore->gkStore_getFragment(IID, &fr, GKFRAGMENT_INF);
 
   AS_IID    o = fr.gkFragment_getMateIID();
-  AS_UID    n = AS_UID_lookup(VAL, &VAL);
+  AS_UID    n = AS_UID_lookup(VAL, VAL);
   fr.gkFragment_setMateIID(gkpStore->gkStore_getUIDtoIID(n, NULL));
   if (verbose)
     fprintf(stdout, "frg uid %s mateiid " F_IID " -> mateiid " F_IID " mateuid %s\n",
@@ -311,18 +311,18 @@ edit_mateuid(AS_IID     IID,
 
 static
 bool
-edit_readuid(AS_IID     IID,
-             char      *ACT,
-             char      *VAL,
-               char      *LIN,
-             bool       update,
+edit_readuid(AS_IID      IID,
+             char       *ACT,
+             const char *VAL,
+               char     *LIN,
+             bool        update,
              bool       verbose) {
   gkFragment fr;
 
   gkpStore->gkStore_getFragment(IID, &fr, GKFRAGMENT_INF);
 
   AS_UID    o = fr.gkFragment_getReadUID();
-  fr.gkFragment_setReadUID(AS_UID_lookup(VAL, &VAL));  //  I _really_ hope you know what you're doing
+  fr.gkFragment_setReadUID(AS_UID_lookup(VAL, VAL));  //  I _really_ hope you know what you're doing
   if (verbose)
     fprintf(stdout, "frg iid " F_IID " readuid %s -> %s\n",
             fr.gkFragment_getReadIID(), AS_UID_toString(o), AS_UID_toString(fr.gkFragment_getReadUID()));
@@ -336,18 +336,18 @@ edit_readuid(AS_IID     IID,
 
 static
 bool
-edit_libiid(AS_IID     IID,
-            char      *ACT,
-            char      *VAL,
-               char      *LIN,
-            bool       update,
+edit_libiid(AS_IID      IID,
+            char       *ACT,
+            const char *VAL,
+            char       *LIN,
+            bool        update,
             bool       verbose) {
   gkFragment fr;
 
   gkpStore->gkStore_getFragment(IID, &fr, GKFRAGMENT_INF);
 
   AS_IID    o = fr.gkFragment_getLibraryIID();
-  fr.gkFragment_setLibraryIID(AS_IID_fromString(VAL, &VAL));
+  fr.gkFragment_setLibraryIID(AS_IID_fromString(VAL, VAL));
   if (verbose)
     fprintf(stdout, "frg uid %s libiid " F_IID " -> libiid " F_IID "\n",
             AS_UID_toString(fr.gkFragment_getReadUID()), o, fr.gkFragment_getLibraryIID());
@@ -361,18 +361,18 @@ edit_libiid(AS_IID     IID,
 
 static
 bool
-edit_libuid(AS_IID     IID,
-            char      *ACT,
-            char      *VAL,
-               char      *LIN,
-            bool       update,
-            bool       verbose) {
+edit_libuid(AS_IID      IID,
+            char       *ACT,
+            const char *VAL,
+            char       *LIN,
+            bool        update,
+            bool        verbose) {
   gkFragment fr;
 
   gkpStore->gkStore_getFragment(IID, &fr, GKFRAGMENT_INF);
 
   AS_IID    o = fr.gkFragment_getLibraryIID();
-  AS_UID    n = AS_UID_lookup(VAL, &VAL);
+  AS_UID    n = AS_UID_lookup(VAL, VAL);
   fr.gkFragment_setLibraryIID(gkpStore->gkStore_getUIDtoIID(n, NULL));
   if (verbose)
     fprintf(stdout, "frg uid %s libiid " F_IID " -> libiid " F_IID " libuid %s\n",
@@ -387,11 +387,11 @@ edit_libuid(AS_IID     IID,
 
 static
 bool
-edit_isnonrandom(AS_IID     IID,
-                 char      *ACT,
-                 char      *VAL,
-                 char      *LIN,
-                 bool       update,
+edit_isnonrandom(AS_IID      IID,
+                 char       *ACT,
+                 const char *VAL,
+                 char       *LIN,
+                 bool        update,
                  bool       verbose) {
   gkFragment fr;
 
@@ -419,11 +419,11 @@ edit_isnonrandom(AS_IID     IID,
 
 static
 bool
-edit_isdeleted(AS_IID     IID,
-               char      *ACT,
-               char      *VAL,
-               char      *LIN,
-               bool       update,
+edit_isdeleted(AS_IID      IID,
+               char       *ACT,
+               const char *VAL,
+               char       *LIN,
+               bool        update,
                bool       verbose) {
   gkFragment fr;
 
@@ -451,11 +451,11 @@ edit_isdeleted(AS_IID     IID,
 
 static
 bool
-edit_orientation(AS_IID     IID,
-                 char      *ACT,
-                 char      *VAL,
-                 char      *LIN,
-                 bool       update,
+edit_orientation(AS_IID      IID,
+                 char       *ACT,
+                 const char *VAL,
+                 char       *LIN,
+                 bool        update,
                  bool       verbose) {
   gkFragment fr;
 
@@ -486,13 +486,13 @@ edit_orientation(AS_IID     IID,
 
 
 void
-editStore(char *editsFileName, char *gkpStoreName, int update) {
-  FILE            *F        = NULL;
-  char             L[1024]  = {0};
-  char            *E        = NULL;
+editStore(const char *editsFileName, const char *gkpStoreName, int update) {
+  FILE       *F            = NULL;
+  char             L[1024] = {0};
+  const char *E            = NULL;
 
-  int              errors   = 0;
-  int              verbose  = 1;
+  int errors  = 0;
+  int verbose = 1;
 
   gkpStore = new gkStore(gkpStoreName, FALSE, update);
 
@@ -554,13 +554,13 @@ editStore(char *editsFileName, char *gkpStoreName, int update) {
     if        (strncasecmp("uid", E, 3) == 0) {
       E += 3;
       munch(E);
-      UID = AS_UID_lookup(E, &E);
+      UID = AS_UID_lookup(E, E);
       IID = gkpStore->gkStore_getUIDtoIID(UID, NULL);
     } else if (strncasecmp("iid", E, 3) == 0) {
       E += 3;
       munch(E);
       UID = AS_UID_undefined();
-      IID = AS_IID_fromString(E, &E);
+      IID = AS_IID_fromString(E, E);
     } else {
       fprintf(stderr, "unknwon edit line format: '%s'\n", L);
       goto nextline;

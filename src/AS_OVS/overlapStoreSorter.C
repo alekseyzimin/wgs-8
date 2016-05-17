@@ -49,7 +49,7 @@ using namespace std;
 //  This should be private to AS_OVS
 //
 void
-writeOverlaps(char                *ovlName,
+writeOverlaps(const char          *ovlName,
               OVSoverlap          *overlapsort,
               uint64               numOvl,
               uint32               jobIndex) {
@@ -59,7 +59,7 @@ writeOverlaps(char                *ovlName,
   uint32                      currentFileIndex = jobIndex;
   uint64                      overlapsThisFile = 0;
 
-	OverlapStoreOffsetRecord    offset; 
+  OverlapStoreOffsetRecord    offset; 
   OverlapStoreOffsetRecord    missing;
  
   offset.a_iid     = overlapsort[0].a_iid;
@@ -196,8 +196,8 @@ writeOverlaps(char                *ovlName,
 
 
 int
-main(int argc, char **argv) {
-  char           *ovlName      = NULL;
+main(int argc, const char** argv) {
+  const char     *ovlName      = NULL;
   uint32          fileLimit    = 512;   //  Number of 'slices' from bucketizer
   uint32          jobIndex     = 0;     //  'slice' that we are going to be sorting
   uint32          jobIdxMax    = 0;     //  Number of 'buckets' from bucketizer

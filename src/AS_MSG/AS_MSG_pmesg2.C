@@ -18,7 +18,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
-static char *rcsid= "$Id: AS_MSG_pmesg2.C 4480 2013-12-03 09:15:44Z brianwalenz $";
+static const char *rcsid= "$Id: AS_MSG_pmesg2.C 4480 2013-12-03 09:15:44Z brianwalenz $";
 
 #include <stdio.h>
 #include <stdlib.h>

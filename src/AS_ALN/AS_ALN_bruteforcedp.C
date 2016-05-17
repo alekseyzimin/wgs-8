@@ -68,14 +68,14 @@ static const char *rcsid = "$Id: AS_ALN_bruteforcedp.C 4483 2013-12-12 18:48:41Z
 //
 
 void
-alignLinker(char           *alignA,
-            char           *alignB,
-            char           *stringA,
-            char           *stringB,
-            alignLinker_s  *a,
-            int             endToEnd,
-            int             allowNs,
-            int             ahang,
+alignLinker(char          *alignA,
+            char          *alignB,
+            const char    *stringA,
+            const char    *stringB,
+            alignLinker_s *a,
+            int            endToEnd,
+            int            allowNs,
+            int            ahang,
             int             bhang) {
 
   int32 lenA = strlen(stringA);

@@ -18,7 +18,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *************************************************************************/
-static char *rcsid = "$Id: CIScaffoldT_MergeScaffolds.C 4385 2013-08-14 03:18:21Z brianwalenz $";
+static const char *rcsid = "$Id: CIScaffoldT_MergeScaffolds.C 4385 2013-08-14 03:18:21Z brianwalenz $";
 
 #include "CIScaffoldT_MergeScaffolds.H"
 

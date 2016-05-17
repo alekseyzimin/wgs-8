@@ -476,7 +476,7 @@ outputOverlaps(gkStore           *gkpStore,
                OverlapStore      *ovlPrimary,
                OverlapStore      *ovlSecondary,
                readErrorEstimate *readProfile,
-               char              *outputName) {
+               const char        *outputName) {
 
   //  Allocate space for the compute.
 
@@ -568,18 +568,18 @@ outputOverlaps(gkStore           *gkpStore,
 
 
 int
-main(int argc, char **argv) {
-  char             *gkpName          = 0L;
+main(int argc, const char** argv) {
+  const char       *gkpName          = 0L;
   gkStore          *gkpStore         = 0L;
-  char             *ovlPrimaryName   = 0L;
+  const char       *ovlPrimaryName   = 0L;
   OverlapStore     *ovlPrimary       = 0L;
-  char             *ovlSecondaryName = 0L;
+  const char       *ovlSecondaryName = 0L;
   OverlapStore     *ovlSecondary     = 0L;
 
   uint32            errorRate    = AS_OVS_encodeQuality(0.015);
   double            errorLimit   = 2.5;
 
-  char             *outputPrefix  = NULL;
+  const char       *outputPrefix  = NULL;
   char              logName[FILENAME_MAX] = {0};
   char              sumName[FILENAME_MAX] = {0};
   FILE             *logFile = 0L;

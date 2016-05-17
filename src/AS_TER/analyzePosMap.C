@@ -38,12 +38,12 @@ const char *mainid = "$Id: analyzePosMap.C 4371 2013-08-01 17:19:47Z brianwalenz
 //  For salmon, we'd like this broken down by class of unitig.  Need some mechanism of coloring the unitigs.
 
 void
-analyzeSurrogates(char *outPrefix) {
+analyzeSurrogates(const char *outPrefix) {
 }
 
 
 void
-analyzeDegenerates(char *outPrefix) {
+analyzeDegenerates(const char *outPrefix) {
 }
 
 
@@ -55,11 +55,11 @@ analyzeDegenerates(char *outPrefix) {
 #define ANALYZE_DEGENERATES          0x0008
 
 int
-main(int argc, char **argv) {
-  char    *mapPrefix   = NULL;
-  char    *outPrefix   = NULL;
-  char    *gkpName     = NULL;
-  uint32   analyze     = ANALYZE_NOTHING;
+main(int argc, const char** argv) {
+  const char *mapPrefix = NULL;
+  const char *outPrefix = NULL;
+  const char *gkpName   = NULL;
+  uint32      analyze   = ANALYZE_NOTHING;
 
   argc = AS_configure(argc, argv);
 

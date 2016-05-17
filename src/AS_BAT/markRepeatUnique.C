@@ -92,15 +92,15 @@ computeCoverage(MultiAlignT *ma) {
 
 
 int
-main(int argc, char **argv) {
-  char             *gkpName      = NULL;
-  char             *tigName      = NULL;
+main(int argc, const char** argv) {
+  const char       *gkpName      = NULL;
+  const char       *tigName      = NULL;
   int32             tigVers      = -1;
 
   int64             genomeSize   = 0;
 
   char              outName[FILENAME_MAX];
-  char             *outPrefix = NULL;
+  const char       *outPrefix = NULL;
 
   FILE             *outLOG = NULL;
   FILE             *outSTA = NULL;

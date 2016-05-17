@@ -43,7 +43,7 @@ static const char *rcsid = "$Id: overlapStore_dump.C 4581 2014-10-23 00:18:25Z b
 
 
 void
-dumpStore(char   *ovlName,
+dumpStore(const char   *ovlName,
           uint32  dumpBinary,
           double  dumpERate,
           uint32  dumpType,
@@ -293,8 +293,8 @@ dumpPicture(OVSoverlap *overlaps,
 
 
 void
-dumpPicture(char   *ovlName,
-            char   *gkpName,
+dumpPicture(const char   *ovlName,
+            const char   *gkpName,
             uint32  clearRegion,
             double  dumpERate,
             uint32  dumpLength,

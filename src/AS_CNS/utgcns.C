@@ -256,30 +256,30 @@ unstashContains(MultiAlignT          *ma,
 
 
 int
-main (int argc, char **argv) {
-  char  *gkpName = NULL;
+main (int argc, const char** argv) {
+  const char *gkpName = NULL;
 
-  char  *tigName = NULL;
-  int32  tigVers = -1;
-  int32  tigPart = -1;
+  const char *tigName = NULL;
+  int32       tigVers = -1;
+  int32       tigPart = -1;
 
-  int64  utgBgn = -1;
-  int64  utgEnd = -1;
-  char  *utgFile = NULL;
+  int64       utgBgn  = -1;
+  int64       utgEnd  = -1;
+  const char *utgFile = NULL;
 
-  bool   forceCompute = false;
+  bool forceCompute = false;
 
-  int32  numFailures = 0;
-  int32  numSkipped  = 0;
+  int32 numFailures = 0;
+  int32 numSkipped  = 0;
 
-  bool   showResult = false;
+  bool showResult = false;
 
   double maxCov = 0.0;
   uint32 maxLen = UINT32_MAX;
 
-  bool   inplace  = false;
-  bool   loadall  = false;
-  bool   doUpdate = true;
+  bool inplace  = false;
+  bool loadall  = false;
+  bool doUpdate = true;
 
   CNS_Options options = { CNS_OPTIONS_SPLIT_ALLELES_DEFAULT,
                           CNS_OPTIONS_MIN_ANCHOR_DEFAULT,

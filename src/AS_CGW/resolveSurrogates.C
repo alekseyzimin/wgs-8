@@ -37,7 +37,7 @@ const char *mainid = "$Id: resolveSurrogates.C 4371 2013-08-01 17:19:47Z brianwa
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
 
   // if 1, aggressively place fragments in surrogates that are only
   // used once in the assembly; "aggressively" means place all the

@@ -42,8 +42,8 @@ output_the_chunks(Tfragment     *frags,
                   TChunkMesg    *thechunks,
                   float          global_fragment_arrival_rate,
                   int            frg_count_target,
-                  char          *fileprefix,
-                  char          *tigStorePath,
+                  const char    *fileprefix,
+                  const char    *tigStorePath,
                   gkStore       *gkp) {
 
   int32       nchunks = GetNumVA_AChunkMesg(thechunks);
@@ -180,7 +180,7 @@ output_the_chunks(Tfragment     *frags,
 int
 ParseCommandLine(UnitiggerGlobals * rg,
                  int argc,
-                 char * argv[]) {
+                 const char ** argv) {
 
   int illegal=FALSE;
 
@@ -190,7 +190,7 @@ ParseCommandLine(UnitiggerGlobals * rg,
   argc = AS_configure(argc, argv);
 
   while (!errflg &&
-         ((ch = getopt(argc, argv,
+         ((ch = getopt(argc, (char* const*)argv,
                        "B:F:H:I:S:T:U:W:Y:"
                        "d:e:h:j:kl:m:n:o:p:su:w:x:y:z:"
                        "5"
@@ -429,7 +429,7 @@ ParseCommandLine(UnitiggerGlobals * rg,
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   THeapGlobals     *heapva = (THeapGlobals      *)safe_calloc(sizeof(THeapGlobals), 1);
   UnitiggerGlobals *rg     = (UnitiggerGlobals  *)safe_calloc(sizeof(UnitiggerGlobals), 1);
   gkStore *gkpStore;

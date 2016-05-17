@@ -19,9 +19,9 @@ const char *mainid = "$Id: markUniqueUnique.C 4518 2014-03-31 20:11:04Z brianwal
 
 VA_DEF(uint32)
 
-int main (int argc, char *argv[]) {
-   char    *asmFileName    = NULL;
-   char    *tigStoreName   = NULL;
+int main (int argc, const char *argv[]) {
+   const char    *asmFileName    = NULL;
+   const char    *tigStoreName   = NULL;
    uint32   tigStoreVers   = 2;
 
    int      minLength      = DEFAULT_UNITIG_LENGTH;

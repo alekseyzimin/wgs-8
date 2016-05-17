@@ -3,12 +3,12 @@
 #define LIBMERYL_HISTOGRAM_MAX  1048576
 
 //                      0123456789012345
-static char *ImagicV = "merylStreamIv03\n";
-static char *ImagicX = "merylStreamIvXX\n";
-static char *DmagicV = "merylStreamDv03\n";
-static char *DmagicX = "merylStreamDvXX\n";
-static char *PmagicV = "merylStreamPv03\n";
-static char *PmagicX = "merylStreamPvXX\n";
+static const char*ImagicV = "merylStreamIv03\n";
+static const char*ImagicX = "merylStreamIvXX\n";
+static const char*DmagicV = "merylStreamDv03\n";
+static const char*DmagicX = "merylStreamDvXX\n";
+static const char*PmagicV = "merylStreamPv03\n";
+static const char*PmagicX = "merylStreamPvXX\n";
 
 merylStreamReader::merylStreamReader(const char *fn, uint32 ms) {
 

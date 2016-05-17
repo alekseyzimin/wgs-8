@@ -47,7 +47,7 @@ writeToFile(OVSoverlap          *overlap,
             uint32               sliceFileMax,
             uint64              *sliceSize,
             uint32               iidPerBucket,
-            char                *ovlName,
+            const char          *ovlName,
             uint32               jobIndex,
             bool                 useGzip) {
 
@@ -165,9 +165,9 @@ markDUP(gkStore *gkp, uint32 maxIID, char *skipFragment, uint32 *iidToLib) {
 
 
 int
-main(int argc, char **argv) {
-  char           *ovlName      = NULL;
-  char           *gkpName      = NULL;
+main(int argc, const char** argv) {
+  const char           *ovlName      = NULL;
+  const char           *gkpName      = NULL;
   uint32          fileLimit    = 512;
 
   Ovl_Skip_Type_t ovlSkipOpt   = PLC_ALL;
@@ -178,7 +178,7 @@ main(int argc, char **argv) {
   double          maxErrorRate = 1.0;
   uint64          maxError     = AS_OVS_encodeQuality(maxErrorRate);
 
-  char           *ovlInput     = NULL;
+  const char           *ovlInput     = NULL;
 
   bool            useGzip      = true;
 

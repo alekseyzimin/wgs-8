@@ -88,3 +88,8 @@ void
 safe_free2(void *q) {
   free(q);
 }
+
+void
+safe_free2(const void *q) {
+  free((void*)q);
+}

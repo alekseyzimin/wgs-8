@@ -39,7 +39,7 @@ const char *mainid = "$Id: convertOverlap.C 4436 2013-09-27 20:26:53Z brianwalen
 
 
 void
-toBINARY(char *inf, char *otf, int format) {
+toBINARY(const char *inf, const char *otf, int format) {
   char         *ptrs[16];
   char          line[1024];
   OVSoverlap    olap;
@@ -72,7 +72,7 @@ toBINARY(char *inf, char *otf, int format) {
 
 
 void
-toASCII(char *inf, char *otf) {
+toASCII(const char *inf, const char *otf) {
   OVSoverlap          olap;
   char                olapstring[256];
 
@@ -89,12 +89,12 @@ toASCII(char *inf, char *otf) {
 
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
   int    toB = 0;
   int    toA = 0;
   int    fmt = FORMAT_NONE;
-  char  *inf = NULL;
-  char  *otf = NULL;
+  const char  *inf = NULL;
+  const char  *otf = NULL;
 
   argc = AS_configure(argc, argv);
 

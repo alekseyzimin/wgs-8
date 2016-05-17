@@ -43,6 +43,7 @@ void *safe_calloc(size_t num, size_t len);
 void *safe_malloc(size_t len);
 void *safe_realloc(void *q, size_t len);
 void  safe_free2(void *);
+void  safe_free2(const void *);
 
 #define safe_free(Q) { safe_free2(Q); Q = NULL; }
 

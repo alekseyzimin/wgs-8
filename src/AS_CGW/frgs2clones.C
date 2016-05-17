@@ -28,11 +28,11 @@ const char *mainid = "$Id: frgs2clones.C 4518 2014-03-31 20:11:04Z brianwalenz $
 #include "MultiAlignment_CNS.H"
 
 int
-main(int argc, char **argv) {
-  char   *gkpStorePath   = NULL;
-  int     runConsensus   = 0;
-  int     Ngaps          = 0;
-  uint64  UIDstart       = 1230000;
+main(int argc, const char** argv) {
+  const char *gkpStorePath = NULL;
+  int         runConsensus = 0;
+  int         Ngaps        = 0;
+  uint64      UIDstart     = 1230000;
 
   argc = AS_configure(argc, argv);
 

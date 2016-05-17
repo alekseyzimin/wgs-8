@@ -56,22 +56,22 @@ const char *mainid = "$Id: AS_CGW_main.C 4557 2014-08-11 12:24:27Z brianwalenz $
 
 //  Defines the logical checkpoints
 
-char *ckpNames[16] = { "ckp00-NUL",
-                       "ckp01-INI",
-                       "ckp02-EDG",
-                       "ckp03-SCF-partial",
-                       "ckp04-SCF",
-                       "ckp05-1SM-partial",
-                       "ckp06-1SM",
-                       "ckp07-AS",
-                       "ckp08-2SM-partial",
-                       "ckp09-2SM",
-                       "ckp10-FR",
-                       "ckp11-PS",
-                       "ckp12-FCS",
-                       "ckp13-FC",
-                       "ckp14-RS",
-                       "ckp15-FIN" };
+const char *ckpNames[16] = { "ckp00-NUL",
+                             "ckp01-INI",
+                             "ckp02-EDG",
+                             "ckp03-SCF-partial",
+                             "ckp04-SCF",
+                             "ckp05-1SM-partial",
+                             "ckp06-1SM",
+                             "ckp07-AS",
+                             "ckp08-2SM-partial",
+                             "ckp09-2SM",
+                             "ckp10-FR",
+                             "ckp11-PS",
+                             "ckp12-FCS",
+                             "ckp13-FC",
+                             "ckp14-RS",
+                             "ckp15-FIN" };
 
 #define CHECKPOINT_AFTER_LOADING                    1
 #define CHECKPOINT_AFTER_EDGE_BUILDING              2
@@ -91,7 +91,7 @@ char *ckpNames[16] = { "ckp00-NUL",
 
 
 void
-isValidCheckpointName(char *ckpName) {
+isValidCheckpointName(const char *ckpName) {
   uint32 i=0;
 
   for (; i<16; i++)
@@ -112,13 +112,13 @@ isValidCheckpointName(char *ckpName) {
 
 
 bool
-isThisCheckpoint(char *ckpName, uint32 level) {
+isThisCheckpoint(const char *ckpName, uint32 level) {
   return(strcasecmp(ckpName, ckpNames[level]) == 0);
 }
 
 //  True if the checkpoint we loaded (ckpName) is earlier than the checkpoint we are at (level).
 bool
-runThisCheckpoint(char *ckpName, uint32 level) {
+runThisCheckpoint(const char *ckpName, uint32 level) {
 
   if (strcasecmp(ckpName, ckpNames[level]) < 0) {
     fprintf(stderr, "Beginning %s (loaded %s).\n", ckpNames[level], ckpName);
@@ -139,7 +139,7 @@ void CheckCITypes(ScaffoldGraphT *sgraph);
 void RemoveSurrogateDuplicates(void);
 
 int
-main(int argc, char **argv) {
+main(int argc, const char** argv) {
 
   //  Options controlling main
 
@@ -150,7 +150,7 @@ main(int argc, char **argv) {
   int    repeatRezLevel   = 0;
 
   int    restartFromCheckpoint = -1;
-  char  *restartFromLogical    = "ckp00-NUL";
+  const char  *restartFromLogical    = "ckp00-NUL";
 
   bool   recomputeLeastSquaresOnLoad = false;
   bool   reloadMates                 = false;
