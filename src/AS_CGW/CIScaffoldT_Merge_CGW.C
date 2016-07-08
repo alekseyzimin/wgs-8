@@ -180,6 +180,30 @@ isQualityScaffoldMergingEdgeNEW(SEdgeT                     *curEdge,
           P.numHappy, P.numGap, P.numMisClose, P.numMis, P.numMisFar, P.numTooClose, P.numTooFar, P.numMissing, P.numExternal);
 #endif
 
+//AZ fail if we try to merge two large scaffolds with large negative gap 
+  if(curEdge->distance.mean+5*sqrt(curEdge->distance.variance)<0)
+  {
+    if(scaffoldA->bpLength.mean<scaffoldB->bpLength.mean){
+      if(abs(curEdge->distance.mean+5*sqrt(curEdge->distance.variance))<scaffoldA->bpLength.mean && curEdge->distance.mean+5*sqrt(curEdge->distance.variance)<-10000)
+      {
+        fprintf(stderr,"isQualityScaffoldMergingEdge()-- Merge scaffolds " F_CID" (%.1fbp) and " F_CID" (%.1fbp): FAIL LARGE NEGATIVE GAP\n",
+            scaffoldA->id, scaffoldA->bpLength.mean,
+            scaffoldB->id, scaffoldB->bpLength.mean);
+        return(FALSE);
+      }
+    }else{ 
+      if(abs(curEdge->distance.mean+5*sqrt(curEdge->distance.variance))<scaffoldB->bpLength.mean && curEdge->distance.mean+5*sqrt(curEdge->distance.variance)<-10000)
+      {
+        fprintf(stderr,"isQualityScaffoldMergingEdge()-- Merge scaffolds " F_CID" (%.1fbp) and " F_CID" (%.1fbp): FAIL LARGE NEGATIVE GAP\n",
+            scaffoldA->id, scaffoldA->bpLength.mean,
+            scaffoldB->id, scaffoldB->bpLength.mean);
+        return(FALSE);
+      }
+    }
+  }
+
+
+
 #if 0
   //  Contig positions in the mock merged scaffold are messed up.  The greedy gap size estimator
   //  seems to over estimate gap sizes, which might be better for the few sizes that are messed up,
