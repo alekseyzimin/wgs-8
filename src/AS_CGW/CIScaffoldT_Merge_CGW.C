@@ -1020,7 +1020,8 @@ MergeScaffoldsAggressive(ScaffoldGraphT *graph, const char *logicalcheckpointnum
 
         //  Reset to original weight scaling - this is a bit too aggressive, but seems to be safe.  We do not
         //  end up doing tons and tons of work on failed edges.
-        weightScale = weightScaleInit;
+        //  AZ this results in nearly endless loop
+        // weightScale = weightScaleInit;
 
       } else if (moreWork == true) {
         fprintf(stderr, "MergeScaffoldsAggressive()-- iter %d -- decrease weight scaling from %.4f to %.4f and continue.\n",
