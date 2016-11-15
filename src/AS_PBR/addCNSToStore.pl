@@ -180,10 +180,10 @@ sub process($$$$) {
          my $cnsId = $cnsHash{$val};
          # if unknown unitig encountered due to it being too short delete it from the tigStore
          if (!defined($seqs{$cnsId})) {
-#this breaks CGW, and since this is a short unjitig might as well set it to something useless, like ACGT
-         $fastaSeq = "ACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGT";
+#this breaks CGW, thus we simply skip this unitig -- we can re-run utgcns later
+         $fastaSeq = "";
          $utgID = $val;
-         print OUT "$_\n";
+         #print OUT "$_\n";
                                                  
 #            print STDERR "Unknown consensus for unitig $val\n";
 #            $fastaSeq="";

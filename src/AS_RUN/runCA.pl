@@ -5653,13 +5653,14 @@ sub createPostScaffolderConsensusJobs () {
     } elsif ($consensusType eq "pbdagcon" || $consensusType eq "pbutgcns") {
         print F "\$bin/tigStore -d layout -C -t $wrk/$asm.tigStore $tigVersion -cp \$jobid -g $wrk/$asm.gkpStore > $wrk/8-consensus/$asm.\$jobid.lay\n";
         print F "\$bin/tigStore -d consensus -U -t $wrk/$asm.tigStore 2 -cp \$jobid -g $wrk/$asm.gkpStore > $wrk/8-consensus/$asm.\$jobid.fasta\n";
-        print F "\$bin/convertToPBCNS -path $blasr -consensus $consensusType -coverage 1 -threads " . getGlobal("cnsConcurrency") . " -prefix $wrk/8-consensus/$asm.\$jobid.tmp -length 500 -sequence $wrk/8-consensus/$asm.\$jobid.fasta -input $wrk/8-consensus/$asm.\$jobid.lay -output $wrk/8-consensus/$asm.\$jobid.fa\n";
+        print F "\$bin/convertToPBCNS -path $blasr -consensus $consensusType -coverage 1 -threads 4 -prefix $wrk/8-consensus/$asm.\$jobid.tmp -length 500 -sequence $wrk/8-consensus/$asm.\$jobid.fasta -input $wrk/8-consensus/$asm.\$jobid.lay -output $wrk/8-consensus/$asm.\$jobid.fa\n";
         print F "\$bin/addCNSToStore -path \$bin -version $tigVersion -input $wrk/8-consensus/$asm.\$jobid.fa -lay $wrk/8-consensus/$asm.\$jobid.lay -output $wrk/8-consensus/$asm.\$jobid.cns -prefix $wrk/$asm -sequence $wrk/8-consensus/$asm.\$jobid.fasta -partition \$jobid && touch $wrk/8-consensus/${asm}_\$jobid.success\n";
         print F "if [ -e $wrk/8-consensus/${asm}_\$jobid.success ]; then\n";
         print F "   rm -f $wrk/8-consensus/${asm}.\$jobid.fasta*\n";
         print F "   rm -f $wrk/8-consensus/${asm}.\$jobid.lay\n";
         print F "fi\n";
-        setGlobal("cnsConcurrency", 1);
+        #AZ
+        #setGlobal("cnsConcurrency", 1);
     } else {
         caFailure("unknown consensus type $consensusType; must be 'cns' or 'seqan'", undef);
     }
