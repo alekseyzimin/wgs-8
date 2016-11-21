@@ -209,12 +209,17 @@ sub process($$$$) {
       } elsif ($type eq "contig") {
          # close previous contig
          my $cnsId = $cnsHash{$val};
-         die "Unknown consensus for contig $val\n" if (!defined($seqs{$cnsId}));
+         #cannot die here -- just skip this one
+         #die "Unknown consensus for contig $val\n" if (!defined($seqs{$cnsId}));
+         if (defined($seqs{$cnsId})){
          $fastaSeq = uc $seqs{$cnsId};
          $utgID = $val;
          $isUTG = 0;
          setGlobal("type", "-cp");
          print OUT "$_\n";
+         }else{
+          $fastaSeq = "";
+          }
       } elsif ($fastaSeq ne "") {
          if ($type eq "len") {
             print OUT "len " . length($fastaSeq) . "\n";
