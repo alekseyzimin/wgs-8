@@ -5651,10 +5651,14 @@ sub createPostScaffolderConsensusJobs () {
         print F "&& \\\n";
         print F "touch $wrk/8-consensus/$asm.cns_contigs.\$jobid.success\n";
     } elsif ($consensusType eq "pbdagcon" || $consensusType eq "pbutgcns") {
+        if (runCommand("$wrk/8-consensus", "$bin/tigStore -d consensus -U -t $wrk/$asm.tigStore $tigVersion -g $wrk/$asm.gkpStore > $wrk/8-consensus/$asm.unitigs.fasta")) {
+           caFailure("tigStore dump unitigs for consensus failed", "");
+        }
         print F "\$bin/tigStore -d layout -C -t $wrk/$asm.tigStore $tigVersion -cp \$jobid -g $wrk/$asm.gkpStore > $wrk/8-consensus/$asm.\$jobid.lay\n";
-        print F "\$bin/tigStore -d consensus -U -t $wrk/$asm.tigStore $tigVersion -cp \$jobid -g $wrk/$asm.gkpStore > $wrk/8-consensus/$asm.\$jobid.fasta\n";
-        print F "\$bin/convertToPBCNS -path $blasr -consensus $consensusType -coverage 1 -threads 4 -prefix $wrk/8-consensus/$asm.\$jobid.tmp -length 500 -sequence $wrk/8-consensus/$asm.\$jobid.fasta -input $wrk/8-consensus/$asm.\$jobid.lay -output $wrk/8-consensus/$asm.\$jobid.fa\n";
-        print F "\$bin/addCNSToStore -path \$bin -version $tigVersion -input $wrk/8-consensus/$asm.\$jobid.fa -lay $wrk/8-consensus/$asm.\$jobid.lay -output $wrk/8-consensus/$asm.\$jobid.cns -prefix $wrk/$asm -sequence $wrk/8-consensus/$asm.\$jobid.fasta -partition \$jobid && touch $wrk/8-consensus/${asm}_\$jobid.success\n";
+        #this is inefficient
+        #print F "\$bin/tigStore -d consensus -U -t $wrk/$asm.tigStore $tigVersion -cp \$jobid -g $wrk/$asm.gkpStore > $wrk/8-consensus/$asm.\$jobid.fasta\n";
+        print F "\$bin/convertToPBCNS -path $blasr -consensus $consensusType -coverage 1 -threads 4 -prefix $wrk/8-consensus/$asm.\$jobid.tmp -length 500 -sequence $wrk/8-consensus/$asm.unitigs.fasta -input $wrk/8-consensus/$asm.\$jobid.lay -output $wrk/8-consensus/$asm.\$jobid.fa\n";
+        print F "\$bin/addCNSToStore -path \$bin -version $tigVersion -input $wrk/8-consensus/$asm.\$jobid.fa -lay $wrk/8-consensus/$asm.\$jobid.lay -output $wrk/8-consensus/$asm.\$jobid.cns -prefix $wrk/$asm -sequence $wrk/8-consensus/$asm.unitigs.fasta -partition \$jobid && touch $wrk/8-consensus/${asm}_\$jobid.success\n";
         print F "if [ -e $wrk/8-consensus/${asm}_\$jobid.success ]; then\n";
         print F "   rm -f $wrk/8-consensus/${asm}.\$jobid.fasta*\n";
         print F "   rm -f $wrk/8-consensus/${asm}.\$jobid.lay\n";
