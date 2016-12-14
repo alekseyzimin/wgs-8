@@ -163,7 +163,8 @@ sub flushPBUTGCNS($) {
    if (! -e "$prefix.cns.in" || ! -s "$prefix.cns.in") { return; }
    system("$path/pbutgcns -j $threads $prefix.cns.in >> $output 2>/dev/null");
    if ($? != 0) {
-      die "Error: pbutgcns could not run successfully"
+      #die "Error: pbutgcns could not run successfully"
+      print STDERR "pbutgcns could not run successfully on a tig\n"
    }
 }
 
