@@ -60,7 +60,7 @@ static const char *rcsid = "$Id: CA_ALN_local.C 4371 2013-08-01 17:19:47Z brianw
 
 
 // default values controlling sensitivity and performance:
-#define LOCAL_TUNED_FOR_FRAGMENTS
+//#define LOCAL_TUNED_FOR_FRAGMENTS
 #ifdef LOCAL_TUNED_FOR_FRAGMENTS
 #define KMERLEN   5   /* Must be >= 1 */
 #define MINMATCH 20
@@ -71,10 +71,10 @@ static const char *rcsid = "$Id: CA_ALN_local.C 4371 2013-08-01 17:19:47Z brianw
 
 #define LOCAL_TUNED_FOR_MODERATE_ALIGNS
 #ifdef LOCAL_TUNED_FOR_MODERATE_ALIGNS
-#define KMERLEN   8   /* Must be >= 1 */
-#define MINMATCH 36
-#define MAXERROR  2
-#define KTHRESH  13   /*  MINMATCH - (KMERLEN-1) - KMERLEN*MAXERROR */
+#define KMERLEN   7   /*was 8 Must be >= 1 */
+#define MINMATCH 28   /*was 36*/
+#define MAXERROR  2   /*was 2*/
+#define KTHRESH  8   /*  MINMATCH - (KMERLEN-1) - KMERLEN*MAXERROR */
 #else  // near-identity long matches
 #define KMERLEN   12   /* Must be >= 1 */
 #define MINMATCH 100
