@@ -336,7 +336,7 @@ examineGap(ContigT *lcontig, int lFragIid,
   int32          beg       = -strlen (rcompBuffer);
   int32          end       = strlen (lcompBuffer);
   int32          opposite  = FALSE;
-  double         erate     = MIN(AS_MAX_ERROR_RATE, AS_CGW_ERROR_RATE + 0.02);  //  Historically, erate == 0.12.
+  double         erate     = MIN(AS_MAX_ERROR_RATE, AS_CNS_ERROR_RATE);  //  AZ this was AS_CGW_ERROR_RATE+0.02 now AS_CNS_ERROR_RATE Historically, erate == 0.12.
   double         thresh    = CGW_DP_THRESH;
   double         minlen    = CGW_DP_MINLEN + 10;        //  Historically, minlen == 30.  Not sure if we should hardcode 30 or offset from CGW_DP_MINLEN.
   CompareOptions what      = AS_FIND_LOCAL_ALIGN;
