@@ -254,7 +254,7 @@ sub processLayout($$$$$) {
          my @tokenized = split('\s+', $str);
          my $aln = $tokenized[2];
          $aln =~ s/^\s+|\s+$//g;
-         print CNS "$_ $tokenized[0] $tokenized[1] $aln\n";
+         print CNS "$_ $tokenized[0] $tokenized[1] $aln\n" if($tokenized[1]-$tokenized[0]>=500);
       }
       close(CNS);
       $layCounter++;
