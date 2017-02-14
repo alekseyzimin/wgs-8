@@ -4884,7 +4884,7 @@ sub createPostUnitiggerConsensusJobs (@) {
         print F "   rm -f $wrk/5-consensus/${asm}.\$jobid.fasta*\n";
         print F "   rm -f $wrk/5-consensus/${asm}.\$jobid.lay\n";
         print F "fi\n";
-        setGlobal("cnsConcurrency", int(getGlobal("cnsConcurrency")/4+1));
+        setGlobal("cnsConcurrency", int(getGlobal("cnsConcurrency")/3+1));
 
     } else {
         caFailure("unknown consensus type $consensusType; should be 'cns' or 'seqan'", undef);
@@ -5664,7 +5664,7 @@ sub createPostScaffolderConsensusJobs () {
         print F "   rm -f $wrk/8-consensus/${asm}.\$jobid.lay\n";
         print F "fi\n";
         #AZ
-        setGlobal("cnsConcurrency", int(getGlobal("cnsConcurrency")/4+1));
+        setGlobal("cnsConcurrency", int(getGlobal("cnsConcurrency")/3+1));
     } else {
         caFailure("unknown consensus type $consensusType; must be 'cns' or 'seqan'", undef);
     }
