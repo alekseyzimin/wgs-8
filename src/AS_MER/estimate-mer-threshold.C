@@ -170,6 +170,10 @@ main(int argc, const char** argv) {
 //    fprintf(stderr, "Reset maxCount to " F_U32 ", which will cover %.2f%% of distinct mers and %.2f%% of all mers.\n",
 //            maxCount, 100.0 * distinct / totalUsefulDistinct, 100.0 * total / totalUsefulAll);
 //  }
+  if (maxCount <  5 * Xcoverage)
+    maxCount=5 * Xcoverage;
+  
+  fprintf(stderr, "Reset maxCount to " F_U32 "\n",maxCount);
 
   fprintf(stdout, F_U32"\n", maxCount);
 
