@@ -124,7 +124,7 @@ main(int argc, const char** argv) {
 
     //  If we cover 99% of all the distinct mers, that's reasonable.
     //
-    if ((distinct / (double)totalUsefulDistinct) > 0.99)
+    if ((distinct / (double)totalUsefulDistinct) > 0.995)
       maxCount = i;
 
     //  If we're a somewhat high count, and we're covering 2/3
@@ -150,26 +150,26 @@ main(int argc, const char** argv) {
   //  covering 99% of the distinct, so we're already in good
   //  shape.  The genome doesn't appear to be very repetitive.
   //
-  if (((maxCount <  5 * Xcoverage)) ||
-      ((maxCount < 50 * Xcoverage) && (total / (double)totalUsefulAll > 0.90))) {
-    double  closeAmount = 0.75;
-
-    if (total / (double)totalUsefulAll <= 0.90)
-      closeAmount = 0.5;
-
+  //if (((maxCount <  5 * Xcoverage)) ||
+  //    ((maxCount < 50 * Xcoverage) && (total / (double)totalUsefulAll > 0.90))) {
+  //  double  closeAmount = 0.75;
+//
+//    if (total / (double)totalUsefulAll <= 0.90)
+//      closeAmount = 0.5;
+//
     //  No, really.  This is just 0.75 * (1-TC) + TC
-    double  desiredTC = closeAmount + (1 - closeAmount) * total / (double)totalUsefulAll;
+//    double  desiredTC = closeAmount + (1 - closeAmount) * total / (double)totalUsefulAll;
+//
+//    for (; (i < MF->histogramLength()) && (total / (double)totalUsefulAll < desiredTC); i++) {
+//      distinct += MF->histogram(i);
+//      total    += MF->histogram(i) * i;
+//    }
 
-    for (; (i < MF->histogramLength()) && (total / (double)totalUsefulAll < desiredTC); i++) {
-      distinct += MF->histogram(i);
-      total    += MF->histogram(i) * i;
-    }
-
-    maxCount = i;
-
-    fprintf(stderr, "Reset maxCount to " F_U32 ", which will cover %.2f%% of distinct mers and %.2f%% of all mers.\n",
-            maxCount, 100.0 * distinct / totalUsefulDistinct, 100.0 * total / totalUsefulAll);
-  }
+//    maxCount = i;
+//
+//    fprintf(stderr, "Reset maxCount to " F_U32 ", which will cover %.2f%% of distinct mers and %.2f%% of all mers.\n",
+//            maxCount, 100.0 * distinct / totalUsefulDistinct, 100.0 * total / totalUsefulAll);
+//  }
 
   fprintf(stdout, F_U32"\n", maxCount);
 
