@@ -5157,7 +5157,7 @@ sub postUnitiggerConsensus () {
         $cmd .= " -span   $maxSingleSpan \\\n"              if (defined($maxSingleSpan));
         $cmd .= " -lowcov $lowCovDepth $lowCovAllowed \\\n" if (defined($lowCovAllowed));
         $cmd .= " -reads  $minReadsUnique \\\n"             if (defined($minReadsUnique));
-        $cmd .= " -length $maxRepeatLen \\\n"               if (defined($maxRepeatLen));
+        $cmd .= " -long $maxRepeatLen \\\n"               if (defined($maxRepeatLen));
         $cmd .= " -o $wrk/5-consensus-coverage-stat/$asm.markRepeatUnique \\\n";
         $cmd .= "> $wrk/5-consensus-coverage-stat/markRepeatUnique.err 2>&1";
 
