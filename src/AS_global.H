@@ -217,7 +217,7 @@ typedef uintptr_t INTPTR;
 //  Be aware that overlapper does not work well at large sizes.  Consensus allocates excessive
 //  amounts of memory too.
 //
-#define AS_READ_MAX_PACKED_LEN_BITS       10
+#define AS_READ_MAX_PACKED_LEN_BITS       8
 #define AS_READ_MAX_NORMAL_LEN_BITS       20
 
 //  Do not define this.
