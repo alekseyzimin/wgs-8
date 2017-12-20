@@ -243,6 +243,23 @@ sub setGlobal ($$) {
         setGlobal("gridJobID",              "JOB_ID");
     }
 
+    if (($var eq "gridEngine") && ($val eq "SLURM")) {                                        
+      setGlobal("gridEngineSubmitCommand",      "sbatch");
+      setGlobal("gridEngineHoldOption",         "--depend=afterok:\"WAIT_TAG\"");
+      setGlobal("gridEngineHoldOptionNoArray",  "--depend=afterok:\"WAIT_TAG\"");
+      setGlobal("gridEngineSyncOption",         "");                                          
+      setGlobal("gridEngineNameOption",         "-D `pwd` -J");
+      setGlobal("gridEngineArrayOption",        "-a ARRAY_JOBS");
+      setGlobal("gridEngineArrayName",          "ARRAY_NAME\[ARRAY_JOBS\]");
+      setGlobal("gridEngineOutputOption",       "-o");                                        
+      setGlobal("gridEnginePropagateCommand",   "scontrol update job=\"WAIT_TAG\"");          
+      setGlobal("gridEngineNameToJobIDCommand", "squeue -h -o\%F -n \"WAIT_TAG\" | uniq");    
+      setGlobal("gridEngineNameToJobIDCommandNoArray", "squeue -h -o\%i -n \"WAIT_TAG\"");    
+      setGlobal("gridEngineTaskID",             "SLURM_ARRAY_TASK_ID");
+      setGlobal("gridEngineArraySubmitID",      "%A_%a");
+      setGlobal("gridEngineJobID",              "SLURM_JOB_ID");
+    }
+
     if (($var eq "gridEngine") && ($val eq "LSF")) {
         setGlobal("gridSubmitCommand",      "bsub");
         setGlobal("gridHoldOption",         "-w \"numended\(\"WAIT_TAG\", \*\)\"");
@@ -1490,7 +1507,7 @@ sub submitScript ($) {
 
     if (defined($waitTag)) {
         my $hold = $holdOption;
-        if (getGlobal("gridEngine") eq "LSF"){
+        if (getGlobal("gridEngine") eq "LSF" || getGlobal("gridEngine") eq "SLURM" ){
            my $tcmd = getGlobal("gridNameToJobIDCommand");
            $tcmd =~ s/WAIT_TAG/$waitTag/g;
            my $propJobCount = `$tcmd |wc -l`;
