@@ -84,10 +84,11 @@ sub submitBatchJobs($$) {
     my $TAG = shift @_;
 
     if (runningOnGrid()) {
-        runCommand($wrk, $SGE) and caFailure("Failed to submit batch jobs.");
+        runCommand($wrk, getGlobal("gridSubmitCommand").$SGE."\n") and caFailure("Failed to submit batch jobs.");
         submitScript($TAG);
     } else {
-        pleaseExecute($SGE);
+        runCommand($wrk, getGlobal("gridSubmitCommand")." ".getGlobal("gridSyncOption").$SGE."\n") and caFailure("Failed to submit batch jobs.");
+    #AZ this is for manual submit    pleaseExecute($SGE);
     }
 }
 
@@ -3134,12 +3135,12 @@ sub merTrim {
             my $arrayOpt = getGridArrayOption("mbt_$asm$sgeName", $mbtJobs);
 
             my $SGE;
-            $SGE  = "$submitCommand $sge $sgeMerTrim $nameOption \"$jobName\" $arrayOpt \\\n";
+            $SGE  = " $sge $sgeMerTrim $nameOption \"$jobName\" $arrayOpt \\\n";
             $SGE .= "  $outputOption $wrk/0-mertrim/$asm.merTrim.$submitTaskID.sge.err \\\n";
             $SGE .= "  $wrk/0-mertrim/mertrim.sh\n";
 
             submitBatchJobs($SGE, $jobName);
-            exit(0);
+            #exit(0);
         } else {
             for (my $i=1; $i<=$mbtJobs; $i++) {
                 my $out = substr("0000" . $i, -4);
@@ -3468,12 +3469,12 @@ sub merOverlapper($) {
                 my $arrayOpt = getGridArrayOption("mer_$asm$sgeName", $ovmJobs);
 
                 my $SGE;
-                $SGE  = "$submitCommand $sge $sgeOverlap $nameOption \"$jobName\" $arrayOpt \\\n";
+                $SGE  = " $sge $sgeOverlap $nameOption \"$jobName\" $arrayOpt \\\n";
                 $SGE .= "  $outputOption $wrk/$outDir/seeds/$submitTaskID.err \\\n";
-                $SGE .= "  $wrk/$outDir/overmerry.sh\n";
+                $SGE .= "  $wrk/$outDir/overmerry.sh";
 
                 submitBatchJobs($SGE, $jobName);
-                exit(0);
+                #exit(0);
             } else {
                 for (my $i=1; $i<=$ovmJobs; $i++) {
                     my $out = substr("0000" . $i, -4);
@@ -3560,12 +3561,12 @@ sub merOverlapper($) {
             my $arrayOpt = getGridArrayOption("mer_$asm$sgeName", $ovmJobs);
 
             my $SGE;
-            $SGE  = "$submitCommand $sge $sgeOverlap $nameOption \"$jobName\" $arrayOpt \\\n";
+            $SGE  = " $sge $sgeOverlap $nameOption \"$jobName\" $arrayOpt \\\n";
             $SGE .= "  $outputOption $wrk/$outDir/olaps/$submitTaskID.err \\\n";
-            $SGE .= "  $wrk/$outDir/olap-from-seeds.sh\n";
+            $SGE .= "  $wrk/$outDir/olap-from-seeds.sh";
 
             submitBatchJobs($SGE, $jobName);
-            exit(0);
+            #exit(0);
         } else {
             for (my $i=1; $i<=$olpJobs; $i++) {
                 my $out = substr("0000" . $i, -4);
@@ -3798,12 +3799,12 @@ sub createOverlapJobs($) {
         my $arrayOpt = getGridArrayOption("ovl_$asm$sgeName", $jobs);
 
         my $SGE;
-        $SGE  = "$submitCommand $sge $sgeOverlap $nameOption \"$jobName\" $arrayOpt \\\n";
+        $SGE  = " $sge $sgeOverlap $nameOption \"$jobName\" $arrayOpt \\\n";
         $SGE .= "  $outputOption $wrk/$outDir/$submitTaskID.out \\\n";
-        $SGE .= "  $wrk/$outDir/overlap.sh\n";
+        $SGE .= "  $wrk/$outDir/overlap.sh";
 
         submitBatchJobs($SGE, $jobName);
-        exit(0);
+        #exit(0);
     } else {
         for (my $i=1; $i<=$jobs; $i++) {
             my $out = substr("000000" . $i, -6);
@@ -4322,12 +4323,12 @@ sub overlapCorrection {
             my $arrayOpt = getGridArrayOption("ovl_$asm$sgeName", $jobs);
 
             my $SGE;
-            $SGE  = "$submitCommand $sge $sgeFragmentCorrection $nameOption \"$jobName\" $arrayOpt ";
+            $SGE  = " $sge $sgeFragmentCorrection $nameOption \"$jobName\" $arrayOpt ";
             $SGE .= " $outputOption $wrk/3-overlapcorrection/$submitTaskID.err ";
-            $SGE .= "$wrk/3-overlapcorrection/frgcorr.sh\n";
+            $SGE .= "$wrk/3-overlapcorrection/frgcorr.sh";
 
             submitBatchJobs($SGE, $jobName);
-            exit(0);
+            #exit(0);
         } else {
             #  Run the correction job right here, right now.
 
@@ -4464,12 +4465,12 @@ sub overlapCorrection {
             my $arrayOpt = getGridArrayOption("ovc_$asm$sgeName", $jobs);
 
             my $SGE;
-            $SGE  = "$submitCommand $sge $sgeOverlapCorrection $nameOption \"$jobName\" $arrayOpt ";
+            $SGE  = " $sge $sgeOverlapCorrection $nameOption \"$jobName\" $arrayOpt ";
             $SGE .= " $outputOption $wrk/3-overlapcorrection/$submitTaskID.err ";
-            $SGE .= "$wrk/3-overlapcorrection/ovlcorr.sh\n";
+            $SGE .= "$wrk/3-overlapcorrection/ovlcorr.sh";
 
             submitBatchJobs($SGE, $jobName);
-            exit(0);
+            #exit(0);
         } else {
             #  Run the correction job right here, right now.
 
@@ -4924,12 +4925,12 @@ sub createPostUnitiggerConsensusJobs (@) {
         my $arrayOpt = getGridArrayOption("ovc_$asm$sgeName", $jobs);
 
         my $SGE;
-        $SGE  = "$submitCommand $sge $sgeConsensus $nameOption \"$jobName\" $arrayOpt ";
+        $SGE  = " $sge $sgeConsensus $nameOption \"$jobName\" $arrayOpt ";
         $SGE .= "$outputOption /dev/null ";
-        $SGE .= "$wrk/5-consensus/consensus.sh\n";
+        $SGE .= "$wrk/5-consensus/consensus.sh";
 
         submitBatchJobs($SGE, $jobName);
-        exit(0);
+        #exit(0);
     } else {
         for (my $i=1; $i<=$jobs; $i++) {
             schedulerSubmit("$wrk/5-consensus/consensus.sh $i > /dev/null 2>&1");
@@ -5704,12 +5705,12 @@ sub createPostScaffolderConsensusJobs () {
         my $arrayOpt = getGridArrayOption("ctg_$asm$sgeName", $jobs);
 
         my $SGE;
-        $SGE  = "$submitCommand $sge $sgeConsensus $nameOption \"$jobName\" $arrayOpt ";
+        $SGE  = " $sge $sgeConsensus $nameOption \"$jobName\" $arrayOpt ";
         $SGE .= "$outputOption /dev/null ";
-        $SGE .= "$wrk/8-consensus/consensus.sh\n";
+        $SGE .= "$wrk/8-consensus/consensus.sh";
 
         submitBatchJobs($SGE, $jobName);
-        exit(0);
+        #exit(0);
     } else {
         for (my $i=1; $i<=$jobs; $i++) {
             schedulerSubmit("$wrk/8-consensus/consensus.sh $i > /dev/null 2>&1");
