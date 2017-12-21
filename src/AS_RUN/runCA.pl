@@ -87,8 +87,11 @@ sub submitBatchJobs($$) {
         runCommand($wrk, getGlobal("gridSubmitCommand").$SGE."\n") and caFailure("Failed to submit batch jobs.");
         submitScript($TAG);
     } else {
+        if($submitCommand eq "slurm"){
+        pleaseExecute(getGlobal("gridSubmitCommand").$SGE."\n");
+        exit(0);
+        }
         runCommand($wrk, getGlobal("gridSubmitCommand")." ".getGlobal("gridSyncOption").$SGE."\n") and caFailure("Failed to submit batch jobs.");
-    #AZ this is for manual submit    pleaseExecute($SGE);
     }
 }
 
@@ -245,20 +248,20 @@ sub setGlobal ($$) {
     }
 
     if (($var eq "gridEngine") && ($val eq "SLURM")) {                                        
-      setGlobal("gridEngineSubmitCommand",      "sbatch");
-      setGlobal("gridEngineHoldOption",         "--depend=afterok:\"WAIT_TAG\"");
-      setGlobal("gridEngineHoldOptionNoArray",  "--depend=afterok:\"WAIT_TAG\"");
-      setGlobal("gridEngineSyncOption",         "");                                          
-      setGlobal("gridEngineNameOption",         "-D `pwd` -J");
-      setGlobal("gridEngineArrayOption",        "-a ARRAY_JOBS");
-      setGlobal("gridEngineArrayName",          "ARRAY_NAME\[ARRAY_JOBS\]");
-      setGlobal("gridEngineOutputOption",       "-o");                                        
-      setGlobal("gridEnginePropagateCommand",   "scontrol update job=\"WAIT_TAG\"");          
-      setGlobal("gridEngineNameToJobIDCommand", "squeue -h -o\%F -n \"WAIT_TAG\" | uniq");    
-      setGlobal("gridEngineNameToJobIDCommandNoArray", "squeue -h -o\%i -n \"WAIT_TAG\"");    
-      setGlobal("gridEngineTaskID",             "SLURM_ARRAY_TASK_ID");
-      setGlobal("gridEngineArraySubmitID",      "%A_%a");
-      setGlobal("gridEngineJobID",              "SLURM_JOB_ID");
+      setGlobal("gridSubmitCommand",      "sbatch");
+      setGlobal("gridHoldOption",         "--depend=afterok:\"WAIT_TAG\"");
+      setGlobal("gridHoldOptionNoArray",  "--depend=afterok:\"WAIT_TAG\"");
+      setGlobal("gridSyncOption",         "");                                          
+      setGlobal("gridNameOption",         "-D `pwd` -J");
+      setGlobal("gridArrayOption",        "-a ARRAY_JOBS");
+      setGlobal("gridArrayName",          "ARRAY_NAME\[ARRAY_JOBS\]");
+      setGlobal("gridOutputOption",       "-o");                                        
+      setGlobal("gridPropagateCommand",   "scontrol update job=\"WAIT_TAG\"");          
+      setGlobal("gridNameToJobIDCommand", "squeue -h -o\%F -n \"WAIT_TAG\" | uniq");    
+      setGlobal("gridNameToJobIDCommandNoArray", "squeue -h -o\%i -n \"WAIT_TAG\"");    
+      setGlobal("gridTaskID",             "SLURM_ARRAY_TASK_ID");
+      setGlobal("gridArraySubmitID",      "%A_%a");
+      setGlobal("gridJobID",              "SLURM_JOB_ID");
     }
 
     if (($var eq "gridEngine") && ($val eq "LSF")) {
