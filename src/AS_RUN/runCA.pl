@@ -87,7 +87,7 @@ sub submitBatchJobs($$) {
         runCommand($wrk, getGlobal("gridSubmitCommand").$SGE."\n") and caFailure("Failed to submit batch jobs.");
         submitScript($TAG);
     } else {
-        if($submitCommand eq "slurm"){
+        if(getGlobal("gridSubmitCommand") eq "slurm"){
         pleaseExecute(getGlobal("gridSubmitCommand").$SGE."\n");
         exit(0);
         }
