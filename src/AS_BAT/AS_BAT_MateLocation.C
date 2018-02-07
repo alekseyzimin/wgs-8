@@ -279,8 +279,8 @@ MateLocation::buildHappinessGraphs(UnitigVector &unitigs) {
       //  Shouldn't occur, but just in case, ignore fragments in the legacy library.
       continue;
 
-    if (IS->valid(lib) == false)
-      // Don't check libs that we didn't generate good stats for
+    if (IS->valid(lib) == false || IS->mean(lib)<1000 || IS->stddev(lib)<100)
+      // Don't check libs that we didn't generate good stats for or (AZ) short mates
       continue;
 
     int32 badMaxInter = static_cast<int32>(IS->mean(lib) + BADMATE_INTER_STDDEV * IS->stddev(lib));
@@ -423,23 +423,32 @@ MateLocation::buildHappinessGraphs(UnitigVector &unitigs) {
     //  (pos1.end) <------   (pos1.bgn)
     //  (pos2.bgn)  -------> (pos2.end)
     //
+    //AZ this is not a problem
     if ((isReverse(loc.mlePos1) == true)  && (loc.mlePos1.end < loc.mlePos2.bgn)) {
-      incrRange(badOuttie, -1, MIN(frgBgn, frgEnd), MAX(matBgn, matEnd));
-      nbadOuttie[nContained]++;
+      loc.isGrumpy = false;  //  IT'S GOOD, kind of.
+      ngood[nContained]++;
+
+      //incrRange(badOuttie, -1, MIN(frgBgn, frgEnd), MAX(matBgn, matEnd));
+      //nbadOuttie[nContained]++;
       if (logFileFlagSet(LOG_HAPPINESS))
         writeLog("buildHappinessGraph()--  unitig %d (len %d) frag %d pos %d,%d (len %d) and unitig %d (len %d) frag %d pos %d,%d (len %d) -- bad outtie (case 1)\n",
                 loc.mleUtgID1, ULEN1, loc.mleFrgID1, frgBgn, frgEnd, frgLen,
                 loc.mleUtgID2, ULEN2, loc.mleFrgID2, matBgn, matEnd, matLen);
-      goto markBad;
+      //goto markBad;
+      continue;
     }
     if ((isReverse(loc.mlePos1) == false) && (loc.mlePos2.end < loc.mlePos1.bgn)) {
-      incrRange(badOuttie, -1, MIN(frgBgn, frgEnd), MAX(matBgn, matEnd));
-      nbadOuttie[nContained]++;
+      //incrRange(badOuttie, -1, MIN(frgBgn, frgEnd), MAX(matBgn, matEnd));
+      //nbadOuttie[nContained]++;
+      loc.isGrumpy = false;  //  IT'S GOOD, kind of.
+      ngood[nContained]++;
+
       if (logFileFlagSet(LOG_HAPPINESS))
         writeLog("buildHappinessGraph()--  unitig %d (len %d) frag %d pos %d,%d (len %d) and unitig %d (len %d) frag %d pos %d,%d (len %d) -- bad outtie (case 2)\n",
                 loc.mleUtgID1, ULEN1, loc.mleFrgID1, frgBgn, frgEnd, frgLen,
                 loc.mleUtgID2, ULEN2, loc.mleFrgID2, matBgn, matEnd, matLen);
-      goto markBad;
+      //goto markBad;
+      continue;
     }
 
     //  So, now not NORMAL or ANTI or OUTTIE.  We must be left with innies.
