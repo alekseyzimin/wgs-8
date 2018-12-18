@@ -172,7 +172,10 @@ main(int argc, const char** argv) {
 //  }
   if (maxCount <  5 * Xcoverage)
     maxCount=5 * Xcoverage;
-  
+  //AZ we should never be attempting to assemble such a high coverage
+  if (maxCount >=  250)
+    maxCount=250;
+
   fprintf(stderr, "Reset maxCount to " F_U32 "\n",maxCount);
 
   fprintf(stdout, F_U32"\n", maxCount);
