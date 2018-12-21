@@ -5831,10 +5831,10 @@ sub summarizeConsensusStatistics ($) {
 sub terminate () {
     my $perl = "/usr/bin/env perl";
 
+    stopBefore("terminator", undef);
+
     my $termDir = "$wrk/9-terminator";
     system("mkdir $termDir") if (! -e "$termDir");
-
-    stopBefore("terminator", undef);
 
     if (! -e "$termDir/$asm.asm") {
         my $uidServer = getGlobal("uidServer");
