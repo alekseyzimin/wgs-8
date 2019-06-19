@@ -4904,6 +4904,7 @@ sub createPostUnitiggerConsensusJobs (@) {
         print F "\$bin/addCNSToStore -path \$bin -input $wrk/5-consensus/$asm.\$jobid.fa -lay $wrk/5-consensus/$asm.\$jobid.lay -output $wrk/5-consensus/$asm.\$jobid.cns -prefix $wrk/$asm -sequence $wrk/5-consensus/$asm.\$jobid.fasta -partition \$jobid && \$bin/utgcnsfix -g $wrk/$asm.gkpStore  -t $wrk/$asm.tigStore 2 \$jobid -o $wrk/5-consensus/${asm}_\$jobid.fixes > $wrk/5-consensus/${asm}_\$jobid.fix.err 2>&1 && touch $wrk/5-consensus/${asm}_\$jobid.success\n";
         print F "if [ -e $wrk/5-consensus/${asm}_\$jobid.success ]; then\n";
         print F "   rm -f $wrk/5-consensus/${asm}.\$jobid.fasta*\n";
+        print F "   rm -f $wrk/5-consensus/${asm}.\$jobid.fna\n";
         print F "   rm -f $wrk/5-consensus/${asm}.\$jobid.lay\n";
         print F "fi\n";
         setGlobal("cnsConcurrency", int(getGlobal("cnsConcurrency")/3+1));
