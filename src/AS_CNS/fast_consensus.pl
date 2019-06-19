@@ -96,7 +96,7 @@ foreach my $l (@lines){
     }
   }
 }
-print ">utg_$f[1]\n",$consensus,"\n";
+print ">utg_$f[1]\n",$consensus,"\n" if(length($consensus)>50000);
 }
 }
 
