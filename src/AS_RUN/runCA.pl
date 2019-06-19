@@ -4899,7 +4899,8 @@ sub createPostUnitiggerConsensusJobs (@) {
         print F "$bin/gatekeeper -dumpfasta $wrk/5-consensus/$asm.\$jobid -iid $wrk/5-consensus/$asm.\$jobid.iid $wrk/$asm.gkpStore\n";
         print F "rm -f $wrk/5-consensus/$asm.\$jobid.q*\n";
         print F "\$bin/tigStore -d layout -U -t $wrk/$asm.tigStore 1 -up \$jobid -g $wrk/$asm.gkpStore > $wrk/5-consensus/$asm.\$jobid.lay\n";
-        print F "\$bin/convertToPBCNS -path $blasr -consensus $consensusType -coverage 1 -threads 4 -prefix $wrk/5-consensus/$asm.\$jobid.tmp -length 500 -sequence $wrk/5-consensus/$asm.\$jobid.fasta -input $wrk/5-consensus/$asm.\$jobid.lay -output $wrk/5-consensus/$asm.\$jobid.fa >$wrk/5-consensus/${asm}_\$jobid.cns.err 2>&1 \n";
+        print F "\$bin/convertToPBCNS -path $blasr -consensus $consensusType -coverage 1 -threads 4 -prefix $wrk/5-consensus/$asm.\$jobid.tmp -length 500 -sequence $wrk/5-consensus/$asm.\$jobid.fasta -input $wrk/5-consensus/$asm.\$jobid.lay -output $wrk/5-consensus/$asm.\$jobid.fna >$wrk/5-consensus/${asm}_\$jobid.cns.err 2>&1 \n";
+        print F "\$bin/fast_consensus.pl $wrk/5-consensus/$asm.\$jobid.fasta $wrk/5-consensus/$asm.\$jobid.fna < $wrk/5-consensus/$asm.\$jobid.lay > $wrk/5-consensus/$asm.\$jobid.fa \n";
         print F "\$bin/addCNSToStore -path \$bin -input $wrk/5-consensus/$asm.\$jobid.fa -lay $wrk/5-consensus/$asm.\$jobid.lay -output $wrk/5-consensus/$asm.\$jobid.cns -prefix $wrk/$asm -sequence $wrk/5-consensus/$asm.\$jobid.fasta -partition \$jobid && \$bin/utgcnsfix -g $wrk/$asm.gkpStore  -t $wrk/$asm.tigStore 2 \$jobid -o $wrk/5-consensus/${asm}_\$jobid.fixes > $wrk/5-consensus/${asm}_\$jobid.fix.err 2>&1 && touch $wrk/5-consensus/${asm}_\$jobid.success\n";
         print F "if [ -e $wrk/5-consensus/${asm}_\$jobid.success ]; then\n";
         print F "   rm -f $wrk/5-consensus/${asm}.\$jobid.fasta*\n";
