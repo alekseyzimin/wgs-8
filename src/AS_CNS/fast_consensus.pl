@@ -65,7 +65,7 @@ while($line=<STDIN>){
     push(@layout_lines,$line);
   }
 }
-if($layout_lines>0){
+if($#layout_lines>-1){
   do_consensus(@layout_lines);
 }
 
@@ -82,6 +82,7 @@ foreach my $l (@lines){
   my $end=0;
   my $ori=0;
   if($f[0] eq "FRG" && $f[6] eq "0"){#not contained
+    #print "DEBUG $l\n";
     if($f[13]<$f[14]){
       $beg=$f[13];
       $end=$f[14];
@@ -93,6 +94,7 @@ foreach my $l (@lines){
     }
     if($end > length($consensus) && not($seq{$f[4]} eq "")){
       $consensus=substr($consensus,0,$beg).($ori==0?$seq{$f[4]}:reverse_complement($seq{$f[4]}));
+      #print "DEBUG ",length($consensus),"\n";
     }
   }
 }
