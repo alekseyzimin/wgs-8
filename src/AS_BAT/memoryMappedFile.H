@@ -26,7 +26,10 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
+
+#ifdef HW_PHYSMEM
 #include <sys/sysctl.h>
+#endif
 
 #include <set>
 #include <map>
