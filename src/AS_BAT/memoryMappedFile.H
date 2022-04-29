@@ -26,7 +26,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
-#include <sys/sysctl.h>
+//#include <sys/sysctl.h>
 
 #include <set>
 #include <map>
